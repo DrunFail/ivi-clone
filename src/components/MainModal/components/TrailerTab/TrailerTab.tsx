@@ -1,9 +1,9 @@
-import styles from "../../../ui/TrailerMain/Trailer.module.scss";
+import styles from "../../../TrailerMain/Trailer.module.scss";
 import { useSelector } from "react-redux";
 import React from "react";
 import Image from "next/image";
 import { getFilm } from "../../../../store/film";
-import Trailer from "../../../ui/TrailerMain/TrailerMain";
+import Trailer from "../../../TrailerMain/TrailerMain";
 
 const TrailerTab = () => {
     const films = useSelector(getFilm());

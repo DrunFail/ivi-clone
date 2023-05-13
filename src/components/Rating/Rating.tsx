@@ -4,8 +4,8 @@ import styles from "./Rating.module.scss";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { getFilm } from "../../store/film";
-import MyButton from "../common/MyButton/MyButton";
 import Modal from "../Modal/Modal";
+import MyButton from "../UI/MyButton/MyButton";
 
 let arr = new Array(10);
 arr = arr.fill(1);

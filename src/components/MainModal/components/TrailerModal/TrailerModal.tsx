@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import React, { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { getFilm } from "../../../../store/film";
-import Trailer from "../../../ui/TrailerMain/TrailerMain";
+import Trailer from "../../../TrailerMain/TrailerMain";
 
 const TrailerModal: FC<{ callback: () => void }> = ({ callback }) => {
     const film = useSelector(getFilm());

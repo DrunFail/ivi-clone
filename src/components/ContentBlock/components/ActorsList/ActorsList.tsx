@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 import { getFilm } from "../../../../store/film";
-import MyButton from "../../../common/MyButton/MyButton";
 import { IStaff } from "../../../../models";
+import MyButton from "../../../UI/MyButton/MyButton";
 
 const ActorsList = () => {
     const films = useSelector(getFilm());

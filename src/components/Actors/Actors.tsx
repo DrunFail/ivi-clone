@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import Link from "next/link";
-import MyButton from "../common/MyButton/MyButton";
 import { getFilm } from "../../store/film";
+import MyButton from "../UI/MyButton/MyButton";
 
 const Actors: FC<{ callback: () => void }> = ({ callback }) => {
     const film = useSelector(getFilm());
