@@ -1,17 +1,17 @@
 import React, { useEffect, FC } from "react";
 import styles from "./movies.module.scss";
-import { getOneMovie } from "./api/movieId";
 import { IMovieOne } from "../../models";
 import { useDispatch, useSelector } from "react-redux";
 import { filmAction, getFilm } from "../../store/film";
-import MainModal from "./components/MainModal/MainModal";
-import { IPropsMovie } from "./models/IPropsMovie";
 import { GetServerSideProps } from "next";
-import ContentBlock from "./components/ContentBlock/ContentBlock";
 import MainContainer from "../../components/ui/mainContainer";
-import SliderSimilar from "./components/SliderSimilar/SliderSimilar";
-import WatchAnyDevice from "./components/WatchAnyDevice/WatchAnyDevice";
-import HeadMovie from "./components/HeadMovie/HeadMovie";
+import { IPropsMovie } from "../../models/IPropsMovie";
+import HeadMovie from "../../components/HeadMovie/HeadMovie";
+import ContentBlock from "../../components/ContentBlock/ContentBlock";
+import SliderSimilar from "../../components/SliderSimilar/SliderSimilar";
+import MainModal from "../../components/MainModal/MainModal";
+import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
+import { getOneMovie } from "../../api/movieId";
 
 /** Компонент страницы фильма. */
 const Movie: FC<IPropsMovie> = ({ movies }): React.ReactElement => {

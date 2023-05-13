@@ -1,16 +1,16 @@
 import React, { useEffect, FC } from "react";
 import styles from "./person.module.scss";
-import { getAllPerson, getOnePerson } from "./api/personApi";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { getPerson, personRequest } from "../../store/person";
-import { IPerson, IPropsPerson } from "./models/IPerson";
 import { getLang } from "../../store/switchLang";
 import { GetStaticProps } from "next";
-import { IProps } from "../movie/models/IPropsMovie";
-import HeadPerson from "./components/HeadPerson/HeadPerson";
-import FilmList from "./components/FilmList/FilmList";
-import FilmTitle from "./components/FilmTitle/FilmTitle";
+import HeadPerson from "../../components/HeadPerson/HeadPerson";
+import { IPerson, IPropsPerson } from "../../models/IPerson";
+import FilmTitle from "../../components/FilmTitle/FilmTitle";
+import FilmList from "../../components/FilmList/FilmList";
+import { getAllPerson, getOnePerson } from "../../api/personApi";
+import { IProps } from "../../models/IPropsMovie";
 
 const Person: FC<IPropsPerson> = ({ persons }): React.ReactElement => {
     const person = useSelector(getPerson());

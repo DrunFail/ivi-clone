@@ -52,10 +52,10 @@ const Breadcrumbs = (): React.ReactElement => {
         }
         if (routes[0] === "movie" && filmData) {
             secondLinkName = lang === "Ru"
-                ? filmData.currentFilm.nameRu
+                ? filmData.film.nameRu
                 : filmData.currentFilm.nameOriginal
                     ? filmData.currentFilm.nameOriginal
-                    : filmData.currentFilm.nameRu
+                    : filmData.film.nameRu
             ;
         }
     }
@@ -67,6 +67,7 @@ const Breadcrumbs = (): React.ReactElement => {
                 `${domen}movies/about/${routes[1]}`
             );
             const data = response.data;
+            
             setFilmData(data);
         } catch (e: unknown) {
             const error = e as AxiosError;
