@@ -13,7 +13,7 @@ import { getGenresList } from "../../store/genres";
 import { getLang } from "../../store/switchLang";
 import Modal from "../Modal/Modal";
 import MyButton from "../UI/MyButton/MyButton";
-import Toggle from "../common/Toggle/Toggle";
+import Toggle from "../Toggle/Toggle";
 
 /** Компонент модального окна поиска в Header */
 const NavigationWindow = () => {

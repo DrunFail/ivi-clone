@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import styles from "./Toggle.module.scss";
-import polygonBottom from "../../../assets/SVG/Polygon/PolygonBottom.svg";
-import polygonTop from "../../../assets/SVG/Polygon/PolygonTop.svg";
+import polygonBottom from "../../assets/SVG/Polygon/PolygonBottom.svg";
+import polygonTop from "../../assets/SVG/Polygon/PolygonTop.svg";
 import Image from "next/image";
 
 const Toggle: FC<{
