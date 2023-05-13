@@ -3,7 +3,7 @@ import styles from "./ReviewForm.module.scss";
 import { FormattedMessage } from "react-intl";
 import ReviewBlock from "../ReviewBlock/ReviewBlock";
 import MyInput from "../../../common/Input/MyInput";
-import MyButton from "../../../common/MyButton/MyButton";
+import MyButton from "../../../UI/MyButton/MyButton";
 
 const ReviewForm = () => {
     return (

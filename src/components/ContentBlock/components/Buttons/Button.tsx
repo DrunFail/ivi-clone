@@ -5,10 +5,10 @@ import youtube from "../../../../assets/SVG/Youtube/Youtube.svg";
 import bookmark from "../../../../assets/SVG/Bookmark/Bookmark.svg";
 import { useSelector } from "react-redux";
 import { getFilm } from "../../../../store/film";
-import TrailerMain from "../../../ui/TrailerMain/TrailerMain";
-import MyButton from "../../../common/MyButton/MyButton";
-import Share from "../../../ui/Share/Share";
 import styles from '../../../../pages/movie/movies.module.scss';
+import TrailerMain from "../../../TrailerMain/TrailerMain";
+import MyButton from "../../../UI/MyButton/MyButton";
+import Share from "../../../Share/Share";
 
 const Buttons = () => {
     const films = useSelector(getFilm());

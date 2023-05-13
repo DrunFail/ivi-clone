@@ -4,12 +4,12 @@ import "../styles/index.scss";
 import React from "react";
 import AppLoader from "../store/appLoader";
 import type { AppProps } from "next/app";
-import Layout from "../components/ui/Layout/Layout";
 import WrapperIntl from "../components/WrapperIntl/WrapperIntl";
 import LoaderReq from "../components/common/LoaderReq/LoaderReq";
 import { AuthProvider } from "../components/auth/context/AuthProvider";
 import ClickCatcherProvider from "../hooks/useClickCatcher";
 import WindowDimensionsProvider from "../hooks/useWindowDimensions";
+import RootLayout from "../components/layouts/RootLayout/RootLayout";
 
 
 // This default export is required in a new `pages/_app.js` file.
@@ -36,11 +36,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                     <AppLoader>
                         <WindowDimensionsProvider>
                             <ClickCatcherProvider>
-                                <Layout>
+                            <RootLayout>
                                 <CustomLayout>
                                         <Component {...pageProps} />
                                     </CustomLayout>
-                                </Layout>
+                                </RootLayout>
                             </ClickCatcherProvider>
                         </WindowDimensionsProvider>
                     </AppLoader>

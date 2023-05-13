@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MainContainer from "../../components/ui/mainContainer";
 import styles from "./movies.module.scss";
 import { useRouter } from "next/router";
 import getMoviesPageTitle from "../../utils/getMoviesPageTitle";
@@ -16,6 +15,7 @@ import getFilmCards from "../../services/getFilmCards";
 import FiltersField from "../../components/FiltersField/FiltersField";
 import SortField from "../../components/SortField/SortField";
 import FilmCardsField from "../../components/FilmCardsField/FilmCardsField";
+import MainContainer from "../../components/mainContainer";
 
 /** Компонент cписка фильмов конкретного жанра. */
 const MoviesByGenre = (): React.ReactElement => {

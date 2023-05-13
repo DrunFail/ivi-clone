@@ -5,11 +5,11 @@ import TopTenSlider from "../components/TopTenSlider/TopTenSlider";
 import { TOP_10_DATA } from "../components/TopTenSlider/data";
 import { getLang } from "../store/switchLang";
 import { useSelector } from "react-redux";
-import MainSlider from "../components/ui/mainSlider/mainSlider";
 import PageSection from "../components/PageContainers/PageSection/PageSection";
 import PageSectionWrapper from "../components/PageContainers/PageSectionContainer/PageSectionContainer";
 import PromoSection from "../components/PromoSection/PromoSection";
 import MovieSlider from "../components/MovieSlider/MovieSlider";
+import MainSlider from "../components/mainSlider/mainSlider";
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());

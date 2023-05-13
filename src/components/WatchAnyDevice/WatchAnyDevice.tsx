@@ -8,7 +8,7 @@ import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import { getLang } from "../../store/switchLang";
 import { getFilm } from "../../store/film";
-import MyButton from "../common/MyButton/MyButton";
+import MyButton from "../UI/MyButton/MyButton";
 
 const WatchAnyDevice = () => {
     const film = useSelector(getFilm());

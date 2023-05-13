@@ -4,7 +4,6 @@ import { IMovieOne } from "../../models";
 import { useDispatch, useSelector } from "react-redux";
 import { filmAction, getFilm } from "../../store/film";
 import { GetServerSideProps } from "next";
-import MainContainer from "../../components/ui/mainContainer";
 import { IPropsMovie } from "../../models/IPropsMovie";
 import HeadMovie from "../../components/HeadMovie/HeadMovie";
 import ContentBlock from "../../components/ContentBlock/ContentBlock";
@@ -12,6 +11,7 @@ import SliderSimilar from "../../components/SliderSimilar/SliderSimilar";
 import MainModal from "../../components/MainModal/MainModal";
 import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
 import { getOneMovie } from "../../api/movieId";
+import MainContainer from "../../components/mainContainer";
 
 /** Компонент страницы фильма. */
 const Movie: FC<IPropsMovie> = ({ movies }): React.ReactElement => {
