@@ -13,9 +13,9 @@ import { getLang } from "../../store/switchLang";
 import { getGenresList } from "../../store/genres";
 import { getCountriesList } from "../../store/countries";
 import getFilmCards from "../../services/getFilmCards";
-import FiltersField from "./components/FiltersField/FiltersField";
-import FilmCardsField from "./components/FilmCardsField/FilmCardsField";
-import SortField from "./components/SortField/SortField";
+import FiltersField from "../../components/FiltersField/FiltersField";
+import SortField from "../../components/SortField/SortField";
+import FilmCardsField from "../../components/FilmCardsField/FilmCardsField";
 
 /** Компонент cписка фильмов конкретного жанра. */
 const MoviesByGenre = (): React.ReactElement => {

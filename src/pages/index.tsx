@@ -5,12 +5,10 @@ import TopTenSlider from "../components/TopTenSlider/TopTenSlider";
 import { TOP_10_DATA } from "../components/TopTenSlider/data";
 import { getLang } from "../store/switchLang";
 import { useSelector } from "react-redux";
-import PromoSection from "../components/promoSection/PromoSection";
-import PageSection from "../components/pageContainers/pageSection/PageSection";
-import PageSectionWrapper from "../components/pageContainers/pageSectionContainer/PageSectionContainer";
-import { DATA } from "../components/movieList/data/data";
-import { MovieItemTest } from "../components/movieList/interfaces/interfaces";
-import MainSlider from "../components/ui/MainSlider/MainSlider";
+import MainSlider from "../components/ui/mainSlider/mainSlider";
+import PageSection from "../components/PageContainers/PageSection/PageSection";
+import PageSectionWrapper from "../components/PageContainers/PageSectionContainer/PageSectionContainer";
+import PromoSection from "../components/PromoSection/PromoSection";
 import MovieSlider from "../components/MovieSlider/MovieSlider";
 
 const Index = (): React.ReactElement => {
