@@ -1,0 +1,27 @@
+.title{
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    min-block-size: 500px;
+
+    .content {
+        background-color: #1f1b2e;
+        border-radius: 8px;
+        padding-block-end: 40px;
+    }
+}
+
+@media (max-width: 600px){
+    .title{
+        font-size: 30px;
+    }
+
+    .container{
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+}

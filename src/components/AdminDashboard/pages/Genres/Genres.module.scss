@@ -1,0 +1,17 @@
+.container {
+    padding: 16px;
+
+    h1 {
+        font-size: 24px;
+        padding-block-end: 20px;
+        font-weight: 500;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+
+       
+    }
+}

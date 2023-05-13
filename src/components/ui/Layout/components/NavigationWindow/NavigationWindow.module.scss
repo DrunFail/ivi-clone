@@ -1,0 +1,55 @@
+.NavigationWindow{
+    opacity: 0.5;
+    transition: 0.3s;
+    display: flex;
+    cursor: pointer;
+    gap: 5px;
+    &:hover{
+        opacity: 1;
+    }
+    &__p{
+        font-weight: 700;
+        padding-top: 5px ;
+        padding-bottom: 5px ;
+    }
+    &__div{
+        display: flex;
+        gap: 5px;
+    }
+    &__modal{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        min-width: 100%;
+        gap: 10px;
+        input{
+            width: 100vh;
+            height: 30px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            box-shadow: 0 0 0 2px gray;
+            font-size: 18px;
+            padding: 5px;
+            &::placeholder{
+                color: rgb(166, 166, 166);
+            }
+        }
+        button{
+            min-width: 100%;
+            font-size: 20px;
+            height: fit-content;
+            min-height: 60px;
+        }
+    }
+    &__tabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        p{
+            font-size: 18px;
+            font-weight: 700;
+            
+        }
+    }
+}
