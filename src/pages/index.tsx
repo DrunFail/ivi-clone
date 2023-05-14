@@ -6,10 +6,10 @@ import { TOP_10_DATA } from "../components/TopTenSlider/data";
 import { getLang } from "../store/switchLang";
 import { useSelector } from "react-redux";
 import PageSection from "../components/PageContainers/PageSection/PageSection";
-import PageSectionWrapper from "../components/PageContainers/PageSectionContainer/PageSectionContainer";
 import PromoSection from "../components/PromoSection/PromoSection";
 import MovieSlider from "../components/MovieSlider/MovieSlider";
 import MainSlider from "../components/mainSlider/mainSlider";
+import PageWrapper from "../components/PageContainers/PageWrapper/PageWrapper";
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());
@@ -20,25 +20,25 @@ const Index = (): React.ReactElement => {
                 <title>{lang === "Ru" ? "Главная страница" : "Main page"}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
             </Head>
-            <section>
+           
                 <MainSlider styles={styles} />
 
                 <PageSection>
-                    <PageSectionWrapper>
+                    <PageWrapper>
                         <PromoSection />
-                    </PageSectionWrapper>
+                    </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageSectionWrapper>
+                    <PageWrapper>
                         <TopTenSlider
                             carouselId={"top10"}
                             data={TOP_10_DATA}
                             count={10}
                         />
-                    </PageSectionWrapper>
+                    </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageSectionWrapper>
+                    <PageWrapper>
                         <MovieSlider
                             carouselId={"comedy"}
                             genreId={2 }
@@ -46,20 +46,20 @@ const Index = (): React.ReactElement => {
                             href={"/movies/comedy"}
                             headingTitle={"Комедии"}
                         />
-                    </PageSectionWrapper>
+                    </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageSectionWrapper>
+                    <PageWrapper>
                         <MovieSlider
                             carouselId={"criminal"}
                             genreId={1 }
                             href={"/movies/crime"}
                             headingTitle={"Криминал"}
                         />
-                    </PageSectionWrapper>
+                    </PageWrapper>
                 </PageSection>
 
-            </section>
+           
         </>
     );
 };

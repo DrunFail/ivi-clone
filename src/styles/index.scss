@@ -41,7 +41,7 @@ body {
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    background-color: rgb(16, 14, 25);
+    background-color: var(--clr-dark-blue);
     color: #ffffff;
     font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
     letter-spacing: 0.5px;
@@ -194,4 +194,9 @@ main {
     &_pink {
         background-color: rgb(234, 0, 61);
     }
+}
+:root {
+    --max-width: 1216px;
+    --margin-page-primary: 20px;
+    --clr-dark-blue: #100e19;
 }

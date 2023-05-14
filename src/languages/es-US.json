@@ -1,4 +1,10 @@
 {
+  "header.navbar.myIvi": "My Ivi",
+  "header.navbar.new": "Whats new",
+  "header.navbar.movies": "Movies",
+  "header.navbar.serials": "Serials",
+  "header.navbar.cartoons":  "Cartoons",
+
   "freeFilm": "Free Film",
   "trailer": "Trailer",
   "language": "Language",
@@ -87,13 +93,13 @@
   "Error": "Error",
   "TheRequested": "The requested page does not exist",
 
-  "admin.heading":  "Admin Dashboard",
+  "admin.heading": "Admin Dashboard",
 
 
   "button.cancel": "cancel",
   "button.confirm": "confirm",
   "button.edit": "edit",
-  "button.delete":  "delete",
+  "button.delete": "delete",
 
   "movies": "movies",
   "movie.kinopoiskId": "id",
@@ -114,5 +120,5 @@
   "genre.newNameRu": "new genre name (Rus)",
   "genre.newNameEng": "new genre name (Eng)",
 
-  "error.required":  "required field"
+  "error.required": "required field"
 }
