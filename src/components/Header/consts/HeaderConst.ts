@@ -1,4 +1,33 @@
-import { TWindowFilm } from "../../../../../WindowFilm/models/IWindow";
+import { TWindowFilm } from "../components/WindowFilm/models/IWindow";
+
+export const NAV_MENU = [
+    {
+        name: "myIvi",
+        link: "/",
+        dropdown: false
+    },
+    {
+        name: "new",
+        link: "https://www.ivi.ru/new",
+        dropdown: false
+    },
+    {
+        name: "movies",
+        link: "/movies/all",
+        dropdown: true
+    },
+    {
+        name: "serials",
+        link: "https://www.ivi.ru/series",
+        dropdown: true
+    },
+    {
+        name: "cartoons",
+        link: "https://www.ivi.ru/animation",
+        dropdown: true
+    }
+]
+
 
 export const zhanr: TWindowFilm[] = [
     {
@@ -39,6 +68,46 @@ export const zhanr: TWindowFilm[] = [
     },
     {
         id: 11,
+        name: "Катастрофы"
+    },
+    {
+        id: 12,
+        name: "Артхаус"
+    },
+    {
+        id: 13,
+        name: "Боевики"
+    },
+    {
+        id: 14,
+        name: "Вестерн"
+    },
+    {
+        id: 15,
+        name: "Военные"
+    },
+    {
+        id: 16,
+        name: "Для всей семьи"
+    },
+    {
+        id: 17,
+        name: "Для детей"
+    },
+    {
+        id: 18,
+        name: "Документальные"
+    },
+    {
+        id: 19,
+        name: "Драмы"
+    },
+    {
+        id: 20,
+        name: "Исторические"
+    },
+    {
+        id: 21,
         name: "Катастрофы"
     }
 ];

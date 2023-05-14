@@ -1,4 +1,10 @@
 {
+  "header.navbar.myIvi": "Мой Иви",
+  "header.navbar.new": "Что нового",
+  "header.navbar.movies": "Фильмы",
+  "header.navbar.serials": "Сериалы",
+  "header.navbar.cartoons": "Мультфильмы",
+
   "freeFilm": "Бесплатные фильмы",
   "trailer": "Трейлер",
   "language": "Языки",

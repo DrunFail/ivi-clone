@@ -1,32 +1,35 @@
 import styles from "./RootLayout.module.scss";
-import React from "react";
 import MediaQuery from "react-responsive";
 import Header from "../../Header/Header";
 import Tab from "../../Tab/Tab";
 import Footer from "../../Footer/Footer";
+import HeaderContainer from "../../Header/components/HeaderContainer/HeaderContainer";
+import FooterContainer from "../../Footer/FooterContainer/FooterContainer";
+import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 
-interface ILayout {
+interface RootLayoutProps {
     children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: ILayout){
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <div className={styles.Layout}>
-            <div className={styles.Content}>
-                <div className={styles.Layout__headerContainer}>
+        <>
+            <HeaderContainer>
                     <Header />
-                </div>
-                {children}
-                <MediaQuery maxWidth={1235}>
-                    <Tab />
-                </MediaQuery>
-            </div>
-            <MediaQuery minWidth={1236}>
-                <div className={styles.Layout__footer}>
+               
+            </HeaderContainer>
+            {children}
+
+            <Tab />
+
+
+            <FooterContainer>
+                <PageWrapper>
                     <Footer />
-                </div>
-            </MediaQuery>
-        </div>
+                </PageWrapper>
+            </FooterContainer>
+        </>
+
     );
 };
 
