@@ -5,7 +5,7 @@ import ButtonControl from "./ButtonControl/ButtonControl";
 import CarouselGallery from "./CarouselGallery/CarouselGallery";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
-import PageSectionContainerInner from "../pageContainers/pageSectionContainerInner/PageSectionContainerInner";
+import PageSectionContainerInner from "../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
 
 interface CarouselProps {
     mode: "list" | "slider";

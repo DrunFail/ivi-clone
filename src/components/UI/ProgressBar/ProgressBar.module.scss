@@ -1,0 +1,22 @@
+.progressbar {
+    background-color: rgba(126,121,143,.32);
+    border-radius: 2px;
+    display: flex;
+    justify-content: flex-start;
+    inline-size: 100%;
+
+    .active {
+        background-color: #ea003d;
+        border-radius: 2px;
+    }
+}
+
+.progressbar4 {
+    @extend .progressbar;
+    block-size: 4px;
+}
+
+.progressbar2{
+    @extend .progressbar;
+    block-size: 2px;
+}

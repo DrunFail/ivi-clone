@@ -101,6 +101,11 @@
   "button.edit": "edit",
   "button.delete": "delete",
 
+  "button.hint.similar": "similar",
+  "button.hint.dislike": "dislike",
+  "button.hint.watchLater": "watch later",
+  "button.hint.rate": "already watched, rate",
+
   "movies": "movies",
   "movie.kinopoiskId": "id",
   "movie.year": "year",
