@@ -11,7 +11,6 @@ import ClickCatcherProvider from "../hooks/useClickCatcher";
 import WindowDimensionsProvider from "../hooks/useWindowDimensions";
 import RootLayout from "../components/layouts/RootLayout/RootLayout";
 
-
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }: AppProps) {
     const [showChild, setShowChild] = React.useState(false);

@@ -1,15 +1,22 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Provider } from 'react-redux';
+import store from '../../store/createStore';
+import WrapperIntl from '../WrapperIntl/WrapperIntl';
 import Footer from "./Footer";
-import styles from "../Layout/Layout.module.scss";
-import "../../../styles/index.scss";
-export default {
-    title: "Footer",
-    component: Footer
+
+const meta: Meta<typeof Footer> = {
+    title: 'Footer',
+    component: Footer,
 };
 
-export const Default = () => (
-    <body>
-        <div className={styles.Layout__footer}>
-            <Footer />
-        </div>
-    </body>
-);
+export default meta;
+type Story = StoryObj<typeof Footer>;
+
+export const Primary: Story = {
+    render: () =>
+        <Provider store={store}>
+            <WrapperIntl>
+                <Footer />
+            </WrapperIntl>
+        </Provider>
+};
