@@ -1,15 +1,15 @@
-import styles from "./Tab.module.scss";
-import React from "react";
 import Image from "next/image";
-import tv from "../../assets/SVG/Tv/Tv.svg";
-import home from "../../assets/SVG/Home/Home.svg";
-import youtube from "../../assets/SVG/Youtube/Youtube.svg";
 import Link from "next/link";
-import NavigationWindow from "../NavigationWindow/NavigationWindow";
 import { FormattedMessage } from "react-intl";
+import home from "../../assets/SVG/Home/Home.svg";
+import tv from "../../assets/SVG/Tv/Tv.svg";
+import youtube from "../../assets/SVG/Youtube/Youtube.svg";
 import SearchWindow from "../Header/components/SearchWindow/SearchWindow";
+import NavigationWindow from "../NavigationWindow/NavigationWindow";
+import styles from "./MobileNavBar.module.scss";
 
-const Tab = () => {
+
+export default function MobileNavBar(){
     return (
         <div className={styles.Container}>
             <div className={styles.Tab}>
@@ -44,4 +44,3 @@ const Tab = () => {
     );
 };
 
-export default Tab;

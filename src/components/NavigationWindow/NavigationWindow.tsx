@@ -11,9 +11,9 @@ import { zhanr } from "../Header/consts/HeaderConst";
 import { useSelector } from "react-redux";
 import { getGenresList } from "../../store/genres";
 import { getLang } from "../../store/switchLang";
-import Modal from "../Modal/Modal";
 import MyButton from "../UI/MyButton/MyButton";
 import Toggle from "../Toggle/Toggle";
+import Modal from "../UI/Modal/Modal";
 
 /** Компонент модального окна поиска в Header */
 const NavigationWindow = () => {

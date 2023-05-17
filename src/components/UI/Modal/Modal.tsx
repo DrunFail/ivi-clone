@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import close from "../../assets/SVG/Close/Close.svg";
+import close from "../../../assets/SVG/Close/Close.svg";
 import styles from "./Modal.module.scss";
 
 interface ModalProps {
