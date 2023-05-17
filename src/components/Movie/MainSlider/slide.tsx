@@ -5,10 +5,10 @@ import "swiper/css/autoplay";
 import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
-import { getLang } from "../../store/switchLang";
-import translateGenre from "../../utils/translateGenre";
-import { IClassNames, IStringObject } from "../../models";
-import LinkButton from "../LinkButton/linkButton";
+import { IClassNames, IStringObject } from "../../../models";
+import { getLang } from "../../../store/switchLang";
+import translateGenre from "../../../utils/translateGenre";
+import LinkButton from "../../LinkButton/linkButton";
 
 interface SlideProps {
     styles: IClassNames;

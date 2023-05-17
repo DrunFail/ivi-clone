@@ -6,15 +6,13 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import Arrows from "./arrows";
 import Slide from "./slide";
-import { IClassNames } from "../../models";
-import mainSliderData from "../../mockData/mainSlider.json";
+import mainSliderData from "../../../mockData/mainSlider.json";
+import styles from "./MainSlider.module.scss";
 
-interface MainSliderProps {
-    styles: IClassNames;
-}
+
 
 /** Компонент, содержащий слайдер, отображаемый на главной странице. */
-const MainSlider = ({ styles }: MainSliderProps): React.ReactElement => {
+export default function MainSlider(){
     return (
         <div className={styles.slider__sliderCont}>
             <Swiper
@@ -40,4 +38,4 @@ const MainSlider = ({ styles }: MainSliderProps): React.ReactElement => {
     );
 };
 
-export default MainSlider;
+
