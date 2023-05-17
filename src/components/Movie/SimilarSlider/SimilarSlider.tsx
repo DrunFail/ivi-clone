@@ -1,11 +1,10 @@
-import React from "react";
-import { ISimiliar } from "../../models";
-import Carousel from "../Carousel/Carousel";
+import { ISimiliar } from "../../../models";
+import Carousel from "../../Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import SliderTitle from "../MovieSlider/SliderTitle/SliderTitle";
 import SimilatItem from "./components/SimilarItem";
 
-interface MovieSliderProps {
+interface SimilarSliderProps {
     carouselId: string;
     data: ISimiliar[];
     count: number;
@@ -13,13 +12,13 @@ interface MovieSliderProps {
     headingTitle: string;
 }
 
-export default function SliderSimilar({
+export default function SimilarSlider({
     carouselId,
     data,
     count,
     href,
     headingTitle
-}: MovieSliderProps) {
+}: SimilarSliderProps) {
     //data.length
     if (data) {
         return (
