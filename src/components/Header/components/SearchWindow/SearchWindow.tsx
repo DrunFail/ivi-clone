@@ -7,10 +7,10 @@ import { IMovieOne } from "../../../../models";
 import { getLang } from "../../../../store/switchLang";
 import { IData } from "../../../../models/IApi";
 import { trotl } from "../../../../api/searchApi";
-import DefaultWindow from "../../../DefaultWindow/DefaultWindow";
-import BlockSearch from "../../../BlockSearch/BlockSearch";
-import MyInput from "../../../Input/MyInput";
 import Modal from "../../../UI/Modal/Modal";
+import BlockSearch from "../BlockSearch/BlockSearch";
+import MyInput from "../../../UI/MyInput/MyInput";
+import DefaultWindow from "../DefaultWindow/DefaultWindow";
 
 /** Компонент модального окна поиска в Header */
 

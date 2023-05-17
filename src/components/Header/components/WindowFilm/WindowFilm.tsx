@@ -1,15 +1,26 @@
 import styles from "./WindowFilm.module.scss";
 import React from "react";
-import { IWindowFilm } from "./models/IWindow";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { getGenresList } from "../../../../store/genres";
 import { getLang } from "../../../../store/switchLang";
 import { getCountriesList } from "../../../../store/countries";
-import { upperCase } from "../../../utils/UpperCase";
+import { upperCase } from "../../../../utils/UpperCase";
 
-const WindowFilm = ({ zhanr, country, year }: IWindowFilm) => {
+type TWindowFilm = {
+    id: number;
+    name: string;
+};
+
+interface WindowFilmProps {
+    zhanr: TWindowFilm[];
+    zhanr2: TWindowFilm[];
+    country: TWindowFilm[];
+    year: TWindowFilm[];
+}
+
+export default function WindowFilm({ zhanr, country, year }: WindowFilmProps){
     const genre = useSelector(getGenresList());
     const lang = useSelector(getLang());
     const countries = useSelector(getCountriesList());
@@ -80,4 +91,3 @@ const WindowFilm = ({ zhanr, country, year }: IWindowFilm) => {
     );
 };
 
-export default WindowFilm;

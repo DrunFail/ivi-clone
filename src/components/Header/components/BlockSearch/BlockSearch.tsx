@@ -1,10 +1,15 @@
-import React, { FC } from "react";
-import styles from "./BlockSearch.module.scss";
-import { BsCameraReels } from "react-icons/bs";
-import { IBlockSearch } from "./models/IBlockSearch";
 import Link from "next/link";
+import { BsCameraReels } from "react-icons/bs";
+import styles from "./BlockSearch.module.scss";
 
-const BlockSearch: FC<IBlockSearch> = ({ name, year, id, callback }) => {
+interface BlockSearchProps {
+    name: string;
+    year: number;
+    id: number;
+    callback: () => void;
+}
+
+export default function BlockSearch({ name, year, id, callback }:BlockSearchProps){
     return (
         <Link href={`/movie/${id}`} onClick={callback}>
             <div className={styles.BlockSearch}>
@@ -20,4 +25,3 @@ const BlockSearch: FC<IBlockSearch> = ({ name, year, id, callback }) => {
     );
 };
 
-export default BlockSearch;
