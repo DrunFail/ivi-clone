@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import more from "../../assets/SVG/More/More.svg";
-import styles from "./NavigationWindow.module.scss";
 import Image from "next/image";
-import diamond from "../../assets/SVG/Diamond/Diamond.svg";
-import reward from "../../assets/SVG/Reward/Reward.svg";
-import user from "../../assets/SVG/Users/User.svg";
-import close from "../../assets/SVG/Close/Close.svg";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { zhanr } from "../Header/consts/HeaderConst";
 import { useSelector } from "react-redux";
-import { getGenresList } from "../../store/genres";
-import { getLang } from "../../store/switchLang";
-import MyButton from "../UI/MyButton/MyButton";
-import Toggle from "../Toggle/Toggle";
-import Modal from "../UI/Modal/Modal";
+import close from "../../../../assets/SVG/Close/Close.svg";
+import diamond from "../../../../assets/SVG/Diamond/Diamond.svg";
+import more from "../../../../assets/SVG/More/More.svg";
+import reward from "../../../../assets/SVG/Reward/Reward.svg";
+import user from "../../../../assets/SVG/Users/User.svg";
+import { getGenresList } from "../../../../store/genres";
+import { getLang } from "../../../../store/switchLang";
+import Toggle from "../../../Toggle/Toggle";
+import Modal from "../../../UI/Modal/Modal";
+import MyButton from "../../../UI/MyButton/MyButton";
+import styles from "./NavigationWindow.module.scss";
 
 /** Компонент модального окна поиска в Header */
 const NavigationWindow = () => {
