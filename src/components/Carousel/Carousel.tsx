@@ -16,6 +16,7 @@ interface CarouselProps {
     href?: string;
     component: React.ComponentType<unknown>;
     callback?: () => void;
+    showMoreHandler?: () => void
 }
 
 export default function Carousel({
@@ -26,7 +27,8 @@ export default function Carousel({
     carouselId,
     sizes,
     href,
-    component: Component
+    component: Component,
+    showMoreHandler
 }: CarouselProps) {
     const {
         checkNext,
@@ -77,9 +79,10 @@ export default function Carousel({
                     ))}
                     {count > data.length && (
                         <ShowMoreItem
-                            href={href}
-                            valueDirection={valueDirection}
-                            mode={mode}
+                                    href={href}
+                                    valueDirection={valueDirection}
+                                    mode={mode}
+                                    showMoreHandler={showMoreHandler }
                         />
                     )}
                     </CarouselGallery>

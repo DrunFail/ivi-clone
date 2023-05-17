@@ -17,6 +17,8 @@ import SortField from "../../components/SortField/SortField";
 import FilmCardsField from "../../components/FilmCardsField/FilmCardsField";
 import MainContainer from "../../components/mainContainer";
 
+import MovieList from "../../components/Movie/MovieList/MovieList";
+
 /** Компонент cписка фильмов конкретного жанра. */
 const MoviesByGenre = (): React.ReactElement => {
     const lang = useSelector(getLang());
@@ -221,7 +223,7 @@ const MoviesByGenre = (): React.ReactElement => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const result = fetchData();
     }, [currentGenre]);
-
+console.log(filmCards)
     return (
         <MainContainer title={lang === "Ru" ? "Cтраница медиатеки" : "Media Library"}>
             <section>
@@ -247,11 +249,9 @@ const MoviesByGenre = (): React.ReactElement => {
                             sortParam={sortParam}
                             changeSortParam={wrapAsyncFunction(changeSortParam)}
                         />
-                        <FilmCardsField
-                            filmCards={filmCards}
-                            getMoreFilmcards={wrapAsyncFunction(getMoreFilmcards)}
-                            isLastPage={isLastPage}
-                        />
+
+                        <MovieList data={filmCards} showMoreHandler={wrapAsyncFunction(getMoreFilmcards) } />
+                        
                     </>
                     }
                     {filmCards.length === 0 &&

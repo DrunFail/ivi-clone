@@ -1,11 +1,17 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import styles from "./ButtonShowMore.module.scss";
 
-export default function ButtonShowMore() {
+interface ButtonShowMoreProps extends HTMLAttributes<HTMLButtonElement> {
+
+}
+
+export default function ButtonShowMore({...props }:ButtonShowMoreProps) {
     return (
         <button
             className={styles.button}
-            type='button'>
+            type='button'
+            {...props }
+        >
             Показать еще
         </button>
     );
