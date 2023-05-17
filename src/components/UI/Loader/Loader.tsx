@@ -1,8 +1,7 @@
-import React from "react";
-import styles from "./loader.module.scss";
+import styles from "./Loader.module.scss";
 
 /** Компонент, содержащий заглушку-спиннер, отображаемую на время загрузки данных. */
-const Loader = (): React.ReactElement => {
+export default function Loader() {
     return (
         <div className={styles.loaderBody}>
             <span className={styles.loader}></span>
@@ -10,4 +9,4 @@ const Loader = (): React.ReactElement => {
     );
 };
 
-export default Loader;
+
