@@ -1,8 +1,12 @@
 import React, { FC, useTransition } from "react";
 import styles from "./MyInput.module.scss";
-import { IMyInput } from "./models/IMyInput";
 
-const MyInput: FC<IMyInput> = ({ callback, placeholder }, props) => {
+interface MyInputProps {
+    callback?: (e: any) => void;
+    placeholder?: string | React.ReactNode;
+}
+
+export default function MyInput({ callback, placeholder, ...props }:MyInputProps){
     const [isPending, startTransition] = useTransition();
     const fn = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (callback) {
@@ -25,4 +29,3 @@ const MyInput: FC<IMyInput> = ({ callback, placeholder }, props) => {
     );
 };
 
-export default MyInput;
