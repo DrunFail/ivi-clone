@@ -75,8 +75,13 @@ const UserHeader = () => {
             <div className={styles.User__auth}>
                 {auth?.token
                     ? <LogoutButton />
-                    
-                    : <MyButton type="pink" size="large" onClick={() => router.push('/auth/login')}>
+
+                    : <MyButton
+                        type="button"
+                        bg_color="pink"
+                        size="large"
+                        onClick={() => router.push('/auth/login')}
+                    >
                         <FormattedMessage id="EnterOrRegister" />
                     </MyButton>}
             </div>

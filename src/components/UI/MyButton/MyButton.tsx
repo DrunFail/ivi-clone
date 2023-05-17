@@ -1,24 +1,29 @@
 import styles from "./MyButton.module.scss";
-import React from "react";
+import { HTMLAttributes } from "react";
 
-interface IMyButton {
+interface MyButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
-    onClick?: () => void;
-    type?: "gradient" | "footer" | "pink";
+    type: "button" | "submit";
+    bg_color?: "gradient" | "footer" | "pink";
     size?: "mini" | "large" | "medium";
     figure?: "circle" | "square";
 }
 
-const MyButton: React.FC<IMyButton> = (
-    { children, onClick, type = "gradient", size, figure },
-    props: any
-) => {
+export default function MyButton({ children, bg_color = "gradient", size, figure, type,className, ...props }: MyButtonProps) {
+    const defaultClasses = `
+    ${styles.MyButton}
+    ${styles[bg_color]}
+    ${styles[size || ""]}
+    ${styles[figure || ""]}`
+
+
+    const mergeClasses = defaultClasses + ' ' + (className ?? " ")
+   
+
     return (
         <button
-            className={`${styles.MyButton} ${styles[type]} ${
-                styles[size || ""]
-            } ${styles[figure || ""]}`}
-            onClick={onClick}
+            type={type}
+            className={mergeClasses}
             {...props}
         >
             {children}
@@ -26,4 +31,4 @@ const MyButton: React.FC<IMyButton> = (
     );
 };
 
-export default MyButton;
+
