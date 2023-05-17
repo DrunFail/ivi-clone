@@ -1,11 +1,16 @@
-import { createPortal } from "react-dom";
-import styles from "./Modal.module.scss";
-import React, { FC, useEffect } from "react";
-import close from "../../assets/SVG/Close/Close.svg";
-import { IModal } from "./models/IModal";
 import Image from "next/image";
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
+import close from "../../assets/SVG/Close/Close.svg";
+import styles from "./Modal.module.scss";
 
-const Modal: FC<IModal> = ({ visible, children, callback }) => {
+interface ModalProps {
+    children: React.ReactNode
+    visible: boolean
+    callback: () => void
+}
+
+export default function Modal({ visible, children, callback }:ModalProps){
     useEffect(() => {
         if (visible) {
             document.body.style.overflow = "hidden";
@@ -43,4 +48,3 @@ const Modal: FC<IModal> = ({ visible, children, callback }) => {
     );
 };
 
-export default Modal;
