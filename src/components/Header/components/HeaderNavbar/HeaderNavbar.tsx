@@ -1,68 +1,58 @@
 import Link from "next/link";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import { getLang } from "../../../../store/switchLang";
-import { country, countryEn, NAV_MENU, year, zhanr, zhanrEn } from "../../consts/HeaderConst";
-import HeaderWindow from "../HeaderWindow/HeaderWindow";
-import WindowFilm from "../WindowFilm/WindowFilm";
+import { NAV_MENU } from "../../consts/HeaderConst";
+import HeaderDropdown from "../HeaderDropdown/HeaderDropdown";
+import HeaderDropdownWindow from "../HeaderDropdownWindow/HeaderDropdownWindow";
+import useHeaderDropdownWindow from "../HeaderDropdownWindow/useHeaderDropdownWindow";
 import styles from "./HeaderNavbar.module.scss";
 
 interface HeaderNavbarProps {
-    handler: (linkName: string) => void,
-linkData: any[]
+    linkData: { name: string, link: string, dropdown: boolean }[],
+    handlerHeaderHover: (status: boolean) => void
 }
 
-export default function HeaderNavbar({handler, linkData }: HeaderNavbarProps) {
-    const lang = useSelector(getLang());
-    return (
-        <nav className={styles.navbar}>
-            <ul>
-                {linkData.map(menuItem => 
-                    <li>
-                        <Link href={menuItem.link} className={styles.Header__p} onMouseEnter={() => handler(menuItem.name) }>
-                            <FormattedMessage id={`header.navbar.${menuItem.name}` }/>
-                        </Link>
-                    </li>
-                )}
-               
-            
-                {/*    */}{/*<HeaderWindow name={<FormattedMessage id="Films" />}>*/}
-                {/*    */}{/*    <WindowFilm*/}
-                {/*    */}{/*        zhanr={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        zhanr2={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        country={lang === "En" ? countryEn : country}*/}
-                {/*    */}{/*        year={year}*/}
-                {/*    */}{/*    />*/}
+export default function HeaderNavbar({ linkData, handlerHeaderHover }: HeaderNavbarProps) {
 
-                {/*    */}{/*</HeaderWindow>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                {/*    <Link href="https://www.ivi.ru/" className={styles.Header__p}>*/}
-                {/*        <FormattedMessage id="MyIvi" />*/}
-                {/*    </Link>*/}
-                {/*    */}{/*<HeaderWindow name={<FormattedMessage id="Serials" />}>*/}
-                {/*    */}{/*    <WindowFilm*/}
-                {/*    */}{/*        zhanr={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        zhanr2={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        country={lang === "En" ? countryEn : country}*/}
-                {/*    */}{/*        year={year}*/}
-                {/*    */}{/*    />*/}
-                {/*    */}{/*</HeaderWindow>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                {/*    <Link href="https://www.ivi.ru/" className={styles.Header__p}>*/}
-                {/*        <FormattedMessage id="MyIvi" />*/}
-                {/*    </Link>*/}
-                {/*    */}{/*<HeaderWindow name={<FormattedMessage id="Cartoons" />}>*/}
-                {/*    */}{/*    <WindowFilm*/}
-                {/*    */}{/*        zhanr={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        zhanr2={lang === "En" ? zhanrEn : zhanr}*/}
-                {/*    */}{/*        country={lang === "En" ? countryEn : country}*/}
-                {/*    */}{/*        year={year}*/}
-                {/*    */}{/*    />*/}
-                {/*    */}{/*</HeaderWindow>*/}
-                {/*</li>*/}
-            </ul>
-        </nav>
+    const { visible, handleVisible } = useHeaderDropdownWindow();
+    const [focusLink, setFocusLink] = useState("");
+    const currentLink = NAV_MENU.find(link => link.name === focusLink);
+
+
+    const handle = (menuItem: any) => {
+        handleVisible(menuItem.dropdown);
+        handlerHeaderHover(menuItem.dropdown)
+        setFocusLink(menuItem.name)
+    }
+    const handleF = () => {
+        handleVisible(false);
+        handlerHeaderHover(false);
+    }
+
+
+
+    return (
+        <div style={{ display: "flex", blockSize: "100%" }}>
+            <div style={{ display: "flex", alignItems: "center" }} onMouseLeave={handleF} >
+                <nav className={styles.navbar} >
+                    <ul>
+                        {linkData.map(menuItem =>
+                            <li>
+                                <Link href={menuItem.link} className={styles.Header__p} onMouseEnter={() => handle(menuItem)}>
+                                    <FormattedMessage id={`header.navbar.${menuItem.name}`} />
+                                </Link>
+                            </li>
+                        )}
+
+                    </ul>
+
+                </nav>
+                {visible &&
+                    <HeaderDropdownWindow>
+                        <HeaderDropdown currentLink={currentLink} />
+                    </HeaderDropdownWindow>
+                }
+            </div>
+        </div>
     );
 }

@@ -1,6 +1,7 @@
 .container {
     row-gap: 10px;
 
+
     h3 {
         padding-block-end: 10px;
         font-size: 15px;
@@ -9,7 +10,6 @@
 
     .list {
         display: grid;
-        row-gap: 10px;
         font-weight: 400;
         color: hsla(0,0%,100%,.48);
     }
@@ -19,4 +19,15 @@
         grid-auto-flow: column;
         grid-template-rows: repeat(11, 1fr);
     }
+
+    li{
+        padding-block: 5px;
+
+        &:hover{
+            color: white;
+        }
+        
+    }
+
+   
 }

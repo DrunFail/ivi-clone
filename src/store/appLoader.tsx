@@ -7,7 +7,8 @@ import catchError from "../utils/catchError";
 import { getActorsLoadingStatus, loadActorsList } from "./actors";
 import { getGenresLoadingStatus, loadGenresList } from "./genres";
 import { getCountriesLoadingStatus, loadCountriesList } from "./countries";
-import Loader from "../components/loader/loader";
+import Loader from "../components/UI/Loader/Loader";
+
 
 
 /** Higher-Order Component, предназначенный для единоразовой загрузки базы данных, с целью её последующего использования в разных частях приложения, без необходимости повторной загрузки страницы. */

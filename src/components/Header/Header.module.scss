@@ -1,7 +1,16 @@
-.content{
+.content {
     display: grid;
+    column-gap: 16px;
     position: relative;
     inline-size: 100%;
     grid-template-columns: max-content 1fr repeat(4, max-content);
     align-items: center;
+    padding-inline: 12px;
+}
+.hover {
+    background-color: rgb(31, 27, 46);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    
+    
 }

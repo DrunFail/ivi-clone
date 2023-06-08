@@ -1,7 +1,8 @@
+import Link from "next/link";
 import styles from "./DropdownList.module.scss";
 
 interface DropdownListProps {
-    title: string,
+    title?: string,
     linkDataList: any[],
     oneColumn: boolean
     
@@ -11,10 +12,12 @@ interface DropdownListProps {
 export default function DropdownList({title, linkDataList,oneColumn  }: DropdownListProps) {
     return (
         <div className={styles.container}>
-            <h3>{title}</h3>
-            <div className={styles[oneColumn ? "list" : "column"]}>
-                {linkDataList.map(elem => <p>{elem.name}</p>) }
-            </div>
+            {title && <h3>{title}</h3>}
+            <nav >
+                <ul className={styles[oneColumn ? "list" : "column"]} >
+                    {linkDataList.map((elem, index) => <li key={index }><Link href="">{elem.name}</Link></li>)}
+                </ul>
+            </nav>
         </div>
     
     );

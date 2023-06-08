@@ -1,22 +1,33 @@
 import { zhanr } from "../../consts/HeaderConst";
+import { HeaderDropdownList } from "../../interfaces/interfaces";
 import DropdownList from "../DropdownList/DropdownList";
+import DropdownListWithLine from "../DropdownListWithLine/DropdownListWithLine";
+import HeaderDropdownWindow from "../HeaderDropdownWindow/HeaderDropdownWindow";
 import styles from "./HeaderDropdown.module.scss";
 
+interface HeaderDropdownProps {
+    currentLink: HeaderDropdownList
+}
 
-
-
-export default function HeaderDropdown() {
+export default function HeaderDropdown({ currentLink }: HeaderDropdownProps) {
     return (
-        <div className={styles.container}>
-            <div className={styles.left}>
-                
-                <DropdownList title="genre" linkDataList={zhanr} oneColumn={false} />
-               
-                <DropdownList title="страны" linkDataList={[{ name: "own" }, { name: "usa" }, { name: "euro" }, {name: "another"}] } oneColumn/>
-                <DropdownList title="годы" linkDataList={[{ name: "2023" }, { name: "2022" }, {name: "2021"}] } oneColumn/>
-            </div>
-            <div>another content</div>
+        
+            <div className={styles.container}>
+                <div className={styles.left}>
 
-        </div>
+                    <DropdownList title="Жанры" linkDataList={currentLink.genres} oneColumn={false} />
+
+                    <DropdownList title="Страны" linkDataList={currentLink.country} oneColumn />
+                    <DropdownList title="Годы" linkDataList={currentLink.years} oneColumn />
+                </div>
+
+                <div className={styles.right}>
+                    <DropdownListWithLine>
+                        <DropdownList linkDataList={currentLink.aside} oneColumn />
+                    </DropdownListWithLine>
+                </div>
+
+            </div>
+        
     );
 }
