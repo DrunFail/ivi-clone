@@ -4,9 +4,9 @@ import { FormattedMessage } from "react-intl";
 import home from "../../assets/SVG/Home/Home.svg";
 import tv from "../../assets/SVG/Tv/Tv.svg";
 import youtube from "../../assets/SVG/Youtube/Youtube.svg";
-import NavigationWindow from "../Header/components/NavigationWindow/NavigationWindow";
 import SearchWindow from "../Header/components/SearchWindow/SearchWindow";
 import styles from "./MobileNavBar.module.scss";
+import NavigationWindow from "./NavigationWindow/NavigationWindow";
 
 
 export default function MobileNavBar(){

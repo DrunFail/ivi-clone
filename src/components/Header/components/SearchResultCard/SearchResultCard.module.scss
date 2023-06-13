@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px;
+    height: 40px;
+    font-size: 18px;
+
+    svg {
+        grid-column: 1;
+        grid-row: 1/3;
+        color: pink;
+    }
+
+    & div:last-child {
+        font-size: 14px;
+    }
+}
