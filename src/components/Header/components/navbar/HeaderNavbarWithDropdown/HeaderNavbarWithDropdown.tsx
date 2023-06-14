@@ -1,27 +1,27 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NAV_MENU } from "../../consts/HeaderConst";
-import HeaderDropdown from "../HeaderDropdown/HeaderDropdown";
-import HeaderDropdownWindow from "../HeaderDropdownWindow/HeaderDropdownWindow";
-import useHeaderDropdownWindow from "../HeaderDropdownWindow/useHeaderDropdownWindow";
-import styles from "./HeaderNavbar.module.scss";
+import { NavbarLink } from "../../../../../models/global";
+import HeaderDropdownWindow from "../../HeaderDropdownWindow/HeaderDropdownWindow";
+import useHeaderDropdownWindow from "../../HeaderDropdownWindow/useHeaderDropdownWindow";
+import HeaderNavbarDropdownContent from "../HeaderNavbarDropdownContent/HeaderNavbarDropdownContent";
+import styles from "./HeaderNavbarWithDropdown.module.scss";
 
-interface HeaderNavbarProps {
-    linkData: { name: string, link: string, dropdown: boolean }[],
+interface HeaderNavbarWithDropdownProps {
+    navLinkData: NavbarLink[],
     handlerHeaderHover: (status: boolean) => void
 }
 
-export default function HeaderNavbar({ linkData, handlerHeaderHover }: HeaderNavbarProps) {
+export default function HeaderNavbarWithDropdown({ navLinkData, handlerHeaderHover }: HeaderNavbarWithDropdownProps) {
 
     const { visible, handleVisible } = useHeaderDropdownWindow();
     const [focusLink, setFocusLink] = useState("");
-    const currentLink = NAV_MENU.find(link => link.name === focusLink);
+    const currentLink = navLinkData.find(link => link.name === focusLink);
+    
 
-
-    const handle = (menuItem: any) => {
-        handleVisible(menuItem.dropdown);
-        handlerHeaderHover(menuItem.dropdown)
+    const handle = (menuItem: NavbarLink) => {
+        handleVisible(Boolean(menuItem.data));
+        handlerHeaderHover(Boolean(menuItem.data))
         setFocusLink(menuItem.name)
     }
     const handleF = () => {
@@ -32,12 +32,12 @@ export default function HeaderNavbar({ linkData, handlerHeaderHover }: HeaderNav
 
 
     return (
-        <div style={{ display: "flex", blockSize: "100%" }}>
+        
             <div style={{ display: "flex", alignItems: "center" }} onMouseLeave={handleF} >
                 <nav className={styles.navbar} >
                     <ul>
-                        {linkData.map(menuItem =>
-                            <li>
+                        {navLinkData.map((menuItem, idx) =>
+                            <li key={idx}>
                                 <Link href={menuItem.link} className={styles.Header__p} onMouseEnter={() => handle(menuItem)}>
                                     <FormattedMessage id={`header.navbar.${menuItem.name}`} />
                                 </Link>
@@ -47,12 +47,12 @@ export default function HeaderNavbar({ linkData, handlerHeaderHover }: HeaderNav
                     </ul>
 
                 </nav>
-                {visible &&
+                {visible && currentLink &&
                     <HeaderDropdownWindow>
-                        <HeaderDropdown currentLink={currentLink} />
+                        <HeaderNavbarDropdownContent currentLink={currentLink} />
                     </HeaderDropdownWindow>
                 }
             </div>
-        </div>
+       
     );
 }

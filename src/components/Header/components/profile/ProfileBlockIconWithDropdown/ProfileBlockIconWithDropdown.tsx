@@ -1,7 +1,7 @@
 import Image from "next/image";
-import user from "../../../../assets/SVG/Users/User.svg";
-import HeaderDropdownWindow from "../HeaderDropdownWindow/HeaderDropdownWindow";
-import useHeaderDropdownWindow from "../HeaderDropdownWindow/useHeaderDropdownWindow";
+import user from "../../../../../assets/SVG/Users/User.svg";
+import HeaderDropdownWindow from "../../HeaderDropdownWindow/HeaderDropdownWindow";
+import useHeaderDropdownWindow from "../../HeaderDropdownWindow/useHeaderDropdownWindow";
 import ProfileDropdownWindow from "../ProfileDropdownWindow/ProfileDropdownWindow";
 import styles from "./ProfileBlockIconWithDropdown.module.scss";
 

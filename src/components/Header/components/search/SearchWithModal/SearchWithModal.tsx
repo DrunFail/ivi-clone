@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./SearchWindow.module.scss";
+import styles from "./SearchWithModal.module.scss";
 import { FormattedMessage } from "react-intl";
 import { BsSearch } from "react-icons/bs";
 import SearchModal from "../SearchModal/SearchModal";

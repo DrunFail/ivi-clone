@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
-import { trotl } from "../../../../api/searchApi";
-import { IMovieOne } from "../../../../models";
-import { IData } from "../../../../models/IApi";
-import { getLang } from "../../../../store/switchLang";
-import Modal from "../../../UI/Modal/Modal";
-import MyInput from "../../../UI/MyInput/MyInput";
+import { trotl } from "../../../../../api/searchApi";
+import { IMovieOne } from "../../../../../models";
+import { IData } from "../../../../../models/IApi";
+import { getLang } from "../../../../../store/switchLang";
+import Modal from "../../../../UI/Modal/Modal";
+import MyInput from "../../../../UI/MyInput/MyInput";
 import DefaultSearchResult from "../DefaultSearchResult/DefaultSearchResult";
 import SearchResult from "../SearchResult/SearchResult";
 import styles from "./SearchModal.module.scss";

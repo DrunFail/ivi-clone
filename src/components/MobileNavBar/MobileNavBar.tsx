@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import home from "../../assets/SVG/Home/Home.svg";
 import tv from "../../assets/SVG/Tv/Tv.svg";
 import youtube from "../../assets/SVG/Youtube/Youtube.svg";
-import SearchWindow from "../Header/components/SearchWindow/SearchWindow";
+import SearchWithModal from "../Header/components/search/SearchWithModal/SearchWithModal";
 import styles from "./MobileNavBar.module.scss";
 import NavigationWindow from "./NavigationWindow/NavigationWindow";
 
@@ -30,7 +30,7 @@ export default function MobileNavBar(){
                     </div>
                 </Link>
                 <div>
-                    <SearchWindow />
+                    <SearchWithModal />
                 </div>
                 <div>
                     <Image src={tv} alt="" />

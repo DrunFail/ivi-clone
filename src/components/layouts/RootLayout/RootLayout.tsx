@@ -4,21 +4,22 @@ import HeaderContainer from "../../Header/components/HeaderContainer/HeaderConta
 import FooterContainer from "../../Footer/FooterContainer/FooterContainer";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 import MobileNavBar from "../../MobileNavBar/MobileNavBar";
+import { useResize } from "../../../hooks/useResize";
 
 interface RootLayoutProps {
     children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+    const size = useResize();
     return (
         <>
             <HeaderContainer>
-                    <Header />
-               
+                <Header />
             </HeaderContainer>
             {children}
 
-            <MobileNavBar />
+            {size < 1160 && <MobileNavBar />}
 
 
             <FooterContainer>
