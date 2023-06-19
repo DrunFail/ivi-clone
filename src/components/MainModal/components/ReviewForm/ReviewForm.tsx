@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ReviewForm.module.scss";
 import { FormattedMessage } from "react-intl";
 import ReviewBlock from "../ReviewBlock/ReviewBlock";
-import MyInput from "../../../common/Input/MyInput";
 import MyButton from "../../../UI/MyButton/MyButton";
+import MyInput from "../../../UI/MyInput/MyInput";
 
 const ReviewForm = () => {
     return (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../../../Actors/Actors.module.scss";
+import styles from "../../../person/Actors/Actors.module.scss";
 import { useSelector } from "react-redux";
 import React, { FC } from "react";
 import { FormattedMessage } from "react-intl";

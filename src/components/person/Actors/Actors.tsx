@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import Link from "next/link";
-import { getFilm } from "../../store/film";
-import MyButton from "../UI/MyButton/MyButton";
+import { getFilm } from "../../../store/film";
+import MyButton from "../../UI/MyButton/MyButton";
 
 const Actors: FC<{ callback: () => void }> = ({ callback }) => {
     const film = useSelector(getFilm());
@@ -13,7 +13,7 @@ const Actors: FC<{ callback: () => void }> = ({ callback }) => {
     if (!film?.currentStaff?.length) {
         return <></>;
     }
-
+    
     return (
         <div className={styles.Actors}>
             <div className={styles.Actors__all}>

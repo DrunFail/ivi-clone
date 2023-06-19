@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import React from "react";
-import styles from '../../../../pages/movie/movies.module.scss';
-import { getFilm } from "../../../../store/film";
-import { getLang } from "../../../../store/switchLang";
+import styles from '../../../../../pages/movie/movies.module.scss';
+import { getFilm } from "../../../../../store/film";
+import { getLang } from "../../../../../store/switchLang";
 
 const CountryList = () => {
     const films = useSelector(getFilm());

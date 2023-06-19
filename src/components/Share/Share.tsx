@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import MyButton from "../UI/MyButton/MyButton";
 import { getFilm } from "../../store/film";
 import { getLang } from "../../store/switchLang";
-import Modal from "../Modal/Modal";
+import Modal from "../UI/Modal/Modal";
 
 const copy = () => {
     const url = window.location.href;

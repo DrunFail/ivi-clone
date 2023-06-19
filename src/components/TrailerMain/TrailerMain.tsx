@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import styles from "./Trailer.module.scss";
 import ReactPlayer from "react-player";
 import { FormattedMessage } from "react-intl";
-import Modal from "../Modal/Modal";
+import Modal from "../UI/Modal/Modal";
 
 const TrailerMain: FC<{
     trailer?: string;

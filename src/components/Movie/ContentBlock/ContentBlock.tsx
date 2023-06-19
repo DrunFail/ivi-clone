@@ -1,5 +1,4 @@
-import Rating from "../Rating/Rating";
-import styles from "../../pages/movie/movies.module.scss";
+import styles from "../../../pages/movie/movies.module.scss";
 import React from "react";
 import MediaQuery from "react-responsive";
 import Description from "./components/Description/Description";
@@ -7,6 +6,7 @@ import Buttons from "./components/Buttons/Button";
 import ActorsList from "./components/ActorsList/ActorsList";
 import CountryList from "./components/CountryList/CountryList";
 import Info from "./components/Info/Info";
+import Rating from "../../Rating/Rating";
 
 const ContentBlock = () => {
     return (

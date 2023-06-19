@@ -1,4 +1,3 @@
-import Actors from "../../components/Actors/Actors";
 import TrailerModal from "./components/TrailerModal/TrailerModal";
 import styles from "./MainModal.module.scss";
 import React, { useEffect, useState } from "react";
@@ -10,10 +9,10 @@ import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 import { getFilm } from "../../store/film";
 import ReviewModal from "./components/RevieModal/ReviewModal";
-import Modal from "../Modal/Modal";
 import Creaters from "./components/Creaters/Creaters";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
-import RaitingOverlay from "../MovieList/UI/RaitingOverlay/RaitingOverlay";
+import Modal from "../UI/Modal/Modal";
+import Actors from "../person/Actors/Actors";
 
 const MainModal = () => {
     const [visible, setVisible] = useState<boolean>(false);
@@ -87,10 +86,11 @@ const MainModal = () => {
                             alt=""
                             src={film?.currentFilm?.posterUrl || ""}
                         />
-                        <RaitingOverlay
-                            raiting={film?.currentFilm?.ratingKinopoisk || "0"}
-                            raitingArr={{ a: 1, b: 2, c: 3, d: 4 }}
-                        />
+                        
+                        {/*<RatingOverlay*/}
+                        {/*    raiting={film?.currentFilm?.ratingKinopoisk || "0"}*/}
+                        {/*    raitingArr={{ a: 1, b: 2, c: 3, d: 4 }}*/}
+                        {/*/>*/}
                         <p>
                             {film?.currentFilm?.year},{" "}
                             {film?.currentFilm?.countries?.map((country) => (

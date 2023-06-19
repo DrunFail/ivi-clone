@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "../../../MovieList/components/OverlayMovieListItem/OverlayMovieListItem.module.scss";
-import { ISimiliar } from "../../../../models";
-import ButtonBookmarkOverlay from "../../../MovieList/UI/ButtonBookmarkOverlay/ButtonBookmarkOverlay";
-import ButtonCircleOverlay from "../../../MovieList/UI/ButtonCircleOverlay/ButtonCircleOverlay";
-import ButtonMagicOverlay from "../../../MovieList/UI/ButtonMagicOverlay/ButtonMagicOverlay";
-import ButtonStarOverlay from "../../../MovieList/UI/ButtonStarOverlay/ButtonStarOverlay";
-import MainAdvantage from "../../../MovieList/UI/MainAdvantageOverlay/MainAdvantageOverlay";
-import RaitingOverlay from "../../../MovieList/UI/RaitingOverlay/RaitingOverlay";
+import ButtonDislikeWithHint from "../../../MovieList/UI/ButtonDislikeWithHint/ButtonDislikeWithHint";
+import ButtonRateWithHint from "../../../MovieList/UI/ButtonRateWithHint/ButtonRateWithHint";
+import ButtonSimilarWithHint from "../../../MovieList/UI/ButtonSimilarWithHint/ButtonSimilarWithHint";
+import ButtonWatchLaterWithHint from "../../../MovieList/UI/ButtonWatchLaterWithHint/ButtonWatchLaterWithHint";
+import MainAdvantage from "../../../MovieList/UI/MainAdvantage/MainAdvantage";
 
 interface OverlaySliderItemProps {
     elem: ISimiliar;
@@ -24,16 +22,16 @@ export default function OverlaySimilar({ elem, rand }: OverlaySliderItemProps) {
         <div className={styles.overlay}>
             <div className={styles.container}>
                 <div className={styles.icons}>
-                    <ButtonBookmarkOverlay />
-                    <ButtonMagicOverlay />
-                    <ButtonStarOverlay />
-                    <ButtonCircleOverlay />
+                    <ButtonWatchLaterWithHint />
+                    <ButtonSimilarWithHint />
+                    <ButtonRateWithHint />
+                    <ButtonDislikeWithHint />
                 </div>
                 <div className={styles.info}>
-                    <RaitingOverlay
-                        raiting={elem?.rating || rand.toFixed(1)}
-                        raitingArr={elem?.ratingArr || elemArr}
-                    />
+                    {/*<RaitingOverlay*/}
+                    {/*    raiting={elem?.rating || rand.toFixed(1)}*/}
+                    {/*    raitingArr={elem?.ratingArr || elemArr}*/}
+                    {/*/>*/}
                     <MainAdvantage />
                 </div>
             </div>

@@ -6,12 +6,12 @@ import { filmAction, getFilm } from "../../store/film";
 import { GetServerSideProps } from "next";
 import { IPropsMovie } from "../../models/IPropsMovie";
 import HeadMovie from "../../components/HeadMovie/HeadMovie";
-import ContentBlock from "../../components/ContentBlock/ContentBlock";
-import SliderSimilar from "../../components/SliderSimilar/SliderSimilar";
 import MainModal from "../../components/MainModal/MainModal";
 import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
 import { getOneMovie } from "../../api/movieId";
 import MainContainer from "../../components/mainContainer";
+import ContentBlock from "../../components/Movie/ContentBlock/ContentBlock";
+import SimilarSlider from "../../components/Movie/SimilarSlider/SimilarSlider";
 
 /** Компонент страницы фильма. */
 const Movie: FC<IPropsMovie> = ({ movies }): React.ReactElement => {
@@ -36,7 +36,7 @@ const Movie: FC<IPropsMovie> = ({ movies }): React.ReactElement => {
                 <div className={styles.Container__main}>
                     <ContentBlock />
                     <div>
-                        <SliderSimilar
+                        <SimilarSlider
                             carouselId={"popular"}
                             data={films?.currentFilm?.similar}
                             count={films?.currentFilm?.similar.length}

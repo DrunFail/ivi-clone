@@ -80,9 +80,20 @@ export interface ICountries {
 }
 
 export interface IStaff {
-    professionText: string;
-    professionKey: string;
-    person: IPerson;
+    nameRu: string;
+    id: number;
+    nameEng: string | null;
+    age: number;
+    sex: string;
+    posterUrl: string;
+    profession: string;
+    personId: number;
+    person?: IActor;
+    birthday: null | string;
+    birthPlace: string | null;
+    deathPlace: string | null;
+    hasAwards: string;
+    death: string | null;
 }
 
 export interface IPerson {

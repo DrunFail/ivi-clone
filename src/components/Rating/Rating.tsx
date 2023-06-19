@@ -4,8 +4,8 @@ import styles from "./Rating.module.scss";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { getFilm } from "../../store/film";
-import Modal from "../Modal/Modal";
 import MyButton from "../UI/MyButton/MyButton";
+import Modal from "../UI/Modal/Modal";
 
 let arr = new Array(10);
 arr = arr.fill(1);
@@ -34,9 +34,9 @@ const Rating: FC<IRating> = ({ type }) => {
                                 className={styles.Rating__mark}
                                 style={{
                                     background:
-                                        Number(film?.currentFilm?.ratingKinopoisk) > 7
+                                        Number(film?.film?.ratingKinopoisk) > 7
                                             ? "green"
-                                            : Number(film?.currentFilm?.ratingKinopoisk) > 4
+                                            : Number(film?.film?.ratingKinopoisk) > 4
                                                 ? "orange"
                                                 : "red"
                                 }}
@@ -57,14 +57,14 @@ const Rating: FC<IRating> = ({ type }) => {
                             <div
                                 style={{
                                     background:
-                                        Number(film?.currentFilm?.ratingKinopoisk) > 7
+                                        Number(film?.film?.ratingKinopoisk) > 7
                                             ? "green"
-                                            : Number(film?.currentFilm?.ratingKinopoisk) > 4
+                                            : Number(film?.film?.ratingKinopoisk) > 4
                                                 ? "orange"
                                                 : "red"
                                 }}
                             >
-                                {film?.currentFilm?.ratingKinopoisk}
+                                {film?.film?.ratingKinopoisk}
                             </div>
                         </MyButton>
                         <p>

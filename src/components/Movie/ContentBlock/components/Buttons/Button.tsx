@@ -1,14 +1,14 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import Image from "next/image";
-import youtube from "../../../../assets/SVG/Youtube/Youtube.svg";
-import bookmark from "../../../../assets/SVG/Bookmark/Bookmark.svg";
+import youtube from "../../../../../assets/SVG/Youtube/Youtube.svg";
+import bookmark from "../../../../../assets/SVG/Bookmark/Bookmark.svg";
 import { useSelector } from "react-redux";
-import { getFilm } from "../../../../store/film";
-import styles from '../../../../pages/movie/movies.module.scss';
-import TrailerMain from "../../../TrailerMain/TrailerMain";
-import MyButton from "../../../UI/MyButton/MyButton";
-import Share from "../../../Share/Share";
+import styles from '../../../../../pages/movie/movies.module.scss';
+import TrailerMain from "../../../../TrailerMain/TrailerMain";
+import MyButton from "../../../../UI/MyButton/MyButton";
+import Share from "../../../../Share/Share";
+import { getFilm } from "../../../../../store/film";
 
 const Buttons = () => {
     const films = useSelector(getFilm());

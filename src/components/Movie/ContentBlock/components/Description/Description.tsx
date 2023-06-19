@@ -1,9 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import ToggleMovie from "../ToggleMovie/ToggleMovie";
-import styles from '../../../../pages/movie/movies.module.scss';
+import styles from '../../../../../pages/movie/movies.module.scss';
 import { useSelector } from "react-redux";
 import React from "react";
-import { getFilm } from "../../../../store/film";
+import { getFilm } from "../../../../../store/film";
 
 const Description = () => {
     const films = useSelector(getFilm());
