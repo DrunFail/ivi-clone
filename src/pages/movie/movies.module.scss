@@ -155,12 +155,12 @@
             object-fit: cover;
         }
         div {
-            width: 70px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: center;
+            
+            /*text-align: center;
+            display: flex;*/
+            /*flex-direction: column;*/
+           /* gap: 5px;*/
+            /*align-items: center;*/
             opacity: 0.8;
             p {
                 opacity: 0.8;
@@ -251,5 +251,19 @@
     @media screen and (max-width: 1240px) {
         margin: 0 auto;
         padding-inline: 10px;
+    }
+}
+.grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(6, max-content);
+    column-gap: 40px;
+    row-gap: 20px;
+
+    .player{
+        grid-row: 1/7;
+        display: grid;
+        grid-template-rows: min-content;
+        row-gap: 20px;
     }
 }

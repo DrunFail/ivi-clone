@@ -1,0 +1,15 @@
+.container {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    color: hsla(0,0%,100%,.72);
+
+    span {
+        color:hsla(0,0%,100%,.4)
+    }
+
+    .icons {
+        display: flex;
+        column-gap: 6px;
+    }
+}

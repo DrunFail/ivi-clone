@@ -1,0 +1,21 @@
+.container {
+    block-size: 60px;
+    background-color: #1f1b2e;
+    border-radius:10px;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+
+    .vote{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+
+        &:hover{
+            background-color: red;
+            border-radius: 10px;
+        }
+    }
+}

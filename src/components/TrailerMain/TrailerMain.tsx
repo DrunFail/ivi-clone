@@ -1,14 +1,15 @@
-import React, { FC, useState } from "react";
+import {useState } from "react";
 import styles from "./Trailer.module.scss";
 import ReactPlayer from "react-player";
 import { FormattedMessage } from "react-intl";
 import Modal from "../UI/Modal/Modal";
 
-const TrailerMain: FC<{
-    trailer?: string;
-    content?: React.ReactNode;
-    site?: string;
-}> = ({ trailer, content = "Трейлер", site = "YOUTUBE" }) => {
+interface TrailerMainProps {
+    trailer?: string,
+    content?: React.ReactNode,
+    site?:string
+}
+export default function TrailerMain({ trailer, content = "Трейлер", site = "YOUTUBE" }:TrailerMainProps){
     const [visible, setVisible] = useState<boolean>(false);
 
     return (
@@ -36,4 +37,4 @@ const TrailerMain: FC<{
     );
 };
 
-export default TrailerMain;
+

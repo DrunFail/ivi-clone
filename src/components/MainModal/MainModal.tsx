@@ -51,7 +51,7 @@ const MainModal = () => {
                 <div className={styles.Container}>
                     <div className={styles.MainModal}>
                         <h1 className={styles.MainModal__h1}>
-                            {film?.currentFilm?.nameRu}
+                            {film?.film?.nameRu}
                         </h1>
                         <div className={styles.MainModal__tabs}>
                             <Tab
@@ -62,7 +62,7 @@ const MainModal = () => {
                                 nameBtn={<FormattedMessage id="Review" />}
                                 typ={"review"}
                             />
-                            {film?.currentFilm?.trailers?.length && (
+                            {film?.film?.trailers?.length && (
                                 <Tab
                                     nameBtn={<FormattedMessage id="trailer" />}
                                     typ={"trailer"}
@@ -84,7 +84,7 @@ const MainModal = () => {
                             width={120}
                             height={210}
                             alt=""
-                            src={film?.currentFilm?.posterUrl || ""}
+                            src={film?.film?.posterUrl || ""}
                         />
                         
                         {/*<RatingOverlay*/}
@@ -92,8 +92,8 @@ const MainModal = () => {
                         {/*    raitingArr={{ a: 1, b: 2, c: 3, d: 4 }}*/}
                         {/*/>*/}
                         <p>
-                            {film?.currentFilm?.year},{" "}
-                            {film?.currentFilm?.countries?.map((country) => (
+                            {film?.film?.year},{" "}
+                            {film?.film?.countries?.map((country) => (
                                 <p key={country.id}>{country.countryNameRu}</p>
                             ))}
                         </p>

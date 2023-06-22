@@ -5,6 +5,9 @@
   "header.navbar.serials": "Сериалы",
   "header.navbar.cartoons": "Мультфильмы",
 
+  "hour": "ч.",
+  "minute":  "мин.",
+
   "freeFilm": "Бесплатные фильмы",
   "trailer": "Трейлер",
   "language": "Языки",

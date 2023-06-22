@@ -3,7 +3,10 @@
   "header.navbar.new": "Whats new",
   "header.navbar.movies": "Movies",
   "header.navbar.serials": "Serials",
-  "header.navbar.cartoons":  "Cartoons",
+  "header.navbar.cartoons": "Cartoons",
+
+  "hour": "h.",
+  "minute": "min.",
 
   "freeFilm": "Free Film",
   "trailer": "Trailer",

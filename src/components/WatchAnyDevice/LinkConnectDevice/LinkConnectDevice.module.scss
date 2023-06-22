@@ -1,0 +1,16 @@
+.link {
+    inline-size: 215px;
+    block-size: 40px;
+    background-color: #ea003d;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 8px;
+    text-align: center;
+
+    @media screen and (max-width: 600px) {
+        inline-size: auto;
+    }
+}

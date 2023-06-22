@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    column-gap: 20px;
+    block-size: 40px;
+    button {
+        block-size: 100%;
+        min-inline-size: 40px;
+    }
+}

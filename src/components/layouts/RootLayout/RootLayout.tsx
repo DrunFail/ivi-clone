@@ -17,11 +17,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <HeaderContainer>
                 <Header />
             </HeaderContainer>
-            {children}
-
+            <main>
+                {children}
+            </main>
             {size < 1160 && <MobileNavBar />}
-
-
             <FooterContainer>
                 <PageWrapper>
                     <Footer />

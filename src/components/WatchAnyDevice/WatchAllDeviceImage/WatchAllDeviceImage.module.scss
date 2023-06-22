@@ -1,0 +1,80 @@
+.container {
+    position: relative;
+    inline-size: 536px;
+    margin-inline: auto;
+    block-size: 272px;
+    overflow: hidden;
+
+    .img_container {
+        inline-size: 536px;
+        block-size: 272px;
+        z-index: 3;
+        position: relative;
+    }
+
+    .desktop {
+        width: 337px;
+        top: 0;
+        left: 100px;
+        top: 3px;
+        height: 192px;
+        position: absolute;
+        z-index: 2;
+        object-fit: cover;
+    }
+
+    .tablet {
+        width: 200px;
+        height: 136px;
+        right: 42px;
+        bottom: 0;
+        z-index: 4;
+        right: 48px;
+        position: absolute;
+    }
+
+    .phone {
+        width: 188px;
+        height: 102px;
+        right: 48px;
+        bottom: 7px;
+        position: absolute;
+        z-index: 3;
+        object-fit: cover;
+    }
+
+   
+}
+@media screen and (max-width: 600px) {
+    .container {
+        grid-column: 1;
+        grid-row: 1;
+        width: 286px;
+        height: 136px;
+
+        .img_container {
+            width: 286px;
+            height: 136px;
+        }
+
+        .desktop {
+            width: 176px;
+            height: 96px;
+            left: 55px;
+        }
+
+        .tablet {
+            width: 100px;
+            height: 67px;
+        }
+
+        .phone {
+            width: 94px;
+            height: 51px;
+            right: 45px;
+            bottom: 3px;
+            z-index: 3;
+        }
+    }
+   
+}
