@@ -1,22 +1,18 @@
 import Head from "next/head";
-import { useSelector } from "react-redux";
-import React from "react";
-import { getPerson } from "../../store/person";
-import { getLang } from "../../store/switchLang";
-
-const HeadPerson = () => {
-    const person = useSelector(getPerson());
-    const lang = useSelector(getLang());
+interface HeadPersonProps {
+    personName: string,
+    personProfession: string
+}
+const DEFAULT_TEXT_TITLE = ": фильмография,фото,биография."
+export default function HeadPerson({personName, personProfession }:HeadPersonProps){
     return (
         <Head>
             <title>
-                {person?.person?.nameEng || lang === "En"
-                    ? person?.person?.nameEng
-                    : person?.person?.nameRu}
+                {personName}{DEFAULT_TEXT_TITLE}{personProfession}{"."}
             </title>
-            <meta name="keywords" content={person?.person?.proffession}></meta>
+            <meta name="keywords" content={`${personName}.${personProfession}.`}></meta>
         </Head>
     );
 };
 
-export default HeadPerson;
+

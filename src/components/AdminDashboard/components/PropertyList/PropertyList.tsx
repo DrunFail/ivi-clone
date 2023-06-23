@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./PropertyList.module.scss";
 
 interface PropertyListProps {

@@ -6,6 +6,7 @@ import CarouselGallery from "./CarouselGallery/CarouselGallery";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
 import PageSectionContainerInner from "../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
+import { MovieItemTest } from "../Movie/MovieList/interfaces/interfaces";
 
 interface CarouselProps {
     mode: "list" | "slider";
@@ -14,7 +15,7 @@ interface CarouselProps {
     count: number;
     sizes: { resol: number; items: number }[];
     href?: string;
-    component: React.ComponentType<unknown>;
+    component: React.ComponentType<{ elem: MovieItemTest }>;
     callback?: () => void;
     showMoreHandler?: () => void
 }

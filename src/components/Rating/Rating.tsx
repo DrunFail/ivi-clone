@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styles from "./Rating.module.scss";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import { getFilm } from "../../store/film";
 import MedallionContent from "../PageContainers/MedallionContent/MedallionContent";
 import RatingBlock from "./RatingBlock/RatingBlock";
 import MedallionDescription from "../PageContainers/MedallionDescription/MedallionDescription";
@@ -16,7 +14,6 @@ interface RatingProps {
 
 export default function Rating({ variant,movieRating }: RatingProps) {
     const [visible, setVisible] = useState<boolean>(false);
-    const film = useSelector(getFilm());
     const [slide, setSlide] = useState<number>(0);
 
     const slideMove = (num: number) => {
@@ -62,12 +59,7 @@ export default function Rating({ variant,movieRating }: RatingProps) {
             </div>
             <RatingModal
                 visible={visible}
-                slide={slide}
-                slideMove={slideMove}
                 call={call} />
-
-            
-            
         </>
     );
 };

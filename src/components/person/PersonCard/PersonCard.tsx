@@ -8,7 +8,10 @@ export default function PersonCard({ personData }: {personData: IStaff}) {
     return (
         <div className={styles.container}>
             <MedallionContent>
-                <PersonPhoto urlPersonPhoto={personData.posterUrl} />
+                <PersonPhoto
+                    urlPersonPhoto={personData.posterUrl}
+                    variant="medallion"
+                />
             </MedallionContent>
             <MedallionDescription>
                 <p>{personData.nameRu}</p>

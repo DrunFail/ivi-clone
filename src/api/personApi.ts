@@ -1,17 +1,17 @@
-import axios from "axios";
-import { domen } from "../constats";
-import { IPerson, IPersonData, IRows } from "../models/IPerson";
+import { axiosAuth } from "../lib/axios";
+import {PersonFullInfo, PersonListResponse } from "../models/IPerson";
 
 export const getOnePerson = async (id: string) => {
-    const res: IPersonData<IPerson> = await axios.get(
-        `${domen}persons/about/${id}`
+    const res = await axiosAuth.get<PersonFullInfo>(
+        `/api/persons/about/${id}`
     );
+    
     return res.data;
 };
 
 export const getAllPerson = async () => {
-    const res: IPersonData<IRows> = await axios.get(
-        `${domen}persons`
+    const res = await axiosAuth.get<PersonListResponse>(
+        `/api/persons`
     );
     return res.data.rows;
 };

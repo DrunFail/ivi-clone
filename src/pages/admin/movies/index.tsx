@@ -1,4 +1,3 @@
-import React from "react";
 import AdminLayout from "../../../components/AdminDashboard/AdminLayout/AdminLayout";
 import Movies from "../../../components/AdminDashboard/pages/Movies/Movies";
 

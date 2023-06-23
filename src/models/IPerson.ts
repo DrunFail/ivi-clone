@@ -1,38 +1,35 @@
-export interface IPersonData<T> {
-    data: T;
+export interface PersonListResponse {
+    rows: PersonFullInfo[];
 }
 
-export interface IRows {
-    rows: IPerson[];
+export interface PersonFullInfo {
+    person: PersonPersonalInfo;
+    films: PhilmographyItem[];
 }
 
-export interface IPerson {
-    person: IOnePerson;
-    films: [IFilm[]];
-}
-
-export interface IFilm {
-    id: string;
+export interface PhilmographyItem {
+    kinopoiskId: string;
     nameRu: string;
     nameOriginal: string;
     year: string;
     posterUrl: string;
     ratingKinopoisk: string;
-}
 
-export interface IPropsFilm {
-    film: IFilm[];
 }
+export interface PersonPersonalInfo {
+   
 
-export interface IPropsPerson {
-    persons: IPerson;
-}
-
-export interface IOnePerson {
-    id: string;
+    id: number;
+    personId: number;
     nameRu: string;
-    nameEng: string;
-    proffession: string;
+    nameEng: string | null;
+    sex: "MALE" | "FEMALE";
     posterUrl: string;
-    img: string;
+    birthday: string;
+    death: string | null;
+    age: number;
+    birthPlace: string | null;
+    deathPlace: string | null;
+    hasAwards: string;
+    profession: string;
 }

@@ -1,0 +1,12 @@
+.container {
+    width: 50%;
+    margin-inline: auto;
+
+    @media screen and (max-width: "1220px") {
+        width: 70%;
+    }
+
+    @media screen and (max-width: "800px") {
+        width: 90%;
+    }
+}

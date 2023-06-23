@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { FaTrash, FaPenSquare } from "react-icons/fa";
-import MovieListItem from "../../../MovieList/components/MovieListItem/MovieListItem";
-import ButtonActionOverlay from "../../../MovieList/UI/ButtonActionOverlay/ButtonActionOverlay";
-import OverlayMovieListItem from "../../../MovieList/components/OverlayMovieListItem/OverlayMovieListItem";
-import Modal from "../../../Modal/Modal";
 import EditMovieCard from "../../cards/EditMovieCard/EditMovieCard";
 import DeleteMovieCard from "../../cards/DeleteMovieCard/DeleteMovieCard";
-import { MovieItemTest } from "../../../MovieList/interfaces/interfaces";
+import MovieListItem from "../../../Movie/MovieList/components/MovieListItem/MovieListItem";
+import OverlayMovieListItem from "../../../Movie/MovieList/components/OverlayMovieListItem/OverlayMovieListItem";
+import Modal from "../../../UI/Modal/Modal";
+import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
 
 interface MovieListItemAdminProps {
     elem: MovieItemTest

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { MovieItemTest } from "../../../MovieList/interfaces/interfaces";
+import { useEffect, useState } from "react";
+import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
 import MovieListAdmin from "../../components/MovieListAdmin/MovieListAdmin";
 
 export default function Movies() {

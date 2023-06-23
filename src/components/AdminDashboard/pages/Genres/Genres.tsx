@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import GenreListItem from "../../components/GenreListItem/GenreListItem";
 import styles from "./Genres.module.scss";
 

@@ -14,8 +14,6 @@ import { getCountriesList } from "../../store/countries";
 import getFilmCards from "../../services/getFilmCards";
 import FiltersField from "../../components/FiltersField/FiltersField";
 import SortField from "../../components/SortField/SortField";
-import FilmCardsField from "../../components/FilmCardsField/FilmCardsField";
-import MainContainer from "../../components/mainContainer";
 
 import MovieList from "../../components/Movie/MovieList/MovieList";
 
@@ -225,7 +223,7 @@ const MoviesByGenre = (): React.ReactElement => {
     }, [currentGenre]);
 console.log(filmCards)
     return (
-        <MainContainer title={lang === "Ru" ? "Cтраница медиатеки" : "Media Library"}>
+        
             <section>
                 <div className="container">
                     <h1 className="pageTitle">{pageTitle}</h1>
@@ -258,7 +256,7 @@ console.log(filmCards)
                     <div className={styles.emptyMessage}>Не найдены фильмы, удовлетворяющие поисковому запросу, попробуйте изменить параметры поиска.</div> }
                 </div>
             </section>
-        </MainContainer>
+        
     );
 };
 
