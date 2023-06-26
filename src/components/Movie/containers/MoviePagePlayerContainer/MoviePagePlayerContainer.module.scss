@@ -1,6 +1,13 @@
 .container {
-    grid-row: 1/7;
+    grid-area: player;
     display: grid;
     grid-template-rows: min-content;
     row-gap: 20px;
+
+    @media only screen and (max-width: 1160px){
+        grid-template-columns: 1fr;
+    }
+    @media only screen and (max-width: 880px){
+        gap:0;
+    }
 }

@@ -7,9 +7,11 @@ import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
 import PageSectionContainerInner from "../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
 import { MovieItemTest } from "../Movie/MovieList/interfaces/interfaces";
+import MyButton from "../UI/MyButton/MyButton";
+import { FormattedMessage } from "react-intl";
 
 interface CarouselProps {
-    mode: "list" | "slider";
+    mode: "list" | "slider" | "collection";
     carouselId: string;
     data: any[];
     count: number;
@@ -36,19 +38,20 @@ export default function Carousel({
         checkPrev,
         handleClickNextSlide,
         handleClickPrevSlide,
-        valueDirection
+        valueDirection,
+        itemAmountOnPage
     } = useCarousel({
         dataLength: data.length,
         idSlider: carouselId,
         sizes,
         count
     });
-
+    console.log("carousel", data)
     return (
         <PageSectionContainerInner>
             <div className={styles.container}>
-               
-                <div className={styles.test }>
+
+                <div className={styles.test}>
                     {mode === "slider" && (
                         <>
                             {checkPrev && (
@@ -65,30 +68,32 @@ export default function Carousel({
                             )}
                         </>
                     )}
-                <div style={{overflow:"hidden", paddingInline: "12px"} }>
-                <CarouselGallery carouselId={carouselId} mode={mode}>
-                    {data.map((elem) => (
-                        <CarouselItem
-                            callback={callback}
-                            key={elem?.id}
-                            style={{
-                                transform: `translate(${valueDirection}%, 0)`
-                            }}
-                        >
-                            <Component elem={elem} />
-                        </CarouselItem>
-                    ))}
-                    {count > data.length && (
-                        <ShowMoreItem
+                    <div style={{ overflow: "hidden", paddingInline: "12px" }}>
+                        <CarouselGallery carouselId={carouselId} mode={mode}>
+                            {data.map((elem) => (
+                                <CarouselItem
+                                    callback={callback}
+                                    key={elem?.id}
+                                    style={{
+                                        transform: `translate(${valueDirection}%, 0)`
+                                    }}
+                                >
+                                    <Component elem={elem} />
+                                </CarouselItem>
+                            ))}
+                            {count > data.length && (
+                                <ShowMoreItem
                                     href={href}
                                     valueDirection={valueDirection}
                                     mode={mode}
-                                    showMoreHandler={showMoreHandler }
-                        />
-                    )}
-                    </CarouselGallery>
+                                    showMoreHandler={showMoreHandler}
+                                />
+                            )}
+                           
+                        </CarouselGallery>
                     </div>
                 </div>
+                
             </div>
         </PageSectionContainerInner>
     );

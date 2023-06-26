@@ -50,3 +50,12 @@ export interface MoviePageData {
         rows: IReviewsOne[];
     };
 }
+
+export interface CommentItem {
+    id: number;
+    filmId: number;
+    text: string;
+    name: string;
+    reviews: CommentItem[];
+    createdAt: string;
+}

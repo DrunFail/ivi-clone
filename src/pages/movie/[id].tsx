@@ -1,9 +1,5 @@
-import { useEffect } from "react";
 import { IMovieOne } from "../../models";
-import { useDispatch, useSelector } from "react-redux";
-import { filmAction, getFilm } from "../../store/film";
 import { GetServerSideProps } from "next";
-import MainModal from "../../components/MainModal/MainModal";
 import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
 import { getOneMovie } from "../../api/movieId";
 import SimilarSlider from "../../components/Movie/SimilarSlider/SimilarSlider";
@@ -14,8 +10,6 @@ import Medallion from "../../components/PageContainers/Medallion/Medallion";
 import Rating from "../../components/Rating/Rating";
 import PersonList from "../../components/person/PersonList/PersonList";
 import useMoviePageData from "../../components/Movie/hooks/useMoviePageData";
-import ShareButtonWithModal from "../../components/Share/ShareButtonWithModal";
-import MoviePageButtonContainer from "../../components/Movie/containers/MoviePageButtonsContainer/MoviePageButtonContainer";
 import MoviePageTopContainer from "../../components/Movie/containers/MoviePageTopContainer/MoviePageTopContainer";
 import MoviePagePlayerContainer from "../../components/Movie/containers/MoviePagePlayerContainer/MoviePagePlayerContainer";
 import MoviePageInfoContainer from "../../components/Movie/containers/MoviePageInfoContainer/MoviePageInfoContainer";
@@ -24,41 +18,31 @@ import MoviePageRatingContainer from "../../components/Movie/containers/MoviePag
 import MoviePagePersonListContainer from "../../components/Movie/containers/MoviePagePersonListContainer/MoviePagePersonListContainer";
 import PageSection from "../../components/PageContainers/PageSection/PageSection";
 import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
-import ButtonTrailer from "../../components/UI/ButtonTrailer/ButtonTrailer";
-import ButtonWatchLater from "../../components/UI/ButtonWatchLater/ButtonWatchLater";
-import ButtonToggleHide from "../../components/UI/ButtonToggleHide/ButtonToggleHide";
 import MovieDescription from "../../components/Movie/moviePageComponents/MovieDescription/MovieDescription";
 import Info from "../../components/Movie/moviePageComponents/Info/Info";
-import MovieInfoContainer from "../../components/Movie/moviePageComponents/MovieInfoContainer/MovieInfoContainer";
-import LanguageMovieInfo from "../../components/Movie/moviePageComponents/LanguageMovieInfo/LanguageMovieInfo";
-import VideoMovieInfo from "../../components/Movie/moviePageComponents/VideoMovieInfo/VideoMovieInfo";
+import StaffSlider from "../../components/person/StaffSlider/StaffSlider";
+import CommentSlider from "../../components/comment/CommentSlider/CommentSlider";
+import MoviePageModal from "../../components/Movie/MoviePageModal/MoviePageModal";
+import useMoviePageModal from "../../components/Movie/MoviePageModal/hooks/useMoviePageModal";
+import { useResize } from "../../hooks/useResize";
+import ButtonPlayerBlock from "../../components/Movie/ButtonPlayerBlock/ButtonPlayerBlock";
+import MovieExtraInfoBlock from "../../components/Movie/MovieExtraInfoBlock/MovieExtraInfoBlock";
 
 interface MovieProps {
     movies: MoviePageData;
 }
 export default function Movie({ movies }: MovieProps) {
 
-    const films = useSelector(getFilm());
+    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating } = useMoviePageData({ movieData: movies });
+    const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
+    const size = useResize();
 
-
-
-    useEffect(() => {
-        if (movies) {
-            dispatch(filmAction(movies));
-        }
-    }, [movies]);
-
-    const dispatch = useDispatch();
-    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre,moviePosterUrl,movieRating } = useMoviePageData({ movieData: films });
-    if (!films) {
-        return <></>;
-    }
 
     return (
         <>
             <HeadMovie
                 pageTitle={movieName}
-                contentDescription={films.film.description}
+                contentDescription={movies.film.description}
             />
 
             <PageSection>
@@ -66,15 +50,25 @@ export default function Movie({ movies }: MovieProps) {
                     <MoviePageTopContainer>
                         <MoviePagePlayerContainer>
                             <MoviePlayer />
-                            <MoviePageButtonContainer>
-                                <ButtonTrailer />
-                                <ButtonWatchLater />
-                                <ShareButtonWithModal
-                                    posterUrl={moviePosterUrl}
-                                    nameRu={movieName}
-                                    year={movieYear} />
-                            </MoviePageButtonContainer>
+                            {size > 1160 &&
+                                <ButtonPlayerBlock
+                                    variant={"desktop"}
+                                    movieName={movieName}
+                                    moviePosterUrl={moviePosterUrl}
+                                movieYear={movieYear}
+                                />
+                            }
+                            {size < 880 && 
+                                <ButtonPlayerBlock
+                                    variant={"mobile"}
+                                    movieName={movieName}
+                                    moviePosterUrl={moviePosterUrl}
+                                    movieYear={movieYear}
+                                />
+                            }
+                            
                         </MoviePagePlayerContainer>
+
                         <MoviePageInfoContainer>
                             <Info
                                 movieTitle={movieName}
@@ -88,23 +82,31 @@ export default function Movie({ movies }: MovieProps) {
                         <MoviePagePersonListContainer>
                             <Medallion>
                                 <Rating variant="small" movieRating={movieRating} />
-                                <PersonList />
+                                <PersonList personList={movies.staff} />
                             </Medallion>
                             <MovieDescription>
                                 {movieDescription}
                             </MovieDescription>
                         </MoviePagePersonListContainer>
+                        {size > 880 && size < 1160 &&
+                            <ButtonPlayerBlock
+                                variant={"tablet"}
+                                movieName={movieName}
+                                moviePosterUrl={moviePosterUrl}
+                                movieYear={movieYear}
+                            />
+                        }
                         <MoviePageVideoInfoContainer>
-                            <MovieInfoContainer>
-                                <LanguageMovieInfo />
-                                <VideoMovieInfo />
-                            </MovieInfoContainer>
+                            {size > 1160
+                                ? <MovieExtraInfoBlock variant={"desktop"} />
+                                : <MovieExtraInfoBlock variant={"tablet"} />
+                            }
                         </MoviePageVideoInfoContainer>
-                        <ButtonToggleHide>
-                            details
-                        </ButtonToggleHide>
+                        {/*<ButtonToggleHide>*/}
+                        {/*    details*/}
+                        {/*</ButtonToggleHide>*/}
                         <MoviePageRatingContainer>
-                            <Rating variant="large" movieRating={movieRating } />
+                            <Rating variant="large" movieRating={movieRating} />
                         </MoviePageRatingContainer>
                     </MoviePageTopContainer>
                 </PageWrapper>
@@ -113,16 +115,24 @@ export default function Movie({ movies }: MovieProps) {
                 <PageWrapper>
                     <SimilarSlider
                         carouselId={"popular"}
-                        data={films?.film?.similar}
-                        count={films?.film?.similar.length}
+                        data={movies?.film?.similar}
+                        count={movies?.film?.similar.length}
                         href={"/moives/all"}
                         headingTitle={"С этим фильмом смотрят"}
                     />
                 </PageWrapper>
             </PageSection>
+
             <PageSection>
                 <PageWrapper>
-                    <MainModal />
+                    <div style={{ display: "grid" }}>
+                        <StaffSlider callback={() => pushQuery("actors")} data={movies?.staff} />
+                    </div>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    <CommentSlider callback={() => pushQuery("review")} />
                 </PageWrapper>
             </PageSection>
             <PageSection>
@@ -133,7 +143,13 @@ export default function Movie({ movies }: MovieProps) {
                     />
                 </PageWrapper>
             </PageSection>
-
+            <MoviePageModal
+                visible={visible}
+                type={type}
+                film={movies}
+                callback={() => removeQueryParam()}
+                movieTitle={movieName}
+                movieYear={movieYear} />
 
         </>
     );

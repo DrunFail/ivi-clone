@@ -4,7 +4,7 @@ import styles from "./CarouselGallery.module.scss";
 interface CarouselGalleryProps {
     carouselId: string,
     children: React.ReactNode,
-    mode: "list" | "slider",
+    mode: "list" | "slider" | "collection",
 }
 
 export default function CarouselGallery({ carouselId, children, mode }:CarouselGalleryProps) {

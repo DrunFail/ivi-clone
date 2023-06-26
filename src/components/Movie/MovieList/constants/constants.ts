@@ -48,11 +48,11 @@ export const REVIEWLIST_SIZE = [
     },
     {
         resol: 728,
-        items: 2
+        items: 4
     },
     {
         resol: 585,
-        items: 2
+        items: 4
     },
     {
         resol: 495,

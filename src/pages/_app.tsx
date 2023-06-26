@@ -32,7 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <AuthProvider>
             <Provider store={store}>
                 <WrapperIntl>
-                    <AppLoader>
+                    {/*<AppLoader>*/}
                         <WindowDimensionsProvider>
                             <ClickCatcherProvider>
                             <RootLayout>
@@ -42,7 +42,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                                 </RootLayout>
                             </ClickCatcherProvider>
                         </WindowDimensionsProvider>
-                    </AppLoader>
+                   {/* </AppLoader>*/}
                 </WrapperIntl>
                 {/* <LoaderReq /> */}
             </Provider>

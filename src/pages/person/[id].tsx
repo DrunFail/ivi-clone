@@ -20,21 +20,21 @@ interface PersonPageProps {
     persons: PersonFullInfo
 }
 export default function PersonPage({ persons }: PersonPageProps) {
-    const person = useSelector(getPerson());
+    //const person = useSelector(getPerson());
 
 
-    useEffect(() => {
-        dispatch(personRequest(persons));
-    }, [persons]);
+    //useEffect(() => {
+    //    dispatch(personRequest(persons));
+    //}, [persons]);
 
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
 
-    const { personName, personProfession, personPosterUrl, personMovieAmount, personMovieList } = useMoviePersonData({ personData: person });
+    const { personName, personProfession, personPosterUrl, personMovieAmount, personMovieList } = useMoviePersonData({ personData: persons });
 
-    if (!person) {
-        return <></>;
-    }
+    //if (!person) {
+    //    return <></>;
+    //}
 
     return (
         <>

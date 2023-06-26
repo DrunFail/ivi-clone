@@ -56,5 +56,5 @@ export default function useCarousel({ dataLength, idSlider, sizes, count }: UseC
     const checkPrev = itemCount > itemAmountOnPage;
     const checkNext = dataLengthWithShowMoreItem > itemCount;
 
-    return { checkNext, checkPrev, handleClickNextSlide, handleClickPrevSlide, valueDirection };
+    return { checkNext, checkPrev, handleClickNextSlide, handleClickPrevSlide, valueDirection, itemAmountOnPage };
 }

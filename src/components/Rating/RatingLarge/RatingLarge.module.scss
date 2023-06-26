@@ -1,7 +1,9 @@
 .container {
     inline-size: 100%;
+    block-size: 84px;
     display: grid;
     grid-template-columns: 64px repeat(2, 1fr);
+    align-items: center;
     border-radius: 10px;
     padding: 10px;
     background-color: hsla(0,0%,100%,.16);

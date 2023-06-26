@@ -1,22 +1,18 @@
-import { useSelector } from "react-redux";
 import Link from "next/link";
-import { getFilm } from "../../../store/film";
 import PersonCard from "../PersonCard/PersonCard";
 import { IStaff } from "../../../models";
 
-
-export default function PersonList() {
-    const films = useSelector(getFilm());
+export default function PersonList({ personList }: { personList: IStaff[] }) {
     return (
         <>
-            {films?.staff?.slice(0, 4).map((person: IStaff) => (
+            {personList.slice(0, 4).map(person =>
                 <Link
                     key={person.id}
                     href={`/person/${person.personId}`}>
                     <PersonCard personData={person} />
-                    
+
                 </Link>
-            ))}
+            )}
         </>
     );
 };

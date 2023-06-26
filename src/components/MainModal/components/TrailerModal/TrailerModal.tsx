@@ -1,15 +1,14 @@
 import Image from "next/image";
-import styles from "../../../person/Actors/Actors.module.scss";
 import { useSelector } from "react-redux";
-import React, { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { getFilm } from "../../../../store/film";
 import Trailer from "../../../TrailerMain/TrailerMain";
+import styles from "./TrailerModal.module.scss";
 
-const TrailerModal: FC<{ callback: () => void }> = ({ callback }) => {
+export default function TrailerModal({ callback }: { callback: () => void }) {
     const film = useSelector(getFilm());
 
-    if (!film?.currentFilm?.trailers?.length) {
+    if (!film?.film?.trailers?.length) {
         return <></>;
     }
 
@@ -18,7 +17,7 @@ const TrailerModal: FC<{ callback: () => void }> = ({ callback }) => {
             <h1 onClick={() => callback()}>
                 <FormattedMessage id="TrailerAndMaterial" />
             </h1>
-            {film?.currentFilm?.trailers?.map((trailer) => (
+            {film?.film?.trailers?.map((trailer) => (
                 <Trailer
                     trailer={trailer.url}
                     site={trailer.site}
@@ -26,8 +25,8 @@ const TrailerModal: FC<{ callback: () => void }> = ({ callback }) => {
                         <div className={styles.Actors__trariler}>
                             <Image
                                 src={
-                                    film?.currentFilm?.logoUrl ||
-                                    film?.currentFilm.posterUrl
+                                    film?.film?.logoUrl ||
+                                    film?.film.posterUrl
                                 }
                                 width={288}
                                 height={166}
@@ -42,4 +41,4 @@ const TrailerModal: FC<{ callback: () => void }> = ({ callback }) => {
     );
 };
 
-export default TrailerModal;
+

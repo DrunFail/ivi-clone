@@ -20,4 +20,9 @@
     row-gap: 24px;
 }
 
+.carousel_collection {
+    @extend .carousel;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 1px + 1px) / var(--item-amount));
+}
 

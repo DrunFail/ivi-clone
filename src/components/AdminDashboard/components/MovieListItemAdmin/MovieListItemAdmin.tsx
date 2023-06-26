@@ -27,8 +27,8 @@ export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
 
     return (
         <div>
-            <MovieListItem elem={elem}>
-                <OverlayMovieListItem elem={elem} infoVisible={false }>
+            <MovieListItem movieItem={elem}>
+                <OverlayMovieListItem movieItem={elem} infoVisible={false }>
 
                     <ButtonActionOverlay description={<FormattedMessage id="button.edit" />} actionHandler={editMovieHandler }>
                         <FaPenSquare color="white" fontSize="16px" />

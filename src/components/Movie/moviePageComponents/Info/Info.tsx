@@ -1,4 +1,5 @@
 import { FormattedMessage } from "react-intl";
+import MovieTitleWithYear from "../../MovieTitleWithYear/MovieTitleWithYear";
 import styles from "./Info.module.scss";
 
 interface InfoProps {
@@ -13,10 +14,10 @@ interface InfoProps {
 export default function Info({ movieTitle, movieYear, ageLimit, movieDuration, movieCountry, movieGenre }: InfoProps) {
     return (
         <div className={styles.container}>
-            <div className={styles.heading }>
-            <h1>{movieTitle}</h1>
-                <h1>(Фильм {movieYear})</h1>
-            </div>
+            <MovieTitleWithYear
+                movieTitle={movieTitle}
+                movieYear={movieYear} />
+
             <div className={styles.info_container }>
                 <div className={styles.top}>
                     <p>{movieYear}</p>

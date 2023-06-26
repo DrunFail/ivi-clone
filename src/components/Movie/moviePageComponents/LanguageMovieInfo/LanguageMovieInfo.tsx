@@ -1,7 +1,16 @@
 import styles from "./LanguageMovieInfo.module.scss";
-export default function LanguageMovieInfo() {
+
+interface LanguageMovieInfoProps {
+    variant: "desktop" | "tablet"
+}
+export default function LanguageMovieInfo({ variant }: LanguageMovieInfoProps) {
+    const defaultClasses = `
+    ${styles.container}
+    ${styles[variant]}
+    `
+
     return (
-        <div className={styles.container }>
+        <div className={defaultClasses}>
             <p>Языки</p>
         <p>Русский</p>
         </div>
