@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
 import { useResize } from "../../hooks/useResize";
 import LanguageSwitcher from "../UI/LanguageSwitcher/LanguageSwitcher";
@@ -36,7 +37,13 @@ export default function Header() {
                 <FormattedMessage id="PayForASubscription" />
             </MyButton>
 
-            <SearchWithModal />
+            <SearchWithModal>
+                <BsSearch />
+                <p>
+               {" "}
+                   <FormattedMessage id="Search" />
+                </p>
+            </SearchWithModal>
 
             <ProfileBlockIconWithDropdown handlerHeaderHover={handlerHeaderHover} />
 

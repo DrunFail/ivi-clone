@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import SearchModal from "../SearchModal/SearchModal";
 
 
-export default function SearchWithModal() {
+export default function SearchWithModal({ custom=false, children }: {custom?: boolean, children: React.ReactNode}) {
     const [visible, setVisible] = useState<boolean>(false);
 
     const handleVisible = () => {
@@ -13,20 +13,18 @@ export default function SearchWithModal() {
     }
 
     return (
-        <div className={styles.SearchWindow}>
+        <>
             <div
-                className={styles.SearchWindow__div}
+                className={styles[custom ? "" : "SearchWindow__div"]}
                 onClick={handleVisible}
             >
-                <BsSearch />
-                <p>
-                    {" "}
-                    <FormattedMessage id="Search" />
-                </p>
-            </div>
+                {children }
+            </div> 
+                
+            
             <SearchModal
                 visible={visible}
                 handleVisible={handleVisible} />
-        </div>
+        </>
     );
 };

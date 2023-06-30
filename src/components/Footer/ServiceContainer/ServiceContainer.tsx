@@ -1,12 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import AskIvi from "../AskIvi/AskIvi";
-import SupportBlockButtonContainer from "../SupportBlockButtonContainer/SupportBlockButtonContainer";
-import ButtonCall from "../UI/ButtonCall/ButtonCall";
-import ButtonChat from "../UI/ButtonChat/ButtonChat";
-import ButtonMail from "../UI/ButtonMail/ButtonMail";
+import SupportBlockButton from "../SupportBlockButton/SupportBlockButton";
 import styles from "./ServiceContainer.module.scss";
 
-export default function ServiceContainer() {
+export default function ServiceContainer({ variant }: {variant: "desktop" | "tablet" | "mobile"}) {
     return (
         <div className={styles.container}>
             <h4>
@@ -17,13 +14,7 @@ export default function ServiceContainer() {
                 <br />
                 <FormattedMessage id="OurOperatorsAreOnline" />
             </p>
-
-
-            <SupportBlockButtonContainer>
-                <ButtonChat />
-                <ButtonCall />
-                <ButtonMail />
-            </SupportBlockButtonContainer>
+            <SupportBlockButton variant={variant} />
             <AskIvi />
 
         </div>

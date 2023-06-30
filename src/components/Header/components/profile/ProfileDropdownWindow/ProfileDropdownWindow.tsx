@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
-import LogoutButton from "../../../../auth/components/LogoutButton/LogoutButton";
 import useAuth from "../../../../auth/hooks/useAuth";
+import LogoutButton from "../../../../UI/LogoutButton/LogoutButton";
 import MyButton from "../../../../UI/MyButton/MyButton";
 import { PROFILE_IMG_LINK_DATA } from "../ProfileDropdownCard/imgLinkData";
 import ProfileDropdownCard from "../ProfileDropdownCard/ProfileDropdownCard";

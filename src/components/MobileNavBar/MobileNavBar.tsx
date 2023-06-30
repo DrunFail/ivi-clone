@@ -1,44 +1,52 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BsSearch } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
 import home from "../../assets/SVG/Home/Home.svg";
 import tv from "../../assets/SVG/Tv/Tv.svg";
 import youtube from "../../assets/SVG/Youtube/Youtube.svg";
 import SearchWithModal from "../Header/components/search/SearchWithModal/SearchWithModal";
+import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import styles from "./MobileNavBar.module.scss";
-import NavigationWindow from "./NavigationWindow/NavigationWindow";
+import MobileNavbarItem from "./MobileNavBarItem/MobileNavbarItem";
 
 
-export default function MobileNavBar(){
+export default function MobileNavBar() {
     return (
-        <div className={styles.Container}>
-            <div className={styles.Tab}>
+        <div className={styles.container}>
+            <div className={styles.content}>
                 <Link href="/">
-                    <div>
+                    <MobileNavbarItem>
                         <Image src={home} alt="" />
                         <p>
                             <FormattedMessage id="MyIvi" />
                         </p>
-                    </div>
+                    </MobileNavbarItem>
                 </Link>
                 <Link href="/catalog">
-                    <div>
+                    <MobileNavbarItem>
                         <Image src={youtube} alt="" />
                         <p>
                             <FormattedMessage id="Catalog" />
                         </p>
-                    </div>
+                    </MobileNavbarItem>
                 </Link>
-                <div>
-                    <SearchWithModal />
-                </div>
-                <div>
+                <SearchWithModal custom>
+                    <MobileNavbarItem>
+                        <BsSearch />
+                        <p>
+                            {" "}
+                            <FormattedMessage id="Search" />
+                        </p>
+                    </MobileNavbarItem>
+                </SearchWithModal>
+                <MobileNavbarItem>
                     <Image src={tv} alt="" />
                     <p>Tv+</p>
-                </div>
-                <div className={styles.Tab__last}>
-                    <NavigationWindow />
-                </div>
+                </MobileNavbarItem>
+
+                <HamburgerMenu />
+
             </div>
         </div>
     );

@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    grid-auto-rows: 40px;
+    gap: 10px;
+
+    button {
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    
+}
+.desktop {
+    grid-template-columns: 40px 40px 1fr;
+    inline-size: 196px;
+
+    & button:first-child {
+        grid-column: 1/-1;
+    }
+}
+
+
+.tablet {
+    grid-template-columns: 1fr 40px 40px;
+    max-inline-size:800px;
+}

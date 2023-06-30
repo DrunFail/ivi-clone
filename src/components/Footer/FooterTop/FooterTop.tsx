@@ -14,7 +14,7 @@ export default function FooterTop() {
                     title={elem.name}
                     oneColumn />
             )}
-            <ServiceContainer />
+            <ServiceContainer variant="desktop"/>
 
             <WatchMoviesLink />
         </div>
