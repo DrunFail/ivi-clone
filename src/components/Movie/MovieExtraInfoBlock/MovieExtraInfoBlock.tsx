@@ -1,4 +1,4 @@
-import HorizontalLine from "../../auth/components/HorizontalLine/HorizontalLine";
+import HorizontalLine from "../../UI/HorizontalLine/HorizontalLine";
 import LanguageMovieInfo from "../moviePageComponents/LanguageMovieInfo/LanguageMovieInfo";
 import VideoMovieInfo from "../moviePageComponents/VideoMovieInfo/VideoMovieInfo";
 import styles from "./MovieExtraInfoBlock.module.scss";
