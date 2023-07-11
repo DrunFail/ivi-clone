@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./InputField.module.scss";
 
 interface InputFieldProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -10,7 +9,7 @@ interface InputFieldProps extends React.HTMLAttributes<HTMLInputElement> {
 
 }
 
-const InputField: React.FC<InputFieldProps> = ({ value, name, type, valid = true, autoComplete="on", ...props }) => {
+export default function InputField({ value, name, type, valid = true, autoComplete="on", ...props }:InputFieldProps) {
     return (
         <input
             autoComplete={autoComplete}
@@ -22,4 +21,3 @@ const InputField: React.FC<InputFieldProps> = ({ value, name, type, valid = true
     );
 };
 
-export default InputField;

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import AuthService from "../../components/auth/services/auth.service";
 import { axiosAuth } from "../../lib/axios";
 

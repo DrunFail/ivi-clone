@@ -1,14 +1,13 @@
-import styles from "./main.module.scss";
 import Head from "next/head";
 import { getLang } from "../store/switchLang";
 import { useSelector } from "react-redux";
 import PageSection from "../components/PageContainers/PageSection/PageSection";
 import PromoSection from "../components/PromoSection/PromoSection";
-import MainSlider from "../components/mainSlider/mainSlider";
 import PageWrapper from "../components/PageContainers/PageWrapper/PageWrapper";
 import TopTenSlider from "../components/Movie/TopTenSlider/TopTenSlider";
 import MovieSlider from "../components/Movie/MovieSlider/MovieSlider";
 import { TOP_10_DATA } from "../components/Movie/TopTenSlider/data";
+import MainSlider from "../components/Movie/MainSlider/MainSlider";
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());
@@ -19,9 +18,9 @@ const Index = (): React.ReactElement => {
                 <title>{lang === "Ru" ? "Главная страница" : "Main page"}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
             </Head>
-           
-                <MainSlider styles={styles} />
-
+           <PageSection>
+                <MainSlider />
+            </PageSection>
                 <PageSection>
                     <PageWrapper>
                         <PromoSection />

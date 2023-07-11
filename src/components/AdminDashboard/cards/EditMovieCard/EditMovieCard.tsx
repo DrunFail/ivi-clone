@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./EditMovieCard.module.scss";
-import { MovieItemTest } from "../../../MovieList/interfaces/interfaces";
-import useMovieData from "../../../MovieList/hooks/useMovieData";
 import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
 import EditCardContainer from "../../components/EditCardContainer/EditCardContainer";
 import PropertyItem from "../../components/PropertyItem/PropertyItem";
 import InputField from "../../components/InputField/InputField";
+import useMovieData from "../../../Movie/MovieList/hooks/useMovieData";
+import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
 
 interface EditMovieCardProps {
     elem: MovieItemTest,

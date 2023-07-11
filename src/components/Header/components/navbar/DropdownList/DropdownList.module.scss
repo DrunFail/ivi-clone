@@ -1,0 +1,33 @@
+.container {
+    row-gap: 10px;
+
+
+    h3 {
+        padding-block-end: 10px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .list {
+        display: grid;
+        font-weight: 400;
+        color: hsla(0,0%,100%,.48);
+    }
+
+    .column {
+        @extend .list;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(11, 1fr);
+    }
+
+    li{
+        padding-block: 5px;
+
+        &:hover{
+            color: white;
+        }
+        
+    }
+
+   
+}

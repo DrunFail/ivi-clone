@@ -1,0 +1,9 @@
+.container{
+    position: relative;
+    max-inline-size: 100%;
+    aspect-ratio: 7/10;
+
+    img{
+        object-fit: cover;
+    }
+}

@@ -1,23 +1,26 @@
-import React, { FC, useState } from "react";
-import { IRating } from "./models/IRating";
+import { useState } from "react";
 import styles from "./Rating.module.scss";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import { getFilm } from "../../store/film";
-import Modal from "../Modal/Modal";
-import MyButton from "../UI/MyButton/MyButton";
+import MedallionContent from "../PageContainers/MedallionContent/MedallionContent";
+import RatingBlock from "./RatingBlock/RatingBlock";
+import MedallionDescription from "../PageContainers/MedallionDescription/MedallionDescription";
+import RatingLarge from "./RatingLarge/RatingLarge";
+import RatingModal from "./RatingModal/RatingModal";
 
-let arr = new Array(10);
-arr = arr.fill(1);
+interface RatingProps {
+    variant: "small" | "large",
+    movieRating: number
+}
 
-const Rating: FC<IRating> = ({ type }) => {
+export default function Rating({ variant,movieRating }: RatingProps) {
     const [visible, setVisible] = useState<boolean>(false);
-    const film = useSelector(getFilm());
     const [slide, setSlide] = useState<number>(0);
 
     const slideMove = (num: number) => {
         setSlide((p) => p + num);
     };
+
+
 
     const call = () => {
         setSlide(0);
@@ -26,109 +29,38 @@ const Rating: FC<IRating> = ({ type }) => {
 
     return (
         <>
-            <div onClick={() => setVisible(true)}>
-                {type ? (
-                    <div className={styles.Rating__large}>
-                        <MyButton type="footer" size="large">
-                            <div
-                                className={styles.Rating__mark}
-                                style={{
-                                    background:
-                                        Number(film?.currentFilm?.ratingKinopoisk) > 7
-                                            ? "green"
-                                            : Number(film?.currentFilm?.ratingKinopoisk) > 4
-                                                ? "orange"
-                                                : "red"
-                                }}
-                            >
-                                {film?.currentFilm?.ratingKinopoisk}
-                            </div>
-                            <p>
-                                <FormattedMessage id="RatingIvi" />
-                            </p>
-                            <div className={styles.Rating__review}>
-                                <p><FormattedMessage id="Estimate"/></p>
-                            </div>
-                        </MyButton>
-                    </div>
-                ) : (
+            <div onClick={() => setVisible(true)} className={styles.container}>
+                {variant === "large" &&
+                    <RatingLarge>
+                        <RatingBlock ratingValue={movieRating} />
+                        <p><FormattedMessage id="RatingIvi" /></p>
+                        <div className={styles.Rating__review}>
+                            <p><FormattedMessage id="Estimate" /></p>
+                        </div>
+                    </RatingLarge>
+                }
+                    
+                {variant === "small" && 
                     <>
-                        <MyButton type="footer" size="large">
-                            <div
-                                style={{
-                                    background:
-                                        Number(film?.currentFilm?.ratingKinopoisk) > 7
-                                            ? "green"
-                                            : Number(film?.currentFilm?.ratingKinopoisk) > 4
-                                                ? "orange"
-                                                : "red"
-                                }}
-                            >
-                                {film?.currentFilm?.ratingKinopoisk}
-                            </div>
-                        </MyButton>
-                        <p>
-                            <FormattedMessage id="RatingIvi" />
-                        </p>
-                    </>
-                )}
-            </div>
-            <Modal callback={() => call()} visible={visible}>
-                <div
-                    style={{ transform: `translateX(` + String(-slide) + "%)" }}
-                    className={styles.Slider}
-                >
-                    <div className={styles.Container}>
-                        <div className={styles.Unit}>
+                        <MedallionContent>
+                            <RatingBlock ratingValue={movieRating} />
+                        </MedallionContent>
+                        <MedallionDescription>
                             <div>
-                                <div className={styles.Rating__text}>
-                                    <h1>
-                                        <FormattedMessage id="YourMark" />
-                                    </h1>
-                                </div>
-                                <div className={styles.Rating__text}>
-                                    <p className={styles.Review}>
-                                        <FormattedMessage id="MarkImproveRecomendation" />
-                                    </p>
-                                </div>
-
-                                <div className={styles.Rating}>
-                                    {arr?.map((arr, i) => (
-                                        <div
-                                            key={i}
-                                            onClick={() => slideMove(100)}
-                                            className={styles.Rating__unit}
-                                        >
-                                            {i + 1}
-                                        </div>
-                                    ))}
-                                </div>
-                                <div
-                                    className={
-                                        styles.Rating__veryBad +
-                                        " " +
-                                        styles.Rating__text
-                                    }
-                                >
-                                    <p>
-                                        <FormattedMessage id="VeryBad" />
-                                    </p>
-                                    <p>
-                                        <FormattedMessage id="VeryGood" />
-                                    </p>
-                                </div>
+                                <p>Рейтинг</p>
+                                <p>Иви</p>
                             </div>
-                        </div>
-                        <div className={styles.Unit + " " + styles.Container}>
-                            <h1>
-                                <FormattedMessage id="YourMarkAccept" />
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-            </Modal>
+                        </MedallionDescription>
+
+                    </>
+            }
+                   
+                
+            </div>
+            <RatingModal
+                visible={visible}
+                call={call} />
         </>
     );
 };
 
-export default Rating;

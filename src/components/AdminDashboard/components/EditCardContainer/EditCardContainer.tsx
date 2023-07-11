@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import ButtonContainer from "../ButtonContainer/ButtonContainer";
 import styles from "./EditCardContainer.module.scss";

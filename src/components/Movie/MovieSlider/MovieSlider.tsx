@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import SliderTitle from "./SliderTitle/SliderTitle";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import { MovieItemTest } from "../MovieList/interfaces/interfaces";
 import MovieListItemWithLink from "../MovieList/components/MovieListItemWithLink/MovieListItemWithLink";
-import Carousel from "../../Carousel/Carousel";
+import Carousel from "../../UI/Carousel/Carousel";
 
 interface TestData {
     count: number,

@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    gap: 8px;
+    color: green;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: auto;
+
+    svg {
+        color: white;
+    }
+}

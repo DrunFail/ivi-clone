@@ -1,7 +1,7 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
+import HeaderLogo from "../../Header/components/HeaderLogo/HeaderLogo";
 import PageSection from "../../PageContainers/PageSection/PageSection";
-import PageSectionWrapper from "../../PageContainers/PageSectionContainer/PageSectionContainer";
+import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 import AdminAside from "../components/AdminAside/AdminAside";
 import styles from "./AdminLayout.module.scss";
 
@@ -22,13 +22,18 @@ const ASIDE_MENU = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
         <PageSection>
-            <PageSectionWrapper>
-                <h1 className={styles.title }><FormattedMessage id="admin.heading" /></h1>
+            <PageWrapper>
+                <div style={{ display: "flex", columnGap: "40px" }}>
+                    <HeaderLogo />
+                    <h1 className={styles.title}><FormattedMessage id="admin.heading" /></h1>
+                </div>
                 <div className={styles.container}>
-                    <div><AdminAside menu={ASIDE_MENU} /></div>
+                    <div>
+                        <AdminAside menu={ASIDE_MENU} />
+                    </div>
                     <div className={styles.content}>{children}</div>
                 </div>
-            </PageSectionWrapper>
+            </PageWrapper>
         </PageSection>
     );
 

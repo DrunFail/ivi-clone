@@ -1,64 +1,83 @@
-import React, { useEffect, FC } from "react";
-import styles from "./person.module.scss";
-import Image from "next/image";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPerson, personRequest } from "../../store/person";
-import { getLang } from "../../store/switchLang";
 import { GetStaticProps } from "next";
-import HeadPerson from "../../components/HeadPerson/HeadPerson";
-import { IPerson, IPropsPerson } from "../../models/IPerson";
-import FilmTitle from "../../components/FilmTitle/FilmTitle";
-import FilmList from "../../components/FilmList/FilmList";
+import { PersonFullInfo } from "../../models/IPerson";
 import { getAllPerson, getOnePerson } from "../../api/personApi";
 import { IProps } from "../../models/IPropsMovie";
+import HeadPerson from "../../components/person/HeadPerson/HeadPerson";
+import useMoviePersonData from "../../components/person/hooks/useMoviePersonData";
+import FilmographyList from "../../components/person/FilmographyList/FilmographyList";
+import PersonPageContainer from "../../components/person/PersonPageContainers/PersonPageContainer";
+import PageSection from "../../components/PageContainers/PageSection/PageSection";
+import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
+import PersonPhoto from "../../components/person/PersonPhoto/PersonPhoto";
+import PersonPageNamePerson from "../../components/person/PersonPageNamePerson/PersonPageNamePerson";
+import FilmographyHeader from "../../components/person/FilmographyHeader/FilmographyHeader";
+import FilmographyContainer from "../../components/person/FilmographyContainer/FilmographyContainer";
 
-const Person: FC<IPropsPerson> = ({ persons }): React.ReactElement => {
-    const person = useSelector(getPerson());
-    const dispatch = useDispatch();
-    const lang = useSelector(getLang());
+interface PersonPageProps {
+    persons: PersonFullInfo
+}
+export default function PersonPage({ persons }: PersonPageProps) {
+    //const person = useSelector(getPerson());
 
-    useEffect(() => {
-        dispatch(personRequest(persons));
-    }, [persons]);
 
-    if (!person) {
-        return <></>;
-    }
+    //useEffect(() => {
+    //    dispatch(personRequest(persons));
+    //}, [persons]);
+
+    //const dispatch = useDispatch();
+
+
+    const { personName, personProfession, personPosterUrl, personMovieAmount, personMovieList } = useMoviePersonData({ personData: persons });
+
+    //if (!person) {
+    //    return <></>;
+    //}
 
     return (
         <>
-            <HeadPerson />
-            <div className={styles.Person}>
-                <div className={styles.Person__container}>
-                    <div className={styles.Person__img}>
-                        <Image
-                            src={person?.person?.posterUrl || ""}
-                            width={120}
-                            height={144}
-                            loading="eager"
-                            alt=""
+            <HeadPerson
+                personName={personName}
+                personProfession={personProfession}
+            />
+            <PageSection>
+                <PageWrapper>
+                    <PersonPageContainer>
+                        <PersonPhoto
+                            urlPersonPhoto={personPosterUrl}
+                            variant="profile" />
+                        <PersonPageNamePerson
+                            personName={personName}
                         />
-                    </div>
-                    <h1>
-                        {lang === "Ru" || person?.person?.nameEng == null
-                            ? person?.person?.nameRu
-                            : person?.person?.nameEng}
-                    </h1>
-                    <FilmTitle />
-                    <FilmList />
-                </div>
-            </div>
+                    </PersonPageContainer>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PersonPageContainer>
+                    <FilmographyContainer>
+                        <FilmographyHeader
+                            personMovieAmount={personMovieAmount}
+                        />
+                        <FilmographyList
+                            personMovieList={personMovieList}
+                        />
+                    </FilmographyContainer>
+                </PersonPageContainer>
+            </PageSection>
+
         </>
     );
 };
 
-export default Person;
+
 
 export async function getStaticPaths() {
-    const persons: IPerson[] = await getAllPerson();
+    const persons: PersonFullInfo[] = await getAllPerson();
     let paths: IProps[];
     if (persons.length) {
-        paths = persons?.map((person: IPerson) => ({
+        paths = persons?.map(person => ({
             params: { id: String(person?.person?.id) }
         }));
 
@@ -74,10 +93,10 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    let data: null | IPerson = null;
+    let data: null | PersonFullInfo = null;
     try {
         data = await getOnePerson(String(context?.params?.id || 0));
-    } catch (err) {}
+    } catch (err) { }
 
     if (!data) {
         return {

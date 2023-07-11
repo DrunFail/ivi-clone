@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    grid-auto-rows: 40px;
+
+    button {
+        inline-size: 100%;
+        block-size: 100%;
+    }
+}
+.desktop {
+     grid-template-columns: 160px 40px 40px;
+    column-gap: 10px;
+   
+}
+.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    button:first-child {
+        grid-column: 1/-1;
+    }
+}
+.mobile {
+    grid-template-columns: 100px 40px 40px;
+    block-size: 44px;
+    inline-size: 223px;
+    padding-inline: 10px;
+    padding-block: 4px;
+    border-radius: 0 0 12px 12px;
+    align-items: center;
+    margin-inline: auto;
+    background: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.16));
+
+    button {
+        background-color: transparent;
+        border-radius: 0px;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}

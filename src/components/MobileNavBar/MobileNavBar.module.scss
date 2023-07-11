@@ -1,0 +1,26 @@
+.container {
+    z-index: 1001;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(31,27,46,.88);
+    height: 48px;
+    inline-size: 100%;
+
+    .content {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(40px, 120px);
+        margin-inline: auto;
+        inline-size: max-content;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -287,8 +287,8 @@ export const genres = [
 ];
 
 export const defaultFilter = {
-    genre: "all",
-    country: "all",
+    genre: 0,
+    country: 0,
     rate: 0,
     votes: 0,
     director: "",
@@ -296,6 +296,7 @@ export const defaultFilter = {
     directorId: "-1",
     actorId: "-1",
     sort: "rate"
+    
 };
 
 export const domen = "http://localhost:5000/api/";

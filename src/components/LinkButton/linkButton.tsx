@@ -10,7 +10,7 @@ interface LinkButtonProps {
 }
 
 /** Компонент, содержащий переиспользуемый компонент кнопки со ссылкой. */
-const LinkButton = ({ text, color, link, fake }: LinkButtonProps): React.ReactElement => {
+const LinkButto = ({ text, color, link, fake }: LinkButtonProps): React.ReactElement => {
     return (
         fake
             ? <div className={styles.linkButton + " " + styles.pink} >
@@ -22,4 +22,4 @@ const LinkButton = ({ text, color, link, fake }: LinkButtonProps): React.ReactEl
     );
 };
 
-export default LinkButton;
+export default LinkButto;

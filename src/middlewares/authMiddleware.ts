@@ -7,25 +7,25 @@ export const authMiddleware: MiddlewareFactory = (next) => {
         const refreshToken = request.cookies.get("refreshToken")?.value;
         const url = request.nextUrl.clone();
 
-        //guard для админ страницы
-        if (request.nextUrl.pathname === "/admin") {
-            url.pathname = "/404"
-            if (refreshToken === undefined) {
-                return NextResponse.redirect(url)
-            }
+        ////guard для админ страницы
+        //if (request.nextUrl.pathname === "/admin") {
+        //    url.pathname = "/404"
+        //    if (refreshToken === undefined) {
+        //        return NextResponse.redirect(url)
+        //    }
 
-            try {
-                const decode: { roles: { name: string }[] } = jwtDecode(refreshToken)
-                const roles = decode.roles.map(elem => elem.name);
-                if (roles.includes("USER")) {
-                    return NextResponse.next()
-                } else {
-                    return NextResponse.redirect(url)
-                }
-            } catch (e) {
-                return NextResponse.redirect(url)
-            }
-        }
+        //    try {
+        //        const decode: { roles: { name: string }[] } = jwtDecode(refreshToken)
+        //        const roles = decode.roles.map(elem => elem.name);
+        //        if (roles.includes("USER")) {
+        //            return NextResponse.next()
+        //        } else {
+        //            return NextResponse.redirect(url)
+        //        }
+        //    } catch (e) {
+        //        return NextResponse.redirect(url)
+        //    }
+        //}
 
         //url для редиректа на страницу, с которой был переход на страницу логина
         if (refreshToken === undefined) {

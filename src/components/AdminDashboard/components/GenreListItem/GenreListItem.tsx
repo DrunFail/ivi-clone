@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Modal from "../../../Modal/Modal";
+import { useState } from "react";
+import Modal from "../../../UI/Modal/Modal";
 import EditGenreCard from "../../cards/EditGenreCard/EditGenreCard";
 import styles from "./GenreListItem.module.scss";
 

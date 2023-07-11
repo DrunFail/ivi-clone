@@ -1,10 +1,11 @@
 import { IMovie, IMovieOne } from "../models";
 import { RootState } from "./createStore";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { MoviePageData } from "../models/global";
 export const LOAD_FILM = "LOAD_FILM";
 
 interface IInit {
-    film: IMovie | null;
+    film: MoviePageData| null;
 }
 
 const initialState: IInit = {
@@ -15,7 +16,7 @@ const filmSlice = createSlice({
     name: "film",
     initialState,
     reducers: {
-        filmAction(state: IInit, action: PayloadAction<IMovie>) {
+        filmAction(state: IInit, action: PayloadAction<MoviePageData>) {
             state.film = action.payload;
         }
     }
@@ -24,7 +25,7 @@ const filmSlice = createSlice({
 const { reducer: filmReducer, actions } = filmSlice;
 export const getFilm =
     () =>
-        (state: RootState): IMovie | null =>
+        (state: RootState): MoviePageData | null =>
             state.film.film;
 
 export const { filmAction } = actions;

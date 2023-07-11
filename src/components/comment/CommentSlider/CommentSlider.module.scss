@@ -1,0 +1,57 @@
+.container {
+    display: grid;
+    grid-template-areas: "text button" "slider slider";
+
+    
+
+        .text {
+            display: grid;
+            grid-area: text;
+
+            h1 {
+                font-size: 24px;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 400;
+                line-height: 20px;
+                color: #a5a1b2;
+            }
+        }
+        .slider{
+            grid-area: slider;
+
+        }
+
+        button {
+            grid-area: button;
+            justify-self: flex-end;
+            block-size: 32px;
+            inline-size: 127px;
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            background-color: transparent;
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.72);
+                opacity: 1;
+            }
+           
+        }
+    
+}
+@media only screen and (max-width:600px) {
+    .container {
+        grid-template-areas: "text" "slider" "button";
+        row-gap: 20px;
+        
+        button {
+            inline-size: 100%;
+        }
+    }
+    
+}

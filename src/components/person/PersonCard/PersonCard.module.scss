@@ -1,0 +1,12 @@
+.container{
+    display: grid;
+    justify-items: center;
+    row-gap: 5px;
+    overflow: hidden;
+
+    p{
+        max-inline-size: 10ch;
+        text-align: center;
+    }
+    
+}

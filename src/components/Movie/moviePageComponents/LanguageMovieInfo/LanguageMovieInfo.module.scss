@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    color: hsla(0,0%,100%,.72);
+
+    & p:last-child {
+        color: white;
+    }
+}
+.desktop {
+    row-gap: 4px;
+}
+.tablet{
+    grid-auto-flow: column;
+    align-content: space-between;
+
+    & p:last-child{
+        text-align: end;
+    }
+
+}

@@ -1,10 +1,9 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "./DeleteMovieCard.module.scss";
 import Image from "next/image";
 import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
-import { MovieItemTest } from "../../../MovieList/interfaces/interfaces";
 import ButtonContainer from "../../components/ButtonContainer/ButtonContainer";
+import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
 
 interface DeleteMovieCardProps {
     handleCloseEdit: () => void,
@@ -23,8 +22,6 @@ export default function DeleteMovieCard({handleCloseEdit,elem }:DeleteMovieCardP
         }
         
     }
-
-
     return (
         <div className={styles.container }>
             <h3>Вы действительно хотите удалить фильм?</h3>

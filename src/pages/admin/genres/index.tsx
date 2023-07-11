@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 import AdminLayout from "../../../components/AdminDashboard/AdminLayout/AdminLayout";
 import Genres from "../../../components/AdminDashboard/pages/Genres/Genres";
 
@@ -8,4 +8,8 @@ export default function AdminGenres() {
     );
 }
 
-AdminGenres.Layout = AdminLayout;
+AdminGenres.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <AdminLayout>{page}</AdminLayout>
+    )
+}

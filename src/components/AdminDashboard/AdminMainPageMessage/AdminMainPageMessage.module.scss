@@ -1,0 +1,12 @@
+.container {
+    max-inline-size: 400px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    block-size: 100%;
+    p {
+        font-size: 24px;
+        font-weight: 700;
+        color: #a5a1b2;
+    }
+}

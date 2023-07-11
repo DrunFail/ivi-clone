@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import GenreListItem from "../../components/GenreListItem/GenreListItem";
 import styles from "./Genres.module.scss";
 
@@ -14,7 +14,7 @@ export default function Genres() {
 
     }, [])
 
-console.log(data)
+
     return (
         <div className={styles.container}>
         <h1>Genres List</h1>

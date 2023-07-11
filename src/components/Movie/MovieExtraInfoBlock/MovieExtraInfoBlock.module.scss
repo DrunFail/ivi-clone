@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    row-gap: 16px;
+}
+.tablet{
+    border: none;
+    padding-block: 16px;
+}
+.desktop {
+    border-block: 1px solid white;
+    padding-block: 16px 32px;
+    margin-block: 32px 16px;
+    display: grid;
+    row-gap: 16px;
+}
