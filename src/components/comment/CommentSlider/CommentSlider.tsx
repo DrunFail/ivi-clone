@@ -2,11 +2,10 @@ import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { getFilm } from "../../../store/film";
-import Carousel from "../../Carousel/Carousel";
 import { REVIEWLIST_SIZE } from "../../Movie/MovieList/constants/constants";
+import Carousel from "../../UI/Carousel/Carousel";
 import MyButton from "../../UI/MyButton/MyButton";
 import CommentCard from "../CommentCard/CommentCard";
-import ReviewList from "../components/RevieModal/components/ReviewList";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
 

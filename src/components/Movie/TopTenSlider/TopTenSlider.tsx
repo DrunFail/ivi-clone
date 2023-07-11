@@ -1,4 +1,4 @@
-import Carousel from "../../Carousel/Carousel";
+import Carousel from "../../UI/Carousel/Carousel";
 import { TOP_TEN_SIZES } from "./constants/contants";
 import HeaderTitleTop from "./HeaderTitleTop/HeaderTitleTop";
 import TopTenItem from "./TopTenItem/TopTenItem";

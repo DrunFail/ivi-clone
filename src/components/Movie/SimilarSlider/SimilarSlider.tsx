@@ -1,5 +1,5 @@
 import { ISimiliar } from "../../../models";
-import Carousel from "../../Carousel/Carousel";
+import Carousel from "../../UI/Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import SliderTitle from "../MovieSlider/SliderTitle/SliderTitle";
 import SimilatItem from "./components/SimilarItem";

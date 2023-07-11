@@ -1,14 +1,11 @@
 import useCarousel from "./hooks/useCarousel";
-import React from "react";
 import styles from "./Carousel.module.scss";
 import ButtonControl from "./ButtonControl/ButtonControl";
 import CarouselGallery from "./CarouselGallery/CarouselGallery";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
-import PageSectionContainerInner from "../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
-import { MovieItemTest } from "../Movie/MovieList/interfaces/interfaces";
-import MyButton from "../UI/MyButton/MyButton";
-import { FormattedMessage } from "react-intl";
+import PageSectionContainerInner from "../../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
+import { MovieItemTest } from "../../Movie/MovieList/interfaces/interfaces";
 
 interface CarouselProps {
     mode: "list" | "slider" | "collection";
