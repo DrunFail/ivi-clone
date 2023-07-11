@@ -1,21 +1,47 @@
-import { useEffect, useState } from "react";
-import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
+import FiltersField from "../../../filters/FiltersField/FiltersField";
+import useFilterWatchPage from "../../../filters/hooks/useFiltersWatchPage";
+import SortField from "../../../filters/SortField/SortField";
+import PageSection from "../../../PageContainers/PageSection/PageSection";
 import MovieListAdmin from "../../components/MovieListAdmin/MovieListAdmin";
 
 export default function Movies() {
-    const [data, setData] = useState<MovieItemTest[]>([]);
+    const {
+        currentGenre,
+        genreList,
+        countryList,
+        handleChangeFilterParams,
+        clearFiltersWithoutSort,
+        filteredMovie,
+        currentSortVariant,
+        filterParams
+    } = useFilterWatchPage({ variant: "admin" });
 
-    useEffect(() => {
-        fetch('http://localhost:5000/api/movies?page=1&size=10')
-            .then(res => res.json())
-            .then(data => setData(data.rows))
 
-
-    },[])
 
     return (
         <div>
-            <MovieListAdmin data={data} />
+            <PageSection>
+                <FiltersField
+                    genreObjects={genreList}
+                    countryObjects={countryList}
+                    testHandler={handleChangeFilterParams}
+                    clearFiltersWithoutSort={clearFiltersWithoutSort}
+                    filterParams={filterParams}
+                    variant={"admin"}
+
+                />
+
+                {filteredMovie.length > 0 &&
+                    <SortField
+                        testHandler={handleChangeFilterParams}
+                        currentSortVariant={currentSortVariant}
+                        testId="orderBy"
+
+                    />}
+
+
+            </PageSection>
+            <MovieListAdmin data={filteredMovie} />
         </div>
     );
 }

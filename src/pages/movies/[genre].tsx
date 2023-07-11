@@ -17,7 +17,7 @@ export default function MoviesByGenre() {
         filteredMovie,
         currentSortVariant,
         filterParams
-    } = useFilterWatchPage();
+    } = useFilterWatchPage({variant: "genrePage"});
 
 
     /** Функция вызывает запрос дополнительного набора карточек фильмов. */
@@ -53,6 +53,7 @@ export default function MoviesByGenre() {
                         testHandler={handleChangeFilterParams}
                         clearFiltersWithoutSort={clearFiltersWithoutSort}
                         filterParams={filterParams}
+                        variant={"genrePage" }
                         
                     />
                     

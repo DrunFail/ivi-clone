@@ -108,6 +108,8 @@
   "button.hint.dislike": "dislike",
   "button.hint.watchLater": "watch later",
   "button.hint.rate": "already watched, rate",
+  "button.hint.edit": "edit",
+  "button.hint.delete":  "delete",
 
   "movies": "movies",
   "movie.kinopoiskId": "id",

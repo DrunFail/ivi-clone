@@ -7,16 +7,17 @@ interface DropdownFilterContentProps {
     testId: string;
     onClickHandler: (id: string) => void;
     prop: string;
-    name: "genre" | "country"
+    name: "genre" | "country";
+    variant: "admin" | "genrePage"
 }
 
-export default function DropdownFilterContent({ dataArray, testId, onClickHandler,prop, name }: DropdownFilterContentProps) {
+export default function DropdownFilterContent({ dataArray, testId, onClickHandler,prop, name,variant }: DropdownFilterContentProps) {
     return (
         <div className={styles.container}>
             {dataArray && dataArray.map((item, idx) =>
                 <>
                     {
-                        testId === "genreId"
+                        testId === "genreId" && variant === "genrePage"
                             ? <Link
                                 className={styles.dropdownItem }
                                 key={idx}

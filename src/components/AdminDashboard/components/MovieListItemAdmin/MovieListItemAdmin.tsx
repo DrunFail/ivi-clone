@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { FaTrash, FaPenSquare } from "react-icons/fa";
 import EditMovieCard from "../../cards/EditMovieCard/EditMovieCard";
 import DeleteMovieCard from "../../cards/DeleteMovieCard/DeleteMovieCard";
 import MovieListItem from "../../../Movie/MovieList/components/MovieListItem/MovieListItem";
 import OverlayMovieListItem from "../../../Movie/MovieList/components/OverlayMovieListItem/OverlayMovieListItem";
 import Modal from "../../../UI/Modal/Modal";
 import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
+import ButtonEditWithHint from "../ButtonEditWithHint/ButtonEditWithHint";
+import ButtonDeleteWithHint from "../ButtonDeleteWithHint/ButtonDeleteWithHint";
 
 interface MovieListItemAdminProps {
     elem: MovieItemTest
 }
-
 
 export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
     const [editVisible, setEditVisible] = useState(false);
@@ -29,13 +28,8 @@ export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
         <div>
             <MovieListItem movieItem={elem}>
                 <OverlayMovieListItem movieItem={elem} infoVisible={false }>
-
-                    <ButtonActionOverlay description={<FormattedMessage id="button.edit" />} actionHandler={editMovieHandler }>
-                        <FaPenSquare color="white" fontSize="16px" />
-                    </ButtonActionOverlay>
-                    <ButtonActionOverlay description={<FormattedMessage id="button.delete" />} actionHandler={deleteMovieHandler }>
-                        <FaTrash color="white" fontSize="16px"/>
-                    </ButtonActionOverlay>
+                    <ButtonEditWithHint onClickHandler={editMovieHandler} />
+                    <ButtonDeleteWithHint onClickHandler={deleteMovieHandler} />
                 </OverlayMovieListItem>
             </MovieListItem>
 

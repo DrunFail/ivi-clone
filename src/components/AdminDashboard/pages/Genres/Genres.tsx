@@ -14,7 +14,7 @@ export default function Genres() {
 
     }, [])
 
-console.log(data)
+
     return (
         <div className={styles.container}>
         <h1>Genres List</h1>

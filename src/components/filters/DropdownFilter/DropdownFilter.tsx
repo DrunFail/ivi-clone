@@ -11,10 +11,11 @@ interface DropdownFilterProps {
     clearArray?: any,
     testId: string,
     testHandler: (filterKey: string, filterValue: string) => void;
-    initValue: number
+    initValue: number;
+    variant: "admin" | "genrePage"
 }
 
-export default function DropdownFilter({ name, clearArray, testId, testHandler, initValue }: DropdownFilterProps) {
+export default function DropdownFilter({ name, clearArray, testId, testHandler, initValue,variant }: DropdownFilterProps) {
     const prop = name + "NameEng";
 
     const handleClick = (id: string) => {
@@ -41,6 +42,7 @@ export default function DropdownFilter({ name, clearArray, testId, testHandler, 
                                 onClickHandler={handleClick}
                                 prop={prop}
                                 name={name}
+                                variant={variant }
                             />
                         </BackgroundContainer>
                     </PositionContainer>

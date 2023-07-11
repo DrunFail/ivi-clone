@@ -14,13 +14,15 @@ interface FiltersFieldProps {
     clearFiltersWithoutSort: () => void;
     testHandler: (filterKey: string, filterValue: string | number) => void,
     filterParams: FilterParams,
+    variant: "admin" | "genrePage"
 }
 export default function FiltersField({
     genreObjects,
     countryObjects,
     filterParams,
     clearFiltersWithoutSort,
-    testHandler
+    testHandler,
+    variant
 
 }: FiltersFieldProps) {
 
@@ -35,6 +37,7 @@ export default function FiltersField({
                     first={true}
                     testHandler={testHandler}
                     initValue={filterParams.genreId}
+                    variant={variant }
                 />
             </BackgroundContainer>
             <BackgroundContainer>
@@ -45,6 +48,7 @@ export default function FiltersField({
                     first={false}
                     testHandler={testHandler}
                     initValue={filterParams.countryId}
+                    variant={variant }
                 />
             </BackgroundContainer>
             <BackgroundContainer>
@@ -87,7 +91,8 @@ export default function FiltersField({
                 </BackgroundContainer>
             </GridAreaContainer>
             <ResetFilter
-                resetHandler={clearFiltersWithoutSort} />
+                resetHandler={clearFiltersWithoutSort}
+                variant={variant }            />
 
         </div>
 

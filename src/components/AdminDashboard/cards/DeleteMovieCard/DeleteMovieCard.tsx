@@ -22,8 +22,6 @@ export default function DeleteMovieCard({handleCloseEdit,elem }:DeleteMovieCardP
         }
         
     }
-
-
     return (
         <div className={styles.container }>
             <h3>Вы действительно хотите удалить фильм?</h3>

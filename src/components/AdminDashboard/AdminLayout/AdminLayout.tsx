@@ -1,4 +1,5 @@
 import { FormattedMessage } from "react-intl";
+import HeaderLogo from "../../Header/components/HeaderLogo/HeaderLogo";
 import PageSection from "../../PageContainers/PageSection/PageSection";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 import AdminAside from "../components/AdminAside/AdminAside";
@@ -22,9 +23,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return (
         <PageSection>
             <PageWrapper>
-                <h1 className={styles.title }><FormattedMessage id="admin.heading" /></h1>
+                <div style={{ display: "flex", columnGap: "40px" }}>
+                    <HeaderLogo />
+                    <h1 className={styles.title}><FormattedMessage id="admin.heading" /></h1>
+                </div>
                 <div className={styles.container}>
-                    <div><AdminAside menu={ASIDE_MENU} /></div>
+                    <div>
+                        <AdminAside menu={ASIDE_MENU} />
+                    </div>
                     <div className={styles.content}>{children}</div>
                 </div>
             </PageWrapper>

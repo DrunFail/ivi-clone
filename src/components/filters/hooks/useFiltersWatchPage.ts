@@ -32,7 +32,7 @@ export interface FilterParams {
 }
 
 
-export default function useFilterWatchPage() {
+export default function useFilterWatchPage({ variant = "genrePage" }: {variant?: "admin" | "genrePage"}) {
     const [genreList, setGenreList] = useState<IGenreObject[]>([]);
     const [countryList, setCountyList] = useState([]);
     const [filterParams, setFilterParams] = useState<FilterParams>(initParamsForFilter);
@@ -82,7 +82,7 @@ export default function useFilterWatchPage() {
 
             let currentGenreId: number;
 
-            if (currentGenr !== "all") {
+            if (currentGenr !== "all" && variant !== "admin") {
 
                 const isExistingGenre = genreList.find(item => item.genreNameEng.toLowerCase() === currentGenr.toLowerCase());
                 if (isExistingGenre) {
@@ -92,7 +92,7 @@ export default function useFilterWatchPage() {
                     router.push('/404')
                 }
             }
-            if (currentGenr === "all") {
+            if (currentGenr === "all" || variant === "admin") {
                 setFilterParams({ ...initParamsForFilter, size: pageSize })
             }
         }
