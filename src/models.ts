@@ -148,8 +148,8 @@ export interface IMixedObject {
 }
 
 export interface IFilterParams {
-    genre: string;
-    country: string;
+    genre: number;
+    country: number;
     rate: number;
     votes: number;
     director: string;

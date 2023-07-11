@@ -1,0 +1,21 @@
+.clearFilters {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    svg {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    transition: color 0.3s ease 0s;
+
+    @media (hover: hover) {
+        &:hover {
+            color: #c4053a;
+        }
+    }
+}

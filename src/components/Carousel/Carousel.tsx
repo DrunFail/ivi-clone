@@ -46,7 +46,6 @@ export default function Carousel({
         sizes,
         count
     });
-    console.log("carousel", data)
     return (
         <PageSectionContainerInner>
             <div className={styles.container}>

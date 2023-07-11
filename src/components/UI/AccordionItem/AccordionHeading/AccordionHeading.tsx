@@ -4,12 +4,18 @@ import styles from "./AccordionHeading.module.scss";
 interface AccordionHeadingProps {
     toggleVisible: () => void;
     isOpen: boolean;
-    children: React.ReactNode
+    children: React.ReactNode;
+    variant: "content" | "spaceBetween"
 }
 
-export default function AccordionHeading({ toggleVisible, isOpen, children }: AccordionHeadingProps) {
+export default function AccordionHeading({ toggleVisible, isOpen, children, variant="content" }: AccordionHeadingProps) {
+    const defaultClasses = `
+    ${styles.container}
+    ${styles[variant]}
+    `
+
     return (
-        <div className={styles.container} onClick={toggleVisible}>
+        <div className={defaultClasses} onClick={toggleVisible}>
             {children}
             <Arrow visible={isOpen} />
         </div>
