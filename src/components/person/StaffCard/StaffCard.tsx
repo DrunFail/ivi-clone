@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { IStaff } from "../../../../models";
 import styles from "./StaffCard.module.scss";
+import { IStaff } from "../../../models";
 
 interface StaffCardProps {
     elem: IStaff
 }
 export default function StaffCard({ elem }: StaffCardProps) {
-    console.log('staff', elem)
     return (
         <div className={styles.container}>
             <div>

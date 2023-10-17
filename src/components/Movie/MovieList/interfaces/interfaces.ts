@@ -24,7 +24,7 @@ export interface RaitingArray {
 interface Country {
     id: number,
     countryNameRu: string,
-    countryNameEnd: string
+    countryNameEng: string
 }
 
 interface Genre {
