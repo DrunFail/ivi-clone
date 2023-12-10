@@ -3,8 +3,8 @@ import styles from "./AskIvi.module.scss";
 
 export default function AskIvi() {
     return (
-        <div className={styles.container }>
-            <h4>ask.ivi</h4>
+        <div className={styles.container } data-testid="ask-ivi">
+            <h3>ask.ivi</h3>
             <p>
                 <FormattedMessage id="AnswersOnQuestions" />
             </p>

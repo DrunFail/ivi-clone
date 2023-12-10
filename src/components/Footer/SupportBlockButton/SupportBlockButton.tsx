@@ -9,7 +9,7 @@ export default function SupportBlockButton({ variant }: {variant: "desktop" | "t
     `
 
     return (
-        <div className={defaultClasses}>
+        <div className={defaultClasses} data-testid="btns-support-block">
             <ButtonChat />
             <ButtonCall />
             <ButtonMail />
