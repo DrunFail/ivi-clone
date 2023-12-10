@@ -5,9 +5,6 @@ import { FormattedMessage } from "react-intl";
 import styles from "./AdminAside.module.scss";
 
 
-
-
-
 export default function AdminAside({ menu }: { menu: { id: number, name: string, link: string }[] }) {
     const [currentLink, setCurrentLink] = useState("");
 

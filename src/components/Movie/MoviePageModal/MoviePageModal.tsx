@@ -62,7 +62,7 @@ const comm = [
 
 
 export default function MoviePageModal({ visible, type, film, callback, movieTitle, movieYear }: MoviePageModalProps) {
-
+    console.log(film)
 
     return (
         <Modal visible={visible} callback={callback}>

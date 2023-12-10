@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    align-items: center;
+    block-size: 100%;
+
+    & > img {
+        opacity: 0.5;
+    }
+}

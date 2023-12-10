@@ -1,17 +1,35 @@
-import AvailableDevicesButtonBlock from "./AvailableDevicesButtonBlock/AvailableDevicesButtonBlock";
-import ButtonSocialBlock from "./ButtonSocialBlock/ButtonSocialBlock";
-import FooterBottomContainer from "./FooterBottomContainer/FooterBottomContainer";
-import FooterTop from "./FooterTop/FooterTop";
+import styles from "./Footer.module.scss";
+import SupportBlock from "./SupportBlock/SupportBlock";
+import WatchMoviesLink from "./WatchMoviesLink/WatchMoviesLink";
+import { FOOTER_NAV_MENU } from "./constants/footerConstants";
+import DropdownList from "../UI/DropdownList/DropdownList";
+import ButtonSocialBlock from "../UI/ButtonSocialBlock/ButtonSocialBlock";
+import DownloadAppLinkBlock from "../UI/DownloadAppLinkBlock/DownloadAppLinkBlock";
 
 
 export default function Footer() {
     return (
-        <>
-            <FooterTop />
-            <FooterBottomContainer>
-                <AvailableDevicesButtonBlock variant="desktop" />
+        <footer data-testid="main-footer">
+            <div className={styles.top}>
+                {FOOTER_NAV_MENU.map((elem, idx) =>
+                    <DropdownList
+                        key={idx}
+                        linkDataList={elem.data.menu}
+                        title={`footer.${elem.name}`}
+                        oneColumn
+                        intlPrefix="footer"
+                        testId={elem.name }
+                    />
+                )}
+                <SupportBlock
+                    variant="desktop" />
+                <WatchMoviesLink />
+            </div>
+            <div className={styles.bottom}>
+                <DownloadAppLinkBlock
+                    variant="desktop" />
                 <ButtonSocialBlock />
-            </FooterBottomContainer>
-        </>
+            </div>
+        </footer>
     );
 };

@@ -5,11 +5,15 @@
     margin-top: 80px;
     min-width: 100%;
     overflow-y: auto;
-    gap: 10px;
     overflow-x: hidden;
     background: var(--clr-dark-blue);
     padding-inline: 20px;
-    row-gap: 30px;
+    justify-items: center;
+
+    & > * {
+        border-top: 2px solid #312b45;
+        padding-block: 32px;
+    }
 
     @media screen and (max-width: "1000px") {
         margin-bottom: 18px;

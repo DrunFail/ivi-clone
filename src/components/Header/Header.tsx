@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
 import { useResize } from "../../hooks/useResize";
 import LanguageSwitcher from "../UI/LanguageSwitcher/LanguageSwitcher";
-import MyButton from "../UI/MyButton/MyButton";
 import HeaderLogo from "./components/HeaderLogo/HeaderLogo";
-import HeaderNavbarWithDropdown from "./components/navbar/HeaderNavbarWithDropdown/HeaderNavbarWithDropdown";
-import ProfileBlockIconWithDropdown from "./components/profile/ProfileBlockIconWithDropdown/ProfileBlockIconWithDropdown";
-import SearchWithModal from "./components/search/SearchWithModal/SearchWithModal";
 import { NAV_MENU } from "./constants/headerConstants";
 import styles from "./Header.module.scss";
+import { BsSearch } from "react-icons/bs";
+import SearchButtonWithModal from "./components/SearchButtonWithModal/SearchButtonWithModal";
+import HeaderPortalContainer from "./portal/HeaderPortalContainer";
+import ProfileIconWithDropdown from "./components/ProfileIconWithDropdown/ProfileIconWithDropdown";
+import NavbarWithDropdown from "./components/NavbarWithDropdown/NavbarWithDropdown";
+import ButtonSubscription from "./components/ButtonSubscription/ButtonSubscription";
 
 
 export default function Header() {
@@ -21,39 +22,43 @@ export default function Header() {
     }
 
     return (
+        <header>
+            <div className={styles[headerIsHover ? "hover" : "no-hover"]} >
+                <div className={styles.content}>
+                    <HeaderLogo />
+                    <div className={styles.navbar}>
+                        {size > 1160 &&
+                            <NavbarWithDropdown
+                                navLinkData={NAV_MENU}
+                                handlerHeaderHover={handlerHeaderHover}
+                            />
+                        }
+                    </div>
+                    {size > 1160 &&
 
-        <div className={`${styles.content} ${styles[headerIsHover ? "hover" : ""]}`} >
-            <HeaderLogo />
-            <div style={{ display: "flex", blockSize: "100%" }}>
-                {size > 1160 &&
+                        <>
+                         <ButtonSubscription />
 
-                    <HeaderNavbarWithDropdown
-                    navLinkData={NAV_MENU}
-                    handlerHeaderHover={handlerHeaderHover} />
+                    <SearchButtonWithModal>
+                        <BsSearch />
+                        <p>
+                            {" "}
+                            <FormattedMessage id="Search" />
+                        </p>
+                    </SearchButtonWithModal>
 
-                }
+                    <ProfileIconWithDropdown
+                        handlerHeaderHover={handlerHeaderHover} />
+                    </>
+                    }
+                   
+                   
+
+                    <LanguageSwitcher />
+                </div>
+                <HeaderPortalContainer />
             </div>
-            <MyButton type="button">
-                <FormattedMessage id="PayForASubscription" />
-            </MyButton>
-
-            <SearchWithModal>
-                <BsSearch />
-                <p>
-               {" "}
-                   <FormattedMessage id="Search" />
-                </p>
-            </SearchWithModal>
-
-            <ProfileBlockIconWithDropdown handlerHeaderHover={handlerHeaderHover} />
-
-
-
-
-            <LanguageSwitcher />
-
-        </div>
-
+        </header>
 
     );
 };

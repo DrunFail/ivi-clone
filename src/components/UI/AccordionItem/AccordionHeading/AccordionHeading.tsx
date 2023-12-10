@@ -5,7 +5,7 @@ interface AccordionHeadingProps {
     toggleVisible: () => void;
     isOpen: boolean;
     children: React.ReactNode;
-    variant: "content" | "spaceBetween"
+    variant?: "content" | "spaceBetween"
 }
 
 export default function AccordionHeading({ toggleVisible, isOpen, children, variant="content" }: AccordionHeadingProps) {

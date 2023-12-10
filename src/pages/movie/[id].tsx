@@ -36,7 +36,7 @@ export default function Movie({ movies }: MovieProps) {
     const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating } = useMoviePageData({ movieData: movies });
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
     const size = useResize();
-
+    console.log(movies)
 
     return (
         <>

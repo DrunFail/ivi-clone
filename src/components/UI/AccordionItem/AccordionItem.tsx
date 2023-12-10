@@ -6,10 +6,11 @@ import AccordionHeading from "./AccordionHeading/AccordionHeading";
 interface AccordionItemProps {
     heading: React.ReactNode;
     content: React.ReactNode;
-    headingVariant: "content" | "spaceBetween";
-    outClick?: boolean
+    headingVariant?: "content" | "spaceBetween";
+    outClick?: boolean;
+    testId?: string
 }
-export default function AccordionItem({heading,content, headingVariant, outClick=false }:AccordionItemProps) {
+export default function AccordionItem({heading,content, headingVariant, outClick=false,testId }:AccordionItemProps) {
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => {
         setIsOpen(isOpen => !isOpen)
@@ -24,7 +25,7 @@ export default function AccordionItem({heading,content, headingVariant, outClick
     useOutsideClick(ref, closeDropdown)
 
     return (
-        <div ref={ref }>
+        <div ref={ref} data-testId={testId ?? "" }>
             <AccordionHeading toggleVisible={toggleOpen} isOpen={isOpen} variant={headingVariant }>
                 {heading }
             </AccordionHeading>

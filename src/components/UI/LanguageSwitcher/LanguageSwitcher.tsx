@@ -22,6 +22,7 @@ const SwitchButton = () => {
                 onMouseOut={() => hoverVisible(false)}
                 onClick={() => hoverVisible(!visible)}
                 className={styles.SwitchButton}
+                data-testid="lng-switcher"
             >
                 <p className={styles.SwitchButton__text}>{lang}</p>
                 {visible ? (

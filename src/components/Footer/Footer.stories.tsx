@@ -3,20 +3,39 @@ import { Provider } from 'react-redux';
 import store from '../../store/createStore';
 import WrapperIntl from '../WrapperIntl/WrapperIntl';
 import Footer from "./Footer";
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Footer> = {
-    title: 'Footer',
+    title: 'footer/Footer',
     component: Footer,
+    decorators: [
+        Story => 
+            <Provider store={store}>
+                <WrapperIntl>
+                    <Story />
+                </WrapperIntl>
+            </Provider>
+    ]
 };
 
 export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Primary: Story = {
-    render: () =>
-        <Provider store={store}>
-            <WrapperIntl>
-                <Footer />
-            </WrapperIntl>
-        </Provider>
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const aboutNav = canvas.getByTestId('about')
+        const partsNav = canvas.getByTestId('parts')
+        const supportBlock = canvas.getByTestId('support-block')
+        const watchLink = canvas.getByTestId('watch-movies-link')
+        const dwnldLinks = canvas.getByTestId('dwnld-app-links')
+        const btnSocialBlock = canvas.getByTestId('btn-social-block')
+        await expect(aboutNav).toBeInTheDocument()
+        await expect(partsNav).toBeInTheDocument()
+        await expect(supportBlock).toBeInTheDocument()
+        await expect(watchLink).toBeInTheDocument()
+        await expect(dwnldLinks).toBeInTheDocument()
+        await expect(btnSocialBlock).toBeInTheDocument()
+    }
 };
