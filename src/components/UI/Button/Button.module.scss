@@ -1,0 +1,31 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 40px;
+    inline-size: auto;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dark {
+    background-color: #1f1b2e;
+
+    &:hover {
+        background-color: #2e2844;
+    }
+}
+
+
+.red {
+    background-color: #ea003d;
+
+    &:hover {
+        background-color: #ff0f4d;
+    }
+}
