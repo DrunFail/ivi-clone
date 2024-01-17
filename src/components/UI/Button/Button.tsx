@@ -1,23 +1,21 @@
 import Link from "next/link";
 import styles from "./Button.module.scss";
 
-
 type BaseProps = {
     color?: "dark" | "red",
     children?: React.ReactNode,
     className?: string,
-    onlyImage?: boolean
-
+    onlyImage?: boolean,
 }
 
-type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>,keyof BaseProps> & {
-    type: "button" | "submit",
-    as: "button"
+type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
+    as?: "button"
 }
 
-type LinkProps = BaseProps & Omit<typeof Link, keyof BaseProps> & {
-    href: string,
-    as: "link"
+type LinkProps = BaseProps & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> & {
+    as: "link",
+    href: string
+
 }
 
 type ButtonOrLink = ButtonProps | LinkProps
@@ -25,36 +23,38 @@ type ButtonOrLink = ButtonProps | LinkProps
 type ButtonTest<T> = T extends { as: "button" } ? ButtonProps : LinkProps
 
 
+export default function Button(props : ButtonOrLink) {
 
-export default function Button({ children, className, color = "dark", onlyImage = false, ...rest }: ButtonTest<ButtonOrLink>) {
-    const { as } = rest
-
-    const defaultClasses = onlyImage
+    const defaultClasses = props.onlyImage
         ? ``
         : ` ${styles.button}
-            ${styles[color]}`
+            ${styles[props.color ?? "dark"]}`
 
-    const mergeClasses = defaultClasses + ' ' + (className ?? " ")
+    const mergeClasses = defaultClasses + ' ' + (props.className ?? " ")
 
-    return (
-        <>
-            {as === "button" &&
-                <button
-                    className={mergeClasses}
-                    {...rest}
-                >
-                    {children}
-                </button>
-            }
+    if (props.as === "link") {
 
-            {as === "link" &&
-                <Link
-                    className={mergeClasses}
-                    {...rest}
-                >
-                    {children}
-                </Link>
-            }
-        </>
-    );
+        const { children, className, color, onlyImage, as, href, ...rest } = props
+
+        return (
+            <Link
+                className={mergeClasses}
+                href={href}
+                {...rest}
+            >
+                {children}
+            </Link>
+        )
+    } else {
+        const { children, className, color, onlyImage, as, ...rest } = props
+        return (
+            <button
+                className={mergeClasses}
+                {...rest}
+            >
+                {children}
+            </button>
+        )
+    }
+
 }
