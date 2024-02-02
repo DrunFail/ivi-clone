@@ -1,7 +1,7 @@
 import { isAxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import AuthService from "../services/auth.service";
+import { AuthAPI } from "../../../api/AuthAPI";
 
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
 const PWD_REGEX = /^[a-zA-Z0-9А-я]{4,16}$/;
@@ -61,11 +61,8 @@ export default function useRegistration() {
             return
         }
         try {
-            const response = await AuthService.register(email, password);
-
-
+            const response = await AuthAPI.registration({email,password})
             router.push('/auth/login');
-
         } catch (error) {
             if (isAxiosError(error)) {
                 if (!error?.response) {

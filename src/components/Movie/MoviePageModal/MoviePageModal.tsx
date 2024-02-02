@@ -16,11 +16,12 @@ import MoviePoster from "../MoviePoster/MoviePoster";
 import TabTitle from "../../componentsTab/TabTitle/TabTitle";
 import CreatersTab from "../../componentsTab/CreatersTab/CreatersTab";
 import TrailerTab from "../../componentsTab/TrailerTab/TrailerTab";
+import { MovieById } from "../../../models/types";
 
 interface MoviePageModalProps {
     visible: boolean;
     type: string;
-    film: MoviePageData;
+    film: MovieById;
     callback: () => void;
     movieTitle: string;
     movieYear: number

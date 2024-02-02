@@ -1,16 +1,18 @@
 import { axiosAuth } from "../lib/axios";
+import { ResponseWithCountAndRows } from "../models/response";
+import { Country, Genre, Movie, MovieById, MovieSuggest } from "../models/types";
 
 
 export const MovieAPI = {
     getMovieById: async (movieId: string) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<MovieById>({
             url: `/api/movies/about/${movieId}`,
             method: "get"
         })
         return response.data
     },
     getMovieListByName: async (movieName: string) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<MovieSuggest[]>({
             url: `/api/movies/name`,
             method: "get",
             params: {
@@ -27,7 +29,7 @@ export const MovieAPI = {
         return response.data.rows
     },
     getFilteredMovie: async (filterParams: unknown) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<ResponseWithCountAndRows<Movie>>({
             url: `/api/movies/filters`,
             method: "get",
             params: filterParams
@@ -56,7 +58,7 @@ export const MovieAPI = {
         return response.data
     },
     getGenreList: async () => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<Genre[]>({
             url: `/api/movies/genres`,
             method: "get"
         })
@@ -84,11 +86,11 @@ export const MovieAPI = {
         return response
     },
     getCountryList: async () => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<Country[]>({
             url: `/api/movies/countries`,
             method: "get"
         })
-        return response
+        return response.data
     },
     getCountryById: async (countryId: number) => {
         const response = await axiosAuth.request({

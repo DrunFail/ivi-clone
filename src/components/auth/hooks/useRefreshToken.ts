@@ -1,8 +1,6 @@
-import { AxiosResponse } from "axios";
-import { axiosAuth } from "../../../lib/axios";
 import { AuthContextData } from "../context/interfaces";
-import AuthService from "../services/auth.service";
 import useAuth from "./useAuth";
+import { AuthAPI } from "../../../api/AuthAPI";
 
 const useRefreshToken = () => {
     const authValue = useAuth();
@@ -10,7 +8,7 @@ const useRefreshToken = () => {
     const setAuth = authValue.setAuth;
 
     const refresh = async () => {
-        const response:AxiosResponse<AuthContextData> = await AuthService.refresh();
+        const response = await AuthAPI.refresh();
         setAuth((prev:AuthContextData) => {
             return { ...prev, token: response.data.token };
         });

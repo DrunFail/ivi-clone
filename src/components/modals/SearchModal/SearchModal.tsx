@@ -5,19 +5,18 @@ import DefaultSearchResult from "./components/DefaultSearchResult/DefaultSearchR
 import SearchResult from "./components/SearchResult/SearchResult";
 import Modal from "../../UI/Modal/Modal";
 import MyInput from "../../UI/MyInput/MyInput";
-import { IData } from "../../../models/IApi";
-import { IMovieOne } from "../../../models";
-import { trotl } from "../../../api/searchApi";
+import { MovieAPI } from "../../../api/MovieAPI";
+import { MovieSuggest } from "../../../models/types";
 
 interface SearchModalProps {
     visible: boolean,
     handleVisible: () => void
 }
 export default function SearchModal({visible, handleVisible }: SearchModalProps) {
-    const [search, setSearch] = useState<IMovieOne[]>();
+    const [search, setSearch] = useState<MovieSuggest[]>();
     const searchFn = async (query: string) => {
-        const res: IData<IMovieOne[]> | undefined = await trotl(query);
-        setSearch(res?.data);
+        const response = await MovieAPI.getMovieListByName(query)
+        setSearch(response)
     };
     return (
         <Modal callback={handleVisible} visible={visible}>

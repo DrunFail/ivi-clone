@@ -11,7 +11,7 @@ interface DropdownFilterProps {
     clearArray?: any,
     testId: string,
     testHandler: (filterKey: string, filterValue: string) => void;
-    initValue: number;
+    initValue: number | null;
     variant: "admin" | "genrePage"
 }
 
@@ -29,7 +29,7 @@ export default function DropdownFilter({ name, clearArray, testId, testHandler, 
                 heading={
                     <div>
                         <FilterName intlId={testId} />
-                        <SelectedFilterValue variant={"intlId"} intlId={`${name}.${initValue}.title`} />
+                        <SelectedFilterValue variant={"intlId"} intlId={`${name}.${initValue ?? 0}.title`} />
                     </div>
                 }
                 headingVariant={"spaceBetween"}

@@ -1,14 +1,9 @@
-import  { useEffect, useState } from "react";
 import SliderTitle from "./SliderTitle/SliderTitle";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
-import { MovieItemTest } from "../MovieList/interfaces/interfaces";
 import MovieListItemWithLink from "../MovieList/components/MovieListItemWithLink/MovieListItemWithLink";
 import Carousel from "../../UI/Carousel/Carousel";
+import useMovieSlider from "./hooks/useMovieSlider";
 
-interface TestData {
-    count: number,
-    rows: MovieItemTest[]
-}
 
 interface MovieSliderProps {
     carouselId: string,
@@ -18,13 +13,7 @@ interface MovieSliderProps {
 }
 
 export default function MovieSlider({ carouselId, href, headingTitle, genreId }: MovieSliderProps) {
-    const [data, setData] = useState<TestData>();
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/movies/filters?genreId=${genreId}`)
-            .then(res => res.json())
-            .then(data => setData(data));
-    }, []);
+    const data = useMovieSlider(genreId);
 
     if(!data) return <></>
 
@@ -34,8 +23,8 @@ export default function MovieSlider({ carouselId, href, headingTitle, genreId }:
             <Carousel
                 mode={"slider"}
                 carouselId={carouselId}
-                data={data?.rows}
-                count={data?.count}
+                data={data.rows}
+                count={data.count}
                 sizes={MOVIE_LIST_SIZES}
                 href={href}
                 component={MovieListItemWithLink} />

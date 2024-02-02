@@ -1,8 +1,9 @@
 import { axiosAuth } from "../lib/axios"
+import { AuthLoginResponse, AuthRefreshResponse, AuthRegistrationResponse } from "../models/types"
 
 export const AuthAPI = {
     registration: async (userRegistrationData: {email:string, password: string}) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<AuthRegistrationResponse>({
             url: `/api/auth/registration`,
             method: "post",
             data: userRegistrationData
@@ -10,7 +11,7 @@ export const AuthAPI = {
         return response
     },
     login: async (userLoginData: {email:string, password:string}) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<AuthLoginResponse>({
             url: `/api/auth/login`,
             method: "post",
             data: userLoginData
@@ -25,7 +26,7 @@ export const AuthAPI = {
         return response
     },
     refresh: async () => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<AuthRefreshResponse>({
             url: `/api/auth/refresh`,
             method: "post"
         })
