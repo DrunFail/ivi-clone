@@ -1,6 +1,6 @@
 import { axiosAuth } from "../lib/axios";
 import { ResponseWithCountAndRows } from "../models/response";
-import { Movie, MovieById } from "../models/types";
+import { Country, Genre, Movie, MovieById } from "../models/types";
 
 
 export const MovieAPI = {
@@ -58,7 +58,7 @@ export const MovieAPI = {
         return response.data
     },
     getGenreList: async () => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<Genre[]>({
             url: `/api/movies/genres`,
             method: "get"
         })
@@ -86,11 +86,11 @@ export const MovieAPI = {
         return response
     },
     getCountryList: async () => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<Country[]>({
             url: `/api/movies/countries`,
             method: "get"
         })
-        return response
+        return response.data
     },
     getCountryById: async (countryId: number) => {
         const response = await axiosAuth.request({

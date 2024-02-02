@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../hooks/useDebounce";
 import useOutsideClick from "../../../hooks/useOutsideClick";
-import { axiosAuth } from "../../../lib/axios";
-import { ISuggestObject } from "../../../models";
 import ButtonClose from "../../UI/ButtonClose/ButtonClose";
 import FilterInput from "../../UI/FilterInput/FilterInput";
 import BackgroundContainer from "../components/BackgroundContainer/BackgroundContainer";
@@ -11,11 +9,13 @@ import PositionContainer from "../components/PositionContainer/PositionContainer
 import SelectedFilterValue from "../components/SelectedFilterValue/SelectedFilterValue";
 import styles from "./InputFilterWithAutoSuggest.module.scss";
 import SuggestContent from "./SuggestContent/SuggestContent";
+import { PersonSuggest } from "../../../models/types";
+import { NewPersonAPI } from "../../../api/newPersonAPI";
 
 interface InputFilterProps {
     testHandler: (filterKey: string, filterValue: string | number) => void;
     testId: "actorId" | "directorId",
-    currentId: number,
+    currentId: number | null,
 }
 
 const profession = {
@@ -23,25 +23,24 @@ const profession = {
     directorId: "режиссер"
 }
 export default function InputFilterWithAutoSuggest({ testHandler, testId, currentId }: InputFilterProps) {
-    const [suggestions, setSuggestions] = useState<ISuggestObject[]>([]);
+    const [suggestions, setSuggestions] = useState<PersonSuggest[]>([]);
     const [isOpen, setIsOpen] = useState(false);
     const [queryParams, setQueryParams] = useState({ profession: profession[testId], name: "", size: 6 });
-    const [selected, setSelected] = useState<ISuggestObject | null>(null)
+    const [selected, setSelected] = useState<PersonSuggest | null>(null)
     const debouncedQueryParams = useDebounce(queryParams, 300);
 
 
     useEffect(() => {
         if (queryParams.name) {
-            const params = new URLSearchParams(debouncedQueryParams).toString()
-            const fetchPersons = async (params: string) => {
+            const fetchPersons = async (params: typeof debouncedQueryParams) => {
                 try {
-                    const res = await axiosAuth.get(`/api/persons/search?${params}`);
-                    setSuggestions(res.data.rows)
+                    const response = await NewPersonAPI.getPersonSuggest(params)
+                    setSuggestions(response.rows)
                 } catch (error) {
                     console.log(error)
                 }
             }
-            fetchPersons(params)
+            fetchPersons(debouncedQueryParams)
         }
     }, [debouncedQueryParams.name])
 
@@ -59,7 +58,7 @@ export default function InputFilterWithAutoSuggest({ testHandler, testId, curren
     useOutsideClick(inputContainerRef, handleBlur)
 
 
-    const handleClick = (suggestion: ISuggestObject) => {
+    const handleClick = (suggestion: PersonSuggest) => {
         setQueryParams({ ...queryParams, name: suggestion.nameRu })
         testHandler(testId, suggestion.personId);
         setSelected(suggestion)
@@ -84,7 +83,7 @@ export default function InputFilterWithAutoSuggest({ testHandler, testId, curren
                 ? <div style={{ display: "flex", alignItems: "center" }}>
                     <SelectedFilterValue
                         variant={"value"}
-                        intlId={selected?.nameRu}
+                        intlId={selected?.nameRu ?? ""}
                     />
                     <ButtonClose
                         style={{ blockSize: "20px", inlineSize: "20px", fontSize: "16px" }}

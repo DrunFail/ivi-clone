@@ -1,16 +1,16 @@
 import { useRouter } from "next/router";
 import {  useEffect, useState } from "react"
-import { axiosAuth } from "../../../lib/axios";
-import { IGenreObject, IMovieFromMoviesList } from "../../../models";
+import { MovieAPI } from "../../../api/MovieAPI";
+import { Country, Genre, Movie } from "../../../models/types";
 
 const initParamsForFilter:FilterParams = {
     page: 0,
-    genreId: 0,
-    countryId: 0,
-    director: "",
-    actor: "",
-    directorId: 0,
-    actorId: 0,
+    genreId: null,
+    countryId: null,
+    director: null,
+    actor: null,
+    directorId: null,
+    actorId: null,
     ratingKinopoisk: 5,
     ratingKinopoiskVoteCount: 500000,
     size: 18,
@@ -19,12 +19,12 @@ const initParamsForFilter:FilterParams = {
 }
 export interface FilterParams {
     page: number,
-    genreId: number,
-    countryId: number,
-    director: string,
-    actor: string,
-    directorId: number,
-    actorId: number,
+    genreId: number | null,
+    countryId: number | null,
+    director: string | null,
+    actor: string | null,
+    directorId: number | null,
+    actorId: number | null,
     orderBy: "nameRu" | "year" | "ratingKinopoiskVoteCount" | "ratingKinopoisk",
     ratingKinopoisk: number,
     ratingKinopoiskVoteCount: number,
@@ -33,10 +33,10 @@ export interface FilterParams {
 
 
 export default function useFilterWatchPage({ variant = "genrePage" }: {variant?: "admin" | "genrePage"}) {
-    const [genreList, setGenreList] = useState<IGenreObject[]>([]);
-    const [countryList, setCountyList] = useState([]);
+    const [genreList, setGenreList] = useState<Genre[]>([]);
+    const [countryList, setCountyList] = useState<Country[]>([]);
     const [filterParams, setFilterParams] = useState<FilterParams>(initParamsForFilter);
-    const [filteredMovie, setFilteredMovie] = useState<IMovieFromMoviesList[]>([]);
+    const [filteredMovie, setFilteredMovie] = useState<Movie[]>([]);
     const router = useRouter();
     const currentGenre = router.query.genre as string;
 
@@ -51,8 +51,8 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
     useEffect(() => {
         const fetchGenreList = async () => {
             try {
-                const response = await axiosAuth.get('/api/movies/genres')
-                setGenreList(response.data)
+                const genres = await MovieAPI.getGenreList();
+                setGenreList(genres)
             } catch (error) {
                 console.log(error)
             }
@@ -63,8 +63,8 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
     useEffect(() => {
         const fetchCountry = async () => {
             try {
-                const response = await axiosAuth.get('/api/movies/countries')
-                setCountyList(response.data)
+                const countries = await MovieAPI.getCountryList();
+                setCountyList(countries)
             } catch (error) {
                 console.log(error)
             }
@@ -99,24 +99,15 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
     }, [router.isReady, genreList])
 
     useEffect(() => {
-        const fetchMovies = async (params: string) => {
+        const fetchMovies = async (params: FilterParams) => {
             try {
-                const res = await axiosAuth.get(`/api/movies/filters?${params}`)
-                setFilteredMovie(res.data.rows)
+                const response = await MovieAPI.getFilteredMovie(params)
+                setFilteredMovie(response.rows)
             } catch (error) {
                 console.log(error)
             }
         }
-        if (filterParams) {
-            const params = new URLSearchParams(filterParams);
-            if (!filterParams.genreId) params.delete("genreId")
-            if (!filterParams.countryId) params.delete("countryId")
-            if (!filterParams.directorId) params.delete("directorId")
-            if (!filterParams.actorId) params.delete("actorId")
-            if (!filterParams.director) params.delete("director")
-            if (!filterParams.actor) params.delete("actor")
-            fetchMovies(params.toString())
-        }
+        fetchMovies(filterParams)
     }, [filterParams])
 
     return {

@@ -1,5 +1,4 @@
 import styles from "./FiltersField.module.scss";
-import { ICountryObject, IGenreObject } from "../../../models";
 import RangeFilter from "../RangeFilter/RangeFilter";
 import ResetFilter from "../ResetFilter/ResetFilter";
 import InputFilterWithAutoSuggest from "../InputFilterWithAutoSuggest/InputFilterWithAutoSuggest";
@@ -7,10 +6,11 @@ import DropdownFilter from "../DropdownFilter/DropdownFilter";
 import { FilterParams } from "../hooks/useFiltersWatchPage";
 import GridAreaContainer from "../GridAreaContainer/GridAreaContainer";
 import BackgroundContainer from "../components/BackgroundContainer/BackgroundContainer";
+import { Country, Genre } from "../../../models/types";
 
 interface FiltersFieldProps {
-    genreObjects: IGenreObject[];
-    countryObjects: ICountryObject[];
+    genreObjects: Genre[];
+    countryObjects: Country[];
     clearFiltersWithoutSort: () => void;
     testHandler: (filterKey: string, filterValue: string | number) => void,
     filterParams: FilterParams,

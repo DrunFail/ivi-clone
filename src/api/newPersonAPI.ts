@@ -1,6 +1,6 @@
 import { axiosAuth } from "../lib/axios"
 import { ResponseWithCountAndRows } from "../models/response"
-import { DetailedPerson, Person } from "../models/types"
+import { DetailedPerson, Person, PersonSuggest } from "../models/types"
 
 export const NewPersonAPI = {
     getAllPersonList: async (personQueryParams?: {page?: number, size?: number,name?: string}) => {
@@ -19,12 +19,12 @@ export const NewPersonAPI = {
         return response.data
     },
     getPersonSuggest: async (personSuggestQueryParams: {profession: string, name: string, size?: number}) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<ResponseWithCountAndRows<PersonSuggest>>({
             url: `/api/persons/search`,
             method: "get",
             params: personSuggestQueryParams
         })
-        return response
+        return response.data
     }
 
 }

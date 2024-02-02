@@ -1,11 +1,11 @@
 import styles from "./MovieList.module.scss";
 import { MOVIE_LIST_SIZES } from "./constants/constants";
-import { MovieItemTest } from "./interfaces/interfaces";
 import MovieListItemWithLink from "./components/MovieListItemWithLink/MovieListItemWithLink";
 import Carousel from "../../UI/Carousel/Carousel";
+import { Movie } from "../../../models/types";
 
 interface MovieListProps {
-    data: MovieItemTest[],
+    data: Movie[],
     showMoreHandler?: () => void
 }
 
