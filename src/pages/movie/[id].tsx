@@ -1,9 +1,6 @@
-import { IMovieOne } from "../../models";
 import { GetServerSideProps } from "next";
 import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
-import { getOneMovie } from "../../api/movieId";
 import SimilarSlider from "../../components/Movie/SimilarSlider/SimilarSlider";
-import { MoviePageData } from "../../models/global";
 import HeadMovie from "../../components/Movie/HeadMovie/HeadMovie";
 import MoviePlayer from "../../components/Movie/MoviePlayer/MoviePlayer";
 import Medallion from "../../components/PageContainers/Medallion/Medallion";
@@ -27,22 +24,25 @@ import useMoviePageModal from "../../components/Movie/MoviePageModal/hooks/useMo
 import { useResize } from "../../hooks/useResize";
 import ButtonPlayerBlock from "../../components/Movie/ButtonPlayerBlock/ButtonPlayerBlock";
 import MovieExtraInfoBlock from "../../components/Movie/MovieExtraInfoBlock/MovieExtraInfoBlock";
+import { MovieById } from "../../models/types";
+import { MovieAPI } from "../../api/MovieAPI";
+import { ParsedUrlQuery } from "querystring";
 
 interface MovieProps {
-    movies: MoviePageData;
+    movie: MovieById;
 }
-export default function Movie({ movies }: MovieProps) {
+export default function Movie({ movie }: MovieProps) {
 
-    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating } = useMoviePageData({ movieData: movies });
+    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating } = useMoviePageData({ movieData: movie });
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
     const size = useResize();
-    console.log(movies)
+    console.log(movie)
 
     return (
         <>
             <HeadMovie
                 pageTitle={movieName}
-                contentDescription={movies.film.description}
+                contentDescription={movie.film.description}
             />
 
             <PageSection>
@@ -82,7 +82,7 @@ export default function Movie({ movies }: MovieProps) {
                         <MoviePagePersonListContainer>
                             <Medallion>
                                 <Rating variant="small" movieRating={movieRating} />
-                                <PersonList personList={movies.staff} />
+                                <PersonList personList={movie.staff} />
                             </Medallion>
                             <MovieDescription>
                                 {movieDescription}
@@ -115,8 +115,8 @@ export default function Movie({ movies }: MovieProps) {
                 <PageWrapper>
                     <SimilarSlider
                         carouselId={"popular"}
-                        data={movies?.film?.similar}
-                        count={movies?.film?.similar.length}
+                        data={movie?.film?.similar}
+                        count={movie?.film?.similar.length}
                         href={"/moives/all"}
                         headingTitle={"С этим фильмом смотрят"}
                     />
@@ -126,7 +126,7 @@ export default function Movie({ movies }: MovieProps) {
             <PageSection>
                 <PageWrapper>
                     <div style={{ display: "grid" }}>
-                        <StaffSlider callback={() => pushQuery("actors")} data={movies?.staff} />
+                        <StaffSlider callback={() => pushQuery("actors")} data={movie?.staff} />
                     </div>
                 </PageWrapper>
             </PageSection>
@@ -146,7 +146,7 @@ export default function Movie({ movies }: MovieProps) {
             <MoviePageModal
                 visible={visible}
                 type={type}
-                film={movies}
+                film={movie}
                 callback={() => removeQueryParam()}
                 movieTitle={movieName}
                 movieYear={movieYear} />
@@ -155,21 +155,16 @@ export default function Movie({ movies }: MovieProps) {
     );
 };
 
+interface ContextParams extends ParsedUrlQuery {
+    id: string
+}
+
+
 // Для SSR страницы
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    let data: IMovieOne | null = null;
-    try {
-        data = await getOneMovie(String(context?.params?.id));
-    } catch (err) { }
-
-    if (!data) {
-        return {
-            notFound: true
-        };
-    }
-    return {
-        props: { movies: data }
-    };
+    const {id } = context.params as ContextParams
+    const movie = await MovieAPI.getMovieById(id)
+    return { props: {movie}}
 };
 
 

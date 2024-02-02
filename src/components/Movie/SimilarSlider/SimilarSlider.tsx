@@ -1,4 +1,5 @@
 import { ISimiliar } from "../../../models";
+import { SimilarMovie } from "../../../models/types";
 import Carousel from "../../UI/Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import SliderTitle from "../MovieSlider/SliderTitle/SliderTitle";
@@ -6,7 +7,7 @@ import SimilatItem from "./components/SimilarItem";
 
 interface SimilarSliderProps {
     carouselId: string;
-    data: ISimiliar[];
+    data: SimilarMovie[];
     count: number;
     href: string;
     headingTitle: string;

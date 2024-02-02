@@ -1,11 +1,11 @@
 import { axiosAuth } from "../lib/axios";
 import { ResponseWithCountAndRows } from "../models/response";
-import { Movie } from "../models/types";
+import { Movie, MovieById } from "../models/types";
 
 
 export const MovieAPI = {
     getMovieById: async (movieId: string) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<MovieById>({
             url: `/api/movies/about/${movieId}`,
             method: "get"
         })

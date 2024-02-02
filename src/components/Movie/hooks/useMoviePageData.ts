@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { MoviePageData } from "../../../models/global";
 import { getLang } from "../../../store/switchLang";
+import { MovieById } from "../../../models/types";
 
 interface UseMoviePageDataProps {
-    movieData: MoviePageData
+    movieData: MovieById
 }
 
 export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
