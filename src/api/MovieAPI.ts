@@ -1,6 +1,6 @@
 import { axiosAuth } from "../lib/axios";
 import { ResponseWithCountAndRows } from "../models/response";
-import { Country, Genre, Movie, MovieById } from "../models/types";
+import { Country, Genre, Movie, MovieById, MovieSuggest } from "../models/types";
 
 
 export const MovieAPI = {
@@ -12,7 +12,7 @@ export const MovieAPI = {
         return response.data
     },
     getMovieListByName: async (movieName: string) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<MovieSuggest[]>({
             url: `/api/movies/name`,
             method: "get",
             params: {
