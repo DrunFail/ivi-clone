@@ -1,4 +1,6 @@
 import { axiosAuth } from "../lib/axios";
+import { ResponseWithCountAndRows } from "../models/response";
+import { Movie } from "../models/types";
 
 
 export const MovieAPI = {
@@ -27,7 +29,7 @@ export const MovieAPI = {
         return response.data.rows
     },
     getFilteredMovie: async (filterParams: unknown) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<ResponseWithCountAndRows<Movie>>({
             url: `/api/movies/filters`,
             method: "get",
             params: filterParams
