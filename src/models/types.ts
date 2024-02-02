@@ -219,3 +219,19 @@ export type Review = {
 export type ReviewTree =  Review & {
     childs?: ReviewTree[]
 }
+
+export type AuthLoginResponse = {
+    token: string,
+    userEmail: string,
+    userRoles: string[]
+
+}
+
+export type AuthRegistrationResponse = {
+    token: string,
+    id: number
+}
+
+export type AuthRefreshResponse = {
+    token: string
+}

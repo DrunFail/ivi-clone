@@ -1,11 +1,10 @@
-import { AxiosResponse, isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 import jwtDecode from "jwt-decode";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { cookieParser } from "../../../utils/cookieParser";
-import { AuthContextData } from "../context/interfaces";
-import AuthService from "../services/auth.service";
 import useAuth from "./useAuth";
+import { AuthAPI } from "../../../api/AuthAPI";
 
 export default function useLogin() {
     const setAuth = useAuth()?.setAuth;
@@ -35,8 +34,7 @@ export default function useLogin() {
             return
         }
         try {
-            const response: AxiosResponse<AuthContextData> = await AuthService.login(email, password);
-
+            const response = await AuthAPI.login({ email, password })
             const token = response?.data?.token;
 
             const decode: { email: string, roles: { name: string }[] } = jwtDecode(token)
