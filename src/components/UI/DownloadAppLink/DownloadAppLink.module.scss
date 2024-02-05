@@ -1,8 +1,11 @@
 .button {
+    display: flex;
+    column-gap: 12px;
+    inline-size: max-content;
     font-size: 10px;
     font-weight: 700;
     padding-inline: 10px;
-
+    text-align: center;
     span {
         font-size: 15px;
     }

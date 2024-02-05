@@ -1,19 +1,14 @@
 import Image from "next/image";
 import download from "../../../assets/SVG/Download/Download.svg";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 interface ShareButtonProps {
-    handler?: () => void
+    clickHandler?: () => void
 }
-export default function ShareButton({handler}: ShareButtonProps) {
+export default function ShareButton({clickHandler}: ShareButtonProps) {
     return (
-        <MyButton
-            onClick={handler}
-            type="button"
-            bg_color="footer"
-            size="mini"
-        >
+        <Button size="mini" onClick={clickHandler}>
             <Image src={download} alt="" />
-        </MyButton>
+        </Button>
     );
 }

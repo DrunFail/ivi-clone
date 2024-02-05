@@ -1,10 +1,10 @@
 import { BsEnvelope } from "react-icons/bs";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 export default function ButtonMail() {
     return (
-        <MyButton type="button" bg_color="footer" size="mini">
+        <Button size="mini">
             <BsEnvelope />
-        </MyButton>
+        </Button>
     );
 }

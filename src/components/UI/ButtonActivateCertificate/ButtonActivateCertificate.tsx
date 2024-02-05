@@ -1,16 +1,16 @@
 import { FormattedMessage } from "react-intl";
-import MyButton from "../MyButton/MyButton";
 import Image from "next/image";
 import reward from "../../../assets/SVG/Reward/Reward.svg";
+import Button from "../Button/Button";
 
 
 export default function ButtonActivateCertificate() {
     return (
-        <MyButton type="button" bg_color="footer" size="large">
+        <Button>
             <Image src={reward} alt="" />
             <p>
                 <FormattedMessage id="CertificateActivation" />
             </p>
-        </MyButton>
+        </Button>
     );
 }

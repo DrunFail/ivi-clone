@@ -1,10 +1,10 @@
 import { FormattedMessage } from "react-intl";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 export default function ButtonChat() {
     return (
-        <MyButton type="button" bg_color="footer">
+        <Button>
             <FormattedMessage id="WriteInChat" />
-        </MyButton>
+        </Button>
     );
 }

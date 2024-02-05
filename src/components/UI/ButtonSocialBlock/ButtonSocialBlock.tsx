@@ -1,14 +1,12 @@
-import ButtonTelegram from "../../UI/ButtonTelegram/ButtonTelegram";
-import ButtonTwitter from "../../UI/ButtonTwitter/ButtonTwitter";
-import ButtonVk from "../../UI/ButtonVk/ButtonVk";
+import SocialButton from "../SocialButton/SocialButton";
 import styles from "./ButtonSocialBlock.module.scss";
 
 export default function ButtonSocialBlock() {
     return (
         <div className={styles.container} data-testid="btn-social-block">
-            <ButtonVk />
-            <ButtonTwitter />
-            <ButtonTelegram />
+            <SocialButton variant="vk" />
+            <SocialButton variant="twitter" />
+            <SocialButton variant="telegram" />
         </div>
     );
 }

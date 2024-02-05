@@ -6,10 +6,12 @@ type BaseProps = {
     children?: React.ReactNode,
     className?: string,
     onlyImage?: boolean,
+    size?: "default" | "mini"
 }
 
 type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
-    as?: "button"
+    as?: "button",
+    type?: "button" | "submit"
 }
 
 type LinkProps = BaseProps & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> & {
@@ -28,7 +30,8 @@ export default function Button(props : ButtonOrLink) {
     const defaultClasses = props.onlyImage
         ? ``
         : ` ${styles.button}
-            ${styles[props.color ?? "dark"]}`
+            ${styles[props.color ?? "dark"]}
+            ${styles[props.size ?? "default"]}`
 
     const mergeClasses = defaultClasses + ' ' + (props.className ?? " ")
 
@@ -46,10 +49,11 @@ export default function Button(props : ButtonOrLink) {
             </Link>
         )
     } else {
-        const { children, className, color, onlyImage, as, ...rest } = props
+        const { children, className, color, onlyImage, as,type="button", ...rest } = props
         return (
             <button
                 className={mergeClasses}
+                type={type }
                 {...rest}
             >
                 {children}

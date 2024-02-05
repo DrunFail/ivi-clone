@@ -1,8 +1,8 @@
 import Modal from "../../UI/Modal/Modal";
 import Image from "next/image";
 import styles from "./ShareModal.module.scss";
-import MyButton from "../../UI/MyButton/MyButton";
 import { FormattedMessage } from "react-intl";
+import Button from "../../UI/Button/Button";
 
 interface ShareModalProps {
     visible: boolean,
@@ -36,14 +36,9 @@ export default function ShareModal({visible, isModalClose, urlMovieImage, movieN
                     </div>
                 </div>
                 <div className={styles.Share__button}>
-                    <MyButton
-                        type="button"
-                        onClick={copyToClipboard}
-                        bg_color="footer"
-                        size="large"
-                    >
+                    <Button onClick={copyToClipboard}>
                         <FormattedMessage id="CopyLink" />
-                    </MyButton>
+                    </Button>
                 </div>
             </div>
         </Modal>

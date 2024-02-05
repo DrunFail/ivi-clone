@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { getFilm } from "../../../store/film";
 import { REVIEWLIST_SIZE } from "../../Movie/MovieList/constants/constants";
 import Carousel from "../../UI/Carousel/Carousel";
-import MyButton from "../../UI/MyButton/MyButton";
 import CommentCard from "../CommentCard/CommentCard";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
+import Button from "../../UI/Button/Button";
 
 const comm = [
     {
@@ -59,9 +59,9 @@ export default function CommentSlider({ callback }: { callback: () => void }) {
                     </h1>
                     <p>about movie {film?.film?.nameRu}</p>
             </div>
-                <MyButton type="button" bg_color="footer" size="large" onClick={callback}>
+                <Button onClick={callback}>
                     Comments
-                </MyButton>
+                </Button>
             <div className={styles.slider }>
             {comm.length
                 ? <Carousel

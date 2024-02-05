@@ -2,9 +2,9 @@ import { FormattedMessage } from "react-intl";
 import { IStaff } from "../../../models";
 import SliderTitle from "../../Movie/MovieSlider/SliderTitle/SliderTitle";
 import Carousel from "../../UI/Carousel/Carousel";
-import MyButton from "../../UI/MyButton/MyButton";
 import StaffCard from "../StaffCard/StaffCard";
 import { STAFF_CARD_SIZES } from "../StaffCard/const";
+import Button from "../../UI/Button/Button";
 
 interface StaffSliderProps {
     data: IStaff[],
@@ -26,16 +26,9 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
                     component={StaffCard}
                     href={""}
                 />
-                <MyButton
-                    style={{ width: "88px", height: "88px", marginTop: "25px" }}
-                    type="button"
-
-                    bg_color="footer"
-                    figure="circle"
-                    size="large"
-                >
+                <Button style={{ width: "88px", height: "88px", marginTop: "25px" }}>
                     <FormattedMessage id="More" />
-                </MyButton>
+                </Button>
             </div>
         </>
     );

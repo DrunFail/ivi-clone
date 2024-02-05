@@ -1,11 +1,11 @@
 import Image from "next/image";
 import bookmark from "../../../assets/SVG/Bookmark/Bookmark.svg";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 export default function ButtonWatchLater() {
     return (
-        <MyButton type="button" bg_color="footer" size="mini">
+        <Button size="mini">
             <Image src={bookmark} alt="" />
-        </MyButton>
+        </Button>
     );
 }

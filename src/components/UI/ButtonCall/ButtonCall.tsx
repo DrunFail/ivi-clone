@@ -1,10 +1,10 @@
 import { BsTelephone } from "react-icons/bs";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 export default function ButtonCall() {
     return (
-        <MyButton type="button" bg_color="footer" size="mini">
+        <Button size="mini">
             <BsTelephone />
-        </MyButton>
+        </Button>
     );
 }

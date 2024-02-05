@@ -29,3 +29,9 @@
         background-color: #ff0f4d;
     }
 }
+
+.mini{
+    --btn-size: 40px;
+    inline-size: var(--btn-size);
+    block-size: var(--btn-size);
+}
