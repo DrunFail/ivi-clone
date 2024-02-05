@@ -1,10 +1,10 @@
 import { FormattedMessage } from "react-intl";
-import MyButton from "../../../UI/MyButton/MyButton";
+import Button from "../../../UI/Button/Button";
 
 export default function ButtonSubscription() {
     return (
-        <MyButton type="button" data-testid="btn-sub">
+        <Button color="red" data-testid="btn-sub">
             <FormattedMessage id="PayForASubscription" />
-        </MyButton>
+        </Button>
     );
 }
