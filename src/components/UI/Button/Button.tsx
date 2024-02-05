@@ -6,6 +6,7 @@ type BaseProps = {
     children?: React.ReactNode,
     className?: string,
     onlyImage?: boolean,
+    size?: "default" | "mini"
 }
 
 type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
@@ -28,7 +29,8 @@ export default function Button(props : ButtonOrLink) {
     const defaultClasses = props.onlyImage
         ? ``
         : ` ${styles.button}
-            ${styles[props.color ?? "dark"]}`
+            ${styles[props.color ?? "dark"]}
+            ${styles[props.size ?? "default"]}`
 
     const mergeClasses = defaultClasses + ' ' + (props.className ?? " ")
 
