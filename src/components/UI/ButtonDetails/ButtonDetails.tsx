@@ -1,10 +1,10 @@
 import { FormattedMessage } from "react-intl";
-import MyButton from "../MyButton/MyButton";
+import Button from "../Button/Button";
 
 export default function ButtonDetails() {
     return (
-        <MyButton type="button" bg_color="footer" size="large">
+        <Button>
             <FormattedMessage id="Detail" />
-        </MyButton>
+        </Button>
     );
 }

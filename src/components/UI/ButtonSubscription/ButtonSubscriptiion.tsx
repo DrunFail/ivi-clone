@@ -1,16 +1,16 @@
-import MyButton from "../MyButton/MyButton";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 import diamond from "../../../assets/SVG/Diamond/Diamond.svg";
+import Button from "../Button/Button";
 
 
 export default function ButtonSubscription() {
     return (
-        <MyButton type="button" bg_color="footer" size="large">
+        <Button>
             <Image src={diamond} alt="" />
             <p>
-                <FormattedMessage id="ConnectSubscription" />
-            </p>
-        </MyButton>
+                   <FormattedMessage id="ConnectSubscription" />
+                </p>
+        </Button>
     );
 }
