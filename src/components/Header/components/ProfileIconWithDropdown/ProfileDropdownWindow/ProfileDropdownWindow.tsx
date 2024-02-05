@@ -4,9 +4,11 @@ import ProfileDropdownCard from "../ProfileDropdownCard/ProfileDropdownCard";
 import styles from "./ProfileDropdownWindow.module.scss";
 import { PROFILE_IMG_LINK_DATA } from "../imgLinkData";
 import LoginButton from "../../../../UI/LoginButton/LoginButton";
+import useLogout from "../../../../auth/hooks/useLogout";
 
 export default function ProfileDropdownWindow() {
     const auth = useAuth()?.auth;
+    const handleLogout  = useLogout();
     return (
         <div className={styles.container}>
             <div className={styles.cardBlock}>
@@ -21,7 +23,7 @@ export default function ProfileDropdownWindow() {
             </div>
             <div className={styles.authButton}>
                 {auth?.token
-                    ? <LogoutButton />
+                    ? <LogoutButton handleLogout={handleLogout} />
                     : <LoginButton />
                 }
             </div>
