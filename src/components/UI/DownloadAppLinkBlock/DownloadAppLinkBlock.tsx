@@ -1,8 +1,5 @@
 import styles from "./DownloadAppLinkBlock.module.scss";
-import ButtonAppStoreDownload from "../../UI/ButtonAppStoreDownload/ButtonAppStoreDownload";
-import ButtonGoogleDownload from "../../UI/ButtonGoogleDownload/ButtonGoogleDownload";
-import ButtonWatchAllDevices from "../../UI/ButtonWatchAllDevices/ButtonWatchAllDevices";
-import ButtonWatchSmartTv from "../../UI/ButtonWatchSmartTv/ButtonWatchSmartTv";
+import DownloadAppLink from "../DownloadAppLink/DownloadAppLink";
 
 
 interface DownloadAppLinkBlockProps {
@@ -11,19 +8,20 @@ interface DownloadAppLinkBlockProps {
 
 export default function DownloadAppLinkBlock({ variant }: DownloadAppLinkBlockProps) {
     return (
-        <div className={styles.container} data-testid="dwnld-app-links">
+        <div className={`${styles.container} ${styles[variant]}`} data-testid="dwnld-app-links">
             {variant === "desktop" &&
                 <>
-                    <ButtonAppStoreDownload />
-                    <ButtonGoogleDownload />
-                    <ButtonWatchAllDevices />
-                    <ButtonWatchSmartTv />
+                <DownloadAppLink variant="apple" />
+                <DownloadAppLink variant="google" />
+                <DownloadAppLink variant="apple" />
+                <DownloadAppLink variant="apple" />
+                    
                 </>
             }
             {variant === "tablet" &&
                 <>
-                    <ButtonWatchAllDevices />
-                    <ButtonWatchSmartTv />
+                <DownloadAppLink variant="apple" />
+                <DownloadAppLink variant="apple" />
                 </>
             }
         </div>
