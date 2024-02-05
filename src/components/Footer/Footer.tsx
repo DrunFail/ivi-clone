@@ -3,8 +3,8 @@ import SupportBlock from "./SupportBlock/SupportBlock";
 import WatchMoviesLink from "./WatchMoviesLink/WatchMoviesLink";
 import { FOOTER_NAV_MENU } from "./constants/footerConstants";
 import DropdownList from "../UI/DropdownList/DropdownList";
-import ButtonSocialBlock from "../UI/ButtonSocialBlock/ButtonSocialBlock";
 import DownloadAppLinkBlock from "../UI/DownloadAppLinkBlock/DownloadAppLinkBlock";
+import ButtonSocialBlock from "../UI/ButtonSocialBlock/ButtonSocialBlock";
 
 
 export default function Footer() {
