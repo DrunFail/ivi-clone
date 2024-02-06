@@ -3,7 +3,7 @@ import styles from "./PersonPhoto.module.scss";
 
 interface PersonPhotoProps {
     urlPersonPhoto: string,
-    variant: "medallion" | "profile"
+    variant: "medallion" | "profile" | 88
 }
 
 const PERSON_PHOTO_SIZES = {
@@ -14,6 +14,10 @@ const PERSON_PHOTO_SIZES = {
     profile: {
         height: 144,
         width: 120
+    },
+    88: {
+        height: 88,
+        width: 88
     }
 }
 export default function PersonPhoto({ urlPersonPhoto, variant }: PersonPhotoProps) {

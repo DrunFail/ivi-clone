@@ -1,32 +1,38 @@
 import { FormattedMessage } from "react-intl";
-import { IStaff } from "../../../models";
 import SliderTitle from "../../Movie/MovieSlider/SliderTitle/SliderTitle";
 import Carousel from "../../UI/Carousel/Carousel";
-import StaffCard from "../StaffCard/StaffCard";
-import { STAFF_CARD_SIZES } from "../StaffCard/const";
 import Button from "../../UI/Button/Button";
+import { Person } from "../../../models/types";
+import { STAFF_CARD_SIZES } from "./StaffCard/const";
+import StaffCardContainer from "./StaffCardContainer/StaffCardContainer";
+import styles from "./StaffSlider.module.scss";
 
 interface StaffSliderProps {
-    data: IStaff[],
+    data: Person[],
     callback: () => void
 }
 export default function StaffSlider({ data, callback }: StaffSliderProps) {
+    if (!data) return;
     return (
         <>
             <div onClick={() => callback()}>
-                <SliderTitle title={"Актёры и создатели"} href={""} />
+                <SliderTitle
+                    href={""}
+                    withArrow={false}
+                    intlId={"CreatersAndActors"}
+                />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr max-content" }}>
+            <div className={styles.content}>
                 <Carousel
                     carouselId="staff"
                     mode={"collection"}
                     data={data}
                     count={data.length}
                     sizes={STAFF_CARD_SIZES}
-                    component={StaffCard}
+                    component={StaffCardContainer}
                     href={""}
                 />
-                <Button style={{ width: "88px", height: "88px", marginTop: "25px" }}>
+                <Button className={styles.button }>
                     <FormattedMessage id="More" />
                 </Button>
             </div>
