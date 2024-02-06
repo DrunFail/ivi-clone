@@ -19,7 +19,7 @@ export default function MovieSlider({ carouselId, href, headingTitle, genreId }:
 
     return (
         <>
-            <SliderTitle title={headingTitle} href={href} />
+            <SliderTitle intlId="genre.comedy" href={href} />
             <Carousel
                 mode={"slider"}
                 carouselId={carouselId}
