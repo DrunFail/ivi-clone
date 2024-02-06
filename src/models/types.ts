@@ -99,7 +99,7 @@ export type Person = {
     birthPlace: string | null,
     deathPlace: string | null,
     hasAwards: string,
-    profession: string,
+    profession: string | null,
     createdAt?: string,
     updatedAt?: string
 }

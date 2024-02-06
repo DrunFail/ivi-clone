@@ -24,7 +24,11 @@ export default function SimilarSlider({
     if (data) {
         return (
             <>
-                <SliderTitle title={headingTitle} href={href} />
+                <SliderTitle
+                    intlId="WithFilm"
+                    href={href}
+                    withArrow={false}
+                />
                 <Carousel
                     mode={"slider"}
                     carouselId={carouselId}
