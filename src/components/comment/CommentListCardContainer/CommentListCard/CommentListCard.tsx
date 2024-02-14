@@ -1,6 +1,5 @@
 import { ReviewTree } from "../../../../models/types";
 import Button from "../../../UI/Button/Button";
-import useAuth from "../../../auth/hooks/useAuth";
 import CommentAddForm from "../../CommentAddForm/CommentAddForm";
 import CommentBody from "../../UI/CommentBody/CommentBody";
 import CommentDateCreated from "../../UI/CommentDateCreated/CommentDateCreated";
