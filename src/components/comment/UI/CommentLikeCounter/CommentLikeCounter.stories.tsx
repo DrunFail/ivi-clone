@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentLikeCounter from "./CommentLikeCounter";
-import store from '../../../store/createStore';
-import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
+import store from '../../../../store/createStore';
+import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof CommentLikeCounter> = {
     title: 'comment/CommentLikeCounter',

@@ -206,6 +206,7 @@ type ReviewAuthor = {
 }
 
 export type Review = {
+    id: number,
     filmId: number,
     parentId: number,
     title: string,
@@ -217,7 +218,9 @@ export type Review = {
 }
 
 export type ReviewTree =  Review & {
-    childs?: ReviewTree[]
+    childs: ReviewTree[],
+    createdAt: string,
+    updatedAt: string
 }
 
 export type AuthLoginResponse = {

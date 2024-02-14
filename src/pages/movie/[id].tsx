@@ -126,13 +126,17 @@ export default function Movie({ movie }: MovieProps) {
             <PageSection>
                 <PageWrapper>
                     <div style={{ display: "grid" }}>
-                        <StaffSlider callback={() => pushQuery("actors")} data={movie?.staff} />
+                        <StaffSlider callback={() => pushQuery("actors")} data={movie.staff} />
                     </div>
                 </PageWrapper>
             </PageSection>
             <PageSection>
                 <PageWrapper>
-                    <CommentSlider callback={() => pushQuery("review")} />
+                    <CommentSlider
+                        commentData={movie.reviews}
+                        movieName={movieName}
+                        movieId={movie.film.kinopoiskId }
+                        callback={() => pushQuery("review")} />
                 </PageWrapper>
             </PageSection>
             <PageSection>

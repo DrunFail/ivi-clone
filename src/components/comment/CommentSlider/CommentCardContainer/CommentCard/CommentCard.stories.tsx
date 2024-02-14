@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentCard from "./CommentCard";
-import store from '../../../store/createStore';
-import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
+import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
+import store from '../../../../../store/createStore';
 
 const meta: Meta<typeof CommentCard> = {
     title: 'comment/CommentCard',
@@ -14,12 +14,12 @@ export default meta;
 type Story = StoryObj<typeof CommentCard>;
 
 const comment = {
-    id: 4,
-    filmId: 1111,
-    text: "dkdkd",
-    name: "skdkdk",
-    reviews: [],
-    createdAt: "11"
+    commentCreatedDate: "14 апреля 2022",
+    commentAuthor: "author",
+    commentBody: "body",
+    commentChildList: [],
+    movieKinopoiskId: 1111,
+    commentId: 4
 }
 
 export const Primary: Story = {
@@ -27,7 +27,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <div style={{inlineSize: "350px"} }>
-                    <CommentCard elem={comment} />
+                    <CommentCard modifiedCommentData={comment} callback={() => console.log('click') } />
                 </div>
             </WrapperIntl>
         </Provider>

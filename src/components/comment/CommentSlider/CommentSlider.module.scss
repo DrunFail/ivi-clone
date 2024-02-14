@@ -1,12 +1,14 @@
 .container {
-    display: grid;
+    /*    display: grid;
     grid-template-areas: "text button" "slider slider";
-
-    
+*/
+    .header {
+        display: flex;
+        justify-content: space-between;
 
         .text {
             display: grid;
-            grid-area: text;
+            /*grid-area: text;*/
 
             h1 {
                 font-size: 24px;
@@ -20,13 +22,13 @@
                 color: #a5a1b2;
             }
         }
-        .slider{
-            grid-area: slider;
 
+        .slider {
+            /*grid-area: slider;*/
         }
 
         button {
-            grid-area: button;
+            /*grid-area: button;*/
             justify-self: flex-end;
             block-size: 32px;
             inline-size: 127px;
@@ -40,9 +42,8 @@
                 border-color: rgba(255, 255, 255, 0.72);
                 opacity: 1;
             }
-           
         }
-    
+    }
 }
 @media only screen and (max-width:600px) {
     .container {
