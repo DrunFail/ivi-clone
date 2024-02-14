@@ -1,10 +1,7 @@
 import Modal from "../../UI/Modal/Modal";
 import { FormattedMessage } from "react-intl";
 import styles from "./MoviePageModal.module.scss";
-import { MoviePageData } from "../../../models/global";
 import CommentTabContainer from "../../comment/CommentTabContainer/CommentTabContainer";
-import CommentAddForm from "../../comment/CommentAddForm/CommentAddForm";
-import CommentList from "../../comment/CommentList/CommentList";
 import MovieTitleWithYear from "../MovieTitleWithYear/MovieTitleWithYear";
 import TabTitleContainer from "../../componentsTab/TabTitleContainer/TabTitleContainer";
 import RatingOverlayContainer from "../MovieList/UI/RaitingOverlayContainer/RatingOverlayContainer";
@@ -26,45 +23,8 @@ interface MoviePageModalProps {
     movieTitle: string;
     movieYear: number
 }
-const comm = [
-    {
-        id: 1,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }, {
-        id: 2,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    },
-    {
-        id: 3,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }, {
-        id: 4,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }
-
-
-]
-
 
 export default function MoviePageModal({ visible, type, film, callback, movieTitle, movieYear }: MoviePageModalProps) {
-    console.log(film)
-
     return (
         <Modal visible={visible} callback={callback}>
             <div className={styles.container}>
@@ -93,10 +53,9 @@ export default function MoviePageModal({ visible, type, film, callback, movieTit
                     {type === "actors" && <CreatersTab personList={film.staff} />}
                     {type === "trailer" && <TrailerTab />}
                     {type === "review" &&
-                        <CommentTabContainer>
-                            <CommentAddForm />
-                            <CommentList commentData={comm} />
-                        </CommentTabContainer>}
+                        <CommentTabContainer
+                        movieKinopoiskId={film.film.kinopoiskId }
+                        />}
 
                 </div>
                 <div className={styles.aside}>

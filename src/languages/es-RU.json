@@ -1,4 +1,10 @@
 {
+  "comment.about": "о фильме {movie}",
+  "comment.comment": "Написать",
+  "comment.empty": "Здесь пока нет комментариев. Будь первым!",
+  "comment.unauthorized": "Оставлять комментарии могут только зарегистрированные пользователи",
+
+
   "header.genres": "Жанры",
   "header.countries": "Страны",
   "header.year": "Годы",

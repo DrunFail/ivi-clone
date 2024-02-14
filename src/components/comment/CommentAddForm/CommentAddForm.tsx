@@ -1,25 +1,22 @@
-import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { axiosAuth } from "../../../lib/axios";
 import styles from "./CommentAddForm.module.scss";
 import Button from "../../UI/Button/Button";
+import { ReviewTree } from "../../../models/types";
+import useCommentAddForm from "../hooks/useCommentAddForm";
 
-export default function CommentAddForm() {
-    const [commentValue, setCommentValue] = useState("");
-    const addComment = () => {
-        axiosAuth.post('/api/reviews', {
-            title: "wow",
-            text: "dkdkdkdk",
-            filmId: "4484927",
-            parentId: null
+interface CommentAddFormProps {
+    movieKinopoiskId: number,
+    parentId?: number,
+    sendCommentHandler?: (newComment: ReviewTree) => void
+}
 
-        })
-    }
 
+export default function CommentAddForm({movieKinopoiskId, parentId, sendCommentHandler }: CommentAddFormProps) {
+    const {commentValue, updateCommentValue,createReview } = useCommentAddForm({sendCommentHandler,parentId, movieKinopoiskId});
 
     return (
-        <form className={styles.form} onSubmit={(e) => { e.preventDefault(); addComment() } }>
-            <input type="text" value={commentValue} onChange={(e) => setCommentValue(e.target.value) } />
+        <form className={styles.form} onSubmit={(e) => { e.preventDefault(); createReview() } }>
+            <input type="text" value={commentValue} onChange={updateCommentValue} />
             <Button color="red" type="submit">
                 <FormattedMessage id="Send" />
             </Button>

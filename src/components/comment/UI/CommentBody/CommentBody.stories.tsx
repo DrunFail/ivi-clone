@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentBody from "./CommentBody";
-import store from '../../../store/createStore';
-import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
-import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
+import store from '../../../../store/createStore';
+import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
+import PageWrapper from '../../../PageContainers/PageWrapper/PageWrapper';
 
 const meta: Meta<typeof CommentBody> = {
     title: 'comment/CommentBody',
@@ -19,7 +19,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <CommentBody />
+                    <CommentBody commentBody={'comment'} />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>

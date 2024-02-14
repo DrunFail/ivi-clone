@@ -1,10 +1,16 @@
+import { AxiosInstance } from "axios"
+import { ResponseWithCountAndRows } from "../models/response"
+import { ReviewTree } from "../models/types"
 import { axiosAuth } from "../lib/axios"
+import useAxiosAuth from "../components/auth/hooks/useAxiosAuth";
+
 
 export const ReviewAPI = {
-    createReview: async (reviewData: {filmId:number,parentId:number,title:string,text:string}) => {
-        const response = await axiosAuth.request({
+    createReview: async (reviewData: {filmId:number,parentId?:number,title:string,text:string},axios:AxiosInstance) => {
+        const response = await axios.request({
             url: `/api/reviews`,
             method: "post",
+            
             data: reviewData
         })
         return response
@@ -25,7 +31,7 @@ export const ReviewAPI = {
         return response
     },
     getReviewTreeByMovieId: async (movieId: number, depth?:number) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request<ReviewTree[]>({
             url: `/api/reviews/film/${movieId}`,
             method: "get",
             params: {depth:depth}
@@ -33,7 +39,7 @@ export const ReviewAPI = {
         return response
     },
     getReviewTopLevelByKinopoiskId: async (kinopoiskId: number) => {
-        const response = await axiosAuth.request({
+        const response = await axiosAuth.request < ResponseWithCountAndRows<ReviewTree>>({
             url: `/api/reviews/film/top/${kinopoiskId}`,
             method: "get"
         })

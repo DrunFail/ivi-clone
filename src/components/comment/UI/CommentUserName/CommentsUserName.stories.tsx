@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentsUserName from "./CommentUserName";
-import store from '../../../store/createStore';
-import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
+import store from '../../../../store/createStore';
+import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof CommentsUserName> = {
     title: 'comment/CommentsUserName',
@@ -17,7 +17,7 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-                <CommentsUserName />
+                <CommentsUserName userName={'userName'} />
             </WrapperIntl>
         </Provider>
 

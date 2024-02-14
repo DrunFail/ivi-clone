@@ -35,3 +35,8 @@
     inline-size: var(--btn-size);
     block-size: var(--btn-size);
 }
+
+.noStyle{
+    background: inherit;
+    outline: none;
+}

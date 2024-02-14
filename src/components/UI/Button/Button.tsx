@@ -28,7 +28,7 @@ type ButtonTest<T> = T extends { as: "button" } ? ButtonProps : LinkProps
 export default function Button(props : ButtonOrLink) {
 
     const defaultClasses = props.onlyImage
-        ? ``
+        ? `${styles.noStyle}`
         : ` ${styles.button}
             ${styles[props.color ?? "dark"]}
             ${styles[props.size ?? "default"]}`

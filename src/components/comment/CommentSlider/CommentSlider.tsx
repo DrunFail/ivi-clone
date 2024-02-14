@@ -1,82 +1,56 @@
-import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import { getFilm } from "../../../store/film";
 import { REVIEWLIST_SIZE } from "../../Movie/MovieList/constants/constants";
 import Carousel from "../../UI/Carousel/Carousel";
-import CommentCard from "../CommentCard/CommentCard";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
 import Button from "../../UI/Button/Button";
+import { Review } from "../../../models/types";
+import { ResponseWithCountAndRows } from "../../../models/response";
+import CommentCardContainer from "./CommentCardContainer/CommentCardContainer";
 
-const comm = [
-    {
-        id: 1,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }, {
-        id: 2,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    },
-    {
-        id: 3,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }, {
-        id: 4,
-        filmId: 1111,
-        text: "dkdkd",
-        name: "skdkdk",
-        reviews: [],
-        createdAt: "11"
-    }
-    
 
-]
 
-export default function CommentSlider({ callback }: { callback: () => void }) {
 
-    const router = useRouter();
-    const { id } = router.query;
-    console.log(id)
-    const film = useSelector(getFilm());
+interface CommentSliderProps {
+    commentData: ResponseWithCountAndRows<Review>,
+    callback: () => void,
+    movieName: string,
+    movieId: number
+}
+
+export default function CommentSlider({ callback, commentData, movieName, movieId }: CommentSliderProps) {
     return (
         <div className={styles.container}>
-            
-            <div className={styles.text }>
+            <div className={styles.header}>
+                <div className={styles.text}>
                     <h1 onClick={() => callback()}>
                         <FormattedMessage id="Review" />
                     </h1>
-                    <p>about movie {film?.film?.nameRu}</p>
-            </div>
+                    <p>
+                        <FormattedMessage
+                            id="comment.about"
+                            values={{ movie: movieName }} />
+                    </p>
+                </div>
                 <Button onClick={callback}>
-                    Comments
+                    <FormattedMessage id="comment.comment" />
                 </Button>
-            <div className={styles.slider }>
-            {comm.length
-                ? <Carousel
-                    href={`/movie/${String(id)}?type=review`}
-                    mode={"slider"}
-                    carouselId={"com"}
-                    data={comm }
-                    count={40}
-                    sizes={REVIEWLIST_SIZE}
-                    callback={() => callback()}
-                    component={CommentCard}
-                />
-                : <EmptyCommentCard />
+            </div>
+            <div className={styles.slider}>
+                {commentData && commentData.count
+                    ? <Carousel
+                        href={`/movie/${String(movieId)}?type=review`}
+                        mode={"slider"}
+                        carouselId={"com"}
+                        data={commentData.rows}
+                        count={commentData.rows.length}
+                        sizes={REVIEWLIST_SIZE}
+                        callback={() => callback()}
+                        component={CommentCardContainer}
+                    />
+                    : <EmptyCommentCard variant="slider" />
 
-            }
+                }
             </div>
 
         </div>

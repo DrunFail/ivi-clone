@@ -1,4 +1,9 @@
 {
+  "comment.about": "of the film {movie}",
+  "comment.comment": "New comment",
+  "comment.empty": "There are no comments here yet. Be the first!",
+  "comment.unauthorized": "Only registered users can leave comments",
+
   "header.genres": "Genres",
   "header.countries": "Countries",
   "header.year": "Years",

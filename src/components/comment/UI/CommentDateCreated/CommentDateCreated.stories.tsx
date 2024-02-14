@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentDateCreated from "./CommentDateCreated";
-import store from '../../../store/createStore';
-import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
+import store from '../../../../store/createStore';
+import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof CommentDateCreated> = {
     title: 'comment/CommentDateCreated',
@@ -17,7 +17,7 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-                    <CommentDateCreated />
+                    <CommentDateCreated commentDate={'comment date'} />
             </WrapperIntl>
         </Provider>
 

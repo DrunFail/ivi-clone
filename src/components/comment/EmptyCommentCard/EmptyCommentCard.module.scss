@@ -4,7 +4,18 @@
     align-items: center;
     background-color: #1f1b2e;
     block-size: 178px;
-    inline-size: 280px;
+    padding: 20px;
     border-radius: 8px;
-   
+    text-align: center;
+    color: #a5a1b2;
+    line-height: 18px;
+}
+.slider {
+    @extend .container;
+    inline-size: 280px;
+}
+.list{
+    @extend .container;
+    inline-size: 100%;
+    block-size: 50px;
 }
