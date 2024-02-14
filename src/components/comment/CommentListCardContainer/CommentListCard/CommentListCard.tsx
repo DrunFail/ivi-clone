@@ -1,5 +1,6 @@
 import { ReviewTree } from "../../../../models/types";
 import Button from "../../../UI/Button/Button";
+import useAuth from "../../../auth/hooks/useAuth";
 import CommentAddForm from "../../CommentAddForm/CommentAddForm";
 import CommentBody from "../../UI/CommentBody/CommentBody";
 import CommentDateCreated from "../../UI/CommentDateCreated/CommentDateCreated";
@@ -16,10 +17,11 @@ interface CommentListCardProps {
     setReplyOpen: (isReply: boolean) => void,
     showChildComment: boolean,
     setShowChildComment: (isShow: boolean) => void,
-    changeCommentState: (newComment: ReviewTree) => void
+    changeCommentState: (newComment: ReviewTree) => void,
+    isLoginUser: boolean
 }
-export default function CommentListCard({ replyOpen, setReplyOpen, showChildComment, setShowChildComment, modifiedCommentData, changeCommentState }: CommentListCardProps) {
-
+export default function CommentListCard({ replyOpen, setReplyOpen, showChildComment, setShowChildComment, modifiedCommentData, changeCommentState, isLoginUser }: CommentListCardProps) {
+    
     return (
         <div className={styles.container}>
             <div className={styles.commentGrid}>
@@ -34,15 +36,14 @@ export default function CommentListCard({ replyOpen, setReplyOpen, showChildComm
             </div>
             <div className={styles.footer}>
                 <CommentLikeCounter />
-                <Button
+                {isLoginUser && <Button
                     onlyImage
                     onClick={() => setReplyOpen(!replyOpen)}>
                     <BsReply color="white" size="20px" />
-                </Button>
+                </Button>}
 
             </div>
-            {replyOpen &&
-                <CommentAddForm
+            {replyOpen && <CommentAddForm
                     movieKinopoiskId={modifiedCommentData.movieKinopoiskId}
                     parentId={modifiedCommentData.commentId}
                     sendCommentHandler={changeCommentState} />

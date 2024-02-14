@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ReviewTree } from "../../../models/types";
 import useCommentData from "./useCommentData";
+import useAuth from "../../auth/hooks/useAuth";
 
 export default function useCommentListCard(commentData: ReviewTree) {
     const [replyOpen, setReplyOpen] = useState(false);
@@ -17,8 +18,9 @@ export default function useCommentListCard(commentData: ReviewTree) {
         setReplyOpen(false)
     }
 
-    
+    const auth = useAuth();
+    const isLoginUser = Boolean(auth?.auth?.token)
 
 
-    return {replyOpen, setReplyOpen, showChildComment, setShowChildComment, changeCommentState, modifiedCommentData};
+    return {replyOpen, setReplyOpen, showChildComment, setShowChildComment, changeCommentState, modifiedCommentData, isLoginUser};
 }

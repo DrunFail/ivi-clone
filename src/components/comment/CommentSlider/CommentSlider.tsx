@@ -9,7 +9,7 @@ import { ResponseWithCountAndRows } from "../../../models/response";
 import CommentCardContainer from "./CommentCardContainer/CommentCardContainer";
 
 
-  
+
 
 interface CommentSliderProps {
     commentData: ResponseWithCountAndRows<Review>,
@@ -18,7 +18,7 @@ interface CommentSliderProps {
     movieId: number
 }
 
-export default function CommentSlider({ callback, commentData,movieName,movieId }:CommentSliderProps) {
+export default function CommentSlider({ callback, commentData, movieName, movieId }: CommentSliderProps) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -26,10 +26,14 @@ export default function CommentSlider({ callback, commentData,movieName,movieId 
                     <h1 onClick={() => callback()}>
                         <FormattedMessage id="Review" />
                     </h1>
-                    <p>about movie {movieName}</p>
+                    <p>
+                        <FormattedMessage
+                            id="comment.about"
+                            values={{ movie: movieName }} />
+                    </p>
                 </div>
                 <Button onClick={callback}>
-                    Comments
+                    <FormattedMessage id="comment.comment" />
                 </Button>
             </div>
             <div className={styles.slider}>
@@ -44,7 +48,7 @@ export default function CommentSlider({ callback, commentData,movieName,movieId 
                         callback={() => callback()}
                         component={CommentCardContainer}
                     />
-                    : <EmptyCommentCard />
+                    : <EmptyCommentCard variant="slider" />
 
                 }
             </div>

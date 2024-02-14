@@ -2,10 +2,11 @@
     /*    display: grid;
     grid-template-areas: "text button" "slider slider";
 */
+    
     .header {
         display: flex;
         justify-content: space-between;
-
+        
         .text {
             display: grid;
             /*grid-area: text;*/

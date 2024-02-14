@@ -7,7 +7,7 @@ interface CommentListCardContainerProps {
 }
 
 export default function CommentListCardContainer({ commentData }: CommentListCardContainerProps) {
-    const { showChildComment, replyOpen, setReplyOpen, setShowChildComment, changeCommentState, modifiedCommentData } = useCommentListCard(commentData);
+    const { showChildComment, replyOpen, setReplyOpen, setShowChildComment, changeCommentState, modifiedCommentData, isLoginUser } = useCommentListCard(commentData);
 
     return (
         <CommentListCard
@@ -16,7 +16,8 @@ export default function CommentListCardContainer({ commentData }: CommentListCar
             showChildComment={showChildComment}
             setShowChildComment={setShowChildComment}
             changeCommentState={changeCommentState}
-            modifiedCommentData={modifiedCommentData }
+            modifiedCommentData={modifiedCommentData}
+            isLoginUser={isLoginUser }
         />
     );
 }

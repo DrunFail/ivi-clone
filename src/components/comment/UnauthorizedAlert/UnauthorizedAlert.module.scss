@@ -1,0 +1,12 @@
+.alert {
+    display: grid;
+    row-gap: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #1f1b2e;
+    padding: 20px;
+
+    .text {
+        color: #a5a1b2;
+    }
+}
