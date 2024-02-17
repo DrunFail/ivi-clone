@@ -9,14 +9,14 @@ interface SliderTitleProps {
     href: string,
     withArrow?: boolean,
     defaultIntl?: string,
-    intlId?: string
+    intlId?: string,
 }
 
-export default function SliderTitle({ href, withArrow = true,defaultIntl, intlId }: SliderTitleProps) {
+export default function SliderTitle({ href, withArrow = true,defaultIntl, intlId, }: SliderTitleProps) {
     return (
         <Link href={href} className={styles.container}>
             <h3>
-                <FormattedMessage id={intlId} defaultMessage={defaultIntl} />
+                <FormattedMessage id={intlId} defaultMessage={defaultIntl}  />
             </h3>
             {withArrow && <Image src={arrowRight} height={16} alt="" />}
         </Link>

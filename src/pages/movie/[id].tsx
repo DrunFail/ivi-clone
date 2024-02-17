@@ -33,7 +33,7 @@ interface MovieProps {
 }
 export default function Movie({ movie }: MovieProps) {
 
-    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating } = useMoviePageData({ movieData: movie });
+    const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating, similarMovieList } = useMoviePageData({ movieData: movie });
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
     const size = useResize();
     console.log(movie)
@@ -55,10 +55,10 @@ export default function Movie({ movie }: MovieProps) {
                                     variant={"desktop"}
                                     movieName={movieName}
                                     moviePosterUrl={moviePosterUrl}
-                                movieYear={movieYear}
+                                    movieYear={movieYear}
                                 />
                             }
-                            {size < 880 && 
+                            {size < 880 &&
                                 <ButtonPlayerBlock
                                     variant={"mobile"}
                                     movieName={movieName}
@@ -66,7 +66,7 @@ export default function Movie({ movie }: MovieProps) {
                                     movieYear={movieYear}
                                 />
                             }
-                            
+
                         </MoviePagePlayerContainer>
 
                         <MoviePageInfoContainer>
@@ -111,17 +111,20 @@ export default function Movie({ movie }: MovieProps) {
                     </MoviePageTopContainer>
                 </PageWrapper>
             </PageSection>
-            <PageSection>
-                <PageWrapper>
-                    <SimilarSlider
+           
+            
+                <PageSection>
+                    <PageWrapper>
+                        <SimilarSlider
                         carouselId={"popular"}
-                        data={movie?.film?.similar}
-                        count={movie?.film?.similar.length}
-                        href={"/moives/all"}
-                        headingTitle={"С этим фильмом смотрят"}
-                    />
-                </PageWrapper>
-            </PageSection>
+                        similarGenreId={movie.film.genres[0].id }
+                            similarMovieList={similarMovieList}
+                            href={"/moives/all"}
+                            headingTitle={"С этим фильмом смотрят"}
+                        />
+                    </PageWrapper>
+                </PageSection>
+            
 
             <PageSection>
                 <PageWrapper>
@@ -130,15 +133,16 @@ export default function Movie({ movie }: MovieProps) {
                     </div>
                 </PageWrapper>
             </PageSection>
-            <PageSection>
-                <PageWrapper>
-                    <CommentSlider
-                        commentData={movie.reviews}
-                        movieName={movieName}
-                        movieId={movie.film.kinopoiskId }
-                        callback={() => pushQuery("review")} />
-                </PageWrapper>
-            </PageSection>
+            
+                <PageSection>
+                    <PageWrapper>
+                        <CommentSlider
+                            commentData={movie.reviews}
+                            movieName={movieName}
+                            movieId={movie.film.kinopoiskId}
+                            callback={() => pushQuery("review")} />
+                    </PageWrapper>
+                </PageSection>
             <PageSection>
                 <PageWrapper>
                     <WatchAnyDevice
@@ -166,9 +170,9 @@ interface ContextParams extends ParsedUrlQuery {
 
 // Для SSR страницы
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const {id } = context.params as ContextParams
+    const { id } = context.params as ContextParams
     const movie = await MovieAPI.getMovieById(id)
-    return { props: {movie}}
+    return { props: { movie } }
 };
 
 
