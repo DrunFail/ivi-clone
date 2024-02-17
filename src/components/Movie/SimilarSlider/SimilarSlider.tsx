@@ -1,46 +1,47 @@
-import { ISimiliar } from "../../../models";
 import { SimilarMovie } from "../../../models/types";
 import Carousel from "../../UI/Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import SliderTitle from "../MovieSlider/SliderTitle/SliderTitle";
 import SimilatItem from "./components/SimilarItem";
+import useSimilarSlider from "./hooks/useSimilarSlider";
+import MovieListItemWithLink from "../MovieList/components/MovieListItemWithLink/MovieListItemWithLink";
 
 interface SimilarSliderProps {
     carouselId: string;
-    data: SimilarMovie[];
-    count: number;
+    similarMovieList: SimilarMovie[];
+    similarGenreId: number,
     href: string;
-    headingTitle: string;
 }
 
 export default function SimilarSlider({
     carouselId,
-    data,
-    count,
+    similarMovieList,
     href,
-    headingTitle
+    similarGenreId,
 }: SimilarSliderProps) {
-    //data.length
-    if (data) {
-        return (
-            <>
-                <SliderTitle
-                    intlId="WithFilm"
-                    href={href}
-                    withArrow={false}
-                />
-                <Carousel
-                    mode={"slider"}
-                    carouselId={carouselId}
-                    data={data}
-                    count={count}
-                    sizes={MOVIE_LIST_SIZES}
-                    href={href}
-                    component={SimilatItem}
-                />
-            </>
-        );
-    }
+    const data = useSimilarSlider({ similarMovieList, similarGenreId })
 
-    return <></>;
+    if (!data.rows || !data.count) return <></>
+
+    return (
+        <>
+            <SliderTitle
+                intlId="WithFilm"
+                href={href}
+                withArrow={false}
+            />
+            <Carousel
+                mode={"slider"}
+                carouselId={carouselId}
+                data={data.rows}
+                count={data.count}
+                sizes={MOVIE_LIST_SIZES}
+                href={href}
+                component={data.isSimilarList ? SimilatItem : MovieListItemWithLink}
+            />
+        </>
+    );
 }
+
+
+

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import styles from "../../MovieList/components/MovieListItem/MovieListItem.module.scss";
-import React, { useState } from "react";
+import { useState } from "react";
 import OverlaySimilar from "./OverlaySimilar/OverlaySimilar";
 import Link from "next/link";
-import AgeRestriction from "../../MovieList/UI/AgeRestrictionOverlay/AgeRestriction";
-import { ISimiliar } from "../../../models";
+import { SimilarMovie } from "../../../../models/types";
+import useSimilarItemData from "../hooks/useSimilarItemData";
 
 interface SimilarItemProps {
-    elem: ISimiliar;
+    elem: SimilarMovie;
 }
 
 export default function SimilatItem({ elem }: SimilarItemProps) {
@@ -17,24 +17,22 @@ export default function SimilatItem({ elem }: SimilarItemProps) {
         setIsHover((isHover) => !isHover);
     };
 
-    const rand = React.useMemo<number>(() => {
-        return Math.random() * 10;
-    }, []);
+    const modifiedSimilarItem = useSimilarItemData({similarItem: elem })
 
     return (
-        <Link href={`/movie/${elem?.filmId}`}>
+        <Link href={modifiedSimilarItem.movieLink}>
             <div className={styles.item}>
                 <div
                     className={styles.image_container}
                     onMouseEnter={handleHover}
                     onMouseLeave={handleHover}
                 >
-                    <Image src={elem?.posterUrl} alt="" fill />
+                    <Image src={modifiedSimilarItem.posterUrl} alt="" fill />
 
-                    <AgeRestriction age={elem?.age} />
-                    {isHover && <OverlaySimilar rand={rand} elem={elem} />}
+                    
+                    {isHover && <OverlaySimilar />}
                 </div>
-                <p>{elem?.nameRu}</p>
+                <p>{modifiedSimilarItem.movieName}</p>
             </div>
         </Link>
     );

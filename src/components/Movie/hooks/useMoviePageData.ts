@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { MoviePageData } from "../../../models/global";
 import { getLang } from "../../../store/switchLang";
 import { MovieById } from "../../../models/types";
 
@@ -17,7 +16,7 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
     const movieDuration = minHours(Number(movieData?.film?.filmLength))
 
     const ageLimit = movieData?.film?.ratingAgeLimits?.replace("age", "")
-    const calculateMovieName = (lang: string, movieData: MoviePageData) => {
+    const calculateMovieName = (lang: string, movieData: MovieById) => {
         const prop = `name${lang}`
         
         if (movieData?.film && prop in movieData.film) {
@@ -29,7 +28,7 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
     
     const movieName = calculateMovieName(lang, movieData);
 
-    const calculateMovieCountry = (lang: string, movieData: MoviePageData) => {
+    const calculateMovieCountry = (lang: string, movieData: MovieById) => {
         const prop = `countryName${lang}`
         const country = movieData?.film?.countries[0]
 
@@ -41,7 +40,7 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
     }
     const movieCountry = calculateMovieCountry(lang, movieData);
 
-    const calculateMovieGenre = (lang: string, movieData: MoviePageData) => {
+    const calculateMovieGenre = (lang: string, movieData: MovieById) => {
         const prop = `genreName${lang}`
         const genre = movieData?.film?.genres[0]
 
@@ -53,6 +52,9 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
     }
     const movieGenre = calculateMovieGenre(lang, movieData);
 
+
+    
+
     return {
         movieDuration,
         ageLimit,
@@ -62,6 +64,7 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
         movieCountry,
         movieGenre,
         moviePosterUrl: movieData?.film?.posterUrl,
-        movieRating: Number(movieData?.film?.ratingKinopoisk)
+        movieRating: Number(movieData?.film?.ratingKinopoisk),
+        similarMovieList: movieData.film.similar
     };
 }

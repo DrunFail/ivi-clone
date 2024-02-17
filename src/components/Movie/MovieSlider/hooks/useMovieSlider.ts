@@ -5,7 +5,7 @@ import { MovieAPI } from "../../../../api/MovieAPI";
 
 
 export default function useMovieSlider(genreId:number) {
-    const [data, setData] = useState<ResponseWithCountAndRows<Movie>>();
+    const [data, setData] = useState<ResponseWithCountAndRows<Movie> |null>(null);
 
     useEffect(() => {
         const fetchMovie = async () => {
