@@ -1,8 +1,8 @@
 import styles from "./MovieList.module.scss";
 import { MOVIE_LIST_SIZES } from "./constants/constants";
-import MovieListItemWithLink from "./components/MovieListItemWithLink/MovieListItemWithLink";
 import Carousel from "../../UI/Carousel/Carousel";
 import { Movie } from "../../../models/types";
+import MovieListCardWithOverlayContainer from "../MovieListCardContainer/MovieListCardWithOverlayContainer";
 
 interface MovieListProps {
     data: Movie[],
@@ -13,7 +13,7 @@ export default function MovieList({data,showMoreHandler }:MovieListProps) {
     return (
         <div className={styles.container}>
             <Carousel
-                component={MovieListItemWithLink}
+                component={MovieListCardWithOverlayContainer}
                 mode={"list"}
                 carouselId={"qwe"}
                 data={data}

@@ -5,17 +5,17 @@ import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
 import EditCardContainer from "../../components/EditCardContainer/EditCardContainer";
 import PropertyItem from "../../components/PropertyItem/PropertyItem";
 import InputField from "../../components/InputField/InputField";
-import useMovieData from "../../../Movie/MovieList/hooks/useMovieData";
-import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
+import { Movie } from "../../../../models/types";
+import useMovieListCardData from "../../../Movie/hooks/useMovieListCardData";
 
 interface EditMovieCardProps {
-    elem: MovieItemTest,
+    elem: Movie,
     handleCloseEdit: () => void
 }
 
 
 export default function EditMovieCard({ elem, handleCloseEdit }: EditMovieCardProps) {
-    const { countries, genres } = useMovieData(elem);
+    const { countries, genres } = useMovieListCardData({ movieData: elem });
 
     const axiosAuth = useAxiosAuth();
     const [newMovieName, setNewMovieName] = useState({ nameRu: elem.nameRu, nameOriginal: elem.nameOriginal });
@@ -68,7 +68,7 @@ export default function EditMovieCard({ elem, handleCloseEdit }: EditMovieCardPr
 
                     <PropertyItem
                         intlId={"movie.rating"}
-                        description={elem.ratingKinopoisk} />
+                        description={elem.ratingKinopoisk ?? 0} />
 
                     <PropertyItem
                         intlId={"movie.countries"}
@@ -76,7 +76,7 @@ export default function EditMovieCard({ elem, handleCloseEdit }: EditMovieCardPr
 
                     <PropertyItem
                         intlId={"movie.length"}
-                        description={elem.filmLength} />
+                        description={elem.filmLength ?? "unknown"} />
 
                     <PropertyItem
                         intlId={"movie.genres"}
@@ -96,11 +96,11 @@ export default function EditMovieCard({ elem, handleCloseEdit }: EditMovieCardPr
                     
                     <PropertyItem
                         intlId={"movie.currentNameEng"}
-                        description={elem.nameOriginal} />
+                        description={elem.nameOriginal ?? "unknown"} />
 
                     <InputField
                         intlId={"movie.newNameEng"}
-                        value={newMovieName.nameOriginal}
+                        value={newMovieName.nameOriginal ?? ""}
                         name="nameOriginal"
                         changeHandler={handleChangeNewMovieName}
                         error={newNameEngError }                    />

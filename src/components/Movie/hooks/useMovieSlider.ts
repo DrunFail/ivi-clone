@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ResponseWithCountAndRows } from "../../../../models/response";
-import { Movie } from "../../../../models/types";
-import { MovieAPI } from "../../../../api/MovieAPI";
+import { ResponseWithCountAndRows } from "../../../models/response";
+import { Movie } from "../../../models/types";
+import { MovieAPI } from "../../../api/MovieAPI";
 
 
 export default function useMovieSlider(genreId:number) {

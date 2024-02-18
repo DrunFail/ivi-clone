@@ -1,5 +1,5 @@
-import { SimilarMovie } from "../../../../models/types"
-import useMovieSlider from "../../MovieSlider/hooks/useMovieSlider";
+import { SimilarMovie } from "../../../models/types";
+import useMovieSlider from "./useMovieSlider";
 
 interface UseSimilarSliderProps {
     similarMovieList: SimilarMovie[],

@@ -1,11 +1,11 @@
 import { FormattedMessage } from "react-intl";
-import SliderTitle from "../../Movie/MovieSlider/SliderTitle/SliderTitle";
 import Carousel from "../../UI/Carousel/Carousel";
 import Button from "../../UI/Button/Button";
 import { Person } from "../../../models/types";
 import { STAFF_CARD_SIZES } from "./StaffCard/const";
 import StaffCardContainer from "./StaffCardContainer/StaffCardContainer";
 import styles from "./StaffSlider.module.scss";
+import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 
 interface StaffSliderProps {
     data: Person[],
@@ -16,11 +16,9 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
     return (
         <>
             <div onClick={() => callback()}>
-                <SliderTitle
-                    href={""}
-                    withArrow={false}
-                    intlId={"CreatersAndActors"}
-                />
+                <SectionTitle withArrow={false}>
+                    <FormattedMessage id="CreatersAndActors" />
+                </SectionTitle>
             </div>
             <div className={styles.content}>
                 <Carousel
@@ -32,7 +30,7 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
                     component={StaffCardContainer}
                     href={""}
                 />
-                <Button className={styles.button }>
+                <Button className={styles.button}>
                     <FormattedMessage id="More" />
                 </Button>
             </div>
