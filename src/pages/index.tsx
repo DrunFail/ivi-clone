@@ -42,7 +42,6 @@ const Index = (): React.ReactElement => {
                             genreId={2 }
 
                             href={"/movies/comedy"}
-                            headingTitle={"Комедии"}
                         />
                     </PageWrapper>
                 </PageSection>
@@ -52,7 +51,6 @@ const Index = (): React.ReactElement => {
                             carouselId={"criminal"}
                             genreId={1 }
                             href={"/movies/crime"}
-                            headingTitle={"Криминал"}
                         />
                     </PageWrapper>
                 </PageSection>

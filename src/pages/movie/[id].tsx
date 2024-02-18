@@ -117,10 +117,9 @@ export default function Movie({ movie }: MovieProps) {
                     <PageWrapper>
                         <SimilarSlider
                         carouselId={"popular"}
-                        similarGenreId={movie.film.genres[0].id }
-                            similarMovieList={similarMovieList}
-                            href={"/moives/all"}
-                            headingTitle={"С этим фильмом смотрят"}
+                        similarGenreId={movie.film.genres[0].id}
+                        similarMovieList={similarMovieList}
+                        movieName={movieName }
                         />
                     </PageWrapper>
                 </PageSection>

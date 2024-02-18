@@ -1,23 +1,24 @@
 import { SimilarMovie } from "../../../models/types";
 import Carousel from "../../UI/Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
-import SliderTitle from "../MovieSlider/SliderTitle/SliderTitle";
-import SimilatItem from "./components/SimilarItem";
-import useSimilarSlider from "./hooks/useSimilarSlider";
-import MovieListItemWithLink from "../MovieList/components/MovieListItemWithLink/MovieListItemWithLink";
+import MovieListCardWithOverlayContainer from "../MovieListCardContainer/MovieListCardWithOverlayContainer";
+import SectionTitle from "../../UI/SectionTitle/SectionTitle";
+import { FormattedMessage } from "react-intl";
+import SimilarMovieListCardWithOverlayContainer from "../SimilarMovieListCardContainer/SimilarMovieListCardWithOverlayContainer";
+import useSimilarSlider from "../hooks/useSimilarSlider";
 
 interface SimilarSliderProps {
     carouselId: string;
     similarMovieList: SimilarMovie[];
     similarGenreId: number,
-    href: string;
+    movieName: string
 }
 
 export default function SimilarSlider({
     carouselId,
     similarMovieList,
-    href,
     similarGenreId,
+    movieName
 }: SimilarSliderProps) {
     const data = useSimilarSlider({ similarMovieList, similarGenreId })
 
@@ -25,19 +26,16 @@ export default function SimilarSlider({
 
     return (
         <>
-            <SliderTitle
-                intlId="WithFilm"
-                href={href}
-                withArrow={false}
-            />
+            <SectionTitle withArrow={false}>
+                <FormattedMessage id="WithFilm" values={{ name: movieName }} />
+            </SectionTitle>
             <Carousel
                 mode={"slider"}
                 carouselId={carouselId}
                 data={data.rows}
-                count={data.count}
+                count={data.rows.length}
                 sizes={MOVIE_LIST_SIZES}
-                href={href}
-                component={data.isSimilarList ? SimilatItem : MovieListItemWithLink}
+                component={data.isSimilarList ? SimilarMovieListCardWithOverlayContainer : MovieListCardWithOverlayContainer}
             />
         </>
     );

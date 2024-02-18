@@ -7,7 +7,8 @@ interface RatingFromNumbersProps {
 export default function RatingFromNumbers({rating }:RatingFromNumbersProps) {
     return (
         <div className={styles.rating}>
-            <span>{rating[0]}</span>
+            <span>{rating[0]}{"," }</span>
+            
             <span>{rating[1]}</span>
         </div>
     );

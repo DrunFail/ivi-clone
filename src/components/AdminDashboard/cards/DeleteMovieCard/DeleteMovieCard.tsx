@@ -3,11 +3,11 @@ import styles from "./DeleteMovieCard.module.scss";
 import Image from "next/image";
 import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
 import ButtonContainer from "../../components/ButtonContainer/ButtonContainer";
-import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
+import { Movie } from "../../../../models/types";
 
 interface DeleteMovieCardProps {
     handleCloseEdit: () => void,
-    elem: MovieItemTest
+    elem: Movie
 }
 
 export default function DeleteMovieCard({handleCloseEdit,elem }:DeleteMovieCardProps) {

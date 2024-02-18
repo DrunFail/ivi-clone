@@ -1,15 +1,14 @@
 import { useState } from "react";
 import EditMovieCard from "../../cards/EditMovieCard/EditMovieCard";
 import DeleteMovieCard from "../../cards/DeleteMovieCard/DeleteMovieCard";
-import MovieListItem from "../../../Movie/MovieList/components/MovieListItem/MovieListItem";
-import OverlayMovieListItem from "../../../Movie/MovieList/components/OverlayMovieListItem/OverlayMovieListItem";
 import Modal from "../../../UI/Modal/Modal";
-import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
-import ButtonEditWithHint from "../ButtonEditWithHint/ButtonEditWithHint";
-import ButtonDeleteWithHint from "../ButtonDeleteWithHint/ButtonDeleteWithHint";
+import MovieListCardWithOverlay from "../../../Movie/MovieListCardWithOverlay/MovieListCardWithOverlay";
+import AdminOverlayIcon from "../../../Movie/AdminOverlayIcon/AdminOverlayIcon";
+import useMovieListCardData from "../../../Movie/hooks/useMovieListCardData";
+import { Movie } from "../../../../models/types";
 
 interface MovieListItemAdminProps {
-    elem: MovieItemTest
+    elem: Movie
 }
 
 export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
@@ -23,15 +22,19 @@ export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
     const deleteMovieHandler = () => {
         setDeleteVisible(deleteVisible => !deleteVisible);
     }
-
+    const movieData = useMovieListCardData({movieData: elem})
     return (
         <div>
-            <MovieListItem movieItem={elem}>
-                <OverlayMovieListItem movieItem={elem} infoVisible={false }>
-                    <ButtonEditWithHint onClickHandler={editMovieHandler} />
-                    <ButtonDeleteWithHint onClickHandler={deleteMovieHandler} />
-                </OverlayMovieListItem>
-            </MovieListItem>
+            {/*<MovieListItem movieItem={elem}>*/}
+            {/*    <OverlayMovieListItem movieItem={elem} infoVisible={false }>*/}
+            {/*        <ButtonEditWithHint onClickHandler={editMovieHandler} />*/}
+            {/*        <ButtonDeleteWithHint onClickHandler={deleteMovieHandler} />*/}
+            {/*    </OverlayMovieListItem>*/}
+            {/*</MovieListItem>*/}
+
+            <MovieListCardWithOverlay
+                icons={<AdminOverlayIcon deleteHandler={deleteMovieHandler} editHandler={editMovieHandler } />}
+                modifiedMovieData={movieData.modifiedMovieData} />
 
             <Modal visible={editVisible} callback={editMovieHandler }>
                 <EditMovieCard elem={elem} handleCloseEdit={editMovieHandler} />
