@@ -1,20 +1,23 @@
 import { AuthContextData } from "../context/interfaces";
 import useAuth from "./useAuth";
 import { AuthAPI } from "../../../api/AuthAPI";
+import { authDecodeToken } from "../../../utils/authDecodeToken";
 
-const useRefreshToken = () => {
-    const authValue = useAuth();
-    if (!authValue) throw new Error("auth error");
-    const setAuth = authValue.setAuth;
+export default function  useRefreshToken() {
+    const {setAuth} = useAuth();
 
     const refresh = async () => {
         const response = await AuthAPI.refresh();
-        setAuth((prev:AuthContextData) => {
-            return { ...prev, token: response.data.token };
+        
+        const { userEmail, userRoles,token} = authDecodeToken(response.data.token)
+
+        setAuth((prev: AuthContextData) => {
+            return {
+                ...prev, token,userEmail,userRoles };
         });
         return response.data.token;
     };
     return refresh;
 };
 
-export default useRefreshToken;
+
