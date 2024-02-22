@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import useAuth from "./useAuth";
 import { AuthAPI } from "../../../api/AuthAPI";
+import { DEFAULT_AUTH_CONTEXT_VALUE } from "../constants";
 
 export default function useLogout() {
     const router = useRouter();
@@ -9,7 +10,7 @@ export default function useLogout() {
     const handleLogout = async () => {
         try {
             const response = await AuthAPI.logout();
-            setAuth({ token: "", userEmail: "", userRoles: [] });
+            setAuth(DEFAULT_AUTH_CONTEXT_VALUE);
             document.cookie = "callbackUrl=/";
             router.push('/auth/login');
         } catch (error) {

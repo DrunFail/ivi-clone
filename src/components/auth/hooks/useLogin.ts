@@ -1,13 +1,14 @@
 import { isAxiosError } from "axios";
-import jwtDecode from "jwt-decode";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { cookieParser } from "../../../utils/cookieParser";
 import useAuth from "./useAuth";
 import { AuthAPI } from "../../../api/AuthAPI";
+import { authDecodeToken } from "../../../utils/authDecodeToken";
+import { AuthContextData } from "../context/interfaces";
 
 export default function useLogin() {
-    const setAuth = useAuth()?.setAuth;
+    const { setAuth } = useAuth();
     const router = useRouter();
 
     const [email, setEmail] = useState("");
@@ -35,12 +36,13 @@ export default function useLogin() {
         }
         try {
             const response = await AuthAPI.login({ email, password })
-            const token = response?.data?.token;
+            const { userEmail, userRoles, token } = authDecodeToken(response.data.token)
 
-            const decode: { email: string, roles: { name: string }[] } = jwtDecode(token)
-            const userEmail = decode.email;
-            const userRoles = decode.roles.map(elem => elem.name);
-            setAuth && setAuth({ token, userEmail, userRoles });
+
+            setAuth((prevAuth: AuthContextData) => {
+                return { ...prevAuth, token, userEmail, userRoles }
+            }
+            );
             setEmail("");
             setPassword("");
             const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, "/");
