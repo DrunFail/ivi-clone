@@ -1,4 +1,7 @@
 {
+  "auth.vk": "Войти с ВКонтакте",
+
+
   "comment.about": "о фильме {movie}",
   "comment.comment": "Написать",
   "comment.empty": "Здесь пока нет комментариев. Будь первым!",
