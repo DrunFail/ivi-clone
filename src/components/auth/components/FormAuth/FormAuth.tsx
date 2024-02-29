@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import FormErrorMessage from "../FormErrorMessage/FormErrorMessage";
 import ButtonFormAuthSubmit from "../ButtonFormAuthSubmit/ButtonFormAuthSubmit";
 import FormContentContainer from "../FormContentContainer/FormContentContainer";
+import OAuthButton from "../OAuthButton/OAuthButton";
+import useVKAuth from "../../hooks/useVKAuth";
+
 
 interface FormAuthProps {
     error: string,
@@ -20,7 +23,8 @@ const AUTH = {
 };
 
 export default function FormAuth({ error, children, handleSubmit }: FormAuthProps) {
-    const { asPath } = useRouter();
+    const { asPath, query} = useRouter();
+
 
     return (
         <FormContainer>
@@ -48,6 +52,9 @@ export default function FormAuth({ error, children, handleSubmit }: FormAuthProp
                             />
                         </RedirectLinkContainer>
                     }
+                    <OAuthButton
+                        variant="vk"
+                        authHandler={useVKAuth} />
                 </FormContentContainer>
             </form>
         </FormContainer>
