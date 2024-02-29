@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 
 const OAUTH_VARIANT = {
     vk: {
-        redirect: "https://oauth.vk.com/authorize?client_id=51619671&redirect_uri=http://localhost:3000&scope=12&display=mobile",
+        redirect: "https://oauth.vk.com/authorize?client_id=51619671&redirect_uri=http://localhost:3000/auth/login&scope=email&display=mobile",
         icon: vk,
         intl: "auth.vk"
     },
@@ -19,11 +19,12 @@ const OAUTH_VARIANT = {
 }
 
 interface OAuthButtonProps {
-    variant: keyof typeof OAUTH_VARIANT
+    variant: keyof typeof OAUTH_VARIANT,
+    authHandler?: () => void
 }
-export default function OAuthButton({ variant }: OAuthButtonProps) {
+export default function OAuthButton({ variant, authHandler }: OAuthButtonProps) {
     const { redirect, icon, intl } = OAUTH_VARIANT[variant]
-
+    authHandler && authHandler();
 
     return (
         <Button
