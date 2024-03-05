@@ -1,51 +1,51 @@
 import { useRouter } from "next/router";
 import {  useEffect, useState } from "react"
 import { MovieAPI } from "../../../api/MovieAPI";
-import { Country, Genre, Movie } from "../../../models/types";
+import { Country, Genre, Movie, MovieFilterParams } from "../../../models/types";
+import { MOVIE_LIST_SIZES } from "../../Movie/MovieList/constants/constants";
+import { useResize } from "../../../hooks/useResize";
 
-const initParamsForFilter:FilterParams = {
-    page: 0,
-    genreId: null,
-    countryId: null,
-    director: null,
-    actor: null,
-    directorId: null,
-    actorId: null,
-    ratingKinopoisk: 5,
-    ratingKinopoiskVoteCount: 500000,
-    size: 18,
+type InitParamsForFilters = Pick<MovieFilterParams, "ratingKinopoisk" | "ratingKinopoiskVoteCount" | "orderBy" >
+type MoviePage = Pick<MovieFilterParams, "page">
+export type FilterParams = Omit<Partial<MovieFilterParams>, "size" | keyof MoviePage> & InitParamsForFilters
+
+const INIT_PARAMS_FOR_FILTERS:InitParamsForFilters = {
+    ratingKinopoisk: 0,
+    ratingKinopoiskVoteCount: 0,
     orderBy: "ratingKinopoisk",
-
-}
-export interface FilterParams {
-    page: number,
-    genreId: number | null,
-    countryId: number | null,
-    director: string | null,
-    actor: string | null,
-    directorId: number | null,
-    actorId: number | null,
-    orderBy: "nameRu" | "year" | "ratingKinopoiskVoteCount" | "ratingKinopoisk",
-    ratingKinopoisk: number,
-    ratingKinopoiskVoteCount: number,
-    size: number
 }
 
+const INIT_MOVIE_PAGE: MoviePage = {
+    page: 0
+};
 
+const MOVIE_ROWS = 3;
+
+const fetchMovies = (params: FilterParams, page: MoviePage, movieAmount: number) => {
+        return  MovieAPI.getFilteredMovie({ ...params, ...page, size: movieAmount })
+}
 export default function useFilterWatchPage({ variant = "genrePage" }: {variant?: "admin" | "genrePage"}) {
     const [genreList, setGenreList] = useState<Genre[]>([]);
     const [countryList, setCountyList] = useState<Country[]>([]);
-    const [filterParams, setFilterParams] = useState<FilterParams>(initParamsForFilter);
+    const [filterParams, setFilterParams] = useState<FilterParams>({} as FilterParams);
     const [filteredMovie, setFilteredMovie] = useState<Movie[]>([]);
+    const [currentMoviePage, setCurrentMoviePage] = useState(INIT_MOVIE_PAGE);
+    const [amountMovieOnPage, setAmountMovieOnPage] = useState(0)
+    
     const router = useRouter();
+    const size = useResize();
     const currentGenre = router.query.genre as string;
 
-    const handleChangeFilterParams = (filterKey: string, filterValue: number | string) => {
+    const handleChangeFilterParams = (filterKey: keyof FilterParams, filterValue: string | number) => {
             setFilterParams({ ...filterParams, [filterKey]: filterValue })
     }
-
+    
     const clearFiltersWithoutSort = () => {
-        setFilterParams({ ...filterParams, ...initParamsForFilter })
+        setFilterParams({ ...INIT_PARAMS_FOR_FILTERS });
+    }
+
+    const changeCurrentMoviePage = () => {
+        setCurrentMoviePage((currentMoviePage) => ({ ...currentMoviePage, page: ++currentMoviePage.page}) )
     }
 
     useEffect(() => {
@@ -61,6 +61,26 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
     }, [])
 
     useEffect(() => {
+        if (!!genreList.length) {
+            if (currentGenre !== "all" && variant !== "admin") {
+                const isExistingGenre = genreList.find(genre => genre.genreNameEng.toLowerCase() === currentGenre.toLowerCase());
+                if (isExistingGenre) {
+                    setFilterParams({
+                        ...INIT_PARAMS_FOR_FILTERS,
+                        genreId: isExistingGenre.id
+                    })
+                } else {
+                    router.push('/404')
+                }
+            }
+            if (currentGenre === "all" || variant === "admin") {
+                setFilterParams(INIT_PARAMS_FOR_FILTERS)
+            }
+        }
+    }, [genreList])
+
+
+    useEffect(() => {
         const fetchCountry = async () => {
             try {
                 const countries = await MovieAPI.getCountryList();
@@ -71,44 +91,35 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
         }
         fetchCountry();
     }, [])
-    
-    useEffect(() => {
-        if (router.isReady && genreList) {
-            const currentGenr = router.query.genre as string;
-            let pageSize: number = 18;
-            if (window.innerWidth <= 1280) pageSize = 18;
-            if (window.innerWidth <= 992) pageSize = 15;
-            if (window.innerWidth <= 768) pageSize = 9;
-
-            let currentGenreId: number;
-
-            if (currentGenr !== "all" && variant !== "admin") {
-
-                const isExistingGenre = genreList.find(item => item.genreNameEng.toLowerCase() === currentGenr.toLowerCase());
-                if (isExistingGenre) {
-                    currentGenreId = isExistingGenre.id
-                    setFilterParams({ ...initParamsForFilter, size: pageSize, genreId: currentGenreId })
-                } else {
-                    router.push('/404')
-                }
-            }
-            if (currentGenr === "all" || variant === "admin") {
-                setFilterParams({ ...initParamsForFilter, size: pageSize })
-            }
-        }
-    }, [router.isReady, genreList])
 
     useEffect(() => {
-        const fetchMovies = async (params: FilterParams) => {
-            try {
-                const response = await MovieAPI.getFilteredMovie(params)
-                setFilteredMovie(response.rows)
-            } catch (error) {
-                console.log(error)
-            }
+        const amountItemsOnPage = MOVIE_LIST_SIZES
+            .sort((a, b) => b.resol - a.resol)
+            .find(elem => elem.resol <= size)!
+            .items
+
+        const pageSize = amountItemsOnPage * MOVIE_ROWS
+        setAmountMovieOnPage(pageSize)
+    },[])
+
+    useEffect(() => {
+        if (amountMovieOnPage) {
+            fetchMovies(filterParams, INIT_MOVIE_PAGE, amountMovieOnPage)
+                .then(response => {
+                    setFilteredMovie(response.rows);
+                    setCurrentMoviePage({ ...INIT_MOVIE_PAGE } );
+                })
+                .catch(error => console.log(error));
         }
-        fetchMovies(filterParams)
     }, [filterParams])
+
+    useEffect(() => {
+        if (currentMoviePage.page) {
+            fetchMovies(filterParams, currentMoviePage, amountMovieOnPage)
+                .then((response) => setFilteredMovie([...filteredMovie, ...response.rows]))
+                .catch(error => console.log(error))
+        }
+    }, [currentMoviePage])
 
     return {
         filteredMovie,
@@ -117,7 +128,8 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
         genreList,
         countryList,
         currentGenre,
-        currentSortVariant: filterParams?.orderBy,
-        filterParams
+        currentSortVariant: filterParams.orderBy,
+        filterParams,
+        changeCurrentMoviePage
     }
 }

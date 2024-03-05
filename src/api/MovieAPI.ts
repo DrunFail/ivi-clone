@@ -1,6 +1,6 @@
 import { axiosAuth } from "../lib/axios";
 import { ResponseWithCountAndRows } from "../models/response";
-import { Country, Genre, Movie, MovieById, MovieSuggest } from "../models/types";
+import { Country, Genre, Movie, MovieById, MovieFilterParams, MovieSuggest } from "../models/types";
 
 
 export const MovieAPI = {
@@ -28,7 +28,7 @@ export const MovieAPI = {
         })
         return response.data.rows
     },
-    getFilteredMovie: async (filterParams: unknown) => {
+    getFilteredMovie: async (filterParams: Partial<MovieFilterParams>) => {
         const response = await axiosAuth.request<ResponseWithCountAndRows<Movie>>({
             url: `/api/movies/filters`,
             method: "get",

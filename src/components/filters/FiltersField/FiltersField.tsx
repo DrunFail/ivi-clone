@@ -3,16 +3,16 @@ import RangeFilter from "../RangeFilter/RangeFilter";
 import ResetFilter from "../ResetFilter/ResetFilter";
 import InputFilterWithAutoSuggest from "../InputFilterWithAutoSuggest/InputFilterWithAutoSuggest";
 import DropdownFilter from "../DropdownFilter/DropdownFilter";
-import { FilterParams } from "../hooks/useFiltersWatchPage";
 import GridAreaContainer from "../GridAreaContainer/GridAreaContainer";
 import BackgroundContainer from "../components/BackgroundContainer/BackgroundContainer";
 import { Country, Genre } from "../../../models/types";
+import { FilterParams } from "../hooks/useFiltersWatchPage";
 
 interface FiltersFieldProps {
     genreObjects: Genre[];
     countryObjects: Country[];
     clearFiltersWithoutSort: () => void;
-    testHandler: (filterKey: string, filterValue: string | number) => void,
+    setFilterParams: (filterKey: keyof FilterParams, filterValue:string | number) => void,
     filterParams: FilterParams,
     variant: "admin" | "genrePage"
 }
@@ -21,7 +21,7 @@ export default function FiltersField({
     countryObjects,
     filterParams,
     clearFiltersWithoutSort,
-    testHandler,
+    setFilterParams,
     variant
 
 }: FiltersFieldProps) {
@@ -31,43 +31,41 @@ export default function FiltersField({
         <div className={styles.filters}>
             <BackgroundContainer>
                 <DropdownFilter
-                    testId="genreId"
+                    filterKey="genreId"
                     clearArray={genreObjects}
                     name="genre"
-                    first={true}
-                    testHandler={testHandler}
+                    setFilterParams={setFilterParams}
                     initValue={filterParams.genreId}
                     variant={variant }
                 />
             </BackgroundContainer>
             <BackgroundContainer>
                 <DropdownFilter
-                    testId="countryId"
+                    filterKey="countryId"
                     clearArray={countryObjects}
                     name="country"
-                    first={false}
-                    testHandler={testHandler}
+                    setFilterParams={setFilterParams}
                     initValue={filterParams.countryId}
                     variant={variant }
                 />
             </BackgroundContainer>
             <BackgroundContainer>
                 <RangeFilter
-                    testId="ratingKinopoisk"
+                    filterKey="ratingKinopoisk"
                     min={0}
                     max={10}
                     step={0.1}
                     initValue={filterParams.ratingKinopoisk}
-                    testHandler={testHandler}
+                    setFilterParams={setFilterParams}
                 />
             </BackgroundContainer>
             <BackgroundContainer>
                 <RangeFilter
-                    testId="ratingKinopoiskVoteCount"
+                    filterKey="ratingKinopoiskVoteCount"
                     min={100 * 1000}
                     max={10 * 1000 * 1000}
                     step={100 * 1000}
-                    testHandler={testHandler}
+                    setFilterParams={setFilterParams}
                     initValue={filterParams.ratingKinopoiskVoteCount}
 
                 />
@@ -75,18 +73,18 @@ export default function FiltersField({
             <GridAreaContainer area={"E"}>
                 <BackgroundContainer>
                     <InputFilterWithAutoSuggest
-                        testHandler={testHandler}
-                        testId="directorId"
-                        currentId={filterParams.directorId}
+                        setFilterParams={setFilterParams}
+                        filterKey="DIRECTOR"
+                        currentId={filterParams.DIRECTOR}
                     />
                 </BackgroundContainer>
             </GridAreaContainer>
             <GridAreaContainer area="F">
                 <BackgroundContainer>
                     <InputFilterWithAutoSuggest
-                        testHandler={testHandler}
-                        testId="actorId"
-                        currentId={filterParams.actorId}
+                        setFilterParams={setFilterParams}
+                        filterKey="ACTOR"
+                        currentId={filterParams.ACTOR}
                     />
                 </BackgroundContainer>
             </GridAreaContainer>

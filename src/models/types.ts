@@ -238,3 +238,24 @@ export type AuthRegistrationResponse = {
 export type AuthRefreshResponse = {
     token: string
 }
+
+export type MovieSortBy =
+    | "nameRu"
+    | "year"
+    | "ratingKinopoiskVoteCount"
+    | "ratingKinopoisk"
+
+
+export type MovieFilterParams = {
+    page: number,
+    genreId: number,
+    countryId: number,
+    DIRECTOR: string,
+    ACTOR: string,
+    directorId: number,
+    actorId: number,
+    orderBy: MovieSortBy,
+    ratingKinopoisk: number,
+    ratingKinopoiskVoteCount: number,
+    size: number
+}
