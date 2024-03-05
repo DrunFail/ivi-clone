@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { getLang } from "../store/switchLang";
 import { useSelector } from "react-redux";
 import PageSection from "../components/PageContainers/PageSection/PageSection";
 import PromoSection from "../components/PromoSection/PromoSection";
@@ -8,6 +7,7 @@ import TopTenSlider from "../components/Movie/TopTenSlider/TopTenSlider";
 import MovieSlider from "../components/Movie/MovieSlider/MovieSlider";
 import { TOP_10_DATA } from "../components/Movie/TopTenSlider/data";
 import MainSlider from "../components/Movie/MainSlider/MainSlider";
+import { getLang } from "../store/slices/switchLang";
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());

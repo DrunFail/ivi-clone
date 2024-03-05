@@ -4,6 +4,9 @@ import { MovieAPI } from "../../../api/MovieAPI";
 import { Country, Genre, Movie, MovieFilterParams } from "../../../models/types";
 import { MOVIE_LIST_SIZES } from "../../Movie/MovieList/constants/constants";
 import { useResize } from "../../../hooks/useResize";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHook";
+import { fetchCountries } from "../../../store/slices/countriesSlice";
+import { fetchGenres, selectAllGenres } from "../../../store/slices/genresSlice";
 
 type InitParamsForFilters = Pick<MovieFilterParams, "ratingKinopoisk" | "ratingKinopoiskVoteCount" | "orderBy" >
 type MoviePage = Pick<MovieFilterParams, "page">
@@ -31,7 +34,10 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
     const [filteredMovie, setFilteredMovie] = useState<Movie[]>([]);
     const [currentMoviePage, setCurrentMoviePage] = useState(INIT_MOVIE_PAGE);
     const [amountMovieOnPage, setAmountMovieOnPage] = useState(0)
-    
+
+    const dispatch = useAppDispatch()
+    const genres = useAppSelector(selectAllGenres)
+
     const router = useRouter();
     const size = useResize();
     const currentGenre = router.query.genre as string;
@@ -59,6 +65,14 @@ export default function useFilterWatchPage({ variant = "genrePage" }: {variant?:
         }
         fetchGenreList();
     }, [])
+
+    useEffect(() => {
+            dispatch(fetchGenres())
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchCountries())
+    },[])
 
     useEffect(() => {
         if (!!genreList.length) {
