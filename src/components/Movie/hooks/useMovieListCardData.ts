@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Movie } from "../../../models/types";
 import { calculateMovieName } from "../../../utils/calculateMovieName";
-import { getLang } from "../../../store/switchLang";
 import { calculateMovieRating } from "../../../utils/calculateMovieRating";
 import { calculateDurationMovie } from "../../../utils/calculateDurationMovie";
+import { getLang } from "../../../store/slices/switchLang";
 
 interface UseMovieListCardDataProps {
     movieData: Movie

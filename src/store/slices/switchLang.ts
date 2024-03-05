@@ -1,5 +1,4 @@
-import { IMovie } from "../models";
-import { RootState } from "./createStore";
+import { RootState } from "../store";
 
 export const SWITCH_LANG = "SWITCH_LANG";
 

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { getLang } from "../../../store/switchLang";
 import { MovieById } from "../../../models/types";
+import { getLang } from "../../../store/slices/switchLang";
 
 interface UseMoviePageDataProps {
     movieData: MovieById

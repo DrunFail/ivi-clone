@@ -3,7 +3,7 @@ import Russian from "../../languages/es-RU.json";
 import React, { FC, useState, useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import { useSelector } from "react-redux";
-import { getLang } from "../../store/switchLang";
+import { getLang } from "../../store/slices/switchLang";
 
 const WrapperIntl: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [langs, setLang] = useState(English);

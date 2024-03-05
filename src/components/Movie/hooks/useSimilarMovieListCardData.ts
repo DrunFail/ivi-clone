@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { SimilarMovie } from "../../../models/types";
-import { getLang } from "../../../store/switchLang";
 import { calculateMovieName } from "../../../utils/calculateMovieName";
+import { getLang } from "../../../store/slices/switchLang";
 
 interface UseSimilarItemDataProps {
     similarItem: SimilarMovie

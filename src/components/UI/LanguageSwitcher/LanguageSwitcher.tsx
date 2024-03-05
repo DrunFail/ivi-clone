@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLang, langAction } from "../../../store/switchLang";
 import styles from "./LanguageSwitcher.module.scss";
+import { getLang, langAction } from "../../../store/slices/switchLang";
 
 const SwitchButton = () => {
     const [visible, setVisible] = useState<boolean>();
