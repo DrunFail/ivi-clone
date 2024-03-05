@@ -454,8 +454,8 @@
   "label.ratingKinopoisk": "Rate from {value}",
   "label.ratingKinopoiskVoteCount": "Num-r of rat-s from {value} mil.",
 
-  "label.directorId": "Director",
-  "label.actorId": "Actor",
+  "label.DIRECTOR": "Director",
+  "label.ACTOR": "Actor",
   "label.countryId": "Country",
   "label.genreId": "Genre",
 

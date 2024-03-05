@@ -16,26 +16,10 @@ export default function MoviesByGenre() {
         clearFiltersWithoutSort,
         filteredMovie,
         currentSortVariant,
-        filterParams
+        filterParams,
+        changeCurrentMoviePage
     } = useFilterWatchPage({variant: "genrePage"});
 
-
-    /** Функция вызывает запрос дополнительного набора карточек фильмов. */
-    //async function getMoreFilmcards(): Promise<void> {
-    //    setPaginate(prev => ++prev);
-    //    const requestUrl = createRequestUrl(paginate + 1, filterParams);
-    //    const response = await getFilmCards(requestUrl);
-    //    if (response) {
-    //        setIsLastPage(checkIsLastPage(response.count, paginate + 1));
-    //        const arrayOfFilms = response.rows;
-    //        setFilmCards([...filmCards, ...arrayOfFilms]);
-    //    }
-    //}
-
-    //function checkIsLastPage(count: number, pag: number): boolean {
-    //    const currentPageCardsLimit = (pag + 1) * +pageSize;
-    //    return count <= currentPageCardsLimit;
-    //}
 
     return (
         <>
@@ -50,7 +34,7 @@ export default function MoviesByGenre() {
                     <FiltersField
                         genreObjects={genreList}
                         countryObjects={countryList}
-                        testHandler={handleChangeFilterParams}
+                        setFilterParams={handleChangeFilterParams}
                         clearFiltersWithoutSort={clearFiltersWithoutSort}
                         filterParams={filterParams}
                         variant={"genrePage" }
@@ -59,9 +43,9 @@ export default function MoviesByGenre() {
                     
                     {filteredMovie.length > 0 &&
                         <SortField
-                        testHandler={handleChangeFilterParams}
+                        setFilterParams={handleChangeFilterParams}
                         currentSortVariant={currentSortVariant}
-                        testId="orderBy"
+                        filterKey="orderBy"
 
                             />}
                     
@@ -71,7 +55,9 @@ export default function MoviesByGenre() {
                 <PageWrapper>
                     {filteredMovie.length > 0
                         ? <MovieList
-                            data={filteredMovie} />
+                            data={filteredMovie}
+                            showMoreHandler={changeCurrentMoviePage}
+                        />
 
                         : <EmptyMovieList />
                     }

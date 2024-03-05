@@ -3,14 +3,15 @@ import styles from "./SortField.module.scss";
 import { BsChevronDown, BsFilterRight } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
 import useOutsideClick from "../../../hooks/useOutsideClick";
+import { FilterParams } from "../hooks/useFiltersWatchPage";
 
 interface SortFieldProps {
     currentSortVariant: string;
-    testHandler: (filterKey: string, filterValue: number | string) => void;
-    testId: "orderBy"
+    setFilterParams: (filterKey: keyof FilterParams, filterValue: number | string) => void;
+    filterKey: keyof FilterParams
 }
 const sortVariantArray = ["nameRu", "year", "ratingKinopoiskVoteCount","ratingKinopoisk"]
-export default function SortField({ currentSortVariant,  testHandler, testId }: SortFieldProps) {
+export default function SortField({ currentSortVariant,  setFilterParams, filterKey }: SortFieldProps) {
     const [isOpen, setIsOpen] = useState(false);
     const popupRef = useRef(null);
 
@@ -20,7 +21,7 @@ export default function SortField({ currentSortVariant,  testHandler, testId }: 
     useOutsideClick(popupRef, closePopup);
 
     const setSortParam = (sortParam: string) => {
-        testHandler(testId, sortParam)
+        setFilterParams(filterKey, sortParam)
         setIsOpen(false);
     }
 

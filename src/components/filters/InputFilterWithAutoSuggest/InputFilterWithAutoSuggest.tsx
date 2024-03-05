@@ -11,21 +11,22 @@ import styles from "./InputFilterWithAutoSuggest.module.scss";
 import SuggestContent from "./SuggestContent/SuggestContent";
 import { PersonSuggest } from "../../../models/types";
 import { NewPersonAPI } from "../../../api/newPersonAPI";
+import { FilterParams } from "../hooks/useFiltersWatchPage";
 
 interface InputFilterProps {
-    testHandler: (filterKey: string, filterValue: string | number) => void;
-    testId: "actorId" | "directorId",
-    currentId: number | null,
+    setFilterParams: (filterKey: keyof FilterParams, filterValue: string | number) => void;
+    filterKey: "ACTOR" | "DIRECTOR",
+    currentId: string | undefined,
 }
 
 const profession = {
-    actorId: "актер",
-    directorId: "режиссер"
+    ACTOR: "актер",
+    DIRECTOR: "режиссер"
 }
-export default function InputFilterWithAutoSuggest({ testHandler, testId, currentId }: InputFilterProps) {
+export default function InputFilterWithAutoSuggest({ setFilterParams, filterKey, currentId }: InputFilterProps) {
     const [suggestions, setSuggestions] = useState<PersonSuggest[]>([]);
     const [isOpen, setIsOpen] = useState(false);
-    const [queryParams, setQueryParams] = useState({ profession: profession[testId], name: "", size: 6 });
+    const [queryParams, setQueryParams] = useState({ profession: profession[filterKey], name: "", size: 6 });
     const [selected, setSelected] = useState<PersonSuggest | null>(null)
     const debouncedQueryParams = useDebounce(queryParams, 300);
 
@@ -60,7 +61,7 @@ export default function InputFilterWithAutoSuggest({ testHandler, testId, curren
 
     const handleClick = (suggestion: PersonSuggest) => {
         setQueryParams({ ...queryParams, name: suggestion.nameRu })
-        testHandler(testId, suggestion.personId);
+        setFilterParams(filterKey, suggestion.personId);
         setSelected(suggestion)
         setIsOpen(false);
     }
@@ -70,15 +71,19 @@ export default function InputFilterWithAutoSuggest({ testHandler, testId, curren
     }
 
     const handleClearParams = () => {
-        testHandler(testId, "");
+        setFilterParams(filterKey, "");
         setQueryParams({ ...queryParams, name: "" });
         setSuggestions([])
         setSelected(null)
     }
-
+    useEffect(() => {
+        if (!currentId && debouncedQueryParams.name) {
+            handleClearParams()
+        }
+    },[currentId])
     return (
         <div className={styles.wrapper} >
-            <FilterName intlId={testId} />
+            <FilterName intlId={filterKey} />
             {currentId
                 ? <div style={{ display: "flex", alignItems: "center" }}>
                     <SelectedFilterValue
@@ -93,7 +98,7 @@ export default function InputFilterWithAutoSuggest({ testHandler, testId, curren
                 :
                 <div ref={inputContainerRef} style={{ position: "relative", inlineSize: "100%", blockSize: "100%" }}>
                     <FilterInput
-                        id={testId}
+                        id={filterKey}
                         value={queryParams.name}
                         onChange={handleChange}
                         onFocus={handleFocus}

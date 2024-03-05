@@ -558,8 +558,8 @@
   "label.ratingKinopoisk": "Рейтинг от {value}",
   "label.ratingKinopoiskVoteCount": "Оценки от {value} млн.",
 
-  "label.directorId": "Режиссер",
-  "label.actorId": "Актер",
+  "label.DIRECTOR": "Режиссер",
+  "label.ACTOR": "Актер",
   "label.countryId": "Страна",
   "label.genreId": "Жанр",
 
