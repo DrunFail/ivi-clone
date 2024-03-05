@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import LoginForm from "./LoginForm";
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';

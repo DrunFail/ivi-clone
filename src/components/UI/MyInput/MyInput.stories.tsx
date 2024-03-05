@@ -13,7 +13,7 @@ import MyInput from "./MyInput";
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Provider } from 'react-redux';
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof MyInput> = {

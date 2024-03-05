@@ -5,7 +5,7 @@ import NavMenuWithAccordion from "./NavMenuWithAccordion";
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 
 const meta: Meta<typeof NavMenuWithAccordion> = {
     title: 'mobileNavBar/NavMenuWithAccordion',

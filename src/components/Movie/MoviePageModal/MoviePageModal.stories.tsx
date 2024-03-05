@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import MoviePageModal from "./MoviePageModal";
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
 import { MOVIE_PAGE_MODAL_MOCK_DATA } from './mock/data';

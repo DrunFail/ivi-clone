@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Provider } from 'react-redux';
 import MyApp from '../pages/_app';
-import store from '../store/createStore';
+import store from '../store/store';
 import WrapperIntl from '../components/WrapperIntl/WrapperIntl';
 import PageWrapper from '../components/PageContainers/PageWrapper/PageWrapper';
 import Index from '../pages';

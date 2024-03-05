@@ -9,7 +9,7 @@ import RootLayout from "../components/layouts/RootLayout/RootLayout";
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { store } from "../store/store";
+import  store  from "../store/store";
 
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

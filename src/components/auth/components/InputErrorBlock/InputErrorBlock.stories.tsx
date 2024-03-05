@@ -4,7 +4,7 @@ import InputErrorBlock from "./InputErrorBlock";
 import { Provider } from 'react-redux';
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 import PageWrapper from '../../../PageContainers/PageWrapper/PageWrapper';
-import store from '../../../../store/createStore';
+import store from '../../../../store/store';
 
 const meta: Meta<typeof InputErrorBlock> = {
     title: 'auth/InputErrorBlock',

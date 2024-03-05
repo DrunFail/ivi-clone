@@ -3,7 +3,7 @@ import genresReducer from "./slices/genresSlice";
 import countriesReducer from "./slices/countriesSlice";
 import { langReducer } from "./slices/switchLang";
 
-export  const store = configureStore({
+const store = configureStore({
     reducer: {
         genres: genresReducer,
         countries: countriesReducer,
@@ -14,3 +14,5 @@ export  const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export default store;

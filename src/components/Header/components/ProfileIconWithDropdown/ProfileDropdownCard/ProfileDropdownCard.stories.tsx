@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 import ProfileDropdownCard from "./ProfileDropdownCard";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 import { PROFILE_IMG_LINK_DATA } from '../imgLinkData';
 
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 
 import HamburgerMenu from "./HamburgerMenu";
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof HamburgerMenu> = {

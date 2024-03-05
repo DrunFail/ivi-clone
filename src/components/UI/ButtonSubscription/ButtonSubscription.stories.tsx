@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ButtonSubscription from "./ButtonSubscriptiion";
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 
 const meta: Meta<typeof ButtonSubscription> = {
     title: 'buttons/ButtonSubscription',

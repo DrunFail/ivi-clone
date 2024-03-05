@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentsUserName from "./CommentUserName";
 import { Provider } from 'react-redux';
-import store from '../../../../store/createStore';
+import store from '../../../../store/store';
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof CommentsUserName> = {
