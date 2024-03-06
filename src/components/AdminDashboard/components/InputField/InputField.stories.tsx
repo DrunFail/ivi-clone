@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import InputField from "./InputField";
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
-import store from '../../../../store/createStore';
+import store from '../../../../store/store';
 import { ChangeEvent } from 'react';
 
 const meta: Meta<typeof InputField> = {

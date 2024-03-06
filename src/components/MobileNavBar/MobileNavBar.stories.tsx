@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MobileNavBar from "./MobileNavBar";
 import { Provider } from 'react-redux';
-import store from '../../store/createStore';
+import store from '../../store/store';
 import WrapperIntl from '../WrapperIntl/WrapperIntl';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import CommentBody from "./CommentBody";
 import { Provider } from 'react-redux';
-import store from '../../../../store/createStore';
+import store from '../../../../store/store';
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
 import PageWrapper from '../../../PageContainers/PageWrapper/PageWrapper';
 

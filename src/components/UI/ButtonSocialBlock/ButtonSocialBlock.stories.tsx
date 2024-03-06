@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 import ButtonSocialBlock from "./ButtonSocialBlock";
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof ButtonSocialBlock> = {

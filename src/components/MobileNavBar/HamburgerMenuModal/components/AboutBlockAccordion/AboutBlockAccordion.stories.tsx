@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import AboutBlockAccordion from "./AboutBlockAccordion";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 
 const meta: Meta<typeof AboutBlockAccordion> = {
     title: 'mobileNavBar/AboutBlockAccordion',

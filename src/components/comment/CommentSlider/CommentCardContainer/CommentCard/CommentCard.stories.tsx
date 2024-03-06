@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import CommentCard from "./CommentCard";
 import { Provider } from 'react-redux';
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 
 const meta: Meta<typeof CommentCard> = {
     title: 'comment/CommentCard',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 import SearchResult from "./SearchResult";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 
 const meta: Meta<typeof SearchResult> = {
     title: 'SearchResult',

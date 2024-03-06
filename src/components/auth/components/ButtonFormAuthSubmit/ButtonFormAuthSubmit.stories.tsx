@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Provider } from 'react-redux';
 import ButtonFormAuthSubmit from './ButtonFormAuthSubmit';
-import store from '../../../../store/createStore';
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
+import  store  from '../../../../store/store';
 
 const meta: Meta<typeof ButtonFormAuthSubmit> = {
     title: 'auth/ButtonFormAuthSubmit',

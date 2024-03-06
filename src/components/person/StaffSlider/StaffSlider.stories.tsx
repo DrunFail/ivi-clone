@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import StaffSlider from "./StaffSlider";
 import { Provider } from 'react-redux';
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { PERSON_MOCK_DATA } from './mock/personMockData';
 import PageSection from '../../PageContainers/PageSection/PageSection';

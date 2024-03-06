@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
-import store from '../../../store/createStore';
+import store from '../../../store/store';
 import PageSection from '../../PageContainers/PageSection/PageSection';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';

@@ -3,7 +3,7 @@ import PageWrapper from '../PageContainers/PageWrapper/PageWrapper';
 
 import Rating from "./Rating";
 import { Provider } from 'react-redux';
-import store from '../../store/createStore';
+import store from '../../store/store';
 import WrapperIntl from '../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof Rating> = {

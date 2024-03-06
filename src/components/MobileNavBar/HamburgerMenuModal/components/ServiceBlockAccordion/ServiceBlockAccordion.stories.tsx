@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import ServiceBlockAccordion from "./ServiceBlockAccordion";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 
 const meta: Meta<typeof ServiceBlockAccordion> = {
     title: 'mobileNavBar/ServiceBlockAccordion',

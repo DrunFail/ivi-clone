@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ConfirmConfidential from "./ConfirmConfidential";
 import { Provider } from 'react-redux';
 import WrapperIntl from '../../../WrapperIntl/WrapperIntl';
-import store from '../../../../store/createStore';
+import store from '../../../../store/store';
 
 const meta: Meta<typeof ConfirmConfidential> = {
     title: 'auth/ConfirmConfidential',

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import HeaderNavbarDropdownContent from "./HeaderNavbarDropdownContent";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 import { NAV_MENU } from '../../../constants/headerConstants';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

@@ -2,7 +2,6 @@ import { GetServerSideProps } from "next";
 import WatchAnyDevice from "../../components/WatchAnyDevice/WatchAnyDevice";
 import SimilarSlider from "../../components/Movie/SimilarSlider/SimilarSlider";
 import HeadMovie from "../../components/Movie/HeadMovie/HeadMovie";
-import MoviePlayer from "../../components/Movie/MoviePlayer/MoviePlayer";
 import Medallion from "../../components/PageContainers/Medallion/Medallion";
 import Rating from "../../components/Rating/Rating";
 import PersonList from "../../components/person/PersonList/PersonList";
@@ -27,6 +26,9 @@ import MovieExtraInfoBlock from "../../components/Movie/MovieExtraInfoBlock/Movi
 import { MovieById } from "../../models/types";
 import { MovieAPI } from "../../api/MovieAPI";
 import { ParsedUrlQuery } from "querystring";
+import useCustomReactPlayer from "../../components/Movie/hooks/useCustomReactPlayer";
+import CustomReactPlayer from "../../components/CustomReactPlayer/CustomReactPlayer";
+import MoviePlayerStickyContainer from "../../components/Movie/containers/MoviePlayerStickyContainer/MoviePlayerStickyContainer";
 
 interface MovieProps {
     movie: MovieById;
@@ -35,6 +37,7 @@ export default function Movie({ movie }: MovieProps) {
 
     const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating, similarMovieList } = useMoviePageData({ movieData: movie });
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
+    const { firstTrailerLink, trailerLinkList} = useCustomReactPlayer(movie.film.trailers)
     const size = useResize();
     console.log(movie)
 
@@ -49,23 +52,29 @@ export default function Movie({ movie }: MovieProps) {
                 <PageWrapper>
                     <MoviePageTopContainer>
                         <MoviePagePlayerContainer>
-                            <MoviePlayer />
-                            {size > 1160 &&
-                                <ButtonPlayerBlock
-                                    variant={"desktop"}
-                                    movieName={movieName}
-                                    moviePosterUrl={moviePosterUrl}
-                                    movieYear={movieYear}
-                                />
-                            }
-                            {size < 880 &&
-                                <ButtonPlayerBlock
-                                    variant={"mobile"}
-                                    movieName={movieName}
-                                    moviePosterUrl={moviePosterUrl}
-                                    movieYear={movieYear}
-                                />
-                            }
+                            <MoviePlayerStickyContainer>
+                                <CustomReactPlayer videoUrl={firstTrailerLink} />
+                            
+                                {size > 1160 &&
+                                    <ButtonPlayerBlock
+                                        variant={"desktop"}
+                                        movieName={movieName}
+                                        moviePosterUrl={moviePosterUrl}
+                                        movieYear={movieYear}
+                                    />
+                                }
+                                {size < 880 &&
+                                    <ButtonPlayerBlock
+                                        variant={"mobile"}
+                                        movieName={movieName}
+                                        moviePosterUrl={moviePosterUrl}
+                                        movieYear={movieYear}
+                                    />
+                                }
+
+                            </MoviePlayerStickyContainer>
+                            
+                           
 
                         </MoviePagePlayerContainer>
 

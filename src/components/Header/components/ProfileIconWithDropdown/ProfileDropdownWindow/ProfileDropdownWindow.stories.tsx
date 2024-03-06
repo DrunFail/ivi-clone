@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import ProfileDropdownWindow from "./ProfileDropdownWindow";
 import WrapperIntl from '../../../../WrapperIntl/WrapperIntl';
-import store from '../../../../../store/createStore';
+import store from '../../../../../store/store';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
