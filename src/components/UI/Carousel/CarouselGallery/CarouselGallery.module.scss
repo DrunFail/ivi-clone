@@ -1,7 +1,7 @@
 .carousel {
     overflow: hidden;
     display: grid;
-    padding-block-start: 24px;
+    padding-block-start: var(--fs-500);
     padding-inline: 12px ;
     
     margin-inline: -12px -36px;
@@ -17,7 +17,7 @@
 .carousel_list {
     @extend .carousel;
     grid-template-columns: repeat(var(--item-amount), 1fr);
-    row-gap: 24px;
+    row-gap: var(--fs-500);
 }
 
 .carousel_collection {

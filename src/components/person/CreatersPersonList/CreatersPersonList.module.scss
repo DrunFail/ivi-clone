@@ -8,7 +8,7 @@
     h1 {
         margin-top: 20px;
         font-size: 25px;
-        font-weight: 700;
+        font-weight: var(--fw-bold);
     }
 
     &__rez {
@@ -33,7 +33,7 @@
         p {
             max-width: 128px;
             font-size: 17px;
-            font-weight: 500;
+            font-weight: var(--fw-medium);
         }
     }
 }

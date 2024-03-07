@@ -1,6 +1,6 @@
 .container {
     block-size: 60px;
-    background-color: #1f1b2e;
+    background-color: var(--clr-dark-700);
     border-radius:10px;
     display: grid;
     grid-template-columns: repeat(10,1fr);
@@ -10,8 +10,8 @@
         justify-content:center;
         align-items: center;
         font-size: 20px;
-        font-weight: 700;
-        line-height: 24px;
+        font-weight: var(--fw-bold);
+        line-height: var(--fs-500);
 
         &:hover{
             background-color: red;

@@ -6,7 +6,7 @@
     inline-size: 100%;
     outline: none;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     border-radius: 10px;
     color: white;
     border: none;
@@ -14,7 +14,7 @@
     transition: 0.3s;
 }
 .dark {
-    background-color: #1f1b2e;
+    background-color: var(--clr-dark-700);
 
     &:hover {
         background-color: #2e2844;

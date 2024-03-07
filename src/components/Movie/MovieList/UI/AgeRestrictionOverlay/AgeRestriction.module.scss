@@ -1,7 +1,7 @@
 .age {
 	display: flex;
 	block-size: 16px;
-	inline-size: 24px;
+	inline-size: var(--fs-500);
 	justify-content: center;
 	align-items: center;
 	color: white;

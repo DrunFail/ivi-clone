@@ -2,7 +2,7 @@
     display: flex;
     gap: 8px;
     color: green;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     font-size: 18px;
 
     svg {

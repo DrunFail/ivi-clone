@@ -1,7 +1,7 @@
 .item {
     display: grid;
     grid-template-rows: 14fr 1fr;
-    padding-inline-end: 24px;
+    padding-inline-end: var(--fs-500);
 
     .container {
         aspect-ratio: 224/456;

@@ -12,8 +12,8 @@
             /*grid-area: text;*/
 
             h1 {
-                font-size: 24px;
-                font-weight: 700;
+                font-size: var(--fs-500);
+                font-weight: var(--fw-bold);
             }
 
             p {
@@ -33,9 +33,9 @@
             justify-self: flex-end;
             block-size: 32px;
             inline-size: 127px;
-            font-size: 13px;
+            font-size: var(--fs-300);
             line-height: 16px;
-            font-weight: 500;
+            font-weight: var(--fw-medium);
             border: 1px solid rgba(255, 255, 255, 0.32);
             background-color: transparent;
 

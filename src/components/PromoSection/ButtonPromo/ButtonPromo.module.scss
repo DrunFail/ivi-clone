@@ -5,11 +5,11 @@
     align-items: center;
     justify-content: center;
     margin-inline: 12px;
-    background-color: #1f1b2e;
+    background-color: var(--clr-dark-700);
     border-radius: 8px;
     border: none;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: var(--fw-medium);
     line-height: 20px;
     color: #fff;
 

@@ -1,16 +1,16 @@
 .rating {
     color: white;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     display: flex;
     align-items: center;
 
     span:first-child {
-        font-size: 24px;
+        font-size: var(--fs-500);
         line-height: 28px;
     }
 
     span:last-child {
         font-size: 20px;
-        line-height: 24px;
+        line-height: var(--fs-500);
     }
 }
