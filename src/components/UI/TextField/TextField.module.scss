@@ -1,0 +1,11 @@
+.textField {
+    inline-size: 100%;
+    block-size: 40px;
+    border-radius: 10px;
+    font-size: var(--fs-400);
+    font-weight: var(--fw-medium);
+    outline: none;
+    padding-inline: 12px;
+    padding-block: 18px 2px;
+    background-color: var(--clr-grey-100);
+}
