@@ -1,9 +1,10 @@
 import { useState } from "react";
 import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
 import EditCardContainer from "../../components/EditCardContainer/EditCardContainer";
-import InputField from "../../components/InputField/InputField";
 import PropertyItem from "../../components/PropertyItem/PropertyItem";
 import PropertyList from "../../components/PropertyList/PropertyList";
+import TextFieldWithLabel from "../../../UI/TextFieldWithLabel/TextFieldWithLabel";
+import { FormattedMessage } from "react-intl";
 
 interface EditGenreCardProps {
     genreItem: any,
@@ -53,27 +54,27 @@ export default function EditGenreCard({ genreItem, handleCloseEdit }: EditGenreC
                 <PropertyItem
                     intlId="genre.currentNameRu"
                     description={genreItem.genreNameRu} />
-
-                <InputField
-                    intlId={"genre.newNameRu"}
+               
+                <TextFieldWithLabel
+                    labelText={<FormattedMessage id="genre.newNameRu" />}
                     value={newGenreName.genreNameRu}
+                    id="genreNameRu"
                     name="genreNameRu"
-                    changeHandler={handleChangeNewGenreName}
-                    error={newNameRuError }
+                    onChange={handleChangeNewGenreName}
                 />
 
                 <PropertyItem
                     intlId="genre.currentNameEng"
                     description={genreItem.genreNameEng} />
 
-                <InputField
-                    intlId="genre.newNameEng"
+                
+                <TextFieldWithLabel
+                    labelText={<FormattedMessage id="genre.newNameEng" />}
                     value={newGenreName.genreNameEng}
+                    id="genreNameEng"
                     name="genreNameEng"
-                    changeHandler={handleChangeNewGenreName}
-                    error={newNameEngError }
+                    onChange={handleChangeNewGenreName }
                 />
-            
             </PropertyList>
         </EditCardContainer>
        
