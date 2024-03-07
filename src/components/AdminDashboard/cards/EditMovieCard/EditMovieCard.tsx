@@ -4,9 +4,10 @@ import styles from "./EditMovieCard.module.scss";
 import useAxiosAuth from "../../../auth/hooks/useAxiosAuth";
 import EditCardContainer from "../../components/EditCardContainer/EditCardContainer";
 import PropertyItem from "../../components/PropertyItem/PropertyItem";
-import InputField from "../../components/InputField/InputField";
 import { Movie } from "../../../../models/types";
 import useMovieListCardData from "../../../Movie/hooks/useMovieListCardData";
+import TextFieldWithLabel from "../../../UI/TextFieldWithLabel/TextFieldWithLabel";
+import { FormattedMessage } from "react-intl";
 
 interface EditMovieCardProps {
     elem: Movie,
@@ -85,26 +86,25 @@ export default function EditMovieCard({ elem, handleCloseEdit }: EditMovieCardPr
                     <PropertyItem
                         intlId={"movie.currentNameRu"}
                         description={elem.nameRu} />
-
-                    <InputField
-                        intlId={"movie.newNameRu"}
-                        value={newMovieName.nameRu}
-                        name="nameRu"
-                        changeHandler={handleChangeNewMovieName}
-                        error={newNameRuError }
-                    />
                     
+                    <TextFieldWithLabel
+                        labelText={<FormattedMessage id="movie.newNameRu" />}
+                        id="nameRu"
+                        name="nameRu"
+                        value={newMovieName.nameRu}
+                        onChange={handleChangeNewMovieName }
+                    />
                     <PropertyItem
                         intlId={"movie.currentNameEng"}
                         description={elem.nameOriginal ?? "unknown"} />
 
-                    <InputField
-                        intlId={"movie.newNameEng"}
-                        value={newMovieName.nameOriginal ?? ""}
+                    <TextFieldWithLabel
+                        labelText={<FormattedMessage id="movie.newNameEng" />}
+                        id="nameOriginal"
                         name="nameOriginal"
-                        changeHandler={handleChangeNewMovieName}
-                        error={newNameEngError }                    />
-                    
+                        value={newMovieName.nameOriginal ?? ""}
+                        onChange={handleChangeNewMovieName }
+                    />
                 </div>
 
             </div>

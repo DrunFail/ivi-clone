@@ -3,6 +3,7 @@ import styles from "./CommentAddForm.module.scss";
 import Button from "../../UI/Button/Button";
 import { ReviewTree } from "../../../models/types";
 import useCommentAddForm from "../hooks/useCommentAddForm";
+import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 
 interface CommentAddFormProps {
     movieKinopoiskId: number,
@@ -11,12 +12,17 @@ interface CommentAddFormProps {
 }
 
 
-export default function CommentAddForm({movieKinopoiskId, parentId, sendCommentHandler }: CommentAddFormProps) {
-    const {commentValue, updateCommentValue,createReview } = useCommentAddForm({sendCommentHandler,parentId, movieKinopoiskId});
+export default function CommentAddForm({ movieKinopoiskId, parentId, sendCommentHandler }: CommentAddFormProps) {
+    const { commentValue, updateCommentValue, createReview } = useCommentAddForm({ sendCommentHandler, parentId, movieKinopoiskId });
 
     return (
-        <form className={styles.form} onSubmit={(e) => { e.preventDefault(); createReview() } }>
-            <input type="text" value={commentValue} onChange={updateCommentValue} />
+        <form className={styles.form} onSubmit={(e) => { e.preventDefault(); createReview() }}>
+            <TextFieldWithLabel
+                id="commentAddForm"
+                labelText="Написать отзыв"
+                value={commentValue}
+                onChange={updateCommentValue}
+            />
             <Button color="red" type="submit">
                 <FormattedMessage id="Send" />
             </Button>

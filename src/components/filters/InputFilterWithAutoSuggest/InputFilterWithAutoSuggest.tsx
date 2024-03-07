@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../hooks/useDebounce";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import ButtonClose from "../../UI/ButtonClose/ButtonClose";
-import FilterInput from "../../UI/FilterInput/FilterInput";
 import BackgroundContainer from "../components/BackgroundContainer/BackgroundContainer";
 import FilterName from "../components/FilterName/FilterName";
 import PositionContainer from "../components/PositionContainer/PositionContainer";
@@ -12,6 +11,7 @@ import SuggestContent from "./SuggestContent/SuggestContent";
 import { PersonSuggest } from "../../../models/types";
 import { NewPersonAPI } from "../../../api/newPersonAPI";
 import { FilterParams } from "../hooks/useFiltersWatchPage";
+import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 
 interface InputFilterProps {
     setFilterParams: (filterKey: keyof FilterParams, filterValue: string | number) => void;
@@ -97,13 +97,15 @@ export default function InputFilterWithAutoSuggest({ setFilterParams, filterKey,
                 </div>
                 :
                 <div ref={inputContainerRef} style={{ position: "relative", inlineSize: "100%", blockSize: "100%" }}>
-                    <FilterInput
+                    <TextFieldWithLabel
+                        labelText="Введите имя"
                         id={filterKey}
+                        name={filterKey}
                         value={queryParams.name}
                         onChange={handleChange}
-                        onFocus={handleFocus}
-
+                        onFocus={handleFocus }
                     />
+
                     {isOpen && suggestions.length > 0 &&
                         <PositionContainer variant="content">
                             <BackgroundContainer>

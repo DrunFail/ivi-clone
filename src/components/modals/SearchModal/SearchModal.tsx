@@ -4,9 +4,9 @@ import styles from "./SearchModal.module.scss";
 import DefaultSearchResult from "./components/DefaultSearchResult/DefaultSearchResult";
 import SearchResult from "./components/SearchResult/SearchResult";
 import Modal from "../../UI/Modal/Modal";
-import MyInput from "../../UI/MyInput/MyInput";
 import { MovieAPI } from "../../../api/MovieAPI";
 import { MovieSuggest } from "../../../models/types";
+import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 
 interface SearchModalProps {
     visible: boolean,
@@ -25,10 +25,11 @@ export default function SearchModal({visible, handleVisible }: SearchModalProps)
                     <FormattedMessage id="Search" />
                 </h1>
 
-                <MyInput
-                    callback={(e: string) => searchFn(e)}
-                    placeholderId="Search"
-                    />
+                <TextFieldWithLabel
+                    id="search"
+                    onChange={(e) => searchFn((e.target as HTMLInputElement).value)}
+                    labelText={<FormattedMessage id="Search" />}
+                />
 
                 {!search?.length
                     ? <DefaultSearchResult />
