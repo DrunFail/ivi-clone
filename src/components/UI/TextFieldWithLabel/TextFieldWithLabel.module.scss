@@ -13,7 +13,7 @@
     }
 
 
-    input:focus + .placeholder, input:valid + .placeholder {
+    input:focus + .placeholder, input:valid + .placeholder,input[value=" "] + .placeholder {
         inset-block-start: 2px;
         font-size: var(--fs-300);
     }

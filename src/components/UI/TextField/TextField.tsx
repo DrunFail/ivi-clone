@@ -5,14 +5,15 @@ interface TextFieldRequired {
     id?: string,
     name?: string,
     value?: string,
-    required?: boolean
+    required?: boolean,
+    type?: "text" | "password" | "email"
 }
 
 export interface TextFieldProps extends Omit<HTMLAttributes<HTMLInputElement>, keyof TextFieldRequired>, TextFieldRequired { }
 export default function TextField({ ...props }: TextFieldProps) {
     return (
         <input
-            type="text"
+            type={props.type ?? "text"}
             className={styles.textField}
             {...props}
         />
