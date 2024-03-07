@@ -2,14 +2,4 @@
     display: grid;
     grid-template-columns: 1fr max-content;
     column-gap: 20px;
-
-    input {
-        border-radius: 8px;
-        background-color: #d9d7e0;
-        padding-inline: 12px;
-        padding-block: 18px 2px;
-    }
-    button{
-        inline-size: 1var(--fs-300);
-    }
 }
