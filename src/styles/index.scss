@@ -1,100 +1,25 @@
-@import "./Variable.scss";
-// $md1: 1280px;
-// $md2: 992px;
-// $md3: 768px;
-// $md4: 480px;
-* {
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
-*,
-*:before,
-*:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-:focus,
-:active {
-    outline: none;
-}
-a:focus,
-a:active {
-    outline: none;
-}
-nav,
-footer,
-header,
-aside {
-    display: block;
-}
-html,
-body {
-    height: 100%;
-    width: 100%;
-    font-size: 100%;
-    line-height: 1;
-    font-size: 14px;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    scroll-behavior: smooth;
-    background-color: var(--clr-dark-blue);
-    color: #ffffff;
-    font-family: var(--ivi-font), Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
-    letter-spacing: 0.5px;
-}
-
-input::-ms-clear {
-    display: none;
-}
-button {
-    font-family: inherit;
-    cursor: pointer;
-}
-button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-}
-a,
-a:visited {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-}
-a:hover {
-    text-decoration: none;
-}
-ul li {
-    list-style: none;
-}
-img {
-    vertical-align: top;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: inherit;
-    font-weight: inherit;
-}
-
-pre {
-    font-family: inherit;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
+@import "_reset";
 
 :root {
     --max-width: 1216px;
     --margin-page-primary: 20px;
-    --clr-dark-blue: #100e19;
+    //fonts weight
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+    //fonts size
+    --fs-300: 13px;
+    --fs-400: 15px;
+    --fs-500: 24px;
+    --fs-800: 42px;
+    //color
+    --clr-dark-800: #100e19;
+    --clr-dark-700: #1f1b2e;
+}
+
+
+body {
+    font-family: var(--ivi-font);//set from _app.tsx
+    background-color: var(--clr-dark-800);
+    color: #ffffff;
 }
