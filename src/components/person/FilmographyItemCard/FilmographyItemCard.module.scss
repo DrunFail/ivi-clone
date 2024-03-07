@@ -12,11 +12,11 @@
     .large {
         font-size: 16px;
         line-height: 22px;
-        font-weight: 700;
+        font-weight: var(--fw-bold);
     }
 
     .small {
-        font-size: 13px;
+        font-size: var(--fs-300);
         line-height: 22px;
         color: #a5a1b2;
     }

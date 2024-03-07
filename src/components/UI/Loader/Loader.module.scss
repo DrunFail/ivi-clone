@@ -26,8 +26,8 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: var(--fs-500);
+    height: var(--fs-500);
     top: 50%;
     left: 50%;
     transform: scale(0.5) translate(0, 0);

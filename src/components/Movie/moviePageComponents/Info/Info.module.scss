@@ -5,8 +5,8 @@
 
     .heading {
         h1 {
-            font-size: 42px;
-            font-weight: 700;
+            font-size: var(--fs-800);
+            font-weight: var(--fw-bold);
             line-height: 44px;
             text-align: center;
         }
@@ -41,7 +41,7 @@
 
         p {
             font-size: 15px;
-            font-weight: 500;
+            font-weight: var(--fw-medium);
             line-height: 15px;
             color: hsla(0,0%,100%,.72);
             text-align: center;

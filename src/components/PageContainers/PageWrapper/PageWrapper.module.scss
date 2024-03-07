@@ -1,7 +1,7 @@
 .wrapper {
     max-inline-size: var(--max-width);
     margin-inline: auto;
-    padding-block: 24px;
+    padding-block: var(--fs-500);
 }
 @media (max-width: 1279px){
     .wrapper{

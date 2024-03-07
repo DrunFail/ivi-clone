@@ -5,8 +5,8 @@
     align-items: center;
     block-size: 100%;
     p {
-        font-size: 24px;
-        font-weight: 700;
+        font-size: var(--fs-500);
+        font-weight: var(--fw-bold);
         color: #a5a1b2;
     }
 }

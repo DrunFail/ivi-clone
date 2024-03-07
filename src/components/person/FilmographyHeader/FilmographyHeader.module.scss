@@ -1,6 +1,6 @@
 .text {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
 
     span {
         font-size: 15px;

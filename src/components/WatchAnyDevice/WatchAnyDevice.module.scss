@@ -11,9 +11,9 @@
     @media screen and (max-width: 600px) {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr min-content;
-        background-color: #1f1b2e;
+        background-color: var(--clr-dark-700);
         border-radius: 10px;
-        padding: 24px;
+        padding: var(--fs-500);
         row-gap: 20px;
         grid-template-rows: min-content;
         width: 100%;

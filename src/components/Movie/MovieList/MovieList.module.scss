@@ -2,7 +2,7 @@
     --border-radius-slider-item: 8px;
     --aspect-ratio-slider-item: 172/264;
     --aspect-ratio-slider-img: 157/241;
-    --gap-slider-item: 24px;
+    --gap-slider-item: var(--fs-500);
     --grid-row-slider-item: 5.6fr 1fr;
     inline-size: 100%;
     display: grid;

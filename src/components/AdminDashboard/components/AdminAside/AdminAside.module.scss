@@ -2,7 +2,7 @@
     padding-block-start: 20px;
 
     ul {
-        font-size: 24px;
+        font-size: var(--fs-500);
 
         li {
             padding: 16px 16px;
@@ -12,7 +12,7 @@
         }
 
         .li_active {
-            background-color: #1f1b2e;
+            background-color: var(--clr-dark-700);
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
 

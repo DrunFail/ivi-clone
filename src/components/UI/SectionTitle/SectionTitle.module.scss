@@ -1,7 +1,7 @@
 .text {
-    font-size: 24px;
+    font-size: var(--fs-500);
     line-height: 28px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     display: inline-flex;
     column-gap: 3px;
     align-items: center;

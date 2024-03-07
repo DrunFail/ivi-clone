@@ -46,7 +46,7 @@
         }
         h1 {
             font-size: 40px;
-            font-weight: 700;
+            font-weight: var(--fw-bold);
         }
     }
     &__media {
@@ -129,7 +129,7 @@
         h1 {
             text-align: center;
             font-size: 56px;
-            font-weight: 700;
+            font-weight: var(--fw-bold);
         }
         p {
             opacity: 0.5;
@@ -164,7 +164,7 @@
             opacity: 0.8;
             p {
                 opacity: 0.8;
-                font-size: 13px;
+                font-size: var(--fs-300);
             }
             button {
                 width: 60px;

@@ -5,11 +5,11 @@
     max-inline-size: 800px;
     inline-size: 100%;
     margin-inline: auto;
-    row-gap: 24px;
+    row-gap: var(--fs-500);
 
     h1 {
         font-size: 55px;
-        font-weight: 700;
+        font-weight: var(--fw-bold);
     }
 
     margin-top: 100px;

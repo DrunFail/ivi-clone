@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
     row-gap: 16px;
     block-size: 72px;
-    padding-block-start: 24px;
+    padding-block-start: var(--fs-500);
 }
 @media (max-width: 865px){
     .container{
