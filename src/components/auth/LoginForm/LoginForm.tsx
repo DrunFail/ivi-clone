@@ -1,5 +1,5 @@
+import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 import FormAuth from "../components/FormAuth/FormAuth";
-import InputField from "../components/InputField/InputField";
 import useLogin from "../hooks/useLogin";
 
 export default function LoginForm() {
@@ -14,21 +14,22 @@ export default function LoginForm() {
 
     return (
         <FormAuth error={error} handleSubmit={handleSignInCredentials}>
-            <InputField
-                placeholder="Введите e-mail"
+            <TextFieldWithLabel
+                labelText="Введите e-mail"
                 type="email"
                 value={email}
                 id="email"
                 name="email"
-                onChange={setInputEmail}
+                onChange={setInputEmail }
             />
-            <InputField
-                placeholder="Введите пароль"
+
+            <TextFieldWithLabel
+                labelText="Введите пароль"
+                id="password"
                 value={password}
                 type="password"
-                id="password"
                 name="password"
-                onChange={setInputPassword}
+                onChange={setInputPassword }
             />
 
         </FormAuth>
