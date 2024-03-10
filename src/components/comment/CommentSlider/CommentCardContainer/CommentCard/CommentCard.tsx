@@ -8,14 +8,13 @@ import styles from "./CommentCard.module.scss";
 
 interface CommentCardProps {
     modifiedCommentData: ModifiedCommentData,
-    callback: () => void,
 }
 
 
 
-export default function CommentCard({ modifiedCommentData, callback }: CommentCardProps) {
+export default function CommentCard({ modifiedCommentData}: CommentCardProps) {
     return (
-            <div className={styles.container} onClick={callback}>
+            <div className={styles.container}>
                 <CommentUserName userName={modifiedCommentData.commentAuthor} />
                 <CommentBody commentBody={modifiedCommentData.commentBody} />
                 <div className={styles.footer}>

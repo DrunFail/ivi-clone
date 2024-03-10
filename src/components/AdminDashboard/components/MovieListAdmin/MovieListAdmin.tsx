@@ -1,10 +1,10 @@
+import { Movie } from "../../../../models/types";
 import { MOVIE_LIST_SIZES } from "../../../Movie/MovieList/constants/constants";
-import { MovieItemTest } from "../../../Movie/MovieList/interfaces/interfaces";
 import Carousel from "../../../UI/Carousel/Carousel";
 import MovieListItemAdmin from "../MovieListItemAdmin/MovieListItemAdmin";
 
 interface MovieListAdminProps {
-    data: MovieItemTest[]
+    data: Movie[]
 }
 
 

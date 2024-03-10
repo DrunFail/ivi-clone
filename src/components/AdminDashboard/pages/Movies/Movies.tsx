@@ -24,7 +24,7 @@ export default function Movies() {
                 <FiltersField
                     genreObjects={genreList}
                     countryObjects={countryList}
-                    testHandler={handleChangeFilterParams}
+                    setFilterParams={handleChangeFilterParams}
                     clearFiltersWithoutSort={clearFiltersWithoutSort}
                     filterParams={filterParams}
                     variant={"admin"}
@@ -33,9 +33,9 @@ export default function Movies() {
 
                 {filteredMovie.length > 0 &&
                     <SortField
-                        testHandler={handleChangeFilterParams}
+                        setFilterParams={handleChangeFilterParams}
                         currentSortVariant={currentSortVariant}
-                        testId="orderBy"
+                        filterKey="orderBy"
 
                     />}
 

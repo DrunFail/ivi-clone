@@ -24,7 +24,7 @@ export default function ShareButtonWithModal({posterUrl, nameRu, year }:ShareBut
     return (
         <>
 
-            <ShareButton handler={isModalOpen} />
+            <ShareButton clickHandler={isModalOpen} />
             <ShareModal
                 visible={visible}
                 isModalClose={isModalClose}

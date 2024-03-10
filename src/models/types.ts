@@ -197,7 +197,7 @@ export type Trailer = {
     kinopoiskFilmId: number
 }
 
-type ReviewAuthor = {
+export type ReviewAuthor = {
     id: number,
     username: string,
     name: string | null,
@@ -215,13 +215,15 @@ export type Review = {
     childsNum: number,
     path: string,
     depth: number,
-    profile: ReviewAuthor
+    profile: ReviewAuthor,
+    createdAt: string,
+    updatedAt: string,
+    childs?: Review[]
 }
 
 export type ReviewTree =  Review & {
-    childs?: ReviewTree[],
-    createdAt: string,
-    updatedAt: string
+    
+    
 }
 
 export type AuthLoginResponse = {

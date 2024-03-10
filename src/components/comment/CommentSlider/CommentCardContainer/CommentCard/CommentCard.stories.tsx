@@ -27,7 +27,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <div style={{inlineSize: "350px"} }>
-                    <CommentCard modifiedCommentData={comment} callback={() => console.log('click') } />
+                    <CommentCard modifiedCommentData={comment}  />
                 </div>
             </WrapperIntl>
         </Provider>

@@ -12,7 +12,7 @@ interface StaffSliderProps {
     callback: () => void
 }
 export default function StaffSlider({ data, callback }: StaffSliderProps) {
-    if (!data) return;
+    
     return (
         <>
             <div onClick={() => callback()}>

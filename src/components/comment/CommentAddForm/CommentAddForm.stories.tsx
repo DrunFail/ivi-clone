@@ -19,7 +19,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <CommentAddForm />
+                    <CommentAddForm inputId="input" movieKinopoiskId={0} />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>

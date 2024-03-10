@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { axiosAuth } from "../../../lib/axios";
 import useAuth from "./useAuth";
 import useRefreshToken from "./useRefreshToken";
+import type {AxiosRequestConfig, InternalAxiosRequestConfig} from "axios";
 
 const useAxiosAuth = () => {
     const refresh = useRefreshToken();
@@ -22,8 +23,8 @@ const useAxiosAuth = () => {
 
         const responseIntercept = axiosAuth.interceptors.response.use(
             response => response,
-            async (error:AxiosError) => {
-                const prevRequest = error?.config;
+            async (error) => {
+                const prevRequest = error.config;
                 if (error?.response?.status === 401 && !prevRequest?.sent) {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();

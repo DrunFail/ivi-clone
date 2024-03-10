@@ -17,7 +17,7 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-                <EmptyCommentCard />
+                <EmptyCommentCard variant="list"/>
             </WrapperIntl>
         </Provider>
 

@@ -5,21 +5,20 @@ import CarouselGallery from "./CarouselGallery/CarouselGallery";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
 import PageSectionContainerInner from "../../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
-import { MovieItemTest } from "../../Movie/MovieList/interfaces/interfaces";
 
-interface CarouselProps {
+interface CarouselProps<T extends { id: number }> {
     mode: "list" | "slider" | "collection";
     carouselId: string;
-    data: any[];
+    data: T[];
     count: number;
     sizes: { resol: number; items: number }[];
     href?: string;
-    component: React.ComponentType<{ elem: MovieItemTest }>;
+    component: React.ComponentType<{ elem: T}>;
     callback?: () => void;
     showMoreHandler?: () => void
 }
 
-export default function Carousel({
+export default function Carousel<T extends {id:number}>({
     callback,
     data,
     count,
@@ -29,7 +28,7 @@ export default function Carousel({
     href,
     component: Component,
     showMoreHandler
-}: CarouselProps) {
+}: CarouselProps<T>) {
     const {
         checkNext,
         checkPrev,
@@ -69,7 +68,7 @@ export default function Carousel({
                             {data.map((elem) => (
                                 <CarouselItem
                                     callback={callback}
-                                    key={elem?.id}
+                                    key={elem.id}
                                     style={{
                                         transform: `translate(${valueDirection}%, 0)`
                                     }}

@@ -43,6 +43,7 @@ export default function CommentListCard({ replyOpen, setReplyOpen, showChildComm
 
             </div>
             {replyOpen && <CommentAddForm
+                inputId={`addComment-${modifiedCommentData.commentId}`}
                     movieKinopoiskId={modifiedCommentData.movieKinopoiskId}
                     parentId={modifiedCommentData.commentId}
                     sendCommentHandler={changeCommentState} />
