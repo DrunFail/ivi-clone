@@ -43,5 +43,6 @@ export const genresSlice = createSlice({
             })
     }
 })
-export const selectAllGenres = (state: RootState) => state.genres
+export const selectAllGenres = (state: RootState) => state.genres;
+
 export default genresSlice.reducer

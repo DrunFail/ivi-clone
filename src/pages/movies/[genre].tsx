@@ -6,6 +6,8 @@ import EmptyMovieList from "../../components/Movie/EmptyMovieList/EmptyMovieList
 import FiltersField from "../../components/filters/FiltersField/FiltersField";
 import SortField from "../../components/filters/SortField/SortField";
 import useFilterWatchPage from "../../components/filters/hooks/useFiltersWatchPage";
+import useBreadCrumbsStandart from "../../hooks/useBreadCrumbsStandart";
+import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
 
 export default function MoviesByGenre() {
     const {
@@ -20,9 +22,15 @@ export default function MoviesByGenre() {
         changeCurrentMoviePage
     } = useFilterWatchPage({variant: "genrePage"});
 
+    const breadcrumbsData = useBreadCrumbsStandart();
+   
+
 
     return (
         <>
+            <PageWrapper>
+                <BreadCrumbs breadcrumbs={breadcrumbsData} isLastCrumbActive={false} />
+            </PageWrapper>
             <PageSection>
                 <PageWrapper>
                     <WatchPageHeaderDescription

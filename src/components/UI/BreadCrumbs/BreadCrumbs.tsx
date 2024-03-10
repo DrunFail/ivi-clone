@@ -21,7 +21,7 @@ export default function BreadCrumbs({ breadcrumbs, isLastCrumbActive = true, sep
                 return (
                     <>
                         {isLastCrumb && !isLastCrumbActive
-                            ? renderedCrumb
+                            ? <div>{renderedCrumb}</div>
                             : <Link href={crumb.href}>
                                 {renderedCrumb}
                             </Link>

@@ -1,6 +1,10 @@
 {
   "auth.vk": "Войти с ВКонтакте",
 
+  "breadcrumbs.FILM": "Фильмы",
+  "breadcrumbs.TV_SERIES": "Сериалы",
+  "breadcrumbs.movies": "Фильмы",
+
 
   "comment.about": "о фильме {movie}",
   "comment.comment": "Написать",
