@@ -18,8 +18,15 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-                <div style={{inlineSize: "250px"} }>
-                    <RangeFilter min={0} max={100} step={10} testId={'test'} initValue={30} testHandler={rangeHandler} />
+                <div style={{ inlineSize: "250px" }}>
+                    <RangeFilter
+                        min={0}
+                        max={100}
+                        step={10}
+                        filterKey={'ratingKinopoisk'}
+                        initValue={30}
+                        setFilterParams={rangeHandler}
+                    />
 
                 </div>
             </WrapperIntl>

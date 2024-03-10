@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
+import { FilterParams } from '../hooks/useFiltersWatchPage';
 
 const meta: Meta<typeof FiltersField> = {
     title: 'filters/FiltersField',
@@ -50,18 +51,16 @@ const countryObjects = [
 ]
 
 
-const filterParams = {
-    page: 0,
+const filterParams: FilterParams = {
     genreId: 1,
     countryId: 1,
-    director: "",
-    actor: "",
+    DIRECTOR: "",
+    ACTOR: "",
     directorId: 0,
     actorId: 0,
     orderBy: "ratingKinopoisk",
     ratingKinopoisk: 0,
     ratingKinopoiskVoteCount: 0,
-    size: 10
 }
 
 const handler = (filterKey: string, filterValue: string | number) => console.log('click')
@@ -70,12 +69,15 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-            <PageWrapper>
+                <PageWrapper>
                     <FiltersField
                         genreObjects={genreObjects}
                         countryObjects={countryObjects}
                         filterParams={filterParams}
-                        testHandler={handler} />
+                        setFilterParams={handler}
+                        clearFiltersWithoutSort={() => console.log('click')}
+                        variant="genrePage"
+                    />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>
