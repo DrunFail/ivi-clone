@@ -29,6 +29,8 @@ import { ParsedUrlQuery } from "querystring";
 import useCustomReactPlayer from "../../components/Movie/hooks/useCustomReactPlayer";
 import CustomReactPlayer from "../../components/CustomReactPlayer/CustomReactPlayer";
 import MoviePlayerStickyContainer from "../../components/Movie/containers/MoviePlayerStickyContainer/MoviePlayerStickyContainer";
+import useBreadCrumbsMoviePage from "../../hooks/useBreadCrumbsMoviePage";
+import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
 
 interface MovieProps {
     movie: MovieById;
@@ -37,7 +39,11 @@ export default function Movie({ movie }: MovieProps) {
 
     const { movieDuration, ageLimit, movieYear, movieName, movieDescription, movieCountry, movieGenre, moviePosterUrl, movieRating, similarMovieList } = useMoviePageData({ movieData: movie });
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
-    const { firstTrailerLink, trailerLinkList} = useCustomReactPlayer(movie.film.trailers)
+    const { firstTrailerLink, trailerLinkList } = useCustomReactPlayer(movie.film.trailers)
+    const breadCrumbsData = useBreadCrumbsMoviePage({movie});
+
+    
+
     const size = useResize();
     console.log(movie)
 
@@ -47,7 +53,11 @@ export default function Movie({ movie }: MovieProps) {
                 pageTitle={movieName}
                 contentDescription={movie.film.description}
             />
-
+            
+                <PageWrapper>
+                <BreadCrumbs breadcrumbs={breadCrumbsData.shortList} />
+                </PageWrapper>
+            
             <PageSection>
                 <PageWrapper>
                     <MoviePageTopContainer>
@@ -159,6 +169,9 @@ export default function Movie({ movie }: MovieProps) {
                     />
                 </PageWrapper>
             </PageSection>
+            <PageWrapper>
+                <BreadCrumbs breadcrumbs={breadCrumbsData.fullList} isLastCrumbActive={false } />
+            </PageWrapper>
             <MoviePageModal
                 visible={visible}
                 type={type}
