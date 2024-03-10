@@ -198,17 +198,18 @@ export type Trailer = {
 }
 
 type ReviewAuthor = {
+    id: number,
     username: string,
-    name: string,
-    lastName: string,
-    favMovie: string,
-    avatarId: number
+    name: string | null,
+    lastName: string | null,
+    favMovie: string | null,
+    avatarId: number | null
 }
 
 export type Review = {
     id: number,
     filmId: number,
-    parentId: number,
+    parentId: number | null,
     title: string,
     text: string,
     childsNum: number,
@@ -218,7 +219,7 @@ export type Review = {
 }
 
 export type ReviewTree =  Review & {
-    childs: ReviewTree[],
+    childs?: ReviewTree[],
     createdAt: string,
     updatedAt: string
 }
