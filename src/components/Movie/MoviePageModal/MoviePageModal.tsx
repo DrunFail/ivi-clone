@@ -12,7 +12,6 @@ import DurationOverlay from "../MovieList/UI/DurationOverlay/DurationOverlay";
 import MoviePoster from "../MoviePoster/MoviePoster";
 import TabTitle from "../../componentsTab/TabTitle/TabTitle";
 import CreatersTab from "../../componentsTab/CreatersTab/CreatersTab";
-import TrailerTab from "../../componentsTab/TrailerTab/TrailerTab";
 import { MovieById } from "../../../models/types";
 
 interface MoviePageModalProps {
@@ -51,7 +50,7 @@ export default function MoviePageModal({ visible, type, film, callback, movieTit
 
 
                     {type === "actors" && <CreatersTab personList={film.staff} />}
-                    {type === "trailer" && <TrailerTab />}
+                    {type === "trailer" && <p>trailer</p>}
                     {type === "review" &&
                         <CommentTabContainer
                         movieKinopoiskId={film.film.kinopoiskId }

@@ -1,14 +1,17 @@
-import { IStaff } from "../../../models";
+import { Person } from "../../../models/types";
 import CreatersPersonList from "../../person/CreatersPersonList/CreatersPersonList";
 import styles from "./CreatersTab.module.scss";
 
+interface CreatersTabProps {
+    personList: Person[]
+}
 
-export default function CreatersTab({ personList }: {personList:IStaff[]}) {
+export default function CreatersTab({ personList }:CreatersTabProps) {
     
-
-    const directorList = personList.filter(person => person.profession.includes("Режиссер"))
-    const actorList = personList.filter(person => person.profession.includes("Актер") || person.profession.includes("Актриса"))
-    const writerList = personList.filter(person => person.profession.includes("Сценарист"))
+    
+    const directorList = personList.filter(person => person.profession && person.profession.includes("Режиссер"))
+    const actorList = personList.filter(person => person.profession && (person.profession.includes("Актер") || person.profession.includes("Актриса")))
+    const writerList = personList.filter(person => person.profession && person.profession.includes("Сценарист"))
     
 
     return (

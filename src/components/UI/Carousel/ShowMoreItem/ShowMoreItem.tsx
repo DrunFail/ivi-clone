@@ -4,7 +4,7 @@ import LinkShowMore from "../LinkShowMore/LinkShowMore";
 
 interface ShowMoreItemProps {
     valueDirection?: number,
-    mode: "list" | "slider",
+    mode: "list" | "slider" | "collection",
     href?: string,
     showMoreHandler?: () => void
 }

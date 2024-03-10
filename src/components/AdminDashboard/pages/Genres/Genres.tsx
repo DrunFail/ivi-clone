@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import GenreListItem from "../../components/GenreListItem/GenreListItem";
 import styles from "./Genres.module.scss";
+import { Genre } from "../../../../models/types";
 
 
 export default function Genres() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<Genre[]>([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/api/movies/genres')

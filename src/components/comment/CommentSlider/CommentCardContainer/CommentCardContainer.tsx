@@ -1,14 +1,13 @@
-import { ReviewTree } from "../../../../models/types"
+import { Review } from "../../../../models/types"
 import useCommentData from "../../hooks/useCommentData"
 import CommentCard from "./CommentCard/CommentCard"
 
 interface CommentDataContainerProps {
-    elem: ReviewTree,
-    callback: () => void
+    elem: Review,
 }
-export default function CommentCardContainer({ elem,callback }: CommentDataContainerProps) {
+export default function CommentCardContainer({ elem}: CommentDataContainerProps) {
     const modifiedCommentData = useCommentData(elem)
     return (
-        <CommentCard modifiedCommentData={modifiedCommentData} callback={callback } />
+        <CommentCard modifiedCommentData={modifiedCommentData} />
     )
 }

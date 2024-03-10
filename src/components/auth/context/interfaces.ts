@@ -1,3 +1,5 @@
+import { ReviewAuthor } from "../../../models/types";
+
 export interface AuthContextData {
     token: string | null,
     userEmail: string | null,

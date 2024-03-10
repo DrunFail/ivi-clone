@@ -19,7 +19,7 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-                <EditCardContainer>
+                <EditCardContainer handleCloseEdit={() => console.log("edit") } handleSubmit={()=>console.log('submit') }>
                 card component
                 </EditCardContainer>
             </WrapperIntl>

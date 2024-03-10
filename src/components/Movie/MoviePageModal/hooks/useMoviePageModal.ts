@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 export default function useMoviePageModal() {
     const [visible, setVisible] = useState(false);
     const router = useRouter();
-    const { id, type } = router.query;
+    const type = router.query.type! as string
+    const { id,  } = router.query;
 
+    console.log(router)
     const pushQuery = async (type: string) => {
         await router.push({
             pathname: "/movie/" + String(id),

@@ -10,12 +10,13 @@ interface CommentTabContainerProps {
     movieKinopoiskId: number
 }
 export default function CommentTabContainer({ movieKinopoiskId }: CommentTabContainerProps) {
-    const { commentData, updateCommentData,isLoginUser,isCommentData } = useCommentListReview();
-    
+    const { commentData, updateCommentData, isLoginUser, isCommentData } = useCommentListReview();
+
     return (
         <div className={styles.container}>
             {isLoginUser
                 ? <CommentAddForm
+                    inputId="addComment"
                     movieKinopoiskId={movieKinopoiskId}
                     sendCommentHandler={updateCommentData}
                 />

@@ -19,8 +19,8 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <FormAuth>
-                    form fields
+                    <FormAuth error="dkd" handleSubmit={()=> console.log('click') }>
+                        form fields
                     </FormAuth>
                 </PageWrapper>
             </WrapperIntl>

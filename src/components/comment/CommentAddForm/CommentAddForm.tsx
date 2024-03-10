@@ -8,17 +8,18 @@ import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 interface CommentAddFormProps {
     movieKinopoiskId: number,
     parentId?: number,
-    sendCommentHandler?: (newComment: ReviewTree) => void
+    sendCommentHandler?: (newComment: ReviewTree) => void,
+    inputId: string
 }
 
 
-export default function CommentAddForm({ movieKinopoiskId, parentId, sendCommentHandler }: CommentAddFormProps) {
+export default function CommentAddForm({ movieKinopoiskId, parentId, sendCommentHandler,inputId }: CommentAddFormProps) {
     const { commentValue, updateCommentValue, createReview } = useCommentAddForm({ sendCommentHandler, parentId, movieKinopoiskId });
 
     return (
         <form className={styles.form} onSubmit={(e) => { e.preventDefault(); createReview() }}>
             <TextFieldWithLabel
-                id="commentAddForm"
+                id={inputId}
                 labelText="Написать отзыв"
                 value={commentValue}
                 onChange={updateCommentValue}
