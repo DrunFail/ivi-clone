@@ -1,0 +1,13 @@
+.separator {
+	display:flex;
+	align-items: center;
+	block-size: auto;
+	
+	&:after {
+		content: "";
+		display: inline-block;
+		block-size: 2px;
+		inline-size: 2px;
+		background-color: hsla(0,0%,100%,.56);
+	}
+}
