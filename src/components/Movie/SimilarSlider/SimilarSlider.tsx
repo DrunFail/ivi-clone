@@ -32,9 +32,13 @@ export default function SimilarSlider({
             <Carousel
                 mode={"slider"}
                 carouselId={carouselId}
+                /* eslint-disable */
+                //@ts-ignore
                 data={data.rows}
                 count={data.rows.length}
                 sizes={MOVIE_LIST_SIZES}
+                /* eslint-disable */
+                //@ts-ignore
                 component={data.isSimilarList ? SimilarMovieListCardWithOverlayContainer : MovieListCardWithOverlayContainer}
             />
         </>

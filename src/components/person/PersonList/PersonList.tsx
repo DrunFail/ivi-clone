@@ -1,8 +1,8 @@
 import Link from "next/link";
 import PersonCard from "../PersonCard/PersonCard";
-import { IStaff } from "../../../models";
+import { Person } from "../../../models/types";
 
-export default function PersonList({ personList }: { personList: IStaff[] }) {
+export default function PersonList({ personList }: { personList: Person[] }) {
     return (
         <>
             {personList.slice(0, 4).map(person =>

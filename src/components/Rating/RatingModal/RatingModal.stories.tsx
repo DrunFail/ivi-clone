@@ -19,7 +19,7 @@ export const Large: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <RatingModal visible />
+                    <RatingModal visible call={() => console.log('callback') } />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>

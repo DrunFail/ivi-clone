@@ -38,11 +38,14 @@ export default function useLogin() {
             const response = await AuthAPI.login({ email, password })
             const { userEmail, userRoles, token } = authDecodeToken(response.data.token)
 
-
+            
+            /* eslint-disable */
+            //@ts-ignore
             setAuth((prevAuth: AuthContextData) => {
                 return { ...prevAuth, token, userEmail, userRoles }
             }
             );
+            
             setEmail("");
             setPassword("");
             const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, "/");

@@ -13,6 +13,8 @@ const WrapperIntl: FC<{ children: React.ReactNode }> = ({ children }) => {
         if (local === "En") {
             setLang(English);
         } else if (local === "Ru") {
+            /* eslint-disable */
+            //@ts-ignore
             setLang(Russian);
         }
     }, [local]);

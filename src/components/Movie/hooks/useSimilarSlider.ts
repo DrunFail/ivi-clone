@@ -7,6 +7,8 @@ interface UseSimilarSliderProps {
 }
 export default function useSimilarSlider({ similarMovieList, similarGenreId }: UseSimilarSliderProps) {
     const isSimilarList = Boolean(similarMovieList.length);
+    /* eslint-disable */
+
 
     if (isSimilarList) {
         return { count: similarMovieList.length, rows: similarMovieList,isSimilarList }

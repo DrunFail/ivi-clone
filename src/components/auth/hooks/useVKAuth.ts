@@ -17,7 +17,8 @@ export default function useVKAuth() {
                 try {
                     const response = await AuthAPI.vk(vkCode);
                     const { token, userEmail, userRoles } = authDecodeToken(response.data.token);
-
+                    /* eslint-disable */
+                    //@ts-ignore
                     setAuth((prevAuth: AuthContextData) => {
                         return { ...prevAuth, token, userEmail, userRoles }
                     });

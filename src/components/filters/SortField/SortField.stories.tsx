@@ -19,7 +19,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <div style={{ inlineSize: "250px" }}>
-                    <SortField testHandler={sortHandler} testId="orderBy" currentSortVariant="nameRu"/>
+                    <SortField setFilterParams={sortHandler} filterKey="orderBy" currentSortVariant="nameRu"/>
 
                 </div>
             </WrapperIntl>

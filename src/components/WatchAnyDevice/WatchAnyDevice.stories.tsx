@@ -19,7 +19,7 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <WatchAnyDevice movieName="movieName"  />
+                    <WatchAnyDevice movieName="movieName" moviePosterUrl=""  />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>

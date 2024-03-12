@@ -3,12 +3,12 @@ import styles from "./FilmographyItemCard.module.scss";
 import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
-import { getLang } from "../../../store/switchLang";
-import { PhilmographyItem } from "../../../models/IPerson";
 import ButtonDetails from "../../UI/ButtonDetails/ButtonDetails";
+import { getLang } from "../../../store/slices/switchLang";
+import { MovieWithPerson} from "../../../models/types";
 
 interface FilmographyItemCardProps {
-    filmographyItem:  PhilmographyItem
+    filmographyItem:  MovieWithPerson
 }
 export default function  FilmographyItemCard({ filmographyItem }:FilmographyItemCardProps){
     const lang = useSelector(getLang());

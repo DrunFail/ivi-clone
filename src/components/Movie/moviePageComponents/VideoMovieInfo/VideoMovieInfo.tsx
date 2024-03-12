@@ -17,7 +17,10 @@ export default function VideoMovieInfo({ variant }: VideoMovieInfoProps) {
             {variant === "desktop" && <p>Изображение и звук.<span>Фактическое качество зависит от устройства и ограничений правообладателя.</span> </p>}
             {variant === "tablet" && <p>Качество</p>}
             <div className={styles.icons }>
-                {DEFAULT_VIDEO_PROP.map((elem, idx) => <VideoMovieInfoCard key={idx} children={elem} />)}
+                {DEFAULT_VIDEO_PROP.map((elem, idx) =>
+                    <VideoMovieInfoCard key={idx}>
+                        {elem}
+                    </VideoMovieInfoCard>)}
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { getLang } from "../../../store/switchLang";
 import { DetailedPerson} from "../../../models/types";
+import { getLang } from "../../../store/slices/switchLang";
 
 export default function useMoviePersonData({ personData }: {personData:DetailedPerson}) {
     const lang = useSelector(getLang());
@@ -13,6 +13,8 @@ export default function useMoviePersonData({ personData }: {personData:DetailedP
         const prop = `name${lang}`
 
         if (prop in personData?.person) {
+            /* eslint-disable */
+            //@ts-ignore
             return `${personData.person[prop] ??  personInfo.nameRu}`
         } else {
             return `${personInfo.nameRu}`

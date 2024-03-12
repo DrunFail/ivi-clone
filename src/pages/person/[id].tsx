@@ -23,7 +23,7 @@ export default function PersonPage({ person }: PersonPageProps) {
         <>
             <HeadPerson
                 personName={personName}
-                personProfession={personProfession}
+                personProfession={personProfession ?? ""}
             />
             <PageSection>
                 <PageWrapper>
@@ -60,8 +60,8 @@ interface ContextParams extends ParsedUrlQuery {
 
 export async function getStaticPaths() {
     const persons = await NewPersonAPI.getAllPersonList()
-    const paths = persons.map((person)=> ({
-        params: {id: String(person.id) }
+    const paths = persons.map((person) => ({
+        params: { id: String(person.personId) }
     }))
     return {paths, fallback: true}
 }

@@ -23,6 +23,8 @@ export const Primary: Story = {
                     visible
                     movieTitle="Movie Title"
                     movieYear={2023}
+                    callback={() => console.log("callback")}
+                    type=""
                 />
             </WrapperIntl>
         </Provider>
