@@ -23,7 +23,7 @@ export const Primary: Story = {
             <WrapperIntl>
                 <PageSection>
                 <PageWrapper>
-                    <MovieSlider carouselId={"id"} genreId={1} headingTitle={"title"} href="" />
+                    <MovieSlider carouselId={"id"} genreId={1}  href="" />
                     </PageWrapper>
                 </PageSection>
             </WrapperIntl>

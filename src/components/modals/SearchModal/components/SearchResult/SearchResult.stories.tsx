@@ -13,11 +13,11 @@ export default meta;
 type Story = StoryObj<typeof SearchResult>;
 
 const search = [
-    { nameRu: "name1", year: "2022", id: 1 },
-    { nameRu: "name2", year: "2022", id: 2 },
-    { nameRu: "name3", year: "2022", id: 3 },
-    { nameRu: "name4", year: "2022", id: 4 },
-    { nameRu: "name5", year: "2022", id: 5 },
+    { nameRu: "name1", year: 2022, id: 1,kinopoiskId: 1 },
+    { nameRu: "name2", year: 2022, id: 2, kinopoiskId: 1 },
+    { nameRu: "name3", year: 2022, id: 3, kinopoiskId: 1 },
+    { nameRu: "name4", year: 2022, id: 4, kinopoiskId: 1 },
+    { nameRu: "name5", year: 2022, id: 5, kinopoiskId: 1 },
 ]
 
 
@@ -26,7 +26,9 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <div style={{inlineSize: "400px"} }>
-                    <SearchResult search={search} />
+                    <SearchResult search={search} handleModalClose={function(): void {
+                        throw new Error('Function not implemented.');
+                    } } />
                 </div>
             </WrapperIntl>
         </Provider>

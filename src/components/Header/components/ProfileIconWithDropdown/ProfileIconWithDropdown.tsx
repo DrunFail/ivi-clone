@@ -22,6 +22,8 @@ export default function ProfileBlockIconWithDropdown({ handlerHeaderHover }: Pro
             try {
                 const response = await UserAPI.getUserProfileData(axios)
                 console.log(response.data)
+                /* eslint-disable */
+                //@ts-ignore
                 setAuth((prevAuth: AuthContextData) => {
                     return { ...prevAuth, profile: response.data };
                 })

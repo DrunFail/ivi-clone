@@ -1,10 +1,9 @@
 import React from "react";
 import { useSwiper } from "swiper/react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { IClassNames } from "../../../models";
 
 interface ArrowsProps {
-    styles: IClassNames;
+    styles: { [key: string]: string };
 }
 
 /** Компонент, содержащий заглушку-спиннер, отображаемую на время загрузки данных. */

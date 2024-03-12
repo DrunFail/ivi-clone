@@ -8,7 +8,7 @@ import { getLang } from "../../../store/slices/switchLang";
 import Button from "../../UI/Button/Button";
 
 interface SlideProps {
-    styles: any;
+    styles: { [key: string]: string };
     filmData: any;
 }
 

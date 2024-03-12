@@ -1,9 +1,9 @@
-import { ISuggestObject } from "../../../../models";
+import { PersonSuggest } from "../../../../models/types";
 import styles from "./SuggestContent.module.scss";
 
 interface SuggestContentProps {
-    suggestList: ISuggestObject[];
-    handler: (suggestion:ISuggestObject) => void
+    suggestList: PersonSuggest[];
+    handler: (suggestion:PersonSuggest) => void
 }
 
 export default function SuggestContent({ suggestList, handler }: SuggestContentProps) {

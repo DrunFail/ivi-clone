@@ -1,4 +1,6 @@
-export const PERSON_MOCK_DATA = [
+import { Person } from "../../../../models/types";
+
+export const PERSON_MOCK_DATA:Person[] = [
     {
         "id": 35089,
         "personId": 3038,

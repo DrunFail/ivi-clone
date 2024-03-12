@@ -19,7 +19,14 @@ export const Primary: Story = {
         <Provider store={store}>
             <WrapperIntl>
                 <PageWrapper>
-                    <ShareModal visible />
+                    <ShareModal
+                        isModalClose={() => console.log('close')}
+                        visible
+                        movieDuration="25"
+                        movieName="Movie"
+                        movieYear={2022}
+                        urlMovieImage=""
+                    />
                 </PageWrapper>
             </WrapperIntl>
         </Provider>

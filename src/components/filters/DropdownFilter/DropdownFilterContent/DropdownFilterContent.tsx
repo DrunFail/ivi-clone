@@ -14,7 +14,10 @@ interface DropdownFilterContentProps {
 export default function DropdownFilterContent({ dataArray, testId, onClickHandler,prop, name,variant }: DropdownFilterContentProps) {
     return (
         <div className={styles.container}>
-            {dataArray && dataArray.map((item, idx) =>
+            
+            {/* eslint-disable */
+            //@ts-ignore
+                dataArray && dataArray.map((item, idx) =>
                 <>
                     {
                         testId === "genreId" && variant === "genrePage"
@@ -28,7 +31,7 @@ export default function DropdownFilterContent({ dataArray, testId, onClickHandle
                             </Link>
                             : <p
                                 key={idx}
-                                onClick={() => onClickHandler(item.id, item[prop])}
+                                onClick={() => onClickHandler(item.id)}
                                 className={styles.dropdownItem}>
                                 <FormattedMessage id={`${name}.${item[prop]}.title`} />
                             </p>

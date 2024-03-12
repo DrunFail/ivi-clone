@@ -23,7 +23,7 @@ const AUTH = {
 };
 
 export default function FormAuth({ error, children, handleSubmit }: FormAuthProps) {
-    const { asPath, query} = useRouter();
+    const { asPath, query } = useRouter();
 
 
     return (
@@ -41,15 +41,15 @@ export default function FormAuth({ error, children, handleSubmit }: FormAuthProp
                     {asPath === AUTH.login
                         ? <RedirectLinkContainer title={"Нет аккаунта?"}>
                             <RedirectLink
-                                href={"/auth/registration"}
-                                children={"Зарегистрироваться"}
-                            />
+                                href={"/auth/registration"}>
+                                Зарегистрироваться
+                            </RedirectLink>
                         </RedirectLinkContainer>
                         : <RedirectLinkContainer title={"Есть аккаунт?"}>
                             <RedirectLink
-                                href={"/auth/login"}
-                                children={"Войти"}
-                            />
+                                href={"/auth/login"}>
+                                Войти
+                            </RedirectLink>
                         </RedirectLinkContainer>
                     }
                     <OAuthButton

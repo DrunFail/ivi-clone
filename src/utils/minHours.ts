@@ -1,6 +1,4 @@
-import { IService } from "../models/IServise";
-
-export function minHours(mins: number): IService {
+export function minHours(mins: number) {
     const hours = Math.trunc(mins / 60);
     const minutes = mins % 60;
     return {

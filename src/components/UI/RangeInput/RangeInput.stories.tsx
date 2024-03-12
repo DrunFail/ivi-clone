@@ -18,7 +18,7 @@ export const Primary: Story = {
     render: () =>
         <div style={{ inlineSize: "300px" }}>
             <RangeInput
-                testId={'test'}
+                inputId={'test'}
                 initValue={50}
                 min={0}
                 max={100}

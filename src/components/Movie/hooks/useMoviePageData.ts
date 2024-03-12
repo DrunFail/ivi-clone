@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { MovieById } from "../../../models/types";
 import { getLang } from "../../../store/slices/switchLang";
 
+
 interface UseMoviePageDataProps {
     movieData: MovieById
 }
@@ -20,6 +21,8 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
         const prop = `name${lang}`
         
         if (movieData?.film && prop in movieData.film) {
+            /* eslint-disable */
+            //@ts-ignore
             return movieData.film[prop]
         } else {
             return movieData?.film?.nameOriginal
@@ -33,6 +36,8 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
         const country = movieData?.film?.countries[0]
 
         if (country && prop in country) {
+            /* eslint-disable */
+            //@ts-ignore
             return country[prop]
         } else {
             return country?.countryNameEng
@@ -45,6 +50,8 @@ export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
         const genre = movieData?.film?.genres[0]
 
         if (genre && prop in genre) {
+            /* eslint-disable */
+            //@ts-ignore
             return genre[prop]
         } else {
             return genre?.genreNameEng

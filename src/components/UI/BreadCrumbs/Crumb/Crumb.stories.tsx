@@ -5,8 +5,7 @@ const meta: Meta<typeof Crumb> = {
     title: 'ui/BreadCrumbs/Crumb',
     component: Crumb,
     args: {
-        children: "title",
-        href: ""
+        children: "title"
     }
 };
 

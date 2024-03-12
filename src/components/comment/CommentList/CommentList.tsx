@@ -9,7 +9,9 @@ export default function CommentList({ commentData }: CommentListProps) {
     return (
         <div className={styles.container}>
             {commentData.map(comment =>
-                <CommentListCardContainer commentData={comment} />
+                <CommentListCardContainer
+                    key={comment.id}
+                    commentData={comment} />
             )}
         </div>
     );

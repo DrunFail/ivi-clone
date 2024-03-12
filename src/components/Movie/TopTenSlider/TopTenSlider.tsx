@@ -5,7 +5,7 @@ import TopTenItem from "./TopTenItem/TopTenItem";
 
 interface TopTenSliderProps {
     carouselId: string,
-    data: { id: number }[],
+    data: { id: number, href: string }[],
     count: number
 }
 

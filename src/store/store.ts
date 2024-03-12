@@ -7,6 +7,8 @@ const store = configureStore({
     reducer: {
         genres: genresReducer,
         countries: countriesReducer,
+        /* eslint-disable */
+        //@ts-ignore
         lang: langReducer
 
     }

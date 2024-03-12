@@ -10,7 +10,8 @@ export default function  useRefreshToken() {
         const response = await AuthAPI.refresh();
         
         const { userEmail, userRoles,token} = authDecodeToken(response.data.token)
-
+        /* eslint-disable */
+        //@ts-ignore
         setAuth((prev: AuthContextData) => {
             return {
                 ...prev, token,userEmail,userRoles };

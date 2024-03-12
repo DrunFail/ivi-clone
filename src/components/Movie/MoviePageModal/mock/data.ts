@@ -1,6 +1,31 @@
-export const MOVIE_PAGE_MODAL_MOCK_DATA = {
+import { MovieById } from "../../../../models/types";
+
+export const MOVIE_PAGE_MODAL_MOCK_DATA:MovieById = {
     film: {
         posterUrl: "https://kinopoiskapiunofficial.tech/images/posters/kp/435.jpg",
+        id: 1,
+        kinopoiskId: 1,
+        nameRu: "movie",
+        nameOriginal:null,
+        ratingKinopoiskVoteCount: 5,
+        posterUrlPreview: "",
+        coverUrl: null,
+        logoUrl: null,
+        ratingKinopoisk: null,
+        year: 2024,
+        filmLength: null,
+        type: "FILM",
+        genres: [],
+        countries: [],
+        slogan: null,
+        description: "",
+        shortDescription: null,
+        ratimgMpaa: null,
+        ratingAgeLimits: "",
+        budget: [],
+        similar: [],
+        trailers: [],
+
     },
     staff: [
         {
@@ -153,6 +178,6 @@ export const MOVIE_PAGE_MODAL_MOCK_DATA = {
             "hasAwards": "1",
             "profession": "Сценарист, Режиссер, Актер"
         }
-    ]
-
+    ],
+    reviews: {count:0, rows:[]}
 }
