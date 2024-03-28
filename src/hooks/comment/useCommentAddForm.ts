@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
-import useAxiosAuth from "../../auth/hooks/useAxiosAuth";
-import { ReviewAPI } from "../../../api/ReviewAPI";
-import { ReviewTree } from "../../../models/types";
+import { ReviewTree } from "../../models/types";
+import useAxiosAuth from "../auth/useAxiosAuth";
+import { ReviewAPI } from "../../api/ReviewAPI";
 
 
 interface UseCommentAddFormProps {

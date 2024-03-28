@@ -1,5 +1,5 @@
+import useCommentData from "../../../../hooks/comment/useCommentData"
 import { Review } from "../../../../models/types"
-import useCommentData from "../../hooks/useCommentData"
 import CommentCard from "./CommentCard/CommentCard"
 
 interface CommentDataContainerProps {

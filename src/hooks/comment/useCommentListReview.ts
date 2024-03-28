@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { ReviewTree } from "../../../models/types";
 import { useRouter } from "next/router";
-import { ReviewAPI } from "../../../api/ReviewAPI";
-import useAuth from "../../auth/hooks/useAuth";
+import { ReviewTree } from "../../models/types";
+import useAuth from "../auth/useAuth";
+import { ReviewAPI } from "../../api/ReviewAPI";
 
 export default function useCommentListReview() {
     const [commentData, setCommentData] = useState<ReviewTree[]>([]);

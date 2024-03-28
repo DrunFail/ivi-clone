@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
 
 const meta: Meta<typeof CommentSlider> = {
-    title: 'sliders/CommentSlider',
+    title: 'comment/CommentSlider',
     component: CommentSlider,
 };
 

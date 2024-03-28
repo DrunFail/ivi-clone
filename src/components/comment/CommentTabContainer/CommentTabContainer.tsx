@@ -1,8 +1,8 @@
+import useCommentListReview from "../../../hooks/comment/useCommentListReview";
 import CommentAddForm from "../CommentAddForm/CommentAddForm";
 import CommentList from "../CommentList/CommentList";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import UnauthorizedAlert from "../UnauthorizedAlert/UnauthorizedAlert";
-import useCommentListReview from "../hooks/useCommentListReview";
 import styles from "./CommentTabContainer.module.scss";
 
 

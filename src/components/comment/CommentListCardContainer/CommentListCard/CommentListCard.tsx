@@ -1,10 +1,10 @@
 import { ReviewTree } from "../../../../models/types";
-import Button from "../../../UI/Button/Button";
+import CommentBody from "../../../UI/comment/CommentBody/CommentBody";
+import CommentDateCreated from "../../../UI/comment/CommentDateCreated/CommentDateCreated";
+import CommentLikeCounter from "../../../UI/comment/CommentLikeCounter/CommentLikeCounter";
+import CommentUserName from "../../../UI/comment/CommentUserName/CommentUserName";
+import Button from "../../../UI/core/Button/Button";
 import CommentAddForm from "../../CommentAddForm/CommentAddForm";
-import CommentBody from "../../UI/CommentBody/CommentBody";
-import CommentDateCreated from "../../UI/CommentDateCreated/CommentDateCreated";
-import CommentLikeCounter from "../../UI/CommentLikeCounter/CommentLikeCounter";
-import CommentUserName from "../../UI/CommentUserName/CommentUserName";
 import { ModifiedCommentData } from "../../interfaces/interfaces";
 import CommentListCardContainer from "../CommentListCardContainer";
 import styles from "./CommentListCard.module.scss";

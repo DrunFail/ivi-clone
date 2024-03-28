@@ -1,8 +1,8 @@
-import { Review, ReviewTree } from "../../../models/types";
-import modifiedDate from "../../../utils/modifiedDate";
-import { ModifiedCommentData } from "../interfaces/interfaces";
+import { ModifiedCommentData } from "../../components/comment/interfaces/interfaces";
+import { Review } from "../../models/types";
+import modifiedDate from "../../utils/modifiedDate";
 
-export default function useCommentData(commentData: Review | ReviewTree):ModifiedCommentData {
+export default function useCommentData(commentData: Review):ModifiedCommentData {
     const commentCreatedDate = modifiedDate(commentData?.createdAt);
     const commentAuthor = commentData.profile?.username || "unknown";
     const commentBody = commentData.text;
