@@ -19,10 +19,16 @@
         @extend .list;
         grid-auto-flow: column;
         grid-template-rows: repeat(11, 1fr);
+        column-gap: 10px;
     }
 
     li {
         padding-block: 5px;
+
+        a {
+            font-size: 15px;
+            line-height: 15px;
+        }
 
         a:hover {
             color: white;

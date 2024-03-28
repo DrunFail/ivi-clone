@@ -20,7 +20,7 @@ export default function ButtonWithHint({children,actionHandler, description, ...
             {...props }
         >
             {children }
-            {visible && <p><FormattedMessage id={description} /></p> }
+            {visible && <span><FormattedMessage id={description} /></span> }
         </button>
 
     );

@@ -1,14 +1,14 @@
 import useCarousel from "./hooks/useCarousel";
 import styles from "./Carousel.module.scss";
-import ButtonControl from "./ButtonControl/ButtonControl";
 import CarouselGallery from "./CarouselGallery/CarouselGallery";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
 import PageSectionContainerInner from "../../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
+import NewButtonControl from "./NewButtonControl/NewButtonControl";
+import FontIcon from "../FontIcon/FontIcon";
 
 interface CarouselProps<T extends { id: number }> {
     mode: "list" | "slider" | "collection";
-    carouselId: string;
     data: T[];
     count: number;
     sizes: { resol: number; items: number }[];
@@ -23,7 +23,6 @@ export default function Carousel<T extends {id:number}>({
     data,
     count,
     mode,
-    carouselId,
     sizes,
     href,
     component: Component,
@@ -35,10 +34,10 @@ export default function Carousel<T extends {id:number}>({
         handleClickNextSlide,
         handleClickPrevSlide,
         valueDirection,
-        itemAmountOnPage
+        itemAmountOnPage,
+        sliderId
     } = useCarousel({
         dataLength: data.length,
-        idSlider: carouselId,
         sizes,
         count
     });
@@ -50,21 +49,19 @@ export default function Carousel<T extends {id:number}>({
                     {mode === "slider" && (
                         <>
                             {checkPrev && (
-                                <ButtonControl
-                                    direction={"left"}
-                                    onClick={handleClickPrevSlide}
-                                />
+                                <NewButtonControl onClick={handleClickPrevSlide} direction="left">
+                                    <FontIcon variant="arrowLeft" size={32 } />
+                                </NewButtonControl>
                             )}
                             {checkNext && (
-                                <ButtonControl
-                                    direction={"right"}
-                                    onClick={handleClickNextSlide}
-                                />
+                                <NewButtonControl onClick={handleClickNextSlide} direction="right">
+                                    <FontIcon variant="arrowRight" size={32} />
+                                </NewButtonControl>
                             )}
                         </>
                     )}
                     <div style={{ overflow: "hidden", paddingInline: "12px" }}>
-                        <CarouselGallery carouselId={carouselId} mode={mode}>
+                        <CarouselGallery carouselId={sliderId} mode={mode}>
                             {data.map((elem) => (
                                 <CarouselItem
                                     callback={callback}
@@ -76,7 +73,7 @@ export default function Carousel<T extends {id:number}>({
                                     <Component elem={elem} />
                                 </CarouselItem>
                             ))}
-                            {count > data.length && (
+                            {count > data.length && mode === "slider" && (
                                 <ShowMoreItem
                                     href={href}
                                     valueDirection={valueDirection}
@@ -86,6 +83,14 @@ export default function Carousel<T extends {id:number}>({
                             )}
                            
                         </CarouselGallery>
+                        {count > data.length && mode === "list" && (
+                            <ShowMoreItem
+                                href={href}
+                                valueDirection={valueDirection}
+                                mode={mode}
+                                showMoreHandler={showMoreHandler}
+                            />
+                        )}
                     </div>
                 </div>
                 

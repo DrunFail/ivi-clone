@@ -1,20 +1,26 @@
 
-.SwitchButton {
+.container{
     cursor: pointer;
+
+    display: grid;
+    place-items: center;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    padding: 7px;
+    block-size: 32px;
+    inline-size: 32px;
     position: relative;
     &__text {
         color:rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        line-height: 1;
     }
-    &__window {
+    .switcher_btn {
         bottom: -80px;
         right: 0;
         position: absolute;
-        width: 50px;
+        inline-size: 32px;
         height: fit-content;
-        background-color: pink;
+        background-color: var(--clr-dark-700);
         border-radius: 5px;
         overflow: hidden;
         z-index: 2;

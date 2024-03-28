@@ -21,17 +21,17 @@ const SwitchButton = () => {
                 onMouseOver={() => hoverVisible(true)}
                 onMouseOut={() => hoverVisible(false)}
                 onClick={() => hoverVisible(!visible)}
-                className={styles.SwitchButton}
+                className={styles.container}
                 data-testid="lng-switcher"
             >
-                <p className={styles.SwitchButton__text}>{lang}</p>
+                <span className={styles.SwitchButton__text}>{lang}</span>
                 {visible ? (
-                    <div className={styles.SwitchButton__window}>
+                    <div className={styles.switcher_btn}>
                         <button onClick={() => switchLang("Ru")}>
-                            <p>Ru</p>
+                            RU
                         </button>
                         <button onClick={() => switchLang("En")}>
-                            <p>En</p>
+                            EN
                         </button>
                     </div>
                 ) : (
