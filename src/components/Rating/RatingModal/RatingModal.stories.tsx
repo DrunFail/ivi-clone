@@ -7,7 +7,7 @@ import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
 import store from '../../../store/store';
 
 const meta: Meta<typeof RatingModal> = {
-    title: 'RatingModal',
+    title: 'ui/rating/RatingModal',
     component: RatingModal,
 };
 
