@@ -4,13 +4,13 @@ import ResetFilter from "../ResetFilter/ResetFilter";
 import InputFilterWithAutoSuggest from "../InputFilterWithAutoSuggest/InputFilterWithAutoSuggest";
 import DropdownFilter from "../DropdownFilter/DropdownFilter";
 import GridAreaContainer from "../GridAreaContainer/GridAreaContainer";
-import BackgroundContainer from "../components/BackgroundContainer/BackgroundContainer";
-import { Country, Genre } from "../../../models/types";
-import { FilterParams } from "../hooks/useFiltersWatchPage";
+import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
+import FilterWrapperContainer from "../../UI/filter/FilterWrapperContainer/FilterWrapperContainer";
+import { LinkData } from "../../../models/global";
 
 interface FiltersFieldProps {
-    genreObjects: Genre[];
-    countryObjects: Country[];
+    genreObjects: LinkData[] | undefined;
+    countryObjects: LinkData[] | undefined;
     clearFiltersWithoutSort: () => void;
     setFilterParams: (filterKey: keyof FilterParams, filterValue:string | number) => void,
     filterParams: FilterParams,
@@ -25,12 +25,13 @@ export default function FiltersField({
     variant
 
 }: FiltersFieldProps) {
-
+    
 
     return (
         <div className={styles.filters}>
-            <BackgroundContainer>
+            <FilterWrapperContainer>
                 <DropdownFilter
+                typeItemList="link"
                     filterKey="genreId"
                     clearArray={genreObjects}
                     name="genre"
@@ -38,9 +39,10 @@ export default function FiltersField({
                     initValue={filterParams.genreId}
                     variant={variant }
                 />
-            </BackgroundContainer>
-            <BackgroundContainer>
+            </FilterWrapperContainer>
+            <FilterWrapperContainer>
                 <DropdownFilter
+                typeItemList="clickable"
                     filterKey="countryId"
                     clearArray={countryObjects}
                     name="country"
@@ -48,8 +50,8 @@ export default function FiltersField({
                     initValue={filterParams.countryId}
                     variant={variant }
                 />
-            </BackgroundContainer>
-            <BackgroundContainer>
+            </FilterWrapperContainer>
+            <FilterWrapperContainer>
                 <RangeFilter
                     filterKey="ratingKinopoisk"
                     min={0}
@@ -58,8 +60,8 @@ export default function FiltersField({
                     initValue={filterParams.ratingKinopoisk}
                     setFilterParams={setFilterParams}
                 />
-            </BackgroundContainer>
-            <BackgroundContainer>
+            </FilterWrapperContainer>
+            <FilterWrapperContainer>
                 <RangeFilter
                     filterKey="ratingKinopoiskVoteCount"
                     min={100 * 1000}
@@ -69,24 +71,24 @@ export default function FiltersField({
                     initValue={filterParams.ratingKinopoiskVoteCount}
 
                 />
-            </BackgroundContainer>
+            </FilterWrapperContainer>
             <GridAreaContainer area={"E"}>
-                <BackgroundContainer>
+                <FilterWrapperContainer>
                     <InputFilterWithAutoSuggest
                         setFilterParams={setFilterParams}
                         filterKey="DIRECTOR"
                         currentId={filterParams.DIRECTOR}
                     />
-                </BackgroundContainer>
+                </FilterWrapperContainer>
             </GridAreaContainer>
             <GridAreaContainer area="F">
-                <BackgroundContainer>
+                <FilterWrapperContainer>
                     <InputFilterWithAutoSuggest
                         setFilterParams={setFilterParams}
                         filterKey="ACTOR"
                         currentId={filterParams.ACTOR}
                     />
-                </BackgroundContainer>
+                </FilterWrapperContainer>
             </GridAreaContainer>
             <ResetFilter
                 resetHandler={clearFiltersWithoutSort}

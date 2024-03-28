@@ -5,15 +5,23 @@ interface NumberRatingTopProps {
     rating: number
 }
 
-export default function NumberRatingTop({ rating }:NumberRatingTopProps) {
-    const ratingString = rating.toString().split("");
+export default function NumberRatingTop({ rating }: NumberRatingTopProps) {
+    const splittedRating = String(rating).split("");
 
     return (
-        <div className={styles.numbers}>
-            {ratingString.map(rating =>
-                <div key={rating} className={styles.item}>
-                    <Image src={`/top10/number${rating}.svg`} fill alt='' />
-                </div>)}
+        <div className={styles.container}>
+            {
+                splittedRating.map((number, index) =>
+                    <div key={index} className={styles.item}>
+                        <Image
+                            src={`/top10/number${number}.svg`}
+                            fill
+                            alt=''
+                            priority={false}
+                        />
+                    </div>
+                )
+            }
         </div>
     );
 }

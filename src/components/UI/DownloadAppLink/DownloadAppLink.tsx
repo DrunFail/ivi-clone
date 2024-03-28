@@ -1,9 +1,9 @@
 import { FormattedMessage } from "react-intl";
-import Button from "../Button/Button";
 import Image from "next/image";
 import apple from "../../../assets/SVG/Apps/Apple.svg";
 import google from "../../../assets/SVG/Apps/Google.svg";
 import styles from "./DownloadAppLink.module.scss";
+import Button from "../core/Button/Button";
 
 const linkVariant = {
     apple: {

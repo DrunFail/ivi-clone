@@ -1,5 +1,6 @@
+import MemoizedFormattedMessage from "react-intl/src/components/message";
+import Button from "../../UI/core/Button/Button";
 import styles from "./UnauthorizedAlert.module.scss";
-import LoginButton from "../../UI/LoginButton/LoginButton";
 import { FormattedMessage } from "react-intl";
 
 export default function UnauthorizedAlert() {
@@ -9,7 +10,14 @@ export default function UnauthorizedAlert() {
                 <FormattedMessage id="comment.unauthorized"/>
             </div>
             
-            <LoginButton />
+            <Button
+                as="link"
+                color="red"
+                href="/auth/login"
+                data-testId="btn-login"
+            >
+                <MemoizedFormattedMessage id="EnterOrRegister" />
+            </Button>
 
         </div>
     );

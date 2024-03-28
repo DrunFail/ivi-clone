@@ -20,13 +20,13 @@ export default function Info({ movieTitle, movieYear, ageLimit, movieDuration, m
 
             <div className={styles.info_container }>
                 <div className={styles.top}>
-                    <p>{movieYear}</p>
-                    <p>{movieDuration.hours}{" "}<FormattedMessage id="hour" />{movieDuration.minutes}{" "}<FormattedMessage id="minute" /></p>
-                    <p>{ageLimit}+</p>
+                    <span>{movieYear}</span>
+                    <span>{movieDuration.hours}{" "}<FormattedMessage id="hour" />{movieDuration.minutes}{" "}<FormattedMessage id="minute" /></span>
+                    <span>{ageLimit}+</span>
                 </div>
                 <div className={styles.bottom}>
-                    <p>{movieCountry}</p>
-                    <p>{movieGenre}</p>
+                    <span>{movieCountry}</span>
+                    <span>{movieGenre}</span>
                 </div>
             </div>
         </div>

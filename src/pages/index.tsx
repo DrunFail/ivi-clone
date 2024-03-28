@@ -1,13 +1,17 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
 import PageSection from "../components/PageContainers/PageSection/PageSection";
 import PromoSection from "../components/PromoSection/PromoSection";
 import PageWrapper from "../components/PageContainers/PageWrapper/PageWrapper";
 import TopTenSlider from "../components/Movie/TopTenSlider/TopTenSlider";
-import MovieSlider from "../components/Movie/MovieSlider/MovieSlider";
 import { TOP_10_DATA } from "../components/Movie/TopTenSlider/data";
 import MainSlider from "../components/Movie/MainSlider/MainSlider";
 import { getLang } from "../store/slices/switchLang";
+import PageWrapperInner from "../components/PageContainers/PageWrapperInner/PageWrapperInner";
+
+const MovieSlider = dynamic(() => 
+    import("../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());
@@ -22,37 +26,42 @@ const Index = (): React.ReactElement => {
                 <MainSlider />
             </PageSection>
                 <PageSection>
-                    <PageWrapper>
+                <PageWrapper>
+                    
                         <PromoSection />
+                    
                     </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageWrapper>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <TopTenSlider
-                            carouselId={"top10"}
                             data={TOP_10_DATA}
                             count={10}
                         />
+                    </PageWrapperInner>
                     </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageWrapper>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <MovieSlider
-                            carouselId={"comedy"}
                             genreId={2 }
-
                             href={"/movies/comedy"}
                         />
+                    </PageWrapperInner>
                     </PageWrapper>
                 </PageSection>
                 <PageSection>
-                    <PageWrapper>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <MovieSlider
-                            carouselId={"criminal"}
                             genreId={1 }
                             href={"/movies/crime"}
                         />
-                    </PageWrapper>
+                    </PageWrapperInner>
+                </PageWrapper>
+
                 </PageSection>
 
            

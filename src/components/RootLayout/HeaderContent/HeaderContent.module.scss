@@ -1,0 +1,48 @@
+.container {
+    position: relative;
+
+
+
+
+    .content {
+        block-size: 72px;
+        display: grid;
+        column-gap: 12px;
+        position: relative;
+        inline-size: 100%;
+        grid-template-columns: max-content 1fr repeat(4, max-content);
+        align-items: center;
+        color: hsla(0,0%,100%,.48);
+
+        .navbar {
+            display: flex;
+            block-size: 100%;
+            margin-inline-start: 20px;
+        }
+    }
+}
+
+.container:has(div[id="header-portal"]:not(:empty) ) {
+    background-color: rgb(31, 27, 46);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    &:after {
+        background-color: hsla(0,0%,100%,.16);
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+    }
+}
+
+    .hover {
+        @extend .container;
+        background-color: rgb(31, 27, 46);
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+

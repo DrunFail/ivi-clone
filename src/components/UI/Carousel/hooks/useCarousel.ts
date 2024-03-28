@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect,  useId,  useState } from "react";
 import { useResize } from "../../../../hooks/useResize";
 
 interface UseCarouselProps {
     dataLength: number,
-    idSlider: string,
     sizes: { resol: number, items: number }[],
     count: number
 }
 
-export default function useCarousel({ dataLength, idSlider, sizes, count }: UseCarouselProps) {
+export default function useCarousel({ dataLength, sizes, count }: UseCarouselProps) {
     const [valueDirection, setValueDirection] = useState(0);
     const [itemAmountOnPage, setItemAmountOnPage] = useState(0);
     const [itemCount, setItemCount] = useState(0);
@@ -17,8 +16,11 @@ export default function useCarousel({ dataLength, idSlider, sizes, count }: UseC
     const lastSize = sortedSizes[sortedSizes.length - 1].items.toString();
     const dataLengthWithShowMoreItem = count > dataLength ? dataLength + 1 : dataLength;
 
+    const sliderId = useId();
+    
+
     useEffect(() => {
-        const slider = document.getElementById(idSlider);
+        const slider = document.getElementById(sliderId);
         if (!slider) {
             throw new Error("не удалось получить slider по id");
         }
@@ -56,5 +58,5 @@ export default function useCarousel({ dataLength, idSlider, sizes, count }: UseC
     const checkPrev = itemCount > itemAmountOnPage;
     const checkNext = dataLengthWithShowMoreItem > itemCount;
 
-    return { checkNext, checkPrev, handleClickNextSlide, handleClickPrevSlide, valueDirection, itemAmountOnPage };
+    return { checkNext, checkPrev, handleClickNextSlide, handleClickPrevSlide, valueDirection, itemAmountOnPage,sliderId};
 }

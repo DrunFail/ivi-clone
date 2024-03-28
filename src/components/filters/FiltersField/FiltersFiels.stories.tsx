@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
-import { FilterParams } from '../hooks/useFiltersWatchPage';
+import { FilterParams } from '../../../hooks/filters/useFiltersWatchPage';
+import { LinkData } from '../../../models/global';
 
 const meta: Meta<typeof FiltersField> = {
     title: 'filters/FiltersField',
@@ -15,38 +16,32 @@ const meta: Meta<typeof FiltersField> = {
 export default meta;
 type Story = StoryObj<typeof FiltersField>;
 
-const genreObjects = [
+const genreObjects:LinkData[] = [
     {
-        createdAt: "",
-        genreNameEng: "жанр1",
-        genreNameRu: "genre1",
-        id: 1,
-        updatedAt: ""
+       
+        name: "жанр1",
+        link: "",
     },
     {
-        createdAt: "",
-        genreNameEng: "жанр2",
-        genreNameRu: "genre2",
-        id: 2,
-        updatedAt: ""
+        
+        name: "жанр2",
+        link: "genre2",
     }
 
 ]
 
-const countryObjects = [
+const countryObjects:LinkData[] = [
     {
-        createdAt: "",
-        countryNameEng: "страна1",
-        countryNameRu: "country1",
-        id: 1,
-        updatedAt: ""
+      
+        name: "страна1",
+        link: "country1",
+        
     },
     {
-        createdAt: "",
-        countryNameEng: "страна2",
-        countryNameRu: "country2",
-        id: 2,
-        updatedAt: ""
+       
+        name: "страна2",
+        link: "country2",
+       
     }
 ]
 

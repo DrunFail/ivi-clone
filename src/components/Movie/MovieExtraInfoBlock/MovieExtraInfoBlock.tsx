@@ -1,4 +1,3 @@
-import HorizontalLine from "../../UI/HorizontalLine/HorizontalLine";
 import LanguageMovieInfo from "../moviePageComponents/LanguageMovieInfo/LanguageMovieInfo";
 import VideoMovieInfo from "../moviePageComponents/VideoMovieInfo/VideoMovieInfo";
 import styles from "./MovieExtraInfoBlock.module.scss";
@@ -13,9 +12,10 @@ export default function MovieExtraInfoBlock({ variant }: MovieExtraInfoBlockProp
     `
     return (
         <div className={defaultClasses}>
+            <div className={styles.content }>
             <LanguageMovieInfo variant={variant} />
-            {variant === "tablet" && <HorizontalLine /> }
-            <VideoMovieInfo variant={variant} />
+             <VideoMovieInfo variant={variant} />
+            </div>
         </div>
     );
 }

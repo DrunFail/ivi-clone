@@ -8,6 +8,8 @@
     font-size: 15px;
     line-height: 20px;
     font-weight: var(--fw-medium);
+    inline-size: 100%;
+    margin-block: 20px;
 
     &:hover {
         border-color: rgba(255, 255, 255, 0.72);

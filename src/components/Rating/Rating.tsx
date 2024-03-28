@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styles from "./Rating.module.scss";
 import { FormattedMessage } from "react-intl";
-import MedallionContent from "../PageContainers/MedallionContent/MedallionContent";
 import RatingBlock from "./RatingBlock/RatingBlock";
-import MedallionDescription from "../PageContainers/MedallionDescription/MedallionDescription";
 import RatingLarge from "./RatingLarge/RatingLarge";
-import RatingModal from "./RatingModal/RatingModal";
+import dynamic from "next/dynamic";
+
+const RatingModal = dynamic(() =>
+    import("./RatingModal/RatingModal").then((mod) => mod.default))
+
 
 interface RatingProps {
     variant: "small" | "large",
@@ -40,20 +42,20 @@ export default function Rating({ variant,movieRating }: RatingProps) {
                     </RatingLarge>
                 }
                     
-                {variant === "small" && 
-                    <>
-                        <MedallionContent>
-                            <RatingBlock ratingValue={movieRating} />
-                        </MedallionContent>
-                        <MedallionDescription>
-                            <div>
-                                <p>Рейтинг</p>
-                                <p>Иви</p>
-                            </div>
-                        </MedallionDescription>
+            {/*    {variant === "small" && */}
+            {/*        <>*/}
+            {/*            <MedallionContent>*/}
+            {/*                <RatingBlock ratingValue={movieRating} />*/}
+            {/*            </MedallionContent>*/}
+            {/*            <MedallionDescription>*/}
+            {/*                <div>*/}
+            {/*                    <span>Рейтинг</span>*/}
+            {/*                    <span>Иви</span>*/}
+            {/*                </div>*/}
+            {/*            </MedallionDescription>*/}
 
-                    </>
-            }
+            {/*        </>*/}
+            {/*}*/}
                    
                 
             </div>

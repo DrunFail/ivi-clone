@@ -1,17 +1,18 @@
 import { GetStaticProps } from "next";
 import HeadPerson from "../../components/person/HeadPerson/HeadPerson";
-import useMoviePersonData from "../../components/person/hooks/useMoviePersonData";
 import FilmographyList from "../../components/person/FilmographyList/FilmographyList";
 import PersonPageContainer from "../../components/person/PersonPageContainers/PersonPageContainer";
 import PageSection from "../../components/PageContainers/PageSection/PageSection";
 import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
-import PersonPhoto from "../../components/person/PersonPhoto/PersonPhoto";
 import PersonPageNamePerson from "../../components/person/PersonPageNamePerson/PersonPageNamePerson";
 import FilmographyHeader from "../../components/person/FilmographyHeader/FilmographyHeader";
 import FilmographyContainer from "../../components/person/FilmographyContainer/FilmographyContainer";
 import { NewPersonAPI } from "../../api/newPersonAPI";
 import { ParsedUrlQuery } from "querystring";
 import { DetailedPerson} from "../../models/types";
+import useMoviePersonData from "../../hooks/person/useMoviePersonData";
+import PageWrapperInner from "../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import Avatar from "../../components/UI/Avatar/Avatar";
 
 interface PersonPageProps {
     person: DetailedPerson
@@ -27,17 +28,20 @@ export default function PersonPage({ person }: PersonPageProps) {
             />
             <PageSection>
                 <PageWrapper>
+                <PageWrapperInner>
                     <PersonPageContainer>
-                        <PersonPhoto
-                            urlPersonPhoto={personPosterUrl}
+                        <Avatar
+                            urlAvatar={personPosterUrl}
                             variant="profile" />
-                        <PersonPageNamePerson
-                            personName={personName}
-                        />
-                    </PersonPageContainer>
+                            <PersonPageNamePerson>
+                                {personName }
+                        </PersonPageNamePerson>
+                        </PersonPageContainer>
+                    </PageWrapperInner>
                 </PageWrapper>
             </PageSection>
             <PageSection>
+            <PageWrapperInner>
                 <PersonPageContainer>
                     <FilmographyContainer>
                         <FilmographyHeader
@@ -47,7 +51,8 @@ export default function PersonPage({ person }: PersonPageProps) {
                             personMovieList={personMovieList}
                         />
                     </FilmographyContainer>
-                </PersonPageContainer>
+                    </PersonPageContainer>
+                </PageWrapperInner>
             </PageSection>
 
         </>

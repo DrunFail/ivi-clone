@@ -1,7 +1,7 @@
 import Link from "next/link";
-import usePersonData from "../hooks/usePersonData";
 import { Person } from "../../../../models/types";
 import StaffCard from "../StaffCard/StaffCard";
+import usePersonData from "../../../../hooks/person/usePersonData";
 
 interface StaffCardContainerProps {
     elem: Person

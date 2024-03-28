@@ -1,7 +1,7 @@
-import CommentBody from "../../../UI/CommentBody/CommentBody";
-import CommentDateCreated from "../../../UI/CommentDateCreated/CommentDateCreated";
-import CommentLikeCounter from "../../../UI/CommentLikeCounter/CommentLikeCounter";
-import CommentUserName from "../../../UI/CommentUserName/CommentUserName";
+import CommentBody from "../../../../UI/comment/CommentBody/CommentBody";
+import CommentDateCreated from "../../../../UI/comment/CommentDateCreated/CommentDateCreated";
+import CommentLikeCounter from "../../../../UI/comment/CommentLikeCounter/CommentLikeCounter";
+import CommentUserName from "../../../../UI/comment/CommentUserName/CommentUserName";
 import { ModifiedCommentData } from "../../../interfaces/interfaces";
 import styles from "./CommentCard.module.scss";
 

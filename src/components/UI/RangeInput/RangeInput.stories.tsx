@@ -4,7 +4,7 @@ import RangeInput from "./RangeInput";
 import { ChangeEvent } from 'react';
 
 const meta: Meta<typeof RangeInput> = {
-    title: 'RangeInput',
+    title: 'ui/RangeInput',
     component: RangeInput,
 };
 

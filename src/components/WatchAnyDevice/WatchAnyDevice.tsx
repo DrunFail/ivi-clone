@@ -13,7 +13,7 @@ export default function WatchAnyDevice({movieName, moviePosterUrl }:WatchAnyDevi
         <div className={styles.container}>
             <div className={styles.text}>
                
-                <WatchAllDeviceTitle movieName={movieName} />
+                <WatchAllDeviceTitle movieName={movieName}/>
                 
                 <WatchAllDeviceDescription />
                 

@@ -1,5 +1,5 @@
-import ButtonDeleteWithHint from "../../AdminDashboard/components/ButtonDeleteWithHint/ButtonDeleteWithHint";
-import ButtonEditWithHint from "../../AdminDashboard/components/ButtonEditWithHint/ButtonEditWithHint";
+import ButtonWithHint from "../../UI/ButtonWithHint/ButtonWithHint";
+import FontIcon from "../../UI/FontIcon/FontIcon";
 
 interface AdminOverlayIconProps {
     editHandler: () => void,
@@ -8,8 +8,12 @@ interface AdminOverlayIconProps {
 export default function AdminOverlayIcon({editHandler, deleteHandler }:AdminOverlayIconProps) {
     return (
         <>
-            <ButtonEditWithHint onClickHandler={editHandler} />
-            <ButtonDeleteWithHint onClickHandler={deleteHandler} />
+            <ButtonWithHint description="button.hint.edit" actionHandler={editHandler}>
+                <FontIcon variant="bookmark2" size={20} />
+            </ButtonWithHint>
+            <ButtonWithHint description="button.hint.delete" actionHandler={deleteHandler}>
+                <FontIcon variant="star" size={20} />
+            </ButtonWithHint>
         </>
     );
 }

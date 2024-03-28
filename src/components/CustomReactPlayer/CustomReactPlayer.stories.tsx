@@ -13,7 +13,5 @@ type Story = StoryObj<typeof CustomReactPlayer>;
 export const Primary: Story = {
     render: () =>
         <CustomReactPlayer videoUrl="https://www.youtube.com/watch?v=EFYEni2gsK0" />
-
-
     ,
 };

@@ -1,10 +1,9 @@
-import styles from "./Arrow.module.scss";
+import FontIcon from "../../FontIcon/FontIcon";
 
 export default function Arrow({ visible }: {visible:boolean}) {
     return (
-        <div className={styles[visible ? "open" : "arrow"]}>
-            <span className={styles.left }></span>
-            <span className={styles.right }></span>
-        </div>
+        <>
+            <FontIcon variant={visible ? "arrowUp" : "arrowDown"} size={6} />
+        </>
     );
 }

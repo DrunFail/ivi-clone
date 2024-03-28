@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import { initialize, mswDecorator } from 'msw-storybook-addon';
+import { initialize, mswDecorator,mswLoader } from 'msw-storybook-addon';
 import "../src/styles/index.scss";
 
 const preview: Preview = {
@@ -12,6 +12,7 @@ const preview: Preview = {
             },
         },
     },
+    loaders:[mswLoader]
 };
 
 initialize();

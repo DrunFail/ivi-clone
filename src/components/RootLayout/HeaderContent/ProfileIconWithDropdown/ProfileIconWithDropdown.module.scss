@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    align-items: center;
+    block-size: 100%;
+
+    .profile {
+        column-gap: 5px;
+        padding-inline: 4px 12px;
+        padding-block: 0;
+        color: inherit;
+        inline-size: 100px;
+
+        & > div {
+            background-color: #312b45;
+            block-size: 32px;
+            inline-size: 32px;
+            display: grid;
+            place-items: center;
+            border-radius: 6px;
+        }
+
+        & > span {
+            font-size: var(--fs-300);
+            font-weight: var(--fw-medium);
+            color: #fff;
+        }
+    }
+}

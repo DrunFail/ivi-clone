@@ -1,9 +1,8 @@
-import { useState, useRef } from "react";
 import styles from "./SortField.module.scss";
 import { BsChevronDown, BsFilterRight } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
-import useOutsideClick from "../../../hooks/useOutsideClick";
-import { FilterParams } from "../hooks/useFiltersWatchPage";
+import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
+import useSortField from "../../../hooks/filters/useSortField";
 
 interface SortFieldProps {
     currentSortVariant: string;
@@ -12,22 +11,11 @@ interface SortFieldProps {
 }
 const sortVariantArray = ["nameRu", "year", "ratingKinopoiskVoteCount","ratingKinopoisk"]
 export default function SortField({ currentSortVariant,  setFilterParams, filterKey }: SortFieldProps) {
-    const [isOpen, setIsOpen] = useState(false);
-    const popupRef = useRef(null);
-
-    const closePopup = () => {
-        setIsOpen(false)
-    }
-    useOutsideClick(popupRef, closePopup);
-
-    const setSortParam = (sortParam: string) => {
-        setFilterParams(filterKey, sortParam)
-        setIsOpen(false);
-    }
+    const { isOpen, popupRef, setSortParam, isOpenToggle} = useSortField({setFilterParams, filterKey})
 
     return (
         <div className={styles.wrapper} ref={popupRef}>
-            <div className={styles.visibleArea} onClick={() => setIsOpen(prev => !prev)}>
+            <div className={styles.visibleArea} onClick={isOpenToggle}>
                 <span><BsFilterRight /></span>
                 <span><FormattedMessage id={`sort.variant.${currentSortVariant}`} /></span>
                 <span className={styles.arrowCol + (isOpen ? ` ${styles.arrowColRev}` : "")}><BsChevronDown /></span>

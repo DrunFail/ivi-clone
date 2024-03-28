@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Movie } from "../../../models/types";
 import MovieListCardWithOverlay from "../MovieListCardWithOverlay/MovieListCardWithOverlay";
 import UserOverlayIcon from "../UserOverlayIcon/UserOverlayIcon";
-import useMovieListCardData from "../hooks/useMovieListCardData";
+import useMovieListCardData from "../../../hooks/movie/useMovieListCardData";
 
 interface MovieListCardWithOverlayContainerProps {
     elem: Movie

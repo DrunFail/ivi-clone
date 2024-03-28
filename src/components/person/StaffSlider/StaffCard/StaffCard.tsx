@@ -1,7 +1,7 @@
+import Avatar from "../../../UI/Avatar/Avatar";
 import styles from "./StaffCard.module.scss";
 import PersonName from "./components/PersonName/PersonName";
 import PersonProfession from "./components/PersonProfession/PersonProfession";
-import PersonPhoto from "../../PersonPhoto/PersonPhoto";
 
 interface StaffCardProps {
     modifiedPersonData: {
@@ -12,13 +12,13 @@ interface StaffCardProps {
     }
 }
 export default function StaffCard({ modifiedPersonData }: StaffCardProps) {
-    
-    
+
+
     return (
         <div className={styles.container}>
-            <PersonPhoto
+            <Avatar
                 variant={88}
-                urlPersonPhoto={modifiedPersonData.posterUrl}
+                urlAvatar={modifiedPersonData.posterUrl}
             />
             <div>
                 {modifiedPersonData.splittedName.map((name, index) => (
@@ -27,11 +27,11 @@ export default function StaffCard({ modifiedPersonData }: StaffCardProps) {
                         name={name} />
                 )
                 )}
-                
+
                 <PersonProfession
                     profession={modifiedPersonData.profession} />
             </div>
-            
+
         </div>
     );
 }

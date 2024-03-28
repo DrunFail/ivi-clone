@@ -41,7 +41,7 @@ export default function Modal({ visible, children, callback }:ModalProps){
                               <Image src={close} alt="" />
                           </div>
                       </div>,
-                      document.body
+                    document.querySelector("#portal") ?? document.body
                   )
                 : ""}
         </>

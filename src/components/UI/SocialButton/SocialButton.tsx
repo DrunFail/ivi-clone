@@ -1,9 +1,9 @@
-import Button from "../Button/Button";
 import Image from "next/image";
 import styles from "./SocialButton.module.scss";
 import vk from "../../../assets/SVG/Messangers/VK.svg";
 import twitter from "../../../assets/SVG/Messangers/Twiiter.svg";
 import telegram from "../../../assets/SVG/Messangers/Telegram.svg";
+import Button from "../core/Button/Button";
 
 
 const linkVariants = {

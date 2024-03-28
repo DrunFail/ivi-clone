@@ -1,7 +1,13 @@
 import styles from "./PersonPageNamePerson.module.scss";
 
-export default function PersonPageNamePerson({ personName }: { personName: string }) {
+interface PersonPageNamePersonProps {
+    children: React.ReactNode
+}
+
+export default function PersonPageNamePerson({ children }:PersonPageNamePersonProps) {
     return (
-        <h1 className={styles.name }>{personName}</h1>
+        <h1 className={styles.name}>
+            {children}
+        </h1>
     );
 }

@@ -4,7 +4,7 @@ import MoviePageModal from "./MoviePageModal";
 import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 import { Provider } from 'react-redux';
-import { MOVIE_PAGE_MODAL_MOCK_DATA } from './mock/data';
+import { MOVIE_PAGE_MODAL_MOCK_DATA } from '../../../mockData/moviePageModalMock';
 
 const meta: Meta<typeof MoviePageModal> = {
     title: 'modals/MoviePageModal',
@@ -25,6 +25,10 @@ export const Primary: Story = {
                     movieYear={2023}
                     callback={() => console.log("callback")}
                     type=""
+                    movieInfo={{
+                        infoProduct: ''
+                    }}
+                    trailerList={[]}
                 />
             </WrapperIntl>
         </Provider>

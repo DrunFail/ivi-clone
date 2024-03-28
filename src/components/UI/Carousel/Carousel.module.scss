@@ -7,13 +7,14 @@
         position: relative;
 
         & > button {
-            --direction: -15px;
+            --direction: -10px;
             position: absolute;
             inline-size: 40px;
             z-index: 1;
+            top:0;
 
             @media (max-width: 700px) {
-                --direction: -15px;
+                --direction: -10px;
             }
         }
     }

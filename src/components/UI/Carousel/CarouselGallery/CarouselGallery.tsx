@@ -7,7 +7,7 @@ interface CarouselGalleryProps {
     mode: "list" | "slider" | "collection",
 }
 
-export default function CarouselGallery({ carouselId, children, mode }:CarouselGalleryProps) {
+export default function CarouselGallery({ carouselId, children, mode}:CarouselGalleryProps) {
     return (
         <div id={carouselId} className={styles[`carousel_${mode}`]}>{children}</div>
 

@@ -1,9 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import styles from "./CommentAddForm.module.scss";
-import Button from "../../UI/Button/Button";
 import { ReviewTree } from "../../../models/types";
-import useCommentAddForm from "../hooks/useCommentAddForm";
 import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
+import useCommentAddForm from "../../../hooks/comment/useCommentAddForm";
+import Button from "../../UI/core/Button/Button";
 
 interface CommentAddFormProps {
     movieKinopoiskId: number,

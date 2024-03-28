@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { cookieParser } from "../../../../utils/cookieParser";
-import ButtonClose from "../../../UI/ButtonClose/ButtonClose";
-import HorizontalLine from "../../../UI/HorizontalLine/HorizontalLine";
 import styles from "./FormAuthPageHeader.module.scss";
+import Button from "../../../UI/core/Button/Button";
+import FontIcon from "../../../UI/FontIcon/FontIcon";
 
 interface FormAuthPageHeaderProps {
     title: string
@@ -17,10 +17,20 @@ export default function FormAuthPageHeader({ title }: FormAuthPageHeaderProps) {
     return (
         <>
             <div className={styles.header}>
+                <div className={styles.wrapper }>
                 <h1>{title}</h1>  
-                <ButtonClose onClick={() => router.push(callbackUrl ?? '/') } />
+                <Button
+                    as="button"
+                    onlyImage
+                    onClick={() => router.push(callbackUrl ?? "/") }
+                >
+                    <FontIcon
+                        size={20}
+                        variant="close"
+                    />
+                        </Button>
+                </div>
             </div>
-            <HorizontalLine />
         </>
     );
 }

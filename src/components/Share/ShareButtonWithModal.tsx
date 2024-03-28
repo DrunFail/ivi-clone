@@ -1,6 +1,10 @@
 import { useState } from "react";
-import ShareButton from "../UI/ShareButton/ShareButton";
-import ShareModal from "./ShareModal/ShareModal";
+import Button from "../UI/core/Button/Button";
+import FontIcon from "../UI/FontIcon/FontIcon";
+import dynamic from "next/dynamic";
+
+const ShareModal = dynamic(() =>
+    import("./ShareModal/ShareModal").then((mod) => mod.default))
 
 interface ShareButtonWithModalProps {
     posterUrl: string,
@@ -9,9 +13,6 @@ interface ShareButtonWithModalProps {
 }
 export default function ShareButtonWithModal({posterUrl, nameRu, year }:ShareButtonWithModalProps) {
     const [visible, setVisible] = useState(false);
-   
-
-
 
     const isModalOpen = () => {
         setVisible(true)
@@ -24,7 +25,13 @@ export default function ShareButtonWithModal({posterUrl, nameRu, year }:ShareBut
     return (
         <>
 
-            <ShareButton clickHandler={isModalOpen} />
+            <Button
+                as="button"
+                size="mini"
+                onClick={isModalOpen }
+            >
+                <FontIcon variant="arrow" />
+            </Button>
             <ShareModal
                 visible={visible}
                 isModalClose={isModalClose}

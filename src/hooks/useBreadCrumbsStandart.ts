@@ -22,13 +22,10 @@ export default function useBreadCrumbsStandart() {
             return { children: returnedLinkTitle, href: "/" }
         }
         if (elem === query.genre) {
-            const currentGenre = genreList.genres.find(genre => genre.genreNameEng.toLowerCase() === elem.toLowerCase())
-            if (currentGenre) {
-
-                const genreName = intl.formatMessage({ id: `genre.${currentGenre.id}.title` });
+                const genreName = intl.formatMessage({ id: `genre.${elem}` });
                 returnedLink = returnedLink + elem + "/";
                 return { children: genreName, href: returnedLink }
-            } 
+             
             
         } 
         

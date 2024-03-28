@@ -2,9 +2,10 @@
     position: relative;
     background-color: transparent;
     border:none;
+    color:inherit;
     
 
-    p {
+    span {
         display: grid;
         grid-template-columns: max-content;
         position: absolute;

@@ -7,7 +7,7 @@ import store from '../../store/store';
 import WrapperIntl from '../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof Rating> = {
-    title: 'Rating',
+    title: 'ui/rating/Rating',
     component: Rating,
 };
 

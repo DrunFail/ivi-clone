@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import NumberRatingTop from "./NumberRatingTop";
 
 const meta: Meta<typeof NumberRatingTop> = {
-    title: 'NumberRatingTop',
+    title: 'movie/TopTenSlider/NumberRatingTop',
     component: NumberRatingTop,
 };
 

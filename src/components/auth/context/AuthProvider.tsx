@@ -1,9 +1,15 @@
 import { createContext, useState } from "react";
 import { AuthContextData, IAuthContext } from "./interfaces";
-import { DEFAULT_AUTH_CONTEXT_VALUE } from "../constants";
 
 interface AuthProviderProps {
     children: React.ReactNode
+}
+
+export const DEFAULT_AUTH_CONTEXT_VALUE = {
+    token: null,
+    userEmail: null,
+    profile: null,
+    userRoles: null
 }
 
 const AuthContext = createContext<IAuthContext>({ auth:DEFAULT_AUTH_CONTEXT_VALUE, setAuth: () => null });

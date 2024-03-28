@@ -1,19 +1,18 @@
-import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import Carousel from "../../UI/Carousel/Carousel";
 import MovieListCardWithOverlayContainer from "../MovieListCardContainer/MovieListCardWithOverlayContainer";
 import { FormattedMessage } from "react-intl";
 import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 import Link from "next/link";
-import useMovieSlider from "../hooks/useMovieSlider";
+import useMovieSlider from "../../../hooks/movie/useMovieSlider";
+import { MOVIE_LIST_SIZES } from "../../../constants/sliderItemSize";
 
 
 interface MovieSliderProps {
-    carouselId: string,
     href: string,
     genreId: number
 }
 
-export default function MovieSlider({ carouselId, href, genreId }: MovieSliderProps) {
+export default function MovieSlider({ href, genreId }: MovieSliderProps) {
     const data = useMovieSlider(genreId);
 
     if (!data) return <></>
@@ -27,7 +26,6 @@ export default function MovieSlider({ carouselId, href, genreId }: MovieSliderPr
             </Link>
             <Carousel
                 mode={"slider"}
-                carouselId={carouselId}
                 data={data.rows}
                 count={data.count}
                 sizes={MOVIE_LIST_SIZES}

@@ -16,7 +16,7 @@ export const Primary: Story = {
     render: () =>
         <PageSection>
             <PageWrapper>
-            <PromoSection />
+                <PromoSection />
             </PageWrapper>
         </PageSection>
 

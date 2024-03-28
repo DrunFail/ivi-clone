@@ -1,43 +1,43 @@
 import Link from "next/link";
-import { FormattedMessage } from "react-intl";
 import styles from "./DropdownFilterContent.module.scss";
+import { FilterParams } from "../../../../hooks/filters/useFiltersWatchPage";
+import React from "react";
 
 interface DropdownFilterContentProps {
     dataArray: any;
-    testId: string;
-    onClickHandler: (id: string) => void;
-    prop: string;
-    name: "genre" | "country";
-    variant: "admin" | "genrePage"
+    typeItemList: "link" | "clickable";
+    variant: "admin" | "genrePage",
+    filterKey: keyof FilterParams,
+    setFilterParams: (filterKey: keyof FilterParams, filterValue: string) => void,
+    toggleVisibleDropdown:() => void
 }
 
-export default function DropdownFilterContent({ dataArray, testId, onClickHandler,prop, name,variant }: DropdownFilterContentProps) {
+export default function DropdownFilterContent({ dataArray, typeItemList,variant,filterKey, setFilterParams,toggleVisibleDropdown }: DropdownFilterContentProps) {
     return (
         <div className={styles.container}>
-            
+
             {/* eslint-disable */
-            //@ts-ignore
+                //@ts-ignore
                 dataArray && dataArray.map((item, idx) =>
-                <>
-                    {
-                        testId === "genreId" && variant === "genrePage"
-                            ? <Link
-                                className={styles.dropdownItem }
-                                key={idx}
-                                href={`/movies/${item[prop]}`}
-                                onClick={() => onClickHandler(item.id)}
-                            >
-                                <FormattedMessage id={`${name}.${item[prop]}.short`} />
-                            </Link>
-                            : <p
-                                key={idx}
-                                onClick={() => onClickHandler(item.id)}
-                                className={styles.dropdownItem}>
-                                <FormattedMessage id={`${name}.${item[prop]}.title`} />
-                            </p>
-                    }
-                </>
-            )}
+                    <React.Fragment key={idx }>
+                        {
+                            typeItemList === "link" && variant === "genrePage"
+                                ? <Link
+                                    className={styles.dropdownItem}
+                                    href={item.link}
+                                    onClick={() => {  setFilterParams(filterKey, item.id) }}
+                                >
+                                    {item.name }
+                                </Link>
+                                : <p
+                                    onClick={() => {  setFilterParams(filterKey, item.id) }}
+                                    className={styles.dropdownItem}>
+                                    {item.name}
+                                </p>
+                        }
+                    </React.Fragment>
+                )}
         </div>
     );
+
 }

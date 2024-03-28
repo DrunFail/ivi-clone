@@ -36,14 +36,15 @@ export const MovieAPI = {
         })
         return response.data
     },
-    updateMovie: async (movieId: string) => {
+    updateMovie: async (movieId: number, newData: {nameRu:string, nameOriginal:string}) => {
         const response = await axiosAuth.request({
             url: `/api/movies/about/${movieId}`,
-            method: "put"
+            method: "put",
+            data: newData
         })
         return response
     },
-    deleteMovie: async (movieId: string) => {
+    deleteMovie: async (movieId: number) => {
         const response = await axiosAuth.request({
             url: `/api/movies/about/${movieId}`,
             method: "delete"
@@ -78,10 +79,11 @@ export const MovieAPI = {
         })
         return response
     },
-    updateGenreById: async (genreId: number) => {
+    updateGenreById: async (genreId: number, newGenreData: {genreNameRu: string, genreNameEng: string}) => {
         const response = await axiosAuth.request({
             url: `/api/movies/genres/${genreId}`,
-            method: "put"
+            method: "put",
+            data: newGenreData
         })
         return response
     },

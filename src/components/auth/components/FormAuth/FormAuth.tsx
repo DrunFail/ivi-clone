@@ -5,10 +5,10 @@ import styles from "./FormAuth.module.scss";
 import FormContainer from "../FormContainer/FormContainer";
 import { useRouter } from "next/router";
 import FormErrorMessage from "../FormErrorMessage/FormErrorMessage";
-import ButtonFormAuthSubmit from "../ButtonFormAuthSubmit/ButtonFormAuthSubmit";
 import FormContentContainer from "../FormContentContainer/FormContentContainer";
 import OAuthButton from "../OAuthButton/OAuthButton";
-import useVKAuth from "../../hooks/useVKAuth";
+import useVKAuth from "../../../../hooks/auth/useVKAuth";
+import Button from "../../../UI/core/Button/Button";
 
 
 interface FormAuthProps {
@@ -28,24 +28,34 @@ export default function FormAuth({ error, children, handleSubmit }: FormAuthProp
 
     return (
         <FormContainer>
-            <FormErrorMessage error={error} />
+            <FormErrorMessage error={Boolean(error)}>
+                {error }
+            </FormErrorMessage>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
                 <FormContentContainer>
                     {children}
 
-                    <ButtonFormAuthSubmit
-                        text={"Продолжить"}
+                    <Button
+                        as="button"
+                        color="red"
                         type="submit"
-                    />
+                    >
+                        Продолжить
+                    </Button>
+
                     <ConfirmConfidential />
                     {asPath === AUTH.login
-                        ? <RedirectLinkContainer title={"Нет аккаунта?"}>
+
+                        ? <RedirectLinkContainer>
+                            <span>Нет аккаунта?</span>
                             <RedirectLink
                                 href={"/auth/registration"}>
                                 Зарегистрироваться
                             </RedirectLink>
                         </RedirectLinkContainer>
-                        : <RedirectLinkContainer title={"Есть аккаунт?"}>
+
+                        : <RedirectLinkContainer>
+                            <span>Есть аккаунт?</span>
                             <RedirectLink
                                 href={"/auth/login"}>
                                 Войти

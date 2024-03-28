@@ -1,5 +1,5 @@
+import useCommentListCard from "../../../hooks/comment/useCommentListCard";
 import { ReviewTree } from "../../../models/types";
-import useCommentListCard from "../hooks/useCommentListCard";
 import CommentListCard from "./CommentListCard/CommentListCard";
 
 interface CommentListCardContainerProps {

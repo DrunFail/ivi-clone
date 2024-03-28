@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
 
 const meta: Meta<typeof ButtonPlayerBlock> = {
-    title: 'buttons/ButtonPlayerBlock',
+    title: 'movie/ButtonPlayerBlock',
     component: ButtonPlayerBlock,
 };
 
