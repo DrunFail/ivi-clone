@@ -1,9 +1,9 @@
 import styles from "./RangeFilter.module.scss";
-import { useCallback, useEffect, useState } from "react";
-import {debounce } from "lodash"
 import RangeInput from "../../UI/RangeInput/RangeInput";
-import FilterName from "../components/FilterName/FilterName";
-import { FilterParams } from "../hooks/useFiltersWatchPage";
+import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
+import FilterName from "../../UI/filter/FilterName/FilterName";
+import useRangeFilter from "../../../hooks/filters/useRangeFilter";
+import { FormattedMessage } from "react-intl";
 
 interface RangeFilterProps {
     min: number;
@@ -15,27 +15,17 @@ interface RangeFilterProps {
 }
 
 export default function RangeFilter({ initValue, min, max, step, filterKey, setFilterParams }: RangeFilterProps){
-    const [currentValue, setCurrentValue] = useState(initValue)
-
-    useEffect(() => {
-        setCurrentValue(initValue)
-    },[initValue])
-    
-    const deb = useCallback(debounce(setFilterParams, 700), [setFilterParams])
-
-    const changeRange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setCurrentValue(+e.target.value)
-        deb(filterKey, +e.target.value)
-        
-    }
+    const {changeRange, currentValue } = useRangeFilter({setFilterParams, initValue,filterKey});
 
     
     return (
         <div className={styles.wrapper}>
-            <FilterName
-                intlId={filterKey}
-                currentValue={currentValue}
-            />
+            <FilterName>
+                <FormattedMessage
+                    id={`label.${filterKey}`}
+                    values={{ value: currentValue }}
+                />
+            </FilterName>
             <div className={styles.rangeContainer}>
                 <RangeInput
                     inputId={filterKey}
