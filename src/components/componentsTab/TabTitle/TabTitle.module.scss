@@ -1,40 +1,34 @@
-.Tab {
-    display: flex;
-    transition: 0.3s;
-    flex-direction: column;
-    p {
-        opacity: 0.6;
-    }
-    transition: 0.3s;
+.container {
+    position: relative;
+    padding-block: 10px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: var(--fw-medium);
     cursor: pointer;
-    &:hover {
-        opacity: 1;
+    inline-size: 100px;
+    text-align: center;
+    display: flex;
+    column-gap: 3px;
+    justify-content: center;
+
+    sup {
+        font-size: 13px;
+        font-weight: var(--fw-normal);
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+        line-height: 13px;
+       color: #a5a1b2;
     }
-    p {
-        padding-bottom: 10px;
-    }
-    &:after {
-        opacity: 0;
-        transition: 0.3s;
-        width: inherit;
-        content: ".";
-        margin-bottom: -2px;
-        overflow: hidden;
-        max-height: 4px;
-    }
-    transition: 0.3s;
-    &__active {
-        p {
-            opacity: 1;
-            cursor: default;
-        }
-        &:after {
-            opacity: 1;
-            width: inherit;
-            content: ".";
-            margin-bottom: -2px;
-            overflow: hidden;
-            max-height: 4px;
-        }
-    }
+}
+.container[data-status="true"]:before {
+    bottom: 0;
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transition: background-color .4s;
+    background-color: #f30745;
+    transition-duration: 80ms;
 }

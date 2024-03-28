@@ -1,31 +1,22 @@
-//import Image from "next/image";
+import CustomReactPlayer from "../../CustomReactPlayer/CustomReactPlayer";
 
-//export default function TrailerTab() {
+interface TrailerTabProps {
+    trailerList: string[]
+}
+export default function TrailerTab({trailerList }:TrailerTabProps) {
+    return (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", paddingBlock: "40px" }}>
+            {trailerList.map((trailer, index) =>
 
-//    if (!films?.film?.trailers?.length) {
-//        return <></>;
-//    }
-
-//    return (
-//        <>
-//            {films?.film?.trailers?.map((trailer) => (
-//                <Trailer
-//                    trailer={trailer.url}
-//                    content={
-//                        <div>
-//                            <Image
-//                                src={films?.film?.logoUrl || ""}
-//                                width={288}
-//                                height={166}
-//                                alt=""
-//                            />
-//                            <p>{trailer?.name}</p>
-//                        </div>
-//                    }
-//                />
-//            ))}
-//        </>
-//    );
-//};
+                <div key={index} >
+                    <CustomReactPlayer videoUrl={trailer} />
+                    </div>
+                
+            
+            )
+            }
+        </div>
+    );
+};
 
 

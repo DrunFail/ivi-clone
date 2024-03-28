@@ -15,7 +15,7 @@ export default function CreatersTab({ personList }:CreatersTabProps) {
     
 
     return (
-        <div className={styles.Creaters}>
+        <div className={styles.container}>
             <CreatersPersonList
                 personList={actorList}
                 intlId="Actors" />

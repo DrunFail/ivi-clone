@@ -1,5 +1,9 @@
 .container {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+   justify-content: flex-start;
+   
+    inline-size: 100%;
     font-size: 15px;
     font-weight: var(--fw-bold);
     gap: 30px;
