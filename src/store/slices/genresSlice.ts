@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import type { PayloadAction } from "@reduxjs/toolkit"
 import { Genre } from "../../models/types"
 import { MovieAPI } from "../../api/MovieAPI"
 import { RootState } from "../store"
@@ -26,7 +25,7 @@ export const genresSlice = createSlice({
     name: "genres",
     initialState,
     reducers: {
-
+        
     },
     extraReducers(builder) {
         builder
@@ -44,5 +43,7 @@ export const genresSlice = createSlice({
     }
 })
 export const selectAllGenres = (state: RootState) => state.genres;
+
+
 
 export default genresSlice.reducer

@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { FormattedMessage } from "react-intl";
-import styles from "./LinkConnectDevice.module.scss";
+import Button from "../../UI/core/Button/Button";
 
 export default function LinkConnectDevice() {
     return (
-        <Link href="https://www.ivi.ru/devices" className={styles.link }>
-                <FormattedMessage id="ConnectDevice" />
-        </Link>
+        <Button as="link" href="https://www.ivi.ru/devices" color="red">
+            <FormattedMessage id="ConnectDevice" />
+        </Button>
     );
 }

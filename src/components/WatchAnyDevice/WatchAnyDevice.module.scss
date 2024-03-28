@@ -29,6 +29,10 @@
             grid-column: 1;
             grid-row: 2;
         }
+
+        a {
+            inline-size: max-content;
+        }
     }
 
     .img {

@@ -3,6 +3,8 @@ import { MovieById } from "../models/types";
 import { useSelector } from "react-redux";
 import { getLang } from "../store/slices/switchLang";
 import { calculateMovieName } from "../utils/calculateMovieName";
+import { getKeyByValue } from "../utils/getKeyByValue";
+import { CLIENT_GENRE_LIST } from "../constants/genreList";
 
 interface UseBreadCrumbsMoviePageProps {
     movie: MovieById
@@ -21,7 +23,9 @@ export default function useBreadCrumbsMoviePage({ movie }: UseBreadCrumbsMoviePa
     const movieName = calculateMovieName(movie.film, lang);
     const mainTitle = intl.formatMessage({ id: "MyIvi" });
     const typeMovieTitle = intl.formatMessage({ id: `breadcrumbs.${typeMovie}` })
-    const genreTitle = intl.formatMessage({id: `genre.${movieGenre}.title`})
+
+    const genreTitleKey = getKeyByValue(CLIENT_GENRE_LIST,movieGenre)
+    const genreTitle = intl.formatMessage({ id: `genre.${genreTitleKey}` })
 
     const returned = {
         fullList: [

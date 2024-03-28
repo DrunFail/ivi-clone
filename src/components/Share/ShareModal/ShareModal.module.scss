@@ -1,0 +1,81 @@
+
+.wrapper {
+    display: flex;
+    inline-size: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        max-inline-size: 400px;
+        inline-size: 100%;
+        block-size: max-content;
+        background-color: var(--clr-dark-800);
+        padding-block: 16px 24px;
+        padding-inline: 24px;
+        border-radius: 16px;
+
+        .info {
+            position: relative;
+            display: flex;
+            align-items: center;
+            column-gap: 16px;
+            padding-block-end: 17px;
+
+            h2 {
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                color: #fff;
+                display: block;
+                display: -webkit-box;
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 22px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-overflow: -o-ellipsis-lastline;
+            }
+
+            p {
+                font-size: 13px;
+                line-height: 1;
+                font-weight: var(--fw-regular);
+                color: hsla(0,0%,100%,.72);
+            }
+
+
+            &:after {
+                background-color: hsla(0,0%,100%,.08);
+                bottom: 0;
+                content: "";
+                height: 1px;
+                left: -24px;
+                position: absolute;
+                right: -24px;
+            }
+        }
+
+        .button {
+            padding-block-start: 16px;
+            --border-radius: 16px;
+
+
+            button {
+                block-size: 48px;
+                border-radius: 0px;
+                justify-content: space-between;
+            }
+
+
+            button:first-child {
+                border-start-start-radius: var(--border-radius);
+                border-start-end-radius: var(--border-radius);
+            }
+
+            button:last-child {
+                border-end-start-radius: var(--border-radius);
+                border-end-end-radius: var(--border-radius);
+            }
+        }
+    }
+}

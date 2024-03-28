@@ -1,0 +1,16 @@
+.container {
+    z-index: 1001;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(31,27,46,.88);
+    block-size: 48px;
+    inline-size: 100%;
+
+    .content {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: center;
+        padding-block: 8px 4px;
+    }
+}

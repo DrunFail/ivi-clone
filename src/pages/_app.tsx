@@ -3,14 +3,12 @@ import "../styles/index.scss";
 import { useEffect, useState } from 'react';
 import WrapperIntl from "../components/WrapperIntl/WrapperIntl";
 import { AuthProvider } from "../components/auth/context/AuthProvider";
-import ClickCatcherProvider from "../hooks/useClickCatcher";
-import WindowDimensionsProvider from "../hooks/useWindowDimensions";
-import RootLayout from "../components/layouts/RootLayout/RootLayout";
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import store from "../store/store";
 import localFont from "next/font/local";
+import RootLayout from "../components/RootLayout/RootLayout";
 
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -59,7 +57,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const DefaultLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
     const getLayout = Component.getLayout ?? DefaultLayout;
 
-    
+
     return (
         <>
             <style jsx global>
@@ -69,24 +67,13 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
                 }`
                 }
             </style>
-        <AuthProvider>
-            <Provider store={store}>
-                <WrapperIntl>
-                    {/*<AppLoader>*/}
-                        {/*<WindowDimensionsProvider>*/}
-                    {/*    <ClickCatcherProvider>*/}
-                        
+            <AuthProvider>
+                <Provider store={store}>
+                    <WrapperIntl>
                         {getLayout(<Component {...pageProps} />)}
-                    
-                   {/*         </ClickCatcherProvider>*/}
-                   {/*     </WindowDimensionsProvider>*/}
-                   {/* </AppLoader>*/}
-                </WrapperIntl>
-                {/* <LoaderReq /> */}
-            </Provider>
+                    </WrapperIntl>
+                </Provider>
             </AuthProvider>
         </>
     );
 }
-
-

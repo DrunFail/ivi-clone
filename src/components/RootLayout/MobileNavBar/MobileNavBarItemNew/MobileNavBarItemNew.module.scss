@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    row-gap: 4px;
+    color: var(--clr-grey-300);
+   
+
+    .text {
+        font-size: 10px;
+        font-weight: var(--fw-medium);
+        line-height: 12px;
+        
+    }
+
+    &:hover{
+        color: #fff;
+    }
+}
