@@ -1,11 +1,10 @@
 import { isAxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { cookieParser } from "../../../utils/cookieParser";
 import useAuth from "./useAuth";
-import { AuthAPI } from "../../../api/AuthAPI";
-import { authDecodeToken } from "../../../utils/authDecodeToken";
-import { AuthContextData } from "../context/interfaces";
+import { AuthAPI } from "../../api/AuthAPI";
+import { authDecodeToken } from "../../utils/authDecodeToken";
+import { cookieParser } from "../../utils/cookieParser";
 
 export default function useLogin() {
     const { setAuth } = useAuth();

@@ -1,7 +1,6 @@
-import { AuthContextData } from "../context/interfaces";
+import { AuthAPI } from "../../api/AuthAPI";
+import { authDecodeToken } from "../../utils/authDecodeToken";
 import useAuth from "./useAuth";
-import { AuthAPI } from "../../../api/AuthAPI";
-import { authDecodeToken } from "../../../utils/authDecodeToken";
 
 export default function  useRefreshToken() {
     const {setAuth} = useAuth();

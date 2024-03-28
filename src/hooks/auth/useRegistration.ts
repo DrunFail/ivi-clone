@@ -1,7 +1,7 @@
 import { isAxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { AuthAPI } from "../../../api/AuthAPI";
+import { AuthAPI } from "../../api/AuthAPI";
 
 const EMAIL_REGEX = /\S+@\S+\.\S+/;
 const PWD_REGEX = /^[a-zA-Z0-9А-я]{4,16}$/;

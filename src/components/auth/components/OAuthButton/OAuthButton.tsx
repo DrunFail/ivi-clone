@@ -1,9 +1,9 @@
 import styles from './OAuthButton.module.scss';
-import Button from "../../../UI/Button/Button";
 import Image from "next/image";
 import vk from "../../../../assets/SVG/Messangers/VK.svg";
 import google from "../../../../assets/SVG/Apps/Google.svg";
 import { FormattedMessage } from "react-intl";
+import Button from '../../../UI/core/Button/Button';
 
 const OAUTH_VARIANT = {
     vk: {

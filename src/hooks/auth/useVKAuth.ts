@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react"
 import useAuth from "./useAuth";
-import { authDecodeToken } from "../../../utils/authDecodeToken";
-import { AuthAPI } from "../../../api/AuthAPI";
-import { AuthContextData } from "../context/interfaces";
+import { AuthAPI } from "../../api/AuthAPI";
+import { authDecodeToken } from "../../utils/authDecodeToken";
 
 export default function useVKAuth() {
     const { query, isReady, push } = useRouter();

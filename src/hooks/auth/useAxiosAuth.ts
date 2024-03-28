@@ -1,9 +1,7 @@
-import { AxiosError } from "axios";
 import { useEffect } from "react";
-import { axiosAuth } from "../../../lib/axios";
 import useAuth from "./useAuth";
 import useRefreshToken from "./useRefreshToken";
-import type {AxiosRequestConfig, InternalAxiosRequestConfig} from "axios";
+import { axiosAuth } from "../../lib/axios";
 
 const useAxiosAuth = () => {
     const refresh = useRefreshToken();

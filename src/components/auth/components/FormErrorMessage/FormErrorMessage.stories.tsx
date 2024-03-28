@@ -17,7 +17,9 @@ export const Primary: Story = {
     render: () =>
         <Provider store={store}>
             <WrapperIntl>
-               <FormErrorMessage error="error text"/>
+                <FormErrorMessage error>
+                error text
+               </FormErrorMessage>
             </WrapperIntl>
         </Provider>
 

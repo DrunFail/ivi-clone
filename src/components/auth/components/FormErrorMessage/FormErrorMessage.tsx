@@ -1,10 +1,13 @@
 import styles from "./FormErrorMessage.module.scss";
 
 interface FormErrorMessageProps {
-    error: string
+    error?: boolean,
+    children?:React.ReactNode
 }
-export default function FormErrorMessage({error }:FormErrorMessageProps) {
+export default function FormErrorMessage({ error,children }: FormErrorMessageProps) {
     return (
-        <p className={styles.error}>{error}</p>
+        <>
+            {error && <span className={styles.error}>{children}</span>}
+        </>
     );
 }
