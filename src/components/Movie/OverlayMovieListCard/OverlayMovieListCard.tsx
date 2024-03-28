@@ -1,9 +1,9 @@
-import DurationOverlay from "../MovieList/UI/DurationOverlay/DurationOverlay";
-import InfoProductOverlay from "../MovieList/UI/InfoProductOverlay/InfoProductOverlay";
-import MainAdvantage from "../MovieList/UI/MainAdvantage/MainAdvantage";
-import RatingOverlayContainer from "../MovieList/UI/RaitingOverlayContainer/RatingOverlayContainer";
-import RatingFromNumbers from "../MovieList/UI/RatingFromNumbers/RatingFromNumbers";
-import RatingProgressBarBlock from "../MovieList/UI/RatingProgressBarBlock/RatingProgressBarBlock";
+import DurationOverlay from "../../UI/movie/DurationOverlay/DurationOverlay";
+import InfoProductOverlay from "../../UI/movie/InfoProductOverlay/InfoProductOverlay";
+import MainAdvantage from "../../UI/movie/MainAdvantage/MainAdvantage";
+import RatingOverlayContainer from "../../UI/movie/RaitingOverlayContainer/RatingOverlayContainer";
+import RatingFromNumbers from "../../UI/movie/RatingFromNumbers/RatingFromNumbers";
+import RatingProgressBarBlock from "../../UI/movie/RatingProgressBarBlock/RatingProgressBarBlock";
 import styles from "./OverlayMovieListCard.module.scss";
 
 interface OverlayMovieListCardProps {

@@ -2,18 +2,12 @@
     display: grid;
     grid-auto-rows: min-content;
     justify-content: center;
-
-    .heading {
-        h1 {
-            font-size: var(--fs-800);
-            font-weight: var(--fw-bold);
-            line-height: 44px;
-            text-align: center;
-        }
-    }
-
-
-
+    row-gap: 20px;
+    font-size: 15px;
+    font-weight: var(--fw-regular);
+    line-height: 15px;
+    color: hsla(0,0%,100%,.72);
+    text-align: center;
 
     .info_container {
         display: grid;
@@ -28,7 +22,7 @@
             column-gap: 6px;
         }
 
-        .bottom > p:not(:first-child)::before {
+        .bottom > span:not(:first-child)::before {
             content: "";
             inline-size: 2px;
             block-size: 2px;
@@ -37,14 +31,6 @@
             margin-block-end: 3px;
             display: inline-block;
             margin-inline: 6px;
-        }
-
-        p {
-            font-size: 15px;
-            font-weight: var(--fw-medium);
-            line-height: 15px;
-            color: hsla(0,0%,100%,.72);
-            text-align: center;
         }
     }
 }

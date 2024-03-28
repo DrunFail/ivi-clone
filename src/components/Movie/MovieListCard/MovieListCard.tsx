@@ -1,5 +1,6 @@
-import AgeRestriction from "../MovieList/UI/AgeRestrictionOverlay/AgeRestriction";
-import MovieListCardMovieName from "../MovieListCardMovieName/MovieListCardMovieName";
+import { defaultBlur } from "../../../utils/blurDataUrl";
+import AgeRestriction from "../../UI/movie/AgeRestriction/AgeRestriction";
+import MovieListCardMovieName from "../../UI/movie/MovieListCardMovieName/MovieListCardMovieName";
 import styles from "./MovieListCard.module.scss";
 import Image from "next/image";
 
@@ -16,13 +17,22 @@ export default function MovieListCard({modifiedMovieData, children}:MovieListCar
     return (
         <div className={styles.item}>
             <div className={styles.image_container}>
-                <Image src={modifiedMovieData.moviePoster} alt='' fill sizes="(max-width: 768px) 100vw" />
+                <Image
+                    src={modifiedMovieData.moviePoster}
+                    alt=''
+                    fill
+                    sizes="(max-width: 768px) 100vw"
+                    placeholder="blur"
+                    blurDataURL={defaultBlur}
+                />
                 <div className={styles.restriction}>
                     <AgeRestriction />
                 </div>
                 {children}
             </div>
-            <MovieListCardMovieName movieName= {modifiedMovieData.movieName} />
+            <MovieListCardMovieName
+                movieName={modifiedMovieData.movieName}
+            />
         </div>
     );
 }

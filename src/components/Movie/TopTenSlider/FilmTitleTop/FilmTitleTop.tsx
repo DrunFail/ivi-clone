@@ -1,15 +1,14 @@
-import React from "react";
+import Image from "next/image";
 import styles from "./FilmTitleTop.module.scss";
 
 interface FilmTitleTopProps {
-    raiting: number
+    rating: number
 }
 
-export default function FilmTitleTop({ raiting }:FilmTitleTopProps) {
+export default function FilmTitleTop({ rating }:FilmTitleTopProps) {
     return (
         <div className={styles.title}>
-
-            <img src={`/top10/${raiting}.png`} alt='' />
+            <Image src={`/top10/${rating}.png`} alt='' fill />
         </div>
     );
 }

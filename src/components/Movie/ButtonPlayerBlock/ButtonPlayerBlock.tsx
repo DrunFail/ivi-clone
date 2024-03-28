@@ -1,6 +1,7 @@
+import MemoizedFormattedMessage from "react-intl/src/components/message";
 import ShareButtonWithModal from "../../Share/ShareButtonWithModal";
-import ButtonTrailer from "../../UI/ButtonTrailer/ButtonTrailer";
-import ButtonWatchLater from "../../UI/ButtonWatchLater/ButtonWatchLater";
+import FontIcon from "../../UI/FontIcon/FontIcon";
+import Button from "../../UI/core/Button/Button";
 import styles from "./ButtonPlayerBlock.module.scss";
 
 interface ButtonPlayerBlockProps {
@@ -17,8 +18,15 @@ export default function ButtonPlayerBlock({ moviePosterUrl, movieName, movieYear
 
     return (
         <div className={defaultClasses}>
-            <ButtonTrailer />
-            <ButtonWatchLater />
+            <Button as="button">
+                <MemoizedFormattedMessage id="trailer" />
+            </Button>
+            <Button
+                as="button"
+                size="mini"
+            >
+                <FontIcon variant="bookmark2" />
+            </Button>
             <ShareButtonWithModal
                 posterUrl={moviePosterUrl}
                 nameRu={movieName}

@@ -1,13 +1,11 @@
-import React from "react";
-import styles from "./HeaderTitleTop.module.scss";
 import Image from "next/image";
+import SectionTitle from "../../../UI/SectionTitle/SectionTitle";
 
 export default function HeaderTitleTop() {
     return (
-        <div className={styles.header}>
+        <SectionTitle>
             <Image src="/top10.svg" width={116} height={28} alt='top 10' />
             за неделю
-
-        </div>
+        </SectionTitle>
     );
 }

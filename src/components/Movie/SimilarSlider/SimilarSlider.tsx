@@ -1,21 +1,19 @@
 import { SimilarMovie } from "../../../models/types";
 import Carousel from "../../UI/Carousel/Carousel";
-import { MOVIE_LIST_SIZES } from "../MovieList/constants/constants";
 import MovieListCardWithOverlayContainer from "../MovieListCardContainer/MovieListCardWithOverlayContainer";
 import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 import { FormattedMessage } from "react-intl";
 import SimilarMovieListCardWithOverlayContainer from "../SimilarMovieListCardContainer/SimilarMovieListCardWithOverlayContainer";
-import useSimilarSlider from "../hooks/useSimilarSlider";
+import useSimilarSlider from "../../../hooks/movie/useSimilarSlider";
+import { MOVIE_LIST_SIZES } from "../../../constants/sliderItemSize";
 
 interface SimilarSliderProps {
-    carouselId: string;
     similarMovieList: SimilarMovie[];
     similarGenreId: number,
     movieName: string
 }
 
 export default function SimilarSlider({
-    carouselId,
     similarMovieList,
     similarGenreId,
     movieName
@@ -31,7 +29,6 @@ export default function SimilarSlider({
             </SectionTitle>
             <Carousel
                 mode={"slider"}
-                carouselId={carouselId}
                 /* eslint-disable */
                 //@ts-ignore
                 data={data.rows}

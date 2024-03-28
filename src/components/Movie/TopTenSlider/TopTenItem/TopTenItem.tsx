@@ -14,10 +14,20 @@ export default function TopTenItem({ elem }:TopTenItemProps) {
         <Link href={elem.href }>
             <div className={styles.item }>
                 <div className={styles.container }>
-                    <Image src={`/top10/${elem.id}.jpg`} fill alt='' />
+                    <Image
+                        src={`/top10/${elem.id}.jpg`}
+                        fill
+                        alt=''
+                        sizes="
+(max-width: 599px) 50vw,
+(max-width: 880px) 33vw,
+(max-width: 1254px) 25vw,
+20vw
+"
+                    />
                 </div>
                 <FadeBottomTop>
-                    <FilmTitleTop raiting={elem.id} />
+                    <FilmTitleTop rating={elem.id} />
                     <NumberRatingTop rating={elem.id} />
                 </FadeBottomTop>
             </div>

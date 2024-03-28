@@ -1,0 +1,11 @@
+.button {
+    font-size: 15px;
+    font-weight: var(--fw-regular);
+    line-height: 20px;
+    color: hsla(0,0%,100%,.48);
+    inline-size: max-content;
+
+    &:hover{
+        color: #fff;
+    }
+}
