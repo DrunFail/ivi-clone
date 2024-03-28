@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import styles from "./CreatersPersonList.module.scss";
 import { Person } from "../../../models/types";
+import { calculatePersonName } from "../../../utils/calculatePersonName";
 
 interface CreatersPersonListProps {
     personList: Person[],
@@ -12,32 +13,36 @@ export default function CreatersPersonList({ personList, intlId }: CreatersPerso
 
 
     return (
-        <>
-            <h1>
+        <div className={styles.container}>
+            <h3>
                 <FormattedMessage id={intlId} />
-            </h1>
-            <div className={styles.Creaters__rez}>
+            </h3>
+            <div className={styles.list}>
                 {personList
-                    .map(person =>
-                        <Link key={person?.id} href={"/person/" + String(person?.id || 0)}>
-                            <div
-                                
-                                className={styles.Actors__unit}
-                            >
-                                <div className="">
+                    .map(person => {
+                        const splittedName = calculatePersonName(person)
+                        return (
+                            <Link key={person.id} href={`/person/${person.id}`}>
+
+                                <div className={styles.image}>
                                     <Image
-                                        src={person?.posterUrl || ""}
+                                        src={person.posterUrl || ""}
                                         alt=""
-                                        width={1128}
-                                        height={1228}
+                                        fill
                                     />
                                 </div>
-                                <p>{person.nameRu}</p>
-                            </div>
-                        </Link>
+                                <div>
+                                    {splittedName.map((name, index) => <span key={index} className={styles.personName}>{name}</span>)}
+                                </div>
+
+                            </Link>
+                        )
+                    }
+
+
                     )}
             </div>
-        </>
+        </div>
 
     );
 }

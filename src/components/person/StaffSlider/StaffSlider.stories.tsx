@@ -3,12 +3,12 @@ import StaffSlider from "./StaffSlider";
 import { Provider } from 'react-redux';
 import store from '../../../store/store';
 import WrapperIntl from '../../WrapperIntl/WrapperIntl';
-import { PERSON_MOCK_DATA } from './mock/personMockData';
 import PageSection from '../../PageContainers/PageSection/PageSection';
 import PageWrapper from '../../PageContainers/PageWrapper/PageWrapper';
+import { PERSON_MOCK_DATA } from '../../../mockData/personMockData';
 
 const meta: Meta<typeof StaffSlider> = {
-    title: 'StaffSlider',
+    title: 'person/StaffSlider',
     component: StaffSlider,
 };
 

@@ -4,12 +4,12 @@ import styles from "./FilmographyHeader.module.scss";
 export default function FilmographyHeader({ personMovieAmount }: {personMovieAmount:number}){
 
     return (
-        <h2 className={styles.text }>
+        <h3 className={styles.text }>
             <FormattedMessage id="FullFilmography" />{" "}
-            <span>
+            <sup>
                 {personMovieAmount} <FormattedMessage id="Films" />
-            </span>
-        </h2>
+            </sup>
+        </h3>
     );
 };
 

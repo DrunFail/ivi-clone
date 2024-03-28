@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { DetailedPerson} from "../../../models/types";
-import { getLang } from "../../../store/slices/switchLang";
+import { DetailedPerson } from "../../models/types";
+import { getLang } from "../../store/slices/switchLang";
 
 export default function useMoviePersonData({ personData }: {personData:DetailedPerson}) {
     const lang = useSelector(getLang());

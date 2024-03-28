@@ -3,9 +3,10 @@ import styles from "./FilmographyItemCard.module.scss";
 import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
-import ButtonDetails from "../../UI/ButtonDetails/ButtonDetails";
-import { getLang } from "../../../store/slices/switchLang";
-import { MovieWithPerson} from "../../../models/types";
+import MemoizedFormattedMessage from "react-intl/src/components/message";
+import { MovieWithPerson } from "../../../../models/types";
+import { getLang } from "../../../../store/slices/switchLang";
+import Button from "../../../UI/core/Button/Button";
 
 interface FilmographyItemCardProps {
     filmographyItem:  MovieWithPerson
@@ -35,7 +36,9 @@ export default function  FilmographyItemCard({ filmographyItem }:FilmographyItem
                             {filmographyItem?.ratingKinopoisk}
                         </p>
                     </div>
-                   <ButtonDetails />
+            <Button as="button">
+                <MemoizedFormattedMessage id="Detail" />
+            </Button>
             </Link>
     );
 };

@@ -1,10 +1,7 @@
-import { Person } from "../../../../models/types";
+import { Person } from "../../models/types";
+import { calculatePersonName } from "../../utils/calculatePersonName";
 
-const calculatePersonName = (personData: Person): string[] => {
-    const currentName = personData.nameRu || "Нет данных";
-    const splittedName = currentName.split(" ").slice(0, 2);
-    return splittedName
-}
+
 
 const calculateProfession = (personData: Person): string => {
     const profession = personData.profession || "нет данных"
@@ -22,3 +19,4 @@ export default function usePersonData(personData: Person) {
         posterUrl: personData.posterUrl
     };
 }
+
