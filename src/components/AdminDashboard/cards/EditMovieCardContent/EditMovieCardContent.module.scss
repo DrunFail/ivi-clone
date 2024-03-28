@@ -1,0 +1,25 @@
+.content {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    column-gap: 40px;
+    grid-auto-rows: max-content;
+    max-inline-size: 800px;
+
+    .imageContainer{
+        position: relative;
+        aspect-ratio: 2/3;
+    }
+    
+    
+}
+@media (max-width: 600px){
+    .content{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr max-content;
+        row-gap: 40px;
+
+        .info{
+            grid-auto-rows: max-content;
+        }
+    }
+}
