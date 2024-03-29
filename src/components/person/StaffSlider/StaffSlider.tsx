@@ -27,7 +27,6 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
            
             <div className={styles.content}>
                 <Carousel
-                    carouselId="staff"
                     mode={"collection"}
                     data={data}
                     count={data.length}

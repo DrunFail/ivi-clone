@@ -1,16 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 import AgeRestriction from "./AgeRestriction";
 
 const meta: Meta<typeof AgeRestriction> = {
-    title: 'ui/movie/AgeRestriction',
-    component: AgeRestriction,
+  title: "ui/movie/AgeRestriction",
+  component: AgeRestriction,
 };
 
 export default meta;
 type Story = StoryObj<typeof AgeRestriction>;
 
 export const Primary: Story = {
-    render: () => <AgeRestriction /> ,
+  render: () => <AgeRestriction />,
 };
-
