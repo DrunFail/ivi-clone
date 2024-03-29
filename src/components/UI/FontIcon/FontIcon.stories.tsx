@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import FontIcon from "./FontIcon";
 
 const meta: Meta<typeof FontIcon> = {
-    title: 'ui/FontIcon',
-    component: FontIcon,
-    args: {
-        variant: "arrow",
-        size: 12
-    }
+  title: "ui/FontIcon",
+  component: FontIcon,
+  args: {
+    variant: "arrow",
+    size: 12,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof FontIcon>;
 
-export const Primary: Story = {}
+export const Primary: Story = {};

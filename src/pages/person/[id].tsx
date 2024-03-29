@@ -1,18 +1,18 @@
 import { GetStaticProps } from "next";
 import HeadPerson from "../../components/person/HeadPerson/HeadPerson";
-import FilmographyList from "../../components/person/FilmographyList/FilmographyList";
 import PersonPageContainer from "../../components/person/PersonPageContainers/PersonPageContainer";
 import PageSection from "../../components/PageContainers/PageSection/PageSection";
 import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
 import PersonPageNamePerson from "../../components/person/PersonPageNamePerson/PersonPageNamePerson";
-import FilmographyHeader from "../../components/person/FilmographyHeader/FilmographyHeader";
-import FilmographyContainer from "../../components/person/FilmographyContainer/FilmographyContainer";
 import { NewPersonAPI } from "../../api/newPersonAPI";
 import { ParsedUrlQuery } from "querystring";
 import { DetailedPerson} from "../../models/types";
 import useMoviePersonData from "../../hooks/person/useMoviePersonData";
 import PageWrapperInner from "../../components/PageContainers/PageWrapperInner/PageWrapperInner";
 import Avatar from "../../components/UI/Avatar/Avatar";
+import FilmographyContainer from "../../components/person/Filmography/FilmographyContainer/FilmographyContainer";
+import FilmographyHeader from "../../components/person/Filmography/FilmographyHeader/FilmographyHeader";
+import FilmographyList from "../../components/person/Filmography/FilmographyList/FilmographyList";
 
 interface PersonPageProps {
     person: DetailedPerson

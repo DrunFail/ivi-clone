@@ -40,7 +40,7 @@ export default function AdminMovies() {
 
                 />
 
-                {filteredMovie.length > 0 &&
+                {filteredMovie.count > 0 &&
                     <SortField
                         setFilterParams={handleChangeFilterParams}
                         currentSortVariant={currentSortVariant}
@@ -53,9 +53,8 @@ export default function AdminMovies() {
 
             <Carousel
                 mode={'list'}
-                carouselId={'id'}
-                data={filteredMovie}
-                count={50}
+                data={filteredMovie.rows}
+                count={filteredMovie.count }
                 sizes={MOVIE_LIST_SIZES}
                 component={MovieListItemAdmin}
             />
