@@ -1,38 +1,108 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Клиентская часть онлайн-кинотеатра (IVI-clone)
 
-First, run the development server:
 
+
+## О проекте
+Над проектом работало 6 человек.
+
+#### Backend:
+- [HabitGit](https://github.com/HabitGit)
+- [Александра Иванкова](https://github.com/alex-ivankova766)
+- [Евгений Колодин](https://github.com/SlumberyDude)
+
+#### Frontend:
+- Я )
+- [Евгений Сологуб](https://github.com/Elon26)
+- [Андрей Догин](https://github.com/R1kkass)
+
+
+На момент завершения работы над проектом деплой не предполагался.
+Выполнен мной, благодаря чему получен интересный опыт работы с Linux, Docker, SSH, VPS, PostgreSQL.
+Бэк работает на VPS в докер-контейнерах. Деплой выполнен через докер контекст.
+
+
+
+
+### В проекте реализовано:
+- JWT и OAUTH(VK) авторизация. 
+- Интернационализация сайта на русский и английский языки.
+- Фильтр и сортировка фильмов по параметрам, поиск по актеру или режиссеру. 
+- "Древовидные" комментарии
+- Простая админ-панель с возможностью изменения названия фильма или жанра. Возможность удалить фильм из БД.
+- Кастомный слайдер (подборки фильмов, комментарии)
+- "Хлебные крошки"
+- Страницы с детальной информацией о фильме, персоне
+- Для реализации части функционала использовалось Middleware
+- Динамический импорт
+- UI-kit с использованием Storybook. Через него реализованы unit и visual тесты.(100+ компонентов)
+
+
+
+## Чтобы запустить проект
+
+
+
+- Склонируйте репозиторий
+
+- Установите зависимости
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Запустите сервер разработки
+```bash
+npm run dev
+```
+- Для запуска Storybook
+```bash
+npm run sb
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Для тестов
+```bash
+npm run test-sb
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Важные детали
 
-## Learn More
+#### Header
 
-To learn more about Next.js, take a look at the following resources:
+Логотип сайта и "Мой Иви" ссылаются на главную страницу проекта. "Что нового?" редиректит на сам IVI.
+Пункт "Фильмы" и только список жанров в выпадающем меню служат для навигации по проекту. Все остальные ссылки в хедере и в выпадающем меню
+ведут на IVI. При нажатии на поиск откроется модальное окно поиска, при нажатии на язык - меню выбора языка, нажатие на иконку профиля откроет меню пользователя.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Slider
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Пока не реализованы тач-эффекты. 
 
-## Deploy on Vercel
+#### Footer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Все ссылки ведут на оригинальный иви
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### VideoPlayer
+
+Используется ReactPlayer. Если у трейлера к фильму в качестве источника указан YouTube - воспроизводится трейлер,
+в противном случае default ссылка на Vivid - Untie.
+
+#### Internationalization
+
+Реализована с использованием React-Intl (будет переделана)
+
+#### Комментарии
+
+Комментарии могут оставлять только зарегистрированные пользователи. Ограничений по вложенности комментариев нет.
+
+
+## Технологии
+- NextJS
+- Typescript
+- Redux Toolkit
+- SCSS modules
+- JWT
+- Axios
+- React-intl
+- Eslint
+
