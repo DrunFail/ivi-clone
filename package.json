@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "set ANALYZE=false && next dev",
+    "build": "set ANALYZE=false && next build",
+    "build:analyze": "set env.ANALYZE=true && next build",
     "start": "next start",
     "lint": "next lint",
     "sb": "storybook dev -p 6006",
