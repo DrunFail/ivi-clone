@@ -9,6 +9,7 @@
     "lint": "next lint",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build",
+    "build-storybook": "storybook build",
     "test-sb": "test-storybook",
     "chromatic": "npx chromatic --build-script-name=build-sb"
   },
