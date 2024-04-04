@@ -27,9 +27,13 @@ export type FontIconVariant =
     | "arrowUp"
     | "arrowRight"
     | "arrowLeft"
+    | "megaphon"
+    | "thumbsUp"
+    | "thumbsDown"
+    | "reply"
 
 interface FontIconProps {
-    size?: 6 | 12| 16 | 20 | 32,
+    size?: 6 | 12| 16 | 20 | 32 | 64,
     variant: FontIconVariant
     
 }
