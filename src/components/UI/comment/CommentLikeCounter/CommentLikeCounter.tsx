@@ -1,12 +1,12 @@
-import { BsHandThumbsDown, BsHandThumbsUp } from "react-icons/bs";
 import styles from "./CommentLikeCounter.module.scss";
+import FontIcon from "../../FontIcon/FontIcon";
 
 export default function CommentLikeCounter() {
     return (
         <div className={styles.container}>
-            <BsHandThumbsUp />
-            <div>1</div>
-            <BsHandThumbsDown />
+            <FontIcon variant="thumbsUp" />
+            <span>1</span>
+            <FontIcon variant="thumbsDown" />
         </div>
     );
 }

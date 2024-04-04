@@ -1,4 +1,5 @@
 import { ReviewTree } from "../../../../models/types";
+import FontIcon from "../../../UI/FontIcon/FontIcon";
 import CommentBody from "../../../UI/comment/CommentBody/CommentBody";
 import CommentDateCreated from "../../../UI/comment/CommentDateCreated/CommentDateCreated";
 import CommentLikeCounter from "../../../UI/comment/CommentLikeCounter/CommentLikeCounter";
@@ -8,7 +9,6 @@ import CommentAddForm from "../../CommentAddForm/CommentAddForm";
 import { ModifiedCommentData } from "../../interfaces/interfaces";
 import CommentListCardContainer from "../CommentListCardContainer";
 import styles from "./CommentListCard.module.scss";
-import { BsReply } from "react-icons/bs";
 
 interface CommentListCardProps {
     modifiedCommentData: ModifiedCommentData,
@@ -38,7 +38,7 @@ export default function CommentListCard({ replyOpen, setReplyOpen, showChildComm
                 {isLoginUser && <Button
                     onlyImage
                     onClick={() => setReplyOpen(!replyOpen)}>
-                    <BsReply color="white" size="20px" />
+                    <FontIcon variant="reply" size={16} />
                 </Button>}
 
             </div>

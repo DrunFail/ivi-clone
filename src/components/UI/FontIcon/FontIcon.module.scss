@@ -20,6 +20,9 @@
 .size_32{
     font-size: 32px;
 }
+.size_64{
+    font-size: 64px;
+}
 
 
 
@@ -100,4 +103,16 @@
 }
 .arrowLeft:before {
     content: "\E040";
+}
+.megaphon:before {
+    content: "";
+}
+.thumbsUp:before {
+    content: "\E400";
+}
+.thumbsDown:before {
+    content: "\E3F6";
+}
+.reply:before {
+    content: "\E39F";
 }

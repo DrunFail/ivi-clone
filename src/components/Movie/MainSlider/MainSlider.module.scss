@@ -28,7 +28,8 @@
     }
 
     &__arrow {
-        font-size: 48px;
+        block-size: 48px;
+        inline-size: 48px;
         background-color: rgba(0, 0, 0, 0.7);
         border-radius: 50%;
         color: #969999;

@@ -1,11 +1,11 @@
 .container {
     display: flex;
     gap: 8px;
-    color: green;
     font-weight: var(--fw-bold);
     font-size: 18px;
+    color: #7e798f;
 
-    svg {
-        color: white;
+    span {
+        color: green;
     }
 }
