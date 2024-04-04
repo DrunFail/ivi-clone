@@ -1,8 +1,8 @@
 import styles from "./SortField.module.scss";
-import { BsChevronDown, BsFilterRight } from "react-icons/bs";
 import { FormattedMessage } from "react-intl";
 import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
 import useSortField from "../../../hooks/filters/useSortField";
+import FontIcon from "../../UI/FontIcon/FontIcon";
 
 interface SortFieldProps {
     currentSortVariant: string;
@@ -16,9 +16,15 @@ export default function SortField({ currentSortVariant,  setFilterParams, filter
     return (
         <div className={styles.wrapper} ref={popupRef}>
             <div className={styles.visibleArea} onClick={isOpenToggle}>
-                <span><BsFilterRight /></span>
-                <span><FormattedMessage id={`sort.variant.${currentSortVariant}`} /></span>
-                <span className={styles.arrowCol + (isOpen ? ` ${styles.arrowColRev}` : "")}><BsChevronDown /></span>
+                <span>
+                    <FontIcon variant="filter" />
+                </span>
+                <span>
+                    <FormattedMessage id={`sort.variant.${currentSortVariant}`} />
+                </span>
+                <span className={styles.arrowCol + (isOpen ? ` ${styles.arrowColRev}` : "")}>
+                    <FontIcon variant="arrowDown" />
+                </span>
             </div>
             <div  className={styles.dropdownArea + (isOpen ? ` ${styles.dropdownOpen}` : "")}>
                 {sortVariantArray.map((item, idx) => (

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BsCameraReels } from "react-icons/bs";
 import styles from "./SearchResultCard.module.scss";
 
 interface SearchResultCardProps {
@@ -13,7 +12,7 @@ export default function SearchResultCard({ name, year, id, callback }:SearchResu
     return (
         <Link href={`/movie/${id}`} onClick={callback}>
             <div className={styles.container}>
-                    <BsCameraReels />
+                    icon
                     <div>{name}</div>
                     <div>{year}</div>
             </div>
