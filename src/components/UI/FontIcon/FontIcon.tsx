@@ -31,6 +31,7 @@ export type FontIconVariant =
     | "thumbsUp"
     | "thumbsDown"
     | "reply"
+    | "filter"
 
 interface FontIconProps {
     size?: 6 | 12| 16 | 20 | 32 | 64,
