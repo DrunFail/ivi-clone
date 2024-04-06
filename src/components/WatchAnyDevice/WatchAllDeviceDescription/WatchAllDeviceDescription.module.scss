@@ -1,0 +1,11 @@
+.text {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #a5a1b2;
+
+    @media screen and (max-width: 600px) {
+        font-size: var(--fs-300);
+        line-height: 16px;
+    }
+}

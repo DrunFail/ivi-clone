@@ -1,0 +1,15 @@
+.text {
+    color: #a5a1b2;
+    line-height: 1.2;
+    text-align: justify;
+    font-size: 15px;
+    line-height: 22px;
+
+    @media only screen and (max-width: 1020px) {
+        inline-size: 100%;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+    }
+}

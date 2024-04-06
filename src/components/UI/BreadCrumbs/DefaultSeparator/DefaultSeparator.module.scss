@@ -1,0 +1,15 @@
+.separator {
+	display:flex;
+	align-items: center;
+	block-size: auto;
+	position:relative;
+	top: 2px;
+	
+	&:after {
+		content: "";
+		display: inline-block;
+		block-size: 2px;
+		inline-size: 2px;
+		background-color: hsla(0,0%,100%,.56);
+	}
+}

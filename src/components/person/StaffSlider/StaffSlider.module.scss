@@ -1,0 +1,11 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+
+    button {
+        inline-size: 88px;
+        block-size: 88px;
+        margin-block-start: 25px;
+        border-radius: 50%;
+    }
+}

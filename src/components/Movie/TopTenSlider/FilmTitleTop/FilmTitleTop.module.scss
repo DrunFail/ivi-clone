@@ -1,0 +1,11 @@
+.title {
+    position: relative;
+    block-size: 90px;
+    inline-size: 80%;
+    img {
+        max-inline-size: 100%;
+        block-size: auto;
+        object-fit: contain;
+        object-position: bottom;
+    }
+}

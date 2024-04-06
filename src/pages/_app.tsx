@@ -1,22 +1,50 @@
 import { Provider } from "react-redux";
-import store from "../store/createStore";
 import "../styles/index.scss";
-import React from "react";
-import AppLoader from "../store/appLoader";
-import type { AppProps } from "next/app";
-import Layout from "../components/ui/Layout/Layout";
+import { useEffect, useState } from 'react';
 import WrapperIntl from "../components/WrapperIntl/WrapperIntl";
-import LoaderReq from "../components/common/LoaderReq/LoaderReq";
 import { AuthProvider } from "../components/auth/context/AuthProvider";
-import ClickCatcherProvider from "../hooks/useClickCatcher";
-import WindowDimensionsProvider from "../hooks/useWindowDimensions";
+import type { ReactElement, ReactNode } from 'react';
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
+import store from "../store/store";
+import localFont from "next/font/local";
+import RootLayout from "../components/RootLayout/RootLayout";
 
 
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }: AppProps) {
-    const [showChild, setShowChild] = React.useState(false);
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+    getLayout?: (page: ReactElement) => ReactNode
+}
 
-    React.useEffect(() => {
+type AppPropsWithLayout = AppProps & {
+    Component: NextPageWithLayout
+}
+
+const iviFont = localFont({
+    src: [
+        {
+            path: "../styles/fonts/iviSans-Regular.woff2",
+            weight: "400",
+            style: "normal"
+        },
+        {
+            path: "../styles/fonts/iviSans-Bold.woff2",
+            weight: "700",
+            style: "normal"
+        },
+        {
+            path: "../styles/fonts/iviSans-Medium.woff2",
+            weight: "500",
+            style: "normal"
+        },
+        {
+            path: "../styles/fonts/iconfont.woff2",
+        },
+    ]
+})
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+    const [showChild, setShowChild] = useState(false);
+
+    useEffect(() => {
         setShowChild(true);
     }, []);
 
@@ -26,29 +54,26 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     if (typeof window === "undefined") {
         return <></>;
     }
-    const CustomLayout = Component.Layout || DefaultLayout;
+    const DefaultLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
+    const getLayout = Component.getLayout ?? DefaultLayout;
 
 
     return (
-        <AuthProvider>
-            <Provider store={store}>
-                <WrapperIntl>
-                    <AppLoader>
-                        <WindowDimensionsProvider>
-                            <ClickCatcherProvider>
-                                <Layout>
-                                <CustomLayout>
-                                        <Component {...pageProps} />
-                                    </CustomLayout>
-                                </Layout>
-                            </ClickCatcherProvider>
-                        </WindowDimensionsProvider>
-                    </AppLoader>
-                </WrapperIntl>
-                {/* <LoaderReq /> */}
-            </Provider>
-        </AuthProvider>
+        <>
+            <style jsx global>
+                {
+                    `:root{
+                    --ivi-font: ${iviFont.style.fontFamily}
+                }`
+                }
+            </style>
+            <AuthProvider>
+                <Provider store={store}>
+                    <WrapperIntl>
+                        {getLayout(<Component {...pageProps} />)}
+                    </WrapperIntl>
+                </Provider>
+            </AuthProvider>
+        </>
     );
 }
-
-const DefaultLayout = ({ children }) => <>{children}</>

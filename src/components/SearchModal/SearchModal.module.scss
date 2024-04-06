@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    max-inline-size: 800px;
+    inline-size: 100%;
+    margin-inline: auto;
+    row-gap: var(--fs-500);
+
+    h1 {
+        font-size: 55px;
+        font-weight: var(--fw-bold);
+    }
+
+    margin-top: 100px;
+}

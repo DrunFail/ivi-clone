@@ -1,0 +1,24 @@
+.button {
+    block-size: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--clr-btn-control,rgba(255,255,255,.72));
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--clr-btn-control-hover, white);
+    }
+}
+.button_left {
+    @extend .button;
+    left: var(--direction);
+    justify-content: flex-start;
+}
+
+.button_right {
+    @extend .button;
+    right: var(--direction);
+    justify-content: flex-end;
+}

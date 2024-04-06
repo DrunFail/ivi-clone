@@ -1,0 +1,29 @@
+.nav {
+    padding-block-start: 20px;
+
+    ul {
+        font-size: var(--fs-500);
+
+        li {
+            padding: 16px 16px;
+            a{
+                text-transform: capitalize;
+            }
+        }
+
+        .li_active {
+            background-color: var(--clr-dark-700);
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+
+
+            
+        }
+    }
+}
+@media (max-width: 600px){
+
+   .nav ul{
+        font-size: 16px;
+    }
+}

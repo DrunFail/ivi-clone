@@ -3,7 +3,7 @@ import Russian from "../../languages/es-RU.json";
 import React, { FC, useState, useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import { useSelector } from "react-redux";
-import { getLang } from "../../store/switchLang";
+import { getLang } from "../../store/slices/switchLang";
 
 const WrapperIntl: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [langs, setLang] = useState(English);
@@ -13,6 +13,8 @@ const WrapperIntl: FC<{ children: React.ReactNode }> = ({ children }) => {
         if (local === "En") {
             setLang(English);
         } else if (local === "Ru") {
+            /* eslint-disable */
+            //@ts-ignore
             setLang(Russian);
         }
     }, [local]);

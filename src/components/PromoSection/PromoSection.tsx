@@ -1,20 +1,38 @@
 import Image from "next/image";
 import React from "react";
-import ButtonPromo from "./ButtonPromo/ButtonPromo";
 import ButtonPromoContainer from "./ButtonPromoContainer/ButtonPromoContainer";
+import Button from "../UI/core/Button/Button";
 
 export default function PromoSection() {
     return (
         <ButtonPromoContainer>
-            <ButtonPromo priority>
-                <Image src="/lightning.svg" width={24} height={32} alt='30 дней подписки за 1 ₽' />
+            <Button
+                aria-label="30 дней подписки за 1 рубль"
+            >
+                <Image
+                    src="/lightning.svg"
+                    width={24}
+                    height={32}
+                    alt=''
+                    aria-hidden
+                />
                         30 дней подписки за 1 ₽
-            </ButtonPromo>
+            </Button>
 
-            <ButtonPromo>
-                <Image src="/gift.svg" width={56} height={32} alt='Активировать сертификат' />
-                        Активировать сертификат
-            </ButtonPromo>
+            
+            <Button
+                aria-label="Активировать сертификат"
+            >
+                <Image
+                    src="/gift.svg"
+                    width={56}
+                    height={32}
+                    alt=''
+                    aria-hidden
+                />
+                    Активировать сертификат
+                </Button>
+            
         </ButtonPromoContainer>
 
     );

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import styles from "./main.module.scss";
 import Head from "next/head";
-import TopTenSlider from "../components/TopTenSlider/TopTenSlider";
-import { TOP_10_DATA } from "../components/TopTenSlider/data";
-import { getLang } from "../store/switchLang";
+import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
-import PromoSection from "../components/promoSection/PromoSection";
-import PageSection from "../components/pageContainers/pageSection/PageSection";
-import PageSectionWrapper from "../components/pageContainers/pageSectionContainer/PageSectionContainer";
-import { DATA } from "../components/movieList/data/data";
-import { MovieItemTest } from "../components/movieList/interfaces/interfaces";
-import MainSlider from "../components/ui/MainSlider/MainSlider";
-import MovieSlider from "../components/MovieSlider/MovieSlider";
+import PageSection from "../components/PageContainers/PageSection/PageSection";
+import PromoSection from "../components/PromoSection/PromoSection";
+import PageWrapper from "../components/PageContainers/PageWrapper/PageWrapper";
+import TopTenSlider from "../components/Movie/TopTenSlider/TopTenSlider";
+import { TOP_10_DATA } from "../components/Movie/TopTenSlider/data";
+import MainSlider from "../components/Movie/MainSlider/MainSlider";
+import { getLang } from "../store/slices/switchLang";
+import PageWrapperInner from "../components/PageContainers/PageWrapperInner/PageWrapperInner";
+
+const MovieSlider = dynamic(() =>
+    import("../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
 
 const Index = (): React.ReactElement => {
     const lang = useSelector(getLang());
@@ -20,48 +20,51 @@ const Index = (): React.ReactElement => {
         <>
             <Head >
                 <title>{lang === "Ru" ? "Главная страница" : "Main page"}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
+                <meta name="description" content="Фильмы онлайн в отличном качестве" />
             </Head>
-            <section>
-                <MainSlider styles={styles} />
 
-                <PageSection>
-                    <PageSectionWrapper>
-                        <PromoSection />
-                    </PageSectionWrapper>
-                </PageSection>
-                <PageSection>
-                    <PageSectionWrapper>
+            <PageSection>
+                <MainSlider />
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    <PromoSection />
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <TopTenSlider
-                            carouselId={"top10"}
                             data={TOP_10_DATA}
                             count={10}
                         />
-                    </PageSectionWrapper>
-                </PageSection>
-                <PageSection>
-                    <PageSectionWrapper>
+                    </PageWrapperInner>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <MovieSlider
-                            carouselId={"comedy"}
-                            genreId={2 }
-
+                            genreId={2}
                             href={"/movies/comedy"}
-                            headingTitle={"Комедии"}
                         />
-                    </PageSectionWrapper>
-                </PageSection>
-                <PageSection>
-                    <PageSectionWrapper>
+                    </PageWrapperInner>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    <PageWrapperInner>
                         <MovieSlider
-                            carouselId={"criminal"}
-                            genreId={1 }
+                            genreId={1}
                             href={"/movies/crime"}
-                            headingTitle={"Криминал"}
                         />
-                    </PageSectionWrapper>
-                </PageSection>
+                    </PageWrapperInner>
+                </PageWrapper>
 
-            </section>
+            </PageSection>
+
+
         </>
     );
 };

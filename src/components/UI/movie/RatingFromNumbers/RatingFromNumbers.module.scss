@@ -1,0 +1,16 @@
+.rating {
+    color: white;
+    font-weight: var(--fw-bold);
+    display: flex;
+    align-items: center;
+
+    span:first-child {
+        font-size: var(--fs-500);
+        line-height: 28px;
+    }
+
+    span:last-child {
+        font-size: 20px;
+        line-height: var(--fs-500);
+    }
+}

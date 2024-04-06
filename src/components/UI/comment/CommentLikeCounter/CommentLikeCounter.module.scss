@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    gap: 8px;
+    font-weight: var(--fw-bold);
+    font-size: 18px;
+    color: #7e798f;
+
+    span {
+        color: green;
+    }
+}

@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 104px;
+    block-size: 104px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: -webkit-gradient(linear,left top,left bottom,from(#A869F0),to(#834CC2));
+    background: -webkit-linear-gradient(top,var(#A869F0) 0%,#834CC2 100%);
+    background: -o-linear-gradient(top,#A869F0 0%,#834CC2 100%);
+    background: linear-gradient(180deg,#A869F0 0%,#834CC2 100%);
+    box-shadow: 0 0 104px #A869F0;
+
+    svg {
+        block-size: 60px;
+        inline-size: 60px;
+    }
+}

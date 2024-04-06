@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px; //card row gap
+
+    .commentGrid {
+        display: flex;
+        column-gap: 10px;
+
+        .comment {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px; //card row gap
+
+            .header {
+                display: flex;
+                column-gap: 10px;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+
+        button {
+            color: #7e798f;
+        }
+    }
+}

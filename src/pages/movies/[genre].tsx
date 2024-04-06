@@ -1,265 +1,104 @@
-import React, { useState, useEffect } from "react";
-import MainContainer from "../../components/ui/mainContainer";
-import styles from "./movies.module.scss";
-import { useRouter } from "next/router";
-import getMoviesPageTitle from "../../utils/getMoviesPageTitle";
-import getMoviesPageDescription from "../../utils/getMoviesPageDescription";
-import { defaultFilter, defaultGenre, domen } from "../../constats";
-import translateGenre from "../../utils/translateGenre";
-import { IFilterParams, IMovieFromMoviesList } from "../../models";
-import { wrapAsyncFunction } from "../../utils/wrapAsyncFunction";
-import { useSelector } from "react-redux";
-import { getLang } from "../../store/switchLang";
-import { getGenresList } from "../../store/genres";
-import { getCountriesList } from "../../store/countries";
-import getFilmCards from "../../services/getFilmCards";
-import FiltersField from "./components/FiltersField/FiltersField";
-import FilmCardsField from "./components/FilmCardsField/FilmCardsField";
-import SortField from "./components/SortField/SortField";
+import PageSection from "../../components/PageContainers/PageSection/PageSection";
+import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
+import EmptyMovieList from "../../components/Movie/EmptyMovieList/EmptyMovieList";
+import FiltersField from "../../components/filters/FiltersField/FiltersField";
+import SortField from "../../components/filters/SortField/SortField";
+import useBreadCrumbsStandart from "../../hooks/useBreadCrumbsStandart";
+import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
+import useFilterWatchPage from "../../hooks/filters/useFiltersWatchPage";
+import PageWrapperInner from "../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import WatchPageHeader from "../../components/UI/movie/WatchPageHeader/WatchPageHeader";
+import { FormattedMessage } from "react-intl";
+import WatchPageGenreDescription from "../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription";
+import WatchPageHeaderContainer from "../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer";
+import Carousel from "../../components/UI/Carousel/Carousel";
+import MovieListCardWithOverlayContainer from "../../components/Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
+import { MOVIE_LIST_SIZES } from "../../constants/sliderItemSize";
+import Head from "next/head";
 
-/** Компонент cписка фильмов конкретного жанра. */
-const MoviesByGenre = (): React.ReactElement => {
-    const lang = useSelector(getLang());
-    const genreObjects = useSelector(getGenresList());
-    const countryObjects = useSelector(getCountriesList());
+export default function MoviesByGenre() {
+    const {
+        currentGenre,
+        genres,
+        countries,
+        handleChangeFilterParams,
+        clearFiltersWithoutSort,
+        filteredMovie,
+        currentSortVariant,
+        filterParams,
+        changeCurrentMoviePage,
+        transformedCountries,
+        transformedGenres
+    } = useFilterWatchPage({ variant: "genrePage" });
 
-    /** Данный раздел получает жанр из адресной строки и возвращает его руссифицированное значение и описание. */
-    const router = useRouter();
-    const currentGenre = router.query.genre as string;
-    const isExistingGenre = genreObjects.findIndex(item => item.genreNameEng === currentGenre);
-    const pageTitle =
-        currentGenre === "all"
-            ? lang === "Ru" ? defaultGenre.rusTitle : defaultGenre.engTitle
-            : getMoviesPageTitle(currentGenre, lang);
-    const pageDescription =
-        currentGenre === "all"
-            ? lang === "Ru" ? defaultGenre.rusDescription : defaultGenre.engDescription
-            : getMoviesPageDescription(currentGenre, lang);
+    const breadcrumbsData = useBreadCrumbsStandart();
 
-    /** Данный раздел устанавливает значения по умолчанию для параметров сортировки и фильтрации. */
-    const [sortParam, setSortParam] = useState<string>("ratingKinopoisk");
-    const [filterParams, setFilterParams] = useState<IFilterParams>({
-        ...defaultFilter,
-        sort: sortParam
-    });
 
-    const [filmCards, setFilmCards] = useState<IMovieFromMoviesList[]>([]);
-
-    /** Данный раздел устанавливает значения количества загружаемых карточек фильмов, в зависимости от размера экрана. */
-    let pageSize = "21";
-    if (window.innerWidth <= 1280) pageSize = "18";
-    if (window.innerWidth <= 992) pageSize = "15";
-    if (window.innerWidth <= 768) pageSize = "9";
-
-    const [paginate, setPaginate] = useState<number>(0);
-    const [isLastPage, setIsLastPage] = useState<boolean>(true);
-
-    /** Функция меняет параметры фильтрации страницы */
-    async function handleChangeFilter(
-        filterKey: string,
-        filterValue: number | string | string[]
-    ): Promise<void> {
-        if (typeof filterValue === "number") {
-            const newFilterParams = {
-                ...filterParams,
-                [filterKey]: filterValue
-            };
-            setFilterParams(newFilterParams);
-            await getFirstFilmcards(newFilterParams);
-        }
-
-        if (typeof filterValue === "string") {
-            const newFilterParams = {
-                ...filterParams,
-                [filterKey]: filterValue
-            };
-            setFilterParams(newFilterParams);
-
-            if (filterKey === "genre") {
-                const route = `/movies/${lang === "Ru" ? translateGenre(filterValue) : filterValue}`;
-                await router.push(route);
-            }
-
-            if (filterKey === "genre" || filterKey === "country") {
-                await getFirstFilmcards(newFilterParams);
-            }
-        }
-
-        if (typeof filterValue === "object") {
-            let newFilterParams = filterParams;
-            if (filterKey === "director") {
-                newFilterParams = {
-                    ...newFilterParams,
-                    director: filterValue[0],
-                    directorId: filterValue[1]
-                };
-            }
-            if (filterKey === "actor") {
-                newFilterParams = {
-                    ...newFilterParams,
-                    actor: filterValue[0],
-                    actorId: filterValue[1]
-                };
-            }
-            setFilterParams(newFilterParams);
-        }
-    }
-
-    /** Функция меняет параметры фильтрации страницы без перезагрузки данных. */
-    function handleChangeFilterWhitoutReload(
-        filterKey: string,
-        filterValue: string
-    ): void {
-        const newFilterParams = {
-            ...filterParams,
-            [filterKey]: filterValue
-        };
-        setFilterParams(newFilterParams);
-    }
-
-    /** Функция очищает все установленные фильтры, кроме сортировки. */
-    async function clearFilters(): Promise<void> {
-        setPaginate(0);
-        const newFilter = {
-            ...defaultFilter,
-            sort: sortParam
-        };
-        setFilterParams(newFilter);
-        await router.push(`/movies/all`);
-        await getFirstFilmcards(newFilter);
-    }
-
-    /** Функция меняет параметры сортировки и запрашивает карточки фильмов, соответствующие новому запросу. */
-    async function changeSortParam(param: string): Promise<void> {
-        setSortParam(param);
-        const newFilter = {
-            ...filterParams,
-            sort: param
-        };
-        setFilterParams(newFilter);
-        await getFirstFilmcards(newFilter);
-    }
-
-    /** Функция вызывает запрос первоначального набора карточек фильмов. */
-    async function getFirstFilmcards(
-        filterParams: IFilterParams
-    ): Promise<void> {
-        setPaginate(0);
-        const requestUrl = createRequestUrl(0, filterParams);
-        const response = await getFilmCards(requestUrl);
-        if (response) {
-            setIsLastPage(checkIsLastPage(response.count, 0));
-            const arrayOfFilms = response.rows;
-            setFilmCards(arrayOfFilms);
-        }
-    }
-
-    /** Функция вызывает запрос дополнительного набора карточек фильмов. */
-    async function getMoreFilmcards(): Promise<void> {
-        setPaginate(prev => ++prev);
-        const requestUrl = createRequestUrl(paginate + 1, filterParams);
-        const response = await getFilmCards(requestUrl);
-        if (response) {
-            setIsLastPage(checkIsLastPage(response.count, paginate + 1));
-            const arrayOfFilms = response.rows;
-            setFilmCards([...filmCards, ...arrayOfFilms]);
-        }
-    }
-
-    /** Функция сравнивает общее число карточек, соответствующих запросу, с количеством отображённых карточек и возвращает булевое значение того, является ли данная страница пагинации последней. */
-    function checkIsLastPage(count: number, pag:number): boolean {
-        const currentPageCardsLimit = (pag + 1) * +pageSize;
-        return count <= currentPageCardsLimit;
-    }
-
-    /** Функция формирует запрос для отправки на сервер. */
-    function createRequestUrl(
-        pag: number,
-        filterParams: IFilterParams
-    ): string {
-        const genreObj = genreObjects.find(genre => genre.genreNameEng === filterParams.genre || genre.genreNameRu === filterParams.genre);
-        const countryObj = countryObjects.find(country => country.countryNameEng === filterParams.country || country.countryNameRu === filterParams.country);
-
-        const requestUrlMixed = `${domen}movies/filters?page=${pag}&size=${pageSize}&ratingKinopoisk=${filterParams.rate}&ratingKinopoiskVoteCount=${filterParams.votes}&orderBy=${filterParams.sort}`;
-        const requestUrlGenre = genreObj ? `&genreId=${genreObj.id}` : "";
-        const requestUrlCountry = countryObj ? `&countryId=${countryObj.id}` : "";
-        const requestUrlDirector = filterParams.directorId !== "-1" ? `&DIRECTOR=${filterParams.directorId}` : "";
-        const requestUrlActor = filterParams.actorId !== "-1" ? `&ACTOR=${filterParams.actorId}` : "";
-        const requestUrl = requestUrlMixed + requestUrlGenre + requestUrlCountry + requestUrlDirector + requestUrlActor;
-
-        return requestUrl;
-    }
-
-    /** Данная настройка вызывает загрузку первоначального набора карточек фильмов при первичной отрисовке страницы. */
-    useEffect(() => {
-        const fetchData = async () => {
-            const currentFilterParams = {
-                ...filterParams,
-                genre: currentGenre
-            };
-            setFilterParams(currentFilterParams);
-            await getFirstFilmcards(currentFilterParams);
-        };
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const result = fetchData();
-    }, []);
-
-    /** Данная настройка вызывает загрузку карточек фильмов при смене жанра, а также осуществляет редирект на страницу 404, если указанный в адресной строке жанр отсутствует в базе данных. */
-    useEffect(() => {
-        const fetchData = async () => {
-            if (currentGenre !== "all" && isExistingGenre === -1) {
-                await router.push("/404");
-            } else {
-                const currentFilterParams = {
-                    ...filterParams,
-                    genre: currentGenre
-                };
-                setFilterParams(currentFilterParams);
-                await getFirstFilmcards(currentFilterParams);
-            }
-        };
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const result = fetchData();
-    }, [currentGenre]);
 
     return (
-        <MainContainer title={lang === "Ru" ? "Cтраница медиатеки" : "Media Library"}>
-            <section>
-                <div className="container">
-                    <h1 className="pageTitle">{pageTitle}</h1>
-                    <div className={styles.pageDescription}>
-                        {pageDescription}
-                    </div>
+        <>
+            <Head>
+                <title>Смотреть онлайн</title>
+                <meta name="description" content="Смотреть онлайн"/>
+            </Head>
+            <PageWrapper>
+                <BreadCrumbs
+                    breadcrumbs={breadcrumbsData}
+                    isLastCrumbActive={false}
+                />
+            </PageWrapper>
+            <PageSection>
+                <PageWrapper>
+                    <PageWrapperInner>
+                        <WatchPageHeader>
+                            <FormattedMessage id={`genre.${currentGenre}.title`} />
+                        </WatchPageHeader>
+                        <WatchPageHeaderContainer>
+                            <WatchPageGenreDescription>
+                                <FormattedMessage id={`genre.${currentGenre}.description`} />
+                            </WatchPageGenreDescription>
+                        </WatchPageHeaderContainer>
+                    </PageWrapperInner>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
                     <FiltersField
-                        styles={styles}
-                        genreObjects={genreObjects}
-                        countryObjects={countryObjects}
-                        currentGenre={currentGenre}
-                        handleChangeFilter={handleChangeFilter}
-                        handleChangeFilterWhitoutReload={handleChangeFilterWhitoutReload}
+                        genreObjects={transformedGenres}
+                        countryObjects={transformedCountries}
+                        setFilterParams={handleChangeFilterParams}
+                        clearFiltersWithoutSort={clearFiltersWithoutSort}
                         filterParams={filterParams}
-                        getFirstFilmcards={wrapAsyncFunction(getFirstFilmcards)}
-                        clearFilters={wrapAsyncFunction(clearFilters)}
+                        variant={"genrePage"}
+
                     />
-                    {filmCards.length > 0 &&
-                    <>
+
+                    {filteredMovie.rows  &&
                         <SortField
-                            sortParam={sortParam}
-                            changeSortParam={wrapAsyncFunction(changeSortParam)}
-                        />
-                        <FilmCardsField
-                            filmCards={filmCards}
-                            getMoreFilmcards={wrapAsyncFunction(getMoreFilmcards)}
-                            isLastPage={isLastPage}
-                        />
-                    </>
+                            setFilterParams={handleChangeFilterParams}
+                            currentSortVariant={currentSortVariant}
+                            filterKey="orderBy"
+
+                        />}
+
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+                <PageWrapper>
+                    {filteredMovie.rows 
+                        ?  <Carousel
+                            component={MovieListCardWithOverlayContainer}
+                            mode={"list"}
+                            data={filteredMovie.rows}
+                            count={filteredMovie.count}
+                            sizes={MOVIE_LIST_SIZES} 
+                            showMoreHandler={changeCurrentMoviePage} 
+                            />
+                        : <EmptyMovieList />
                     }
-                    {filmCards.length === 0 &&
-                    <div className={styles.emptyMessage}>Не найдены фильмы, удовлетворяющие поисковому запросу, попробуйте изменить параметры поиска.</div> }
-                </div>
-            </section>
-        </MainContainer>
+                </PageWrapper>
+            </PageSection>
+        </>
     );
 };
 
-export default MoviesByGenre;

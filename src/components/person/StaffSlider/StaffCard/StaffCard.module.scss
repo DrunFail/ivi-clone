@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-auto-columns: 88px;
+    row-gap: 8px;
+
+    img {
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}

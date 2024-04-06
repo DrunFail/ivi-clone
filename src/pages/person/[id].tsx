@@ -1,95 +1,78 @@
-import React, { useEffect, FC } from "react";
-import styles from "./person.module.scss";
-import { getAllPerson, getOnePerson } from "./api/personApi";
-import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { getPerson, personRequest } from "../../store/person";
-import { IPerson, IPropsPerson } from "./models/IPerson";
-import { getLang } from "../../store/switchLang";
 import { GetStaticProps } from "next";
-import { IProps } from "../movie/models/IPropsMovie";
-import HeadPerson from "./components/HeadPerson/HeadPerson";
-import FilmList from "./components/FilmList/FilmList";
-import FilmTitle from "./components/FilmTitle/FilmTitle";
+import HeadPerson from "../../components/person/HeadPerson/HeadPerson";
+import PersonPageContainer from "../../components/person/PersonPageContainers/PersonPageContainer";
+import PageSection from "../../components/PageContainers/PageSection/PageSection";
+import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
+import PersonPageNamePerson from "../../components/person/PersonPageNamePerson/PersonPageNamePerson";
+import { NewPersonAPI } from "../../api/newPersonAPI";
+import { ParsedUrlQuery } from "querystring";
+import { DetailedPerson} from "../../models/types";
+import useMoviePersonData from "../../hooks/person/useMoviePersonData";
+import PageWrapperInner from "../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import Avatar from "../../components/UI/Avatar/Avatar";
+import FilmographyContainer from "../../components/person/Filmography/FilmographyContainer/FilmographyContainer";
+import FilmographyHeader from "../../components/person/Filmography/FilmographyHeader/FilmographyHeader";
+import FilmographyList from "../../components/person/Filmography/FilmographyList/FilmographyList";
 
-const Person: FC<IPropsPerson> = ({ persons }): React.ReactElement => {
-    const person = useSelector(getPerson());
-    const dispatch = useDispatch();
-    const lang = useSelector(getLang());
-
-    useEffect(() => {
-        dispatch(personRequest(persons));
-    }, [persons]);
-
-    if (!person) {
-        return <></>;
-    }
+interface PersonPageProps {
+    person: DetailedPerson
+}
+export default function PersonPage({ person }: PersonPageProps) {
+    const { personName, personProfession, personPosterUrl, personMovieAmount, personMovieList } = useMoviePersonData({ personData: person });
 
     return (
         <>
-            <HeadPerson />
-            <div className={styles.Person}>
-                <div className={styles.Person__container}>
-                    <div className={styles.Person__img}>
-                        <Image
-                            src={person?.person?.posterUrl || ""}
-                            width={120}
-                            height={144}
-                            loading="eager"
-                            alt=""
+            <HeadPerson
+                personName={personName}
+                personProfession={personProfession ?? ""}
+            />
+            <PageSection>
+                <PageWrapper>
+                <PageWrapperInner>
+                    <PersonPageContainer>
+                        <Avatar
+                            urlAvatar={personPosterUrl}
+                            variant="profile" />
+                            <PersonPageNamePerson>
+                                {personName }
+                        </PersonPageNamePerson>
+                        </PersonPageContainer>
+                    </PageWrapperInner>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
+            <PageWrapperInner>
+                <PersonPageContainer>
+                    <FilmographyContainer>
+                        <FilmographyHeader
+                            personMovieAmount={personMovieAmount}
                         />
-                    </div>
-                    <h1>
-                        {lang === "Ru" || person?.person?.nameEng == null
-                            ? person?.person?.nameRu
-                            : person?.person?.nameEng}
-                    </h1>
-                    <FilmTitle />
-                    <FilmList />
-                </div>
-            </div>
+                        <FilmographyList
+                            personMovieList={personMovieList}
+                        />
+                    </FilmographyContainer>
+                    </PersonPageContainer>
+                </PageWrapperInner>
+            </PageSection>
+
         </>
     );
 };
 
-export default Person;
+interface ContextParams extends ParsedUrlQuery {
+    id: string
+}
 
 export async function getStaticPaths() {
-    const persons: IPerson[] = await getAllPerson();
-    let paths: IProps[];
-    if (persons.length) {
-        paths = persons?.map((person: IPerson) => ({
-            params: { id: String(person?.person?.id) }
-        }));
-
-        return {
-            paths,
-            fallback: true
-        };
-    }
-    return {
-        paths: [],
-        fallback: true
-    };
+    const persons = await NewPersonAPI.getAllPersonList()
+    const paths = persons.map((person) => ({
+        params: { id: String(person.personId) }
+    }))
+    return {paths, fallback: true}
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    let data: null | IPerson = null;
-    try {
-        data = await getOnePerson(String(context?.params?.id || 0));
-    } catch (err) {}
-
-    if (!data) {
-        return {
-            notFound: true
-        };
-    } else if (!data.person) {
-        return {
-            notFound: true
-        };
-    }
-
-    return {
-        props: { persons: data }
-    };
+    const { id } = context.params as ContextParams
+    const person = await NewPersonAPI.getPersonById(+id)
+    return { props: {person}}
 };

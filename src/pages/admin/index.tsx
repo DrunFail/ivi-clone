@@ -1,24 +1,15 @@
-import { AppProps } from "next/dist/shared/lib/router/router";
-import React, { ReactElement } from "react";
-import AdminDashboard from "../../components/AdminDashboard";
+import { ReactElement } from "react";
 import AdminLayout from "../../components/AdminDashboard/AdminLayout/AdminLayout";
-import PageSection from "../../components/PageContainers/PageSection/PageSection";
-import PageSectionWrapper from "../../components/PageContainers/PageSectionContainer/PageSectionContainer";
+import AdminMainPageMessage from "../../components/AdminDashboard/AdminMainPageMessage/AdminMainPageMessage";
 
 export default function Admin({ children }: {children: React.ReactNode}) {
-
     return (
-        <div>
-            {children}
-        </div>
-             
-                    
-                
-        
+        <AdminMainPageMessage />
     );
 };
 
-Admin.Layout = AdminLayout;
-    
-
-
+Admin.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <AdminLayout>{page}</AdminLayout>
+    )
+}

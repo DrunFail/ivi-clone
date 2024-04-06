@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .placeholder {
+        position: absolute;
+        inset-inline: 12px;
+        color: var(--clr-dark-700);
+        font-size: var(--fs-400);
+        font-weight: var(--fw-medium);
+        line-height: 20px;
+    }
+
+
+    input:focus + .placeholder, input:valid + .placeholder,input[value=" "] + .placeholder {
+        inset-block-start: 2px;
+        font-size: var(--fs-300);
+    }
+
+    input:focus, input:focus + .placeholder {
+        cursor: text;
+    }
+
+    input, .placeholder {
+        cursor: pointer;
+    }
+}

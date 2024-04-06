@@ -1,0 +1,17 @@
+.button {
+    grid-column: 1/-1;
+    block-size: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: var(--border-radius-slider-item);
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: var(--fw-medium);
+    inline-size: 100%;
+    margin-block: 20px;
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.72);
+    }
+}

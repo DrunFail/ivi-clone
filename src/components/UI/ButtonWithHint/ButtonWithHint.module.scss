@@ -1,0 +1,22 @@
+.button {
+    position: relative;
+    background-color: transparent;
+    border:none;
+    color:inherit;
+    
+
+    span {
+        display: grid;
+        grid-template-columns: max-content;
+        position: absolute;
+        top: -25px;
+        padding: 4px;
+        border-radius: 8px;
+        right:0;
+        color: white;
+        background-color: var(--clr-dark-700);
+       font-size: 12px;
+       max-inline-size: 200px;
+       z-index: 100;
+    }
+}

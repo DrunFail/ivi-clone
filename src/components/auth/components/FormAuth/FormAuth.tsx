@@ -1,13 +1,15 @@
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import ConfirmConfidential from "../ConfirmConfidential/ConfirmConfidential";
-import ErrorBlock from "../ErrorBlock/ErrorBlock";
-import InputFieldContainer from "../InputFieldContainer/InputFieldContainer";
 import RedirectLink from "../RedirectLink/RedirectLink";
 import RedirectLinkContainer from "../RedirectLinkContainer/RedirectLinkContainer";
 import styles from "./FormAuth.module.scss";
-import React from "react";
 import FormContainer from "../FormContainer/FormContainer";
 import { useRouter } from "next/router";
+import FormErrorMessage from "../FormErrorMessage/FormErrorMessage";
+import FormContentContainer from "../FormContentContainer/FormContentContainer";
+import OAuthButton from "../OAuthButton/OAuthButton";
+import useVKAuth from "../../../../hooks/auth/useVKAuth";
+import Button from "../../../UI/core/Button/Button";
+
 
 interface FormAuthProps {
     error: string,
@@ -15,46 +17,55 @@ interface FormAuthProps {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-
 const AUTH = {
     login: "/auth/login",
     register: "/auth/registration"
 };
 
-
 export default function FormAuth({ error, children, handleSubmit }: FormAuthProps) {
-    const { asPath } = useRouter();
+    const { asPath, query } = useRouter();
+
 
     return (
         <FormContainer>
-            <ErrorBlock error={error} />
+            <FormErrorMessage error={Boolean(error)}>
+                {error }
+            </FormErrorMessage>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
-                <InputFieldContainer>
+                <FormContentContainer>
                     {children}
 
-                    <ButtonSubmit
-                        text={"Продолжить"}
+                    <Button
+                        as="button"
+                        color="red"
                         type="submit"
-                    />
+                    >
+                        Продолжить
+                    </Button>
+
                     <ConfirmConfidential />
                     {asPath === AUTH.login
-                        ? <RedirectLinkContainer title={"Нет аккаунта?"}>
+
+                        ? <RedirectLinkContainer>
+                            <span>Нет аккаунта?</span>
                             <RedirectLink
-                                href={"/auth/registration"}
-                                children={"Зарегистрироваться"}
-                            />
+                                href={"/auth/registration"}>
+                                Зарегистрироваться
+                            </RedirectLink>
                         </RedirectLinkContainer>
-                        : <RedirectLinkContainer title={"Есть аккаунт?"}>
+
+                        : <RedirectLinkContainer>
+                            <span>Есть аккаунт?</span>
                             <RedirectLink
-                                href={"/auth/login"}
-                                children={"Войти"}
-                            />
+                                href={"/auth/login"}>
+                                Войти
+                            </RedirectLink>
                         </RedirectLinkContainer>
                     }
-
-
-
-                </InputFieldContainer>
+                    <OAuthButton
+                        variant="vk"
+                        authHandler={useVKAuth} />
+                </FormContentContainer>
             </form>
         </FormContainer>
     );

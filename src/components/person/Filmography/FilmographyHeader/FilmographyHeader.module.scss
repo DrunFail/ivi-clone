@@ -1,0 +1,14 @@
+.text {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+
+    sup {
+        font-size: 13px;
+        font-weight: 400;
+        color: #a5a1b2;
+        line-height: 13px;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+    }
+}

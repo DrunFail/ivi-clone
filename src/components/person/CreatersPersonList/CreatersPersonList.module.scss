@@ -1,0 +1,45 @@
+.container {
+    h3 {
+        font-size: 20px;
+        font-weight: var(--fw-bold);
+        line-height: 24px;
+        color: #fff;
+        margin-block-end: 20px;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 20px;
+        column-gap: 20px;
+
+        a {
+            display: block;
+            display: grid;
+        }
+
+
+
+        .image {
+            aspect-ratio: 1;
+            position: relative;
+            max-inline-size: 100%;
+
+            img {
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+
+
+        .personName {
+            font-size: 15px;
+            font-weight: var(--fw-medium);
+            line-height: 20px;
+            color: var(--clr-grey-100);
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.default{
+    block-size: 100%;
+    border-radius: inherit;
+    font-size: 15px;
+    font-weight: var(--fw-bold);
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+}
+.green, .orange, .red{
+    @extend .default;
+}
+.green {
+    background-color: #73a32f;
+}
+.orange {
+    background-color: #7e798f;
+}
+.red {
+    background-color: #7e798f;
+}

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./404.module.scss";
 import { FormattedMessage } from "react-intl";
 

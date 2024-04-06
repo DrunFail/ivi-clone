@@ -1,0 +1,12 @@
+.alert {
+    display: grid;
+    row-gap: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: var(--clr-dark-700);
+    padding: 20px;
+
+    .text {
+        color: #a5a1b2;
+    }
+}

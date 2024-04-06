@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-dark-700);
+    block-size: 178px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #a5a1b2;
+    line-height: 18px;
+}
+.slider {
+    @extend .container;
+    inline-size: 280px;
+}
+.list{
+    @extend .container;
+    inline-size: 100%;
+    block-size: 50px;
+}
