@@ -24,4 +24,5 @@ body {
     font-family: var(--ivi-font);//set from _app.tsx
     background-color: var(--clr-dark-800);
     color: #ffffff;
+    overflow-x: hidden;
 }

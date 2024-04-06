@@ -28,6 +28,7 @@ export default function TopTenItem({ elem }:TopTenItemProps) {
 20vw
 "
                     />
+                   
                 </div>
                 <FadeBottomTop>
                     <FilmTitleTop rating={elem.id} />
