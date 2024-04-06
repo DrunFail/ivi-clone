@@ -13,7 +13,7 @@ type Story = StoryObj<typeof TopTenItem>;
 export const Primary: Story = {
   render: () => (
     <div style={{ inlineSize: "300px", position: "relative" }}>
-      <TopTenItem elem={{ id: 3, href: "" }} />
+      <TopTenItem elem={{ id: 3, href: "",name:"" }} />
     </div>
   ),
 };
