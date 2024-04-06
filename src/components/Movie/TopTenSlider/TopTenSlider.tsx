@@ -4,7 +4,7 @@ import HeaderTitleTop from "./HeaderTitleTop/HeaderTitleTop";
 import TopTenItem from "./TopTenItem/TopTenItem";
 
 interface TopTenSliderProps {
-    data: { id: number, href: string }[],
+    data: { id: number, href: string,name:string }[],
     count: number
 }
 
