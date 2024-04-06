@@ -11,7 +11,10 @@ interface MovieListCardWithOverlayContainerProps {
 export default function MovieListCardWithOverlayContainer({ elem }: MovieListCardWithOverlayContainerProps) {
     const movieData = useMovieListCardData({ movieData: elem });
     return (
-        <Link href={movieData.movieLink}>
+        <Link
+            href={movieData.movieLink}
+            aria-label={`перейти на страницу фильма ${movieData.modifiedMovieData.movieName}` }
+        >
             <MovieListCardWithOverlay
                 icons={<UserOverlayIcon />}
                 modifiedMovieData={movieData.modifiedMovieData}

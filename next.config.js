@@ -16,6 +16,10 @@ const nextConfig = {
             "youtu.be"
         ]
     },
+    i18n: {
+        locales: ['en-US', 'fr', 'nl-NL','ru-RU'],
+        defaultLocale: 'ru-RU',
+    }
 }
 
 module.exports = withBundleAnalyzer(nextConfig)

@@ -6,12 +6,15 @@ import NumberRatingTop from "../NumberRatingTop/NumberRatingTop";
 import styles from "./TopTenItem.module.scss";
 
 interface TopTenItemProps {
-    elem: { id: number, href: string }
+    elem: { id: number, href: string, name:string }
 }
 
 export default function TopTenItem({ elem }:TopTenItemProps) {
     return (
-        <Link href={elem.href }>
+        <Link
+            href={elem.href}
+           aria-label={`перейти на страницу фильма ${elem.name}` }
+        >
             <div className={styles.item }>
                 <div className={styles.container }>
                     <Image

@@ -20,7 +20,8 @@ const Index = (): React.ReactElement => {
         <>
             <Head >
                 <title>{lang === "Ru" ? "Главная страница" : "Main page"}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
+                <meta name="description" content="Фильмы онлайн в отличном качестве"/>
             </Head>
            <PageSection>
                 <MainSlider />

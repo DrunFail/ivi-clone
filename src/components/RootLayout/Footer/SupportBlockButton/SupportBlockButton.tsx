@@ -17,6 +17,7 @@ export default function SupportBlockButton({ variant }: {variant: "desktop" | "t
             <Button
                 as="button"
                 size="mini"
+                aria-label="телефон поддержки"
             >
                 <FontIcon variant="phone" />
             </Button>
@@ -24,6 +25,7 @@ export default function SupportBlockButton({ variant }: {variant: "desktop" | "t
             <Button
                 as="button"
                 size="mini"
+                aria-label="написать электронное письмо в поддержку"
             >
                 <FontIcon variant="mail" />
             </Button>
