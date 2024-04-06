@@ -14,6 +14,7 @@ import WatchPageHeaderContainer from "../../components/UI/movie/WatchPageHeaderC
 import Carousel from "../../components/UI/Carousel/Carousel";
 import MovieListCardWithOverlayContainer from "../../components/Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
 import { MOVIE_LIST_SIZES } from "../../constants/sliderItemSize";
+import Head from "next/head";
 
 export default function MoviesByGenre() {
     const {
@@ -36,6 +37,10 @@ export default function MoviesByGenre() {
 
     return (
         <>
+            <Head>
+                <title>Смотреть онлайн</title>
+                <meta name="description" content="Смотреть онлайн"/>
+            </Head>
             <PageWrapper>
                 <BreadCrumbs
                     breadcrumbs={breadcrumbsData}

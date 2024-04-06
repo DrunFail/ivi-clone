@@ -19,7 +19,6 @@ export default function ProfileBlockIconWithDropdown({ }: ProfileBlockIconWithDr
         const getUser = async () => {
             try {
                 const response = await UserAPI.getUserProfileData(axios)
-                console.log(response.data)
                 /* eslint-disable */
                 //@ts-ignore
                 setAuth((prevAuth: AuthContextData) => {
@@ -28,7 +27,6 @@ export default function ProfileBlockIconWithDropdown({ }: ProfileBlockIconWithDr
             }
             catch (error) {
                 console.log(error)
-
             }
 
         }

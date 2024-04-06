@@ -28,7 +28,8 @@ export default function ShareButtonWithModal({posterUrl, nameRu, year }:ShareBut
             <Button
                 as="button"
                 size="mini"
-                onClick={isModalOpen }
+                onClick={isModalOpen}
+                aria-label="поделиться ссылкой на фильм"
             >
                 <FontIcon variant="arrow" />
             </Button>

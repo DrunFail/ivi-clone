@@ -61,10 +61,14 @@
     position: relative;
     display: block;
     margin: 0px auto;
-    width: 1216px;
-    height: 460px;
+    /* width: 1216px;
+    height: 460px;*/
+    max-inline-size: 1216px;
+    inline-size: 100%;
+    max-block-size: 500px;
     border-radius: 36px;
     overflow: hidden;
+    aspect-ratio: 16/9;
 
     @media (max-width: 1280px) {
         width: calc(100% - 20px);
@@ -74,6 +78,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+
+        img {
+            inline-size: 100%;
+            object-fit: cover;
+        }
     }
 
     &__textBlock {

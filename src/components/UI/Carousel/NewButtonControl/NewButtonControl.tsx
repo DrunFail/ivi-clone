@@ -8,6 +8,7 @@ export default function NewButtonControl({ children,direction, ...props }: Butto
         <button
             className={styles[`button_${direction}`]}
             type='button'
+            aria-label={direction === "left" ? "предыдущий слайд" : "следующий слайд" }
             {...props }
         >
             {children}

@@ -10,17 +10,20 @@ const linkVariants = {
     vk: {
         href: "https://vk.com/iviru?crc=fa4448c13e06e69ba9e814e8743c7e2e",
         description: "",
-        imageHref:vk
+        imageHref: vk,
+        name:"вконтакте",
     },
     twitter: {
         href: "https://twitter.com/ivi_ru",
         description: "",
-        imageHref:twitter
+        imageHref: twitter,
+        name:"твиттер",
     },
     telegram: {
         href: "https://t.me/official_iviru",
         description: "",
-        imageHref: telegram
+        imageHref: telegram,
+        name:"телеграм"
     }
 }
 
@@ -29,7 +32,7 @@ interface SocialButtonProps {
 }
 
 export default function SocialButton({ variant }: SocialButtonProps) {
-    const { href, description, imageHref } = linkVariants[variant]
+    const { href, description, imageHref,name } = linkVariants[variant]
 
     return (
         <Button
@@ -37,12 +40,15 @@ export default function SocialButton({ variant }: SocialButtonProps) {
             as="link"
             href={href}
             target="_blank"
+            aria-label={`перейти в ${name}` }
             >
             <Image
                 src={imageHref}
                 alt={description}
                 height={15}
-                width={15} />
+                width={15}
+                aria-hidden
+            />
          
         </Button>
     );

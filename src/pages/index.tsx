@@ -10,7 +10,7 @@ import MainSlider from "../components/Movie/MainSlider/MainSlider";
 import { getLang } from "../store/slices/switchLang";
 import PageWrapperInner from "../components/PageContainers/PageWrapperInner/PageWrapperInner";
 
-const MovieSlider = dynamic(() => 
+const MovieSlider = dynamic(() =>
     import("../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
 
 const Index = (): React.ReactElement => {
@@ -20,19 +20,19 @@ const Index = (): React.ReactElement => {
         <>
             <Head >
                 <title>{lang === "Ru" ? "Главная страница" : "Main page"}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
+                <meta name="description" content="Фильмы онлайн в отличном качестве" />
             </Head>
-           <PageSection>
+
+            <PageSection>
                 <MainSlider />
             </PageSection>
-                <PageSection>
+            <PageSection>
                 <PageWrapper>
-                    
-                        <PromoSection />
-                    
-                    </PageWrapper>
-                </PageSection>
-                <PageSection>
+                    <PromoSection />
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
                         <TopTenSlider
@@ -40,31 +40,31 @@ const Index = (): React.ReactElement => {
                             count={10}
                         />
                     </PageWrapperInner>
-                    </PageWrapper>
-                </PageSection>
-                <PageSection>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
                         <MovieSlider
-                            genreId={2 }
+                            genreId={2}
                             href={"/movies/comedy"}
                         />
                     </PageWrapperInner>
-                    </PageWrapper>
-                </PageSection>
-                <PageSection>
+                </PageWrapper>
+            </PageSection>
+            <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
                         <MovieSlider
-                            genreId={1 }
+                            genreId={1}
                             href={"/movies/crime"}
                         />
                     </PageWrapperInner>
                 </PageWrapper>
 
-                </PageSection>
+            </PageSection>
 
-           
+
         </>
     );
 };

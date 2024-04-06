@@ -24,6 +24,7 @@ export default function ButtonPlayerBlock({ moviePosterUrl, movieName, movieYear
             <Button
                 as="button"
                 size="mini"
+                aria-label="добавить в список смотреть позже"
             >
                 <FontIcon variant="bookmark2" />
             </Button>

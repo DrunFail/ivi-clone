@@ -15,6 +15,7 @@ const SwitchButton = () => {
     const hoverVisible = (bol: boolean) => {
         setVisible(bol);
     };
+
     return (
         <>
             <div
@@ -27,7 +28,7 @@ const SwitchButton = () => {
                 <span className={styles.SwitchButton__text}>{lang}</span>
                 {visible ? (
                     <div className={styles.switcher_btn}>
-                        <button onClick={() => switchLang("Ru")}>
+                        <button onClick={() => { switchLang("Ru") } }>
                             RU
                         </button>
                         <button onClick={() => switchLang("En")}>
