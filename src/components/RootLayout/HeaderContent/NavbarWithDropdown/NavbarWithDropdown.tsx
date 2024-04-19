@@ -47,7 +47,7 @@ export default function HeaderNavbarWithDropdown({ navLinkData }: HeaderNavbarWi
                 <HeaderPortal>
                     <HeaderPortalWrapper>
                         <HeaderNavbarDropdownContent
-                            currentLink={focusLink.data}
+                            currentLink={focusLink}
                             closeDropdown={closeNavDropdown}
                         />
                     </HeaderPortalWrapper>
