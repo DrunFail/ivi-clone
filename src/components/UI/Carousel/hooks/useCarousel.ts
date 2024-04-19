@@ -31,7 +31,10 @@ export default function useCarousel({ dataLength, sizes, count }: UseCarouselPro
             setItemCount(currentSize.items);
             slider.style.setProperty("--item-amount", currentSize.items.toString());
         } else {
+            setItemAmountOnPage(+lastSize);
+            setItemCount(+lastSize);
             slider.style.setProperty("--item-amount", lastSize);
+
         }
     }, [size]);
 
