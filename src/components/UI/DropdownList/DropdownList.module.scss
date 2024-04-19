@@ -28,6 +28,10 @@
         a {
             font-size: 15px;
             line-height: 15px;
+            display:block;
+            &:first-letter{
+                text-transform: uppercase;
+            }
         }
 
         a:hover {
