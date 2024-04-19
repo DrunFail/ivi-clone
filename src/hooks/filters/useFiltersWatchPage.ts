@@ -68,9 +68,6 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
         setCurrentMoviePage((currentMoviePage) => ({ ...currentMoviePage, page: ++currentMoviePage.page }))
     }
 
- 
-   
-
     
 
     useEffect(() => {
@@ -126,9 +123,6 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
 
     const transformedCountries = useTransformCountries(countries.countries);
     const transformedGenres = useTransformGenres("second" ,genres.genres);
-
-    console.log(transformedCountries);
-    console.log(transformedGenres)
 
     return {
         filteredMovie,
