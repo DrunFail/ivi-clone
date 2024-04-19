@@ -21,7 +21,6 @@ import SimilarSlider from "../../../components/Movie/SimilarSlider/SimilarSlider
 import WatchAnyDevice from "../../../components/WatchAnyDevice/WatchAnyDevice";
 import { ParsedUrlQuery } from "querystring";
 import { MovieAPI } from "../../../api/MovieAPI";
-import { useRouter } from "next/router";
 import PersonListWithRating from "../../../components/person/PersonListWithRating/PersonListWithRating";
 import MovieHideInfoContainer from "../../../components/Movie/MovieHideInfoContainer/MovieHideInfoContainer";
 import MoviePageGridArea from "../../../components/Movie/containers/MoviePageGridArea/MoviePageGridArea";
@@ -45,12 +44,8 @@ export default function Movie({ movie }: MovieProps) {
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
     const { firstTrailerLink, trailerLinkList } = useCustomReactPlayer(movie.film.trailers)
     const breadCrumbsData = useBreadCrumbsMoviePage({ movie });
-
-
-
     const size = useResize();
-    console.log(movie)
-    const router = useRouter();
+
     return (
         <>
             <HeadMovie

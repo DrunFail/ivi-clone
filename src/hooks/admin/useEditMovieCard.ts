@@ -12,8 +12,6 @@ export default function useEditMovieCard(elem: Movie, handleCloseEdit: () => voi
 
 
     const handleChangeNewMovieName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(newMovieName)
-        console.log(e.target.name)
         setNewMovieName({ ...newMovieName, [e.target.name]: e.target.value })
     }
 
