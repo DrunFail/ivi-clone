@@ -61,18 +61,23 @@
     position: relative;
     display: block;
     margin: 0px auto;
-    /* width: 1216px;
-    height: 460px;*/
     max-inline-size: 1216px;
     inline-size: 100%;
     max-block-size: 500px;
-    border-radius: 36px;
+    border-radius: 16px;
     overflow: hidden;
     aspect-ratio: 16/9;
 
     @media (max-width: 1280px) {
         width: calc(100% - 20px);
     }
+
+
+
+    @media (max-width: 700px) {
+        border-radius: 8px;
+    }
+
 
     &__banner {
         width: 100%;
@@ -97,13 +102,17 @@
         flex-direction: column;
         justify-content: center;
         line-height: 1.2;
-        font-family: Roboto;
         border-radius: 36px;
 
         @media (max-width: 992px) {
             gap: 10px;
             width: 50%;
         }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+
 
         @media (max-width: 480px) {
             width: calc(100% - 40px);
