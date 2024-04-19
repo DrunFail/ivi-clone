@@ -13,17 +13,15 @@ interface SlideProps {
     filmData: any;
 }
 
-/** Компонент, содержащий слайдер, отображаемый на главной странице. */
-const Slide = ({ styles, filmData }: SlideProps) => {
+export default function Slide({ styles, filmData }: SlideProps) {
     const lang = useSelector(getLang());
     const genreLink = "/movies/" + filmData.genreRu;
 
     return (
         <Link href={genreLink} className={styles.slide}>
-            {/*<img className={styles.slide__banner} src={filmData.banner} alt={lang === "Ru" ? filmData.nameRu : filmData.nameEn} />*/}
             <div style={{ position: "relative" }} className={styles.slide__banner}>
                 <Image
-                    src={`/mainSlider/${filmData.id}.webp `}
+                    src={`/mainSlider/${filmData.id}.webp`}
                     alt={lang === "Ru" ? filmData.nameRu : filmData.nameEn}
                     fill
                     priority
@@ -46,5 +44,3 @@ const Slide = ({ styles, filmData }: SlideProps) => {
         </Link>
     );
 };
-
-export default Slide;
