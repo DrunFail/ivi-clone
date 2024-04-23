@@ -116,7 +116,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     useEffect(() => {
         if (currentMoviePage.page) {
             fetchMovies(filterParams, currentMoviePage, amountMovieOnPage)
-                .then((response) => setFilteredMovie({ ...filteredMovie, ...response }))
+                .then((response) => setFilteredMovie({ ...filteredMovie, rows: [...filteredMovie.rows, ...response.rows ] }))
                 .catch(error => console.log(error))
         }
     }, [currentMoviePage])
