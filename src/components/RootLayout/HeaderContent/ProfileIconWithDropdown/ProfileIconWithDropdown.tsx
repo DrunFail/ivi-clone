@@ -8,6 +8,7 @@ import Button from "../../../UI/core/Button/Button";
 import FontIcon from "../../../UI/FontIcon/FontIcon";
 import HeaderPortal from "../portal/HeaderPortal";
 import HeaderPortalWrapper from "../portal/HeaderPortalWrapper/HeaderPortalWrapper";
+import { useResize } from "../../../../hooks/useResize";
 
 interface ProfileBlockIconWithDropdownProps {
 }
@@ -15,6 +16,9 @@ export default function ProfileBlockIconWithDropdown({ }: ProfileBlockIconWithDr
     const [isVisiblePortal, setIsVisiblePortal] = useState(false);
     const axios = useAxiosAuth()
     const { auth, setAuth } = useAuth();
+    const size = useResize();
+    const isHiddenProfileDropdown = size > 1050;
+
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -58,7 +62,7 @@ export default function ProfileBlockIconWithDropdown({ }: ProfileBlockIconWithDr
             }
 
 
-            {isVisiblePortal &&
+            {isVisiblePortal && isHiddenProfileDropdown &&
                 <HeaderPortal>
                     <HeaderPortalWrapper>
                         <ProfileDropdownWindow />

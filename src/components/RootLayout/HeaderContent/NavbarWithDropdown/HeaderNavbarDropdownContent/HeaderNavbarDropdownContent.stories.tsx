@@ -23,7 +23,7 @@ const meta: Meta<typeof HeaderNavbarDropdownContent> = {
     ),
   ],
   args: {
-    currentLink: currentLink.data!,
+    currentLink: currentLink,
   },
 };
 

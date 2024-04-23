@@ -68,9 +68,6 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
         setCurrentMoviePage((currentMoviePage) => ({ ...currentMoviePage, page: ++currentMoviePage.page }))
     }
 
- 
-   
-
     
 
     useEffect(() => {
@@ -119,16 +116,13 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     useEffect(() => {
         if (currentMoviePage.page) {
             fetchMovies(filterParams, currentMoviePage, amountMovieOnPage)
-                .then((response) => setFilteredMovie({ ...filteredMovie, ...response }))
+                .then((response) => setFilteredMovie({ ...filteredMovie, rows: [...filteredMovie.rows, ...response.rows ] }))
                 .catch(error => console.log(error))
         }
     }, [currentMoviePage])
 
     const transformedCountries = useTransformCountries(countries.countries);
     const transformedGenres = useTransformGenres("second" ,genres.genres);
-
-    console.log(transformedCountries);
-    console.log(transformedGenres)
 
     return {
         filteredMovie,

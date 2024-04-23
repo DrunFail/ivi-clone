@@ -7,7 +7,6 @@ export default function useMoviePageModal() {
     const type = router.query.type! as string
     const { id,  } = router.query;
 
-    console.log(router)
     const pushQuery = async (type: string) => {
         await router.push({
             pathname: "/movie/" + String(id),

@@ -1,10 +1,10 @@
-import { NavbarLinkData } from "../../../../../models/global";
+import { NavbarLink, NavbarLinkData } from "../../../../../models/global";
 import DropdownList from "../../../../UI/DropdownList/DropdownList";
 import DropdownListWithLine from "../DropdownListWithLine/DropdownListWithLine";
 import styles from "./HeaderNavbarDropdownContent.module.scss";
 
 interface HeaderNavbarDropdownContentProps {
-    currentLink: NavbarLinkData,
+    currentLink: NavbarLink,
     closeDropdown?: () => void
 }
 
@@ -19,15 +19,16 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
 
                 <DropdownList
                     title="header.genres"
-                    linkDataList={currentLink.genres}
+                    linkDataList={currentLink.data!.genres}
                     onClick={closeDropdown}
                     testId="genres"
+                    intlPrefix={currentLink.name === "movies" ? undefined : "genre" }
                     
                 />
 
                 <DropdownList
                     title="header.countries"
-                    linkDataList={currentLink.country}
+                    linkDataList={currentLink.data!.country}
                     oneColumn
                     onClick={closeDropdown}
                     testId="countries"
@@ -35,7 +36,7 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
                 />
                 <DropdownList
                     title="header.year"
-                    linkDataList={currentLink.years}
+                    linkDataList={currentLink.data!.years}
                     oneColumn
                     onClick={closeDropdown}
                     testId="year"
@@ -46,7 +47,7 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
             <div className={styles.right}>
                 <DropdownListWithLine>
                     <DropdownList
-                        linkDataList={currentLink.aside}
+                        linkDataList={currentLink.data!.aside}
                         oneColumn
                         onClick={closeDropdown}
                         testId="aside"
