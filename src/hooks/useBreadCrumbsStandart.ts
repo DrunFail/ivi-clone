@@ -1,16 +1,19 @@
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import { useAppSelector } from "./reduxHook";
 import { selectAllGenres} from "../store/slices/genresSlice";
+import { useParams, usePathname } from "next/navigation";
 
 
 
 export default function useBreadCrumbsStandart() {
-    const { asPath, query } = useRouter();
+    
+    const genre = useParams<{ genre: string }>()!.genre;
+    const path = usePathname()!;
+
     const genreList = useAppSelector(selectAllGenres);
     const intl = useIntl();
 
-    const splitedLinkList = asPath
+    const splitedLinkList = path
         .split("/")
         .filter(item => item !== "all");
 
@@ -21,7 +24,7 @@ export default function useBreadCrumbsStandart() {
 
             return { children: returnedLinkTitle, href: "/" }
         }
-        if (elem === query.genre) {
+        if (elem === genre) {
                 const genreName = intl.formatMessage({ id: `genre.${elem}` });
                 returnedLink = returnedLink + elem + "/";
                 return { children: genreName, href: returnedLink }

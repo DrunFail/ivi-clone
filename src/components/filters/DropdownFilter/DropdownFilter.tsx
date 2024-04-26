@@ -9,8 +9,8 @@ import { useEffect, useRef, useState } from "react";
 import FontIcon from "../../UI/FontIcon/FontIcon";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import styles from "./DropdownFilter.module.scss";
-import { useRouter } from "next/router";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 interface DropdownFilterProps {
     name: "genre" | "country";
@@ -25,7 +25,7 @@ interface DropdownFilterProps {
 export default function DropdownFilter({ name, clearArray, filterKey, setFilterParams, initValue = 0, variant, typeItemList }: DropdownFilterProps) {
     const [isVisibleDropdown, setIsVisibleDropdown] = useState(false);
 
-    const { asPath } = useRouter();
+    const path = usePathname()!;
 
     const toggleVisibleDropdown = () => {
         setIsVisibleDropdown(isVisibleDropdown => !isVisibleDropdown)
@@ -39,7 +39,7 @@ export default function DropdownFilter({ name, clearArray, filterKey, setFilterP
 
     useEffect(() => {
         closeDropdown();
-    },[asPath])
+    },[path])
     
 
     return (

@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 import {  Movie, MovieFilterParams } from "../../models/types";
 import { MovieAPI } from "../../api/MovieAPI";
@@ -54,7 +54,8 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
 
     const router = useRouter();
     const size = useResize();
-    const currentGenre = router.query.genre as string;
+    const currentGenre = useParams<{ genre: string }>()!.genre;
+    
 
     const handleChangeFilterParams = (filterKey: keyof FilterParams, filterValue: string | number) => {
         setFilterParams({ ...filterParams, [filterKey]: filterValue })
