@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import HamburgerMenuModal from "../HamburgerMenuModal/HamburgerMenuModal";
 import MobileNavBarItemNew from "../MobileNavBarItemNew/MobileNavBarItemNew";
 import Modal from "../../../UI/Modal/Modal";
 
 export default function HamburgerMenu() {
     const [visible, setVisible] = useState(false);
-    const router = useRouter();
-
+    const pathname = usePathname();
+    
     const toggleVisible = () => {
         setVisible(visible => !visible)
     }
 
     useEffect(() => {
         setVisible(false);
-    }, [router.asPath]);
+    }, [pathname]);
 
 
     return (

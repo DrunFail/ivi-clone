@@ -1,4 +1,3 @@
-import RootLayout from "../components/RootLayout/RootLayout";
 import WrapperIntl from "../components/WrapperIntl/WrapperIntl";
 import { AuthProvider } from "../components/auth/context/AuthProvider";
 import ReduxProvider from "../store/ReduxProvider";
