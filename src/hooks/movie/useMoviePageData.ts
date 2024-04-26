@@ -9,12 +9,13 @@ import { getInfoProduct } from "../../utils/getInfoProduct";
 
 
 interface UseMoviePageDataProps {
-    movieData: MovieById
+    movieData: MovieById | undefined
 }
 
 export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
     const lang = useSelector(getLang())
-    
+
+    if (!movieData) return null;
     const movieName = calculateMovieName(movieData.film, lang);
     const movieDuration = minHours(Number(movieData.film.filmLength))
     const ageLimit = movieData.film.ratingAgeLimits.replace("age", "")

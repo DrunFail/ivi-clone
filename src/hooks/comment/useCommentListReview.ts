@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { ReviewTree } from "../../models/types";
 import useAuth from "../auth/useAuth";
 import { ReviewAPI } from "../../api/ReviewAPI";
+import { useParams } from "next/navigation";
 
 export default function useCommentListReview() {
     const [commentData, setCommentData] = useState<ReviewTree[]>([]);
-    const router = useRouter();
-    const { id } = router.query;
+    const id = useParams<{ id: string }>()!.id;
 
     const auth = useAuth();
     const isLoginUser = Boolean(auth?.auth?.token)

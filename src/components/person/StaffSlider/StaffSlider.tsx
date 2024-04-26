@@ -6,16 +6,13 @@ import StaffCardContainer from "./StaffCardContainer/StaffCardContainer";
 import styles from "./StaffSlider.module.scss";
 import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 import Button from "../../UI/core/Button/Button";
-import { useRouter } from "next/router";
-import Link from "next/link";
 
 interface StaffSliderProps {
     data: Person[],
     callback: () => void
 }
 export default function StaffSlider({ data, callback }: StaffSliderProps) {
-    const router = useRouter();
-    const { asPath } = router;
+    
     return (
         <>
            

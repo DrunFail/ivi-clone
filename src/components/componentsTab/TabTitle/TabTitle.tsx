@@ -1,5 +1,5 @@
+import { useParams, useRouter } from "next/navigation";
 import styles from "./TabTitle.module.scss";
-import { useRouter } from "next/router";
 
 interface TabTitleProps {
     tabTitle: React.ReactNode;
@@ -10,13 +10,11 @@ interface TabTitleProps {
 }
 export default function TabTitle({ tabTitle, tabContent, active, count,showCount=false }: TabTitleProps) {
     const router = useRouter();
-    const { id } = router.query;
+    const id = useParams<{ id: string }>()!.id;
+
 
     const pushQuery = async (type: string) => {
-        await router.push({
-            pathname: "/movie/" + String(id),
-            query: { type }
-        });
+        await router.push(`/movie/${id}?type=${type}`);
     };
 
     return (

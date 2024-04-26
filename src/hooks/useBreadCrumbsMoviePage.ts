@@ -7,7 +7,7 @@ import { getKeyByValue } from "../utils/getKeyByValue";
 import { CLIENT_GENRE_LIST } from "../constants/genreList";
 
 interface UseBreadCrumbsMoviePageProps {
-    movie: MovieById
+    movie: MovieById | undefined
 }
 const TYPE_MOVIE_LINK = {
     "FILM": "/movies/all",
@@ -17,6 +17,7 @@ const TYPE_MOVIE_LINK = {
 export default function useBreadCrumbsMoviePage({ movie }: UseBreadCrumbsMoviePageProps) {
     const intl = useIntl();
     const lang = useSelector(getLang());
+    if (!movie) return null;
     const typeMovie = movie.film.type;
     const typeMovieHref = TYPE_MOVIE_LINK[typeMovie]
     const movieGenre = movie.film.genres[0].id;
