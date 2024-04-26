@@ -1,12 +1,12 @@
 "use client";
 
-import type { ReactElement } from 'react';
-import useRegistration from '../../../hooks/auth/useRegistration';
-import PageSection from '../../../components/PageContainers/PageSection/PageSection';
-import FormAuthPageHeader from '../../../components/auth/components/FormAuthPageHeader/FormAuthPageHeader';
-import FormAuth from '../../../components/auth/components/FormAuth/FormAuth';
-import TextFieldWithLabel from '../../../components/UI/TextFieldWithLabel/TextFieldWithLabel';
-import FormErrorMessage from '../../../components/auth/components/FormErrorMessage/FormErrorMessage';
+import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
+import TextFieldWithLabel from "../../../../components/UI/TextFieldWithLabel/TextFieldWithLabel";
+import FormAuth from "../../../../components/auth/components/FormAuth/FormAuth";
+import FormAuthPageHeader from "../../../../components/auth/components/FormAuthPageHeader/FormAuthPageHeader";
+import FormErrorMessage from "../../../../components/auth/components/FormErrorMessage/FormErrorMessage";
+import useRegistration from "../../../../hooks/auth/useRegistration";
+
 
 
 export default function Registration() {

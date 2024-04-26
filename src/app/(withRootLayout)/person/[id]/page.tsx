@@ -1,20 +1,20 @@
 "use client";
 
-import { DetailedPerson } from "../../../models/types";
-import useMoviePersonData from "../../../hooks/person/useMoviePersonData";
-import HeadPerson from "../../../components/person/HeadPerson/HeadPerson";
-import PageSection from "../../../components/PageContainers/PageSection/PageSection";
-import PageWrapper from "../../../components/PageContainers/PageWrapper/PageWrapper";
-import PageWrapperInner from "../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
-import PersonPageContainer from "../../../components/person/PersonPageContainers/PersonPageContainer";
-import Avatar from "../../../components/UI/Avatar/Avatar";
-import PersonPageNamePerson from "../../../components/person/PersonPageNamePerson/PersonPageNamePerson";
-import FilmographyContainer from "../../../components/person/Filmography/FilmographyContainer/FilmographyContainer";
-import FilmographyHeader from "../../../components/person/Filmography/FilmographyHeader/FilmographyHeader";
-import FilmographyList from "../../../components/person/Filmography/FilmographyList/FilmographyList";
-import { NewPersonAPI } from "../../../api/newPersonAPI";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { DetailedPerson } from "../../../../models/types";
+import { NewPersonAPI } from "../../../../api/newPersonAPI";
+import useMoviePersonData from "../../../../hooks/person/useMoviePersonData";
+import HeadPerson from "../../../../components/person/HeadPerson/HeadPerson";
+import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
+import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
+import PageWrapperInner from "../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import PersonPageContainer from "../../../../components/person/PersonPageContainers/PersonPageContainer";
+import Avatar from "../../../../components/UI/Avatar/Avatar";
+import PersonPageNamePerson from "../../../../components/person/PersonPageNamePerson/PersonPageNamePerson";
+import FilmographyContainer from "../../../../components/person/Filmography/FilmographyContainer/FilmographyContainer";
+import FilmographyHeader from "../../../../components/person/Filmography/FilmographyHeader/FilmographyHeader";
+import FilmographyList from "../../../../components/person/Filmography/FilmographyList/FilmographyList";
 
 
 
