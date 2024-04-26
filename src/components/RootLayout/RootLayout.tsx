@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import { useResize } from "../../hooks/useResize";
 import PageWrapper from "../PageContainers/PageWrapper/PageWrapper";

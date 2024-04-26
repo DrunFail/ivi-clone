@@ -1,3 +1,5 @@
+"use client";
+
 import styles from './OAuthButton.module.scss';
 import Image from "next/image";
 import vk from "../../../../assets/SVG/Messangers/VK.svg";

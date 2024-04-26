@@ -1,3 +1,5 @@
+"use client";
+
 import English from "../../languages/es-US.json";
 import Russian from "../../languages/es-RU.json";
 import React, { FC, useState, useEffect } from "react";
