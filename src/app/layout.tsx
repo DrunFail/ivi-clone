@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <WrapperIntl>
                     <html lang="en" className={iviFont.className}>
                         <body>
+                        <div id="portal" />
                             {children}
                         </body>
                     </html>
