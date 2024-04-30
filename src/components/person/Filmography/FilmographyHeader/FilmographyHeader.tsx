@@ -1,13 +1,12 @@
-import { FormattedMessage } from "react-intl";
 import styles from "./FilmographyHeader.module.scss";
 
 export default function FilmographyHeader({ personMovieAmount }: {personMovieAmount:number}){
 
     return (
         <h3 className={styles.text }>
-            <FormattedMessage id="FullFilmography" />{" "}
+            Полная фильмография{" "}
             <sup>
-                {personMovieAmount} <FormattedMessage id="Films" />
+                {personMovieAmount} фильмов
             </sup>
         </h3>
     );

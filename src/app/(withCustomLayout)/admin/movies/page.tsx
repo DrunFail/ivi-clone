@@ -1,3 +1,5 @@
+"use client";
+
 import useFilterWatchPage from "../../../../hooks/filters/useFiltersWatchPage";
 import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
 import FiltersField from "../../../../components/filters/FiltersField/FiltersField";
@@ -5,6 +7,7 @@ import SortField from "../../../../components/filters/SortField/SortField";
 import Carousel from "../../../../components/UI/Carousel/Carousel";
 import { MOVIE_LIST_SIZES } from "../../../../constants/sliderItemSize";
 import MovieListItemAdmin from "../../../../components/AdminDashboard/MovieListItemAdmin/MovieListItemAdmin";
+import EmptyMovieList from "../../../../components/Movie/EmptyMovieList/EmptyMovieList";
 
 
 export default function AdminMovies() {
@@ -45,13 +48,20 @@ export default function AdminMovies() {
 
             </PageSection>
 
-            <Carousel
-                mode={'list'}
-                data={filteredMovie.rows}
-                count={filteredMovie.count}
-                sizes={MOVIE_LIST_SIZES}
-                component={MovieListItemAdmin}
-            />
+            {filteredMovie.rows
+                ? <Carousel
+                    mode={'list'}
+                    data={filteredMovie.rows}
+                    count={filteredMovie.count}
+                    sizes={MOVIE_LIST_SIZES}
+                    component={MovieListItemAdmin}
+                />
+                : <EmptyMovieList />
+            }
+
+
+
+            
 
         </div>
     );

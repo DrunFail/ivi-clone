@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname} from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "./AdminAside.module.scss";
@@ -7,15 +7,15 @@ import styles from "./AdminAside.module.scss";
 
 export default function AdminAside({ menu }: { menu: { id: number, name: string, link: string }[] }) {
     const [currentLink, setCurrentLink] = useState("");
-
-    const { asPath }  = useRouter();
+    const pathname = usePathname();
+    
     useEffect(() => {
-        const currentPage = menu.find(elem => asPath.includes(elem.name));
+        const currentPage = menu.find(elem => pathname.includes(elem.name));
         if (currentPage) {
             setCurrentLink(currentPage.name)
         }
 
-    },[asPath])
+    },[pathname])
     
     const activeLinkClass = (nameLink: string) => {
         if (currentLink === nameLink) {

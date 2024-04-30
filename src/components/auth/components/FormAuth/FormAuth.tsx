@@ -9,6 +9,7 @@ import FormContentContainer from "../FormContentContainer/FormContentContainer";
 import OAuthButton from "../OAuthButton/OAuthButton";
 import useVKAuth from "../../../../hooks/auth/useVKAuth";
 import Button from "../../../UI/core/Button/Button";
+import { Suspense } from "react";
 
 
 interface FormAuthProps {
@@ -62,9 +63,11 @@ export default function FormAuth({ error, children, handleSubmit }: FormAuthProp
                             </RedirectLink>
                         </RedirectLinkContainer>
                     }
+                    <Suspense>
                     <OAuthButton
                         variant="vk"
-                        authHandler={useVKAuth} />
+                            authHandler={useVKAuth} />
+                    </Suspense>
                 </FormContentContainer>
             </form>
         </FormContainer>

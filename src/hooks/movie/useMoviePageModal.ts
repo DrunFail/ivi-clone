@@ -6,7 +6,7 @@ export default function useMoviePageModal() {
     const router = useRouter();
     const searchParams = useSearchParams()!;
     const id = useParams<{ id: string }>()!.id;
-    const type = searchParams.get("type");
+    const type = searchParams.get("type")!;
     
     
 

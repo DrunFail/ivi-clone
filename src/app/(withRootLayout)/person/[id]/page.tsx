@@ -1,10 +1,5 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { DetailedPerson } from "../../../../models/types";
 import { NewPersonAPI } from "../../../../api/newPersonAPI";
-import useMoviePersonData from "../../../../hooks/person/useMoviePersonData";
 import HeadPerson from "../../../../components/person/HeadPerson/HeadPerson";
 import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
 import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
@@ -16,39 +11,34 @@ import FilmographyContainer from "../../../../components/person/Filmography/Film
 import FilmographyHeader from "../../../../components/person/Filmography/FilmographyHeader/FilmographyHeader";
 import FilmographyList from "../../../../components/person/Filmography/FilmographyList/FilmographyList";
 
+async function getPersonDataById(personId: number) {
+    const person = await NewPersonAPI.getPersonById(personId);
+    return person;
+}
+
+const calculatePersonName = (person:DetailedPerson,lang:string) => {
+    if (lang.toLowerCase() === "ru") return person.person.nameRu;
+    return person.person.nameEng ?? person.person.nameRu;
+}
 
 
-export default function PersonPage() {
-    const [person, setPerson] = useState<DetailedPerson>();
-    const personId = useParams<{ id: string }>()!.id;
+export default async function PersonPage({ params: { id,lang } }: { params: { id: string,lang:string } }) {
+    const person =  await getPersonDataById(+id);
+    const personName = calculatePersonName(person, "Ru");
 
-    useEffect(() => {
-        async function getPersonDataById(personId: number) {
-            const person = await NewPersonAPI.getPersonById(personId);
-            setPerson(person)
-        }
-
-        getPersonDataById(+personId);
-    },[personId])
-
-    
-
-    const personData = useMoviePersonData({ personData: person });
-    if (!personData) return <></>;
-    const { personName, personProfession, personPosterUrl, personMovieAmount, personMovieList } = personData;
 
     return (
         <>
             <HeadPerson
                 personName={personName}
-                personProfession={personProfession ?? ""}
+                personProfession={person.person.profession ?? ""}
             />
             <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
                         <PersonPageContainer>
                             <Avatar
-                                urlAvatar={personPosterUrl}
+                                urlAvatar={person.person.posterUrl}
                                 variant="profile" />
                             <PersonPageNamePerson>
                                 {personName}
@@ -62,10 +52,10 @@ export default function PersonPage() {
                     <PersonPageContainer>
                         <FilmographyContainer>
                             <FilmographyHeader
-                                personMovieAmount={personMovieAmount}
+                                personMovieAmount={person.films.length}
                             />
                             <FilmographyList
-                                personMovieList={personMovieList}
+                                personMovieList={person.films}
                             />
                         </FilmographyContainer>
                     </PersonPageContainer>

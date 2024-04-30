@@ -1,12 +1,11 @@
 "use client";
 
-
 import { ReactElement } from "react";
 import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
 import FormAuthPageHeader from "../../../../components/auth/components/FormAuthPageHeader/FormAuthPageHeader";
 import FormAuth from "../../../../components/auth/components/FormAuth/FormAuth";
 import TextFieldWithLabel from "../../../../components/UI/TextFieldWithLabel/TextFieldWithLabel";
-import useLogin from "../../../../hooks/auth/useLogin";
+import  useLogin   from "../../../../hooks/auth/useLogin";
 
 export default function Login() {
     const { email,
@@ -44,8 +43,3 @@ export default function Login() {
     );
 }
 
-Login.getLayout = function getLayout(page: ReactElement) {
-    return (
-        <main>{page}</main>
-    )
-}

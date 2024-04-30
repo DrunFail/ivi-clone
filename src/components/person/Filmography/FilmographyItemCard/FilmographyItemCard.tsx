@@ -1,18 +1,14 @@
 import Image from "next/image";
 import styles from "./FilmographyItemCard.module.scss";
 import Link from "next/link";
-import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 import { MovieWithPerson } from "../../../../models/types";
-import { getLang } from "../../../../store/slices/switchLang";
 import Button from "../../../UI/core/Button/Button";
 
 interface FilmographyItemCardProps {
     filmographyItem:  MovieWithPerson
 }
 export default function  FilmographyItemCard({ filmographyItem }:FilmographyItemCardProps){
-    const lang = useSelector(getLang());
+    const lang = "Ru";
     
     return (
         <Link href={"/movie/" + filmographyItem?.kinopoiskId} className={styles.container }>
@@ -32,12 +28,12 @@ export default function  FilmographyItemCard({ filmographyItem }:FilmographyItem
                                 : filmographyItem?.nameOriginal}
                         </p>
                         <p className={styles.small}>
-                            <FormattedMessage id="RatingIvi" />:{" "}
+                            Рейтинг Иви:{" "}
                             {filmographyItem?.ratingKinopoisk}
                         </p>
                     </div>
             <Button as="button">
-                <MemoizedFormattedMessage id="Detail" />
+                подробнее
             </Button>
             </Link>
     );
