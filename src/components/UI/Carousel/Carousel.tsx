@@ -1,3 +1,5 @@
+"use client";
+
 import useCarousel from "./hooks/useCarousel";
 import styles from "./Carousel.module.scss";
 import CarouselGallery from "./CarouselGallery/CarouselGallery";

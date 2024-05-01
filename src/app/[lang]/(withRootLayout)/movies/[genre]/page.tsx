@@ -18,6 +18,9 @@ import MovieListCardWithOverlayContainer from "../../../../../components/Movie/M
 import { MOVIE_LIST_SIZES } from "../../../../../constants/sliderItemSize";
 import EmptyMovieList from "../../../../../components/Movie/EmptyMovieList/EmptyMovieList";
 
+
+
+
 export default function MoviesByGenre() {
     const {
         currentGenre,

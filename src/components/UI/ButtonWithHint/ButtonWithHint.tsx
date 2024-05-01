@@ -1,3 +1,5 @@
+"use client";
+
 import { HTMLAttributes, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "./ButtonWithHint.module.scss";

@@ -1,0 +1,19 @@
+.container {
+    @media only screen and (max-width:1400px) {
+        --amount: 5;
+    }
+
+    @media only screen and (max-width:882px) {
+        --amount: 4;
+    }
+
+    @media only screen and (max-width:600px) {
+        --amount: 3;
+    }
+
+    @media only screen and (max-width:440px) {
+        --amount: 2;
+    }
+
+    
+}

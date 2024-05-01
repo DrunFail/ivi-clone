@@ -96,8 +96,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     useEffect(() => {
         const amountItemsOnPage = MOVIE_LIST_SIZES
             .sort((a, b) => b.resol - a.resol)
-            .find(elem => elem.resol <= size)!
-            .items
+            .find(elem => elem.resol <= size)?.items || 5;
 
         const pageSize = amountItemsOnPage * MOVIE_ROWS
         setAmountMovieOnPage(pageSize)

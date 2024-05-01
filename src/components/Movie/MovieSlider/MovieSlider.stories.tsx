@@ -42,5 +42,5 @@ export default meta;
 type Story = StoryObj<typeof MovieSlider>;
 
 export const Primary: Story = {
-  render: () => <MovieSlider genreId={1} href="" />,
+    render: () => <MovieSlider data={MOVIE_SLIDER_LIST } href="" />,
 };
