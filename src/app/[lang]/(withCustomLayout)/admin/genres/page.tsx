@@ -1,8 +1,8 @@
 "use client";
 
 import { ReactElement, useEffect, useState } from "react";
-import { Genre } from "../../../../models/types";
-import GenreListItem from "../../../../components/AdminDashboard/GenreListItem/GenreListItem";
+import { Genre } from "../../../../../models/types";
+import GenreListItem from "../../../../../components/AdminDashboard/GenreListItem/GenreListItem";
 
 
 
