@@ -28,6 +28,8 @@ import Rating from "../../../../../components/Rating/Rating";
 import SimilarSlider from "../../../../../components/Movie/SimilarSlider/SimilarSlider";
 import StaffSlider from "../../../../../components/person/StaffSlider/StaffSlider";
 import WatchAnyDevice from "../../../../../components/WatchAnyDevice/WatchAnyDevice";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const MoviePageModal = dynamic(() =>
     import("../../../../../components/Movie/MoviePageModal/MoviePageModal").then((mod) => mod.default))
@@ -42,7 +44,7 @@ interface MovieProps {
 }
 export default function Movie() {
     const [movie, setMovie] = useState<MovieById>();
-
+    const path = usePathname();
 
     const { visible, pushQuery, removeQueryParam, type } = useMoviePageModal();
     
@@ -91,6 +93,9 @@ export default function Movie() {
             <PageWrapper>
                 <BreadCrumbs breadcrumbs={breadCrumbsData.shortList} />
             </PageWrapper>
+            <Link href={`${path}/trailer`}>trailer</Link>
+            <Link href={`${path}/actors`}>actors</Link>
+            <Link href={`${path}/review`}>review</Link>
             <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>

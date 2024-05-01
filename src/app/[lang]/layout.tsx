@@ -29,7 +29,7 @@ const iviFont = localFont({
 
 
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout(props: { children:React.ReactNode}) {
     return (
         <ReduxProvider>
             <AuthProvider>
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <html lang="en" className={iviFont.className}>
                         <body>
                         <div id="portal" />
-                            {children}
+                            {props.children}
                         </body>
                     </html>
                 </WrapperIntl>
