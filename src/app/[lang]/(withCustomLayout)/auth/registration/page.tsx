@@ -1,11 +1,11 @@
 "use client";
 
-import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
-import TextFieldWithLabel from "../../../../components/UI/TextFieldWithLabel/TextFieldWithLabel";
-import FormAuth from "../../../../components/auth/components/FormAuth/FormAuth";
-import FormAuthPageHeader from "../../../../components/auth/components/FormAuthPageHeader/FormAuthPageHeader";
-import FormErrorMessage from "../../../../components/auth/components/FormErrorMessage/FormErrorMessage";
-import useRegistration from "../../../../hooks/auth/useRegistration";
+import PageSection from "../../../../../components/PageContainers/PageSection/PageSection";
+import TextFieldWithLabel from "../../../../../components/UI/TextFieldWithLabel/TextFieldWithLabel";
+import FormAuth from "../../../../../components/auth/components/FormAuth/FormAuth";
+import FormAuthPageHeader from "../../../../../components/auth/components/FormAuthPageHeader/FormAuthPageHeader";
+import FormErrorMessage from "../../../../../components/auth/components/FormErrorMessage/FormErrorMessage";
+import useRegistration from "../../../../../hooks/auth/useRegistration";
 
 
 

@@ -3,37 +3,37 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { MovieById } from "../../../../models/types";
-import useMoviePageModal from "../../../../hooks/movie/useMoviePageModal";
-import { useResize } from "../../../../hooks/useResize";
-import { MovieAPI } from "../../../../api/MovieAPI";
-import useMoviePageData from "../../../../hooks/movie/useMoviePageData";
-import useCustomReactPlayer from "../../../../hooks/movie/useCustomReactPlayer";
-import useBreadCrumbsMoviePage from "../../../../hooks/useBreadCrumbsMoviePage";
-import HeadMovie from "../../../../components/Movie/HeadMovie/HeadMovie";
-import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
-import BreadCrumbs from "../../../../components/UI/BreadCrumbs/BreadCrumbs";
-import PageWrapperInner from "../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
-import MoviePageGridTemplate from "../../../../components/Movie/containers/MoviePageGridTemplate/MoviePageGridTemplate";
-import MoviePageGridArea from "../../../../components/Movie/containers/MoviePageGridArea/MoviePageGridArea";
-import MoviePlayerStickyContainer from "../../../../components/Movie/containers/MoviePlayerStickyContainer/MoviePlayerStickyContainer";
-import CustomReactPlayer from "../../../../components/CustomReactPlayer/CustomReactPlayer";
-import Info from "../../../../components/Movie/moviePageComponents/Info/Info";
-import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
-import PersonListWithRating from "../../../../components/person/PersonListWithRating/PersonListWithRating";
-import ButtonPlayerBlock from "../../../../components/Movie/ButtonPlayerBlock/ButtonPlayerBlock";
-import MovieHideInfoContainer from "../../../../components/Movie/MovieHideInfoContainer/MovieHideInfoContainer";
-import MovieExtraInfoBlock from "../../../../components/Movie/MovieExtraInfoBlock/MovieExtraInfoBlock";
-import SimilarSlider from "../../../../components/Movie/SimilarSlider/SimilarSlider";
-import Rating from "../../../../components/Rating/Rating";
-import StaffSlider from "../../../../components/person/StaffSlider/StaffSlider";
-import WatchAnyDevice from "../../../../components/WatchAnyDevice/WatchAnyDevice";
+import { MovieById } from "../../../../../models/types";
+import useMoviePageModal from "../../../../../hooks/movie/useMoviePageModal";
+import { useResize } from "../../../../../hooks/useResize";
+import { MovieAPI } from "../../../../../api/MovieAPI";
+import useMoviePageData from "../../../../../hooks/movie/useMoviePageData";
+import useCustomReactPlayer from "../../../../../hooks/movie/useCustomReactPlayer";
+import useBreadCrumbsMoviePage from "../../../../../hooks/useBreadCrumbsMoviePage";
+import HeadMovie from "../../../../../components/Movie/HeadMovie/HeadMovie";
+import PageWrapper from "../../../../../components/PageContainers/PageWrapper/PageWrapper";
+import BreadCrumbs from "../../../../../components/UI/BreadCrumbs/BreadCrumbs";
+import PageSection from "../../../../../components/PageContainers/PageSection/PageSection";
+import PageWrapperInner from "../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import MoviePageGridTemplate from "../../../../../components/Movie/containers/MoviePageGridTemplate/MoviePageGridTemplate";
+import MoviePageGridArea from "../../../../../components/Movie/containers/MoviePageGridArea/MoviePageGridArea";
+import MoviePlayerStickyContainer from "../../../../../components/Movie/containers/MoviePlayerStickyContainer/MoviePlayerStickyContainer";
+import CustomReactPlayer from "../../../../../components/CustomReactPlayer/CustomReactPlayer";
+import Info from "../../../../../components/Movie/moviePageComponents/Info/Info";
+import PersonListWithRating from "../../../../../components/person/PersonListWithRating/PersonListWithRating";
+import ButtonPlayerBlock from "../../../../../components/Movie/ButtonPlayerBlock/ButtonPlayerBlock";
+import MovieHideInfoContainer from "../../../../../components/Movie/MovieHideInfoContainer/MovieHideInfoContainer";
+import MovieExtraInfoBlock from "../../../../../components/Movie/MovieExtraInfoBlock/MovieExtraInfoBlock";
+import Rating from "../../../../../components/Rating/Rating";
+import SimilarSlider from "../../../../../components/Movie/SimilarSlider/SimilarSlider";
+import StaffSlider from "../../../../../components/person/StaffSlider/StaffSlider";
+import WatchAnyDevice from "../../../../../components/WatchAnyDevice/WatchAnyDevice";
 
 const MoviePageModal = dynamic(() =>
-    import("../../../../components/Movie/MoviePageModal/MoviePageModal").then((mod) => mod.default))
+    import("../../../../../components/Movie/MoviePageModal/MoviePageModal").then((mod) => mod.default))
 
 const CommentSlider = dynamic(() =>
-    import("../../../../components/comment/CommentSlider/CommentSlider").then((mod) => mod.default))
+    import("../../../../../components/comment/CommentSlider/CommentSlider").then((mod) => mod.default))
 
 
 

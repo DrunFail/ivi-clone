@@ -1,12 +1,21 @@
 import styles from "./FilmographyHeader.module.scss";
 
-export default function FilmographyHeader({ personMovieAmount }: {personMovieAmount:number}){
+interface FilmographyHeaderProps {
+    personMovieAmount: number;
+    headerTitle: string;
+    amountTitle: string;
+}
+
+export default function FilmographyHeader({ personMovieAmount,headerTitle,amountTitle }:FilmographyHeaderProps){
 
     return (
         <h3 className={styles.text }>
-            Полная фильмография{" "}
+            {headerTitle}
+            {" "}
             <sup>
-                {personMovieAmount} фильмов
+                {personMovieAmount}
+                {" "}
+                {amountTitle}
             </sup>
         </h3>
     );

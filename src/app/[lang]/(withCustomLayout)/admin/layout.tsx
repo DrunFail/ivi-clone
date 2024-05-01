@@ -1,6 +1,6 @@
 "use client";
 
-import AdminLayout from "../../../components/AdminDashboard/AdminLayout/AdminLayout";
+import AdminLayout from "../../../../components/AdminDashboard/AdminLayout/AdminLayout";
 
 export default function Layout({ children }: {children:React.ReactNode}) {
     return (

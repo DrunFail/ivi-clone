@@ -2,21 +2,21 @@
 
 import { FormattedMessage } from "react-intl";
 import Head from "next/head";
-import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
-import BreadCrumbs from "../../../../components/UI/BreadCrumbs/BreadCrumbs";
-import PageSection from "../../../../components/PageContainers/PageSection/PageSection";
-import PageWrapperInner from "../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
-import WatchPageHeader from "../../../../components/UI/movie/WatchPageHeader/WatchPageHeader";
-import WatchPageHeaderContainer from "../../../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer";
-import WatchPageGenreDescription from "../../../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription";
-import FiltersField from "../../../../components/filters/FiltersField/FiltersField";
-import SortField from "../../../../components/filters/SortField/SortField";
-import useFilterWatchPage from "../../../../hooks/filters/useFiltersWatchPage";
-import useBreadCrumbsStandart from "../../../../hooks/useBreadCrumbsStandart";
-import Carousel from "../../../../components/UI/Carousel/Carousel";
-import MovieListCardWithOverlayContainer from "../../../../components/Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
-import { MOVIE_LIST_SIZES } from "../../../../constants/sliderItemSize";
-import EmptyMovieList from "../../../../components/Movie/EmptyMovieList/EmptyMovieList";
+import PageWrapper from "../../../../../components/PageContainers/PageWrapper/PageWrapper";
+import BreadCrumbs from "../../../../../components/UI/BreadCrumbs/BreadCrumbs";
+import PageSection from "../../../../../components/PageContainers/PageSection/PageSection";
+import PageWrapperInner from "../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import WatchPageHeader from "../../../../../components/UI/movie/WatchPageHeader/WatchPageHeader";
+import WatchPageHeaderContainer from "../../../../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer";
+import WatchPageGenreDescription from "../../../../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription";
+import FiltersField from "../../../../../components/filters/FiltersField/FiltersField";
+import SortField from "../../../../../components/filters/SortField/SortField";
+import useFilterWatchPage from "../../../../../hooks/filters/useFiltersWatchPage";
+import useBreadCrumbsStandart from "../../../../../hooks/useBreadCrumbsStandart";
+import Carousel from "../../../../../components/UI/Carousel/Carousel";
+import MovieListCardWithOverlayContainer from "../../../../../components/Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
+import { MOVIE_LIST_SIZES } from "../../../../../constants/sliderItemSize";
+import EmptyMovieList from "../../../../../components/Movie/EmptyMovieList/EmptyMovieList";
 
 export default function MoviesByGenre() {
     const {

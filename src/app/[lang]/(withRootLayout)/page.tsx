@@ -3,17 +3,17 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
-import PageSection from "../../components/PageContainers/PageSection/PageSection";
-import MainSlider from "../../components/Movie/MainSlider/MainSlider";
-import PageWrapper from "../../components/PageContainers/PageWrapper/PageWrapper";
-import PromoSection from "../../components/PromoSection/PromoSection";
-import PageWrapperInner from "../../components/PageContainers/PageWrapperInner/PageWrapperInner";
-import TopTenSlider from "../../components/Movie/TopTenSlider/TopTenSlider";
-import { TOP_10_DATA } from "../../components/Movie/TopTenSlider/data";
-import { getLang } from "../../store/slices/switchLang";
+import PageSection from "../../../components/PageContainers/PageSection/PageSection";
+import MainSlider from "../../../components/Movie/MainSlider/MainSlider";
+import PageWrapper from "../../../components/PageContainers/PageWrapper/PageWrapper";
+import PromoSection from "../../../components/PromoSection/PromoSection";
+import PageWrapperInner from "../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
+import TopTenSlider from "../../../components/Movie/TopTenSlider/TopTenSlider";
+import { TOP_10_DATA } from "../../../components/Movie/TopTenSlider/data";
+import { getLang } from "../../../store/slices/switchLang";
 
 const MovieSlider = dynamic(() =>
-    import("../../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
+    import("../../../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
 
 export default function Page(){
     const lang = useSelector(getLang());
