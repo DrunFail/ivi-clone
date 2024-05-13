@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import styles from "./Rating.module.scss";
-import { FormattedMessage } from "react-intl";
 import RatingBlock from "./RatingBlock/RatingBlock";
 import RatingLarge from "./RatingLarge/RatingLarge";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 const RatingModal = dynamic(() =>
     import("./RatingModal/RatingModal").then((mod) => mod.default))
@@ -19,6 +19,7 @@ interface RatingProps {
 export default function Rating({ variant,movieRating }: RatingProps) {
     const [visible, setVisible] = useState<boolean>(false);
     const [slide, setSlide] = useState<number>(0);
+    const t = useTranslations();
 
     const slideMove = (num: number) => {
         setSlide((p) => p + num);
@@ -37,9 +38,9 @@ export default function Rating({ variant,movieRating }: RatingProps) {
                 {variant === "large" &&
                     <RatingLarge>
                         <RatingBlock ratingValue={movieRating} />
-                        <p><FormattedMessage id="RatingIvi" /></p>
+                        <p>{t("RatingIvi")}</p>
                         <div className={styles.Rating__review}>
-                            <p><FormattedMessage id="Estimate" /></p>
+                            <p>{t("Estimate")}</p>
                         </div>
                     </RatingLarge>
                 }

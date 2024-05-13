@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import EditGenreCardContent from "./EditGenreCardContent";
 import { Provider } from "react-redux";
 import store from "../../../../store/store";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 import { Genre } from "../../../../models/types";
 
 const meta: Meta<typeof EditGenreCardContent> = {
@@ -19,7 +18,6 @@ const genre: Genre = { id: 1000, genreNameEng: "eng", genreNameRu: "ru" };
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <EditGenreCardContent
           handleChangeNewGenreName={() => console.log("change")}
           newGenreName={{
@@ -28,7 +26,6 @@ export const Primary: Story = {
           }}
           genreItem={genre}
         />
-      </WrapperIntl>
     </Provider>
   ),
 };

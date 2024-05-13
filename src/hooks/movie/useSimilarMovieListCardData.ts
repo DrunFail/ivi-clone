@@ -1,14 +1,13 @@
-import { useSelector } from "react-redux";
 import { SimilarMovie } from "../../models/types";
-import { getLang } from "../../store/slices/switchLang";
 import { calculateMovieName } from "../../utils/calculateMovieName";
+import { useLocale } from "next-intl";
 
 interface UseSimilarItemDataProps {
     similarItem: SimilarMovie
 }
 
 export default function useSimilarItemData({ similarItem }: UseSimilarItemDataProps) {
-    const lang = useSelector(getLang());
+    const lang = useLocale();
 
     
 

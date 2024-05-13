@@ -1,9 +1,8 @@
 import TextFieldWithLabel from "../../../UI/TextFieldWithLabel/TextFieldWithLabel";
-import { FormattedMessage } from "react-intl";
 import { Genre } from "../../../../models/types";
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 import PropertyList from "../../PropertyList/PropertyList";
 import PropertyItem from "../../PropertyItem/PropertyItem";
+import { useTranslations } from "next-intl";
 
 interface EditGenreCardContentProps {
     newGenreName: { genreNameRu: string, genreNameEng: string },
@@ -12,19 +11,20 @@ interface EditGenreCardContentProps {
 
 }
 export default function EditGenreCardContent({ newGenreName, handleChangeNewGenreName, genreItem }: EditGenreCardContentProps) {
+    const t = useTranslations();
     return (
         <PropertyList>
 
             <PropertyItem description={genreItem.id}>
-                <MemoizedFormattedMessage id="movie.kinopoiskId" />
+                {t("movie.kinopoiskId") }
             </PropertyItem>
 
             <PropertyItem description={genreItem.genreNameRu}>
-                <MemoizedFormattedMessage id="movie.currentNameRu" />
+                {t("movie.currentNameRu") }
             </PropertyItem>
 
             <TextFieldWithLabel
-                labelText={<FormattedMessage id="genre.newNameRu" />}
+                labelText={t("genre.newNameRu")}
                 value={newGenreName.genreNameRu}
                 id="genreNameRu"
                 name="genreNameRu"
@@ -32,11 +32,11 @@ export default function EditGenreCardContent({ newGenreName, handleChangeNewGenr
             />
 
             <PropertyItem description={genreItem.genreNameEng}>
-                <MemoizedFormattedMessage id="movie.currentNameEng" />
+                {t("movie.currentNameEng") }
             </PropertyItem>
 
             <TextFieldWithLabel
-                labelText={<FormattedMessage id="genre.newNameEng" />}
+                labelText={t("genre.newNameEng")}
                 value={newGenreName.genreNameEng}
                 id="genreNameEng"
                 name="genreNameEng"

@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import FiltersField from "./FiltersField";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
 import { LinkData } from "../../../models/global";
@@ -56,7 +55,6 @@ const handler = (filterKey: string, filterValue: string | number) =>
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <PageWrapper>
           <FiltersField
             genreObjects={genreObjects}
@@ -67,7 +65,6 @@ export const Primary: Story = {
             variant="genrePage"
           />
         </PageWrapper>
-      </WrapperIntl>
     </Provider>
   ),
 };

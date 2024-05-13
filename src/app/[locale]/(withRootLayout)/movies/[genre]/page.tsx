@@ -1,6 +1,5 @@
 "use client";
 
-import { FormattedMessage } from "react-intl";
 import Head from "next/head";
 import PageWrapper from "../../../../../components/PageContainers/PageWrapper/PageWrapper";
 import BreadCrumbs from "../../../../../components/UI/BreadCrumbs/BreadCrumbs";
@@ -17,6 +16,7 @@ import Carousel from "../../../../../components/UI/Carousel/Carousel";
 import MovieListCardWithOverlayContainer from "../../../../../components/Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
 import { MOVIE_LIST_SIZES } from "../../../../../constants/sliderItemSize";
 import EmptyMovieList from "../../../../../components/Movie/EmptyMovieList/EmptyMovieList";
+import { useTranslations } from "next-intl";
 
 
 
@@ -36,6 +36,7 @@ export default function MoviesByGenre() {
         transformedGenres
     } = useFilterWatchPage({ variant: "genrePage" });
 
+    const t = useTranslations();
     const breadcrumbsData = useBreadCrumbsStandart();
 
 
@@ -56,11 +57,11 @@ export default function MoviesByGenre() {
                 <PageWrapper>
                     <PageWrapperInner>
                         <WatchPageHeader>
-                            <FormattedMessage id={`genre.${currentGenre}.title`} />
+                            {t(`genre.${currentGenre}.title`) }
                         </WatchPageHeader>
                         <WatchPageHeaderContainer>
                             <WatchPageGenreDescription>
-                                <FormattedMessage id={`genre.${currentGenre}.description`} />
+                                {t(`genre.${currentGenre}.description`) }
                             </WatchPageGenreDescription>
                         </WatchPageHeaderContainer>
                     </PageWrapperInner>

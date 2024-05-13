@@ -1,8 +1,8 @@
 import styles from "./SortField.module.scss";
-import { FormattedMessage } from "react-intl";
 import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
 import useSortField from "../../../hooks/filters/useSortField";
 import FontIcon from "../../UI/FontIcon/FontIcon";
+import { useTranslations } from "next-intl";
 
 interface SortFieldProps {
     currentSortVariant: string;
@@ -12,7 +12,7 @@ interface SortFieldProps {
 const sortVariantArray = ["nameRu", "year", "ratingKinopoiskVoteCount","ratingKinopoisk"]
 export default function SortField({ currentSortVariant,  setFilterParams, filterKey }: SortFieldProps) {
     const { isOpen, popupRef, setSortParam, isOpenToggle} = useSortField({setFilterParams, filterKey})
-
+    const t = useTranslations();
     return (
         <div className={styles.wrapper} ref={popupRef}>
             <div className={styles.visibleArea} onClick={isOpenToggle}>
@@ -20,7 +20,7 @@ export default function SortField({ currentSortVariant,  setFilterParams, filter
                     <FontIcon variant="filter" />
                 </span>
                 <span>
-                    <FormattedMessage id={`sort.variant.${currentSortVariant}`} />
+                    {t(`sort.variant.${currentSortVariant}`) }
                 </span>
                 <span className={styles.arrowCol + (isOpen ? ` ${styles.arrowColRev}` : "")}>
                     <FontIcon variant="arrowDown" />
@@ -33,7 +33,7 @@ export default function SortField({ currentSortVariant,  setFilterParams, filter
                         className={styles.dropdownItem + (item === currentSortVariant ? " " + styles.selectedItem : "")}
                         onClick={() => setSortParam(item)}
                     >
-                        <FormattedMessage id={`sort.variant.${item}` } />
+                        {t(`sort.variant.${item}`) }
                     </p>
                 ))}
             </div>

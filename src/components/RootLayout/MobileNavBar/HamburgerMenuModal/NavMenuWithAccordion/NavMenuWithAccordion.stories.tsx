@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import NavMenuWithAccordion from "./NavMenuWithAccordion";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 import store from "../../../../../store/store";
 
 const meta: Meta<typeof NavMenuWithAccordion> = {
@@ -13,9 +12,7 @@ const meta: Meta<typeof NavMenuWithAccordion> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

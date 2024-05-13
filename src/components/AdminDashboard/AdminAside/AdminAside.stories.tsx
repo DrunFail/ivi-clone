@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import AdminAside from "./AdminAside";
 import { Provider } from "react-redux";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import store from "../../../store/store";
 
 const meta: Meta<typeof AdminAside> = {
@@ -21,9 +20,7 @@ const menu = [
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <AdminAside menu={menu} />
-      </WrapperIntl>
     </Provider>
   ),
 };

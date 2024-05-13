@@ -4,7 +4,6 @@ import { Title, Canvas } from "@storybook/blocks";
 import Carousel from "./Carousel";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import { MOVIE_LIST_SIZES } from "../../../constants/sliderItemSize";
 import MovieListCardWithOverlayContainer from "../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
 import { MOVIE_SLIDER_LIST } from "../../../mockData/movieSliderList";
@@ -16,11 +15,9 @@ const meta: Meta<typeof Carousel> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <div style={{ backgroundColor: "#100e19" }}>
             <Story />
           </div>
-        </WrapperIntl>
       </Provider>
     ),
   ],

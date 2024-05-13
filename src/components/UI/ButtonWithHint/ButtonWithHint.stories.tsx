@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ButtonWithHint from "./ButtonWithHint";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import { Provider } from "react-redux";
 
 const meta: Meta<typeof ButtonWithHint> = {
@@ -14,9 +13,7 @@ const meta: Meta<typeof ButtonWithHint> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

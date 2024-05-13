@@ -3,7 +3,7 @@ import RedirectLink from "../RedirectLink/RedirectLink";
 import RedirectLinkContainer from "../RedirectLinkContainer/RedirectLinkContainer";
 import styles from "./FormAuth.module.scss";
 import FormContainer from "../FormContainer/FormContainer";
-import { useRouter,usePathname } from "next/navigation";
+import {usePathname } from "next/navigation";
 import FormErrorMessage from "../FormErrorMessage/FormErrorMessage";
 import FormContentContainer from "../FormContentContainer/FormContentContainer";
 import OAuthButton from "../OAuthButton/OAuthButton";

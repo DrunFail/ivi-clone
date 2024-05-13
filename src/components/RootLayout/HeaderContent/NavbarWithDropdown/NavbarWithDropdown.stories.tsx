@@ -4,7 +4,6 @@ import NavbarWithDropdown from "./NavbarWithDropdown";
 import { Provider } from "react-redux";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 import store from "../../../../store/store";
 import HeaderPortalContainer from "../portal/HeaderPortalContainer";
 import { NAV_MENU } from "../../../../constants/headerConstants";
@@ -15,10 +14,8 @@ const meta: Meta<typeof NavbarWithDropdown> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
           <HeaderPortalContainer />
-        </WrapperIntl>
       </Provider>
     ),
   ],

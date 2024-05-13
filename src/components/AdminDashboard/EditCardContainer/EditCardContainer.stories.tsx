@@ -4,7 +4,6 @@ import { Title, Canvas } from "@storybook/blocks";
 import EditCardContainer from "./EditCardContainer";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import EditMovieCardContent from "../cards/EditMovieCardContent/EditMovieCardContent";
 import DeleteMovieCardContent from "../cards/DeleteMovieCardContent/DeleteMovieCardContent";
 import EditGenreCardContent from "../cards/EditGenreCardContent/EditGenreCardContent";
@@ -16,9 +15,7 @@ const meta: Meta<typeof EditCardContainer> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

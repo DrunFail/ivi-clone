@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import EditMovieCardContent from "./EditMovieCardContent";
 import { Provider } from "react-redux";
 import store from "../../../../store/store";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 import { MOVIE_SINGLE } from "../../../../mockData/movieSingle";
 
 const meta: Meta<typeof EditMovieCardContent> = {
@@ -22,7 +21,6 @@ const newMovieName = {
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <EditMovieCardContent
           countries="countries"
           genres="genres"
@@ -30,7 +28,6 @@ export const Primary: Story = {
           newMovieName={newMovieName}
           elem={MOVIE_SINGLE}
         />
-      </WrapperIntl>
     </Provider>
   ),
 };

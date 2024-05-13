@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./DropdownFilterContent.module.scss";
 import { FilterParams } from "../../../../hooks/filters/useFiltersWatchPage";
-import React from "react";
+import { Fragment } from "react";
 
 interface DropdownFilterContentProps {
     dataArray: any;
@@ -19,7 +19,7 @@ export default function DropdownFilterContent({ dataArray, typeItemList,variant,
             {/* eslint-disable */
                 //@ts-ignore
                 dataArray && dataArray.map((item, idx) =>
-                    <React.Fragment key={idx }>
+                    <Fragment key={idx }>
                         {
                             typeItemList === "link" && variant === "genrePage"
                                 ? <Link
@@ -35,7 +35,7 @@ export default function DropdownFilterContent({ dataArray, typeItemList,variant,
                                     {item.name}
                                 </p>
                         }
-                    </React.Fragment>
+                    </Fragment>
                 )}
         </div>
     );

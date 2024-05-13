@@ -9,7 +9,7 @@ import SelectedFilterValue from "../../UI/filter/SelectedFilterValue/SelectedFil
 import PositionContainer from "../../UI/filter/PositionContainer/PositionContainer";
 import FilterWrapperContainer from "../../UI/filter/FilterWrapperContainer/FilterWrapperContainer";
 import useInputFilterWithAutoSuggest from "../../../hooks/filters/useInputFilterWihtAuthSuggest";
-import { FormattedMessage } from "react-intl";
+import { useTranslations } from "next-intl";
 
 interface InputFilterProps {
     setFilterParams: (filterKey: keyof FilterParams, filterValue: string | number) => void;
@@ -30,11 +30,11 @@ export default function InputFilterWithAutoSuggest({ setFilterParams, filterKey,
         handleClick
     } = useInputFilterWithAutoSuggest({ setFilterParams, filterKey, currentId });
 
-
+    const t = useTranslations();
     return (
         <div className={styles.wrapper} >
             <FilterName>
-                <FormattedMessage id={`label.${filterKey}`} />
+                {t(`label.${filterKey}`) }
             </FilterName>
             {currentId
                 ? <div style={{ display: "flex", alignItems: "center", color: "#a5a1b2",columnGap:"5px" }}>

@@ -5,7 +5,6 @@ import HamburgerMenuModal from "./HamburgerMenuModal";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
 import store from "../../../../store/store";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof HamburgerMenuModal> = {
   title: "mobileNavBar/HamburgerMenuModal",
@@ -13,9 +12,7 @@ const meta: Meta<typeof HamburgerMenuModal> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

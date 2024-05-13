@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
-import { FormattedMessage } from "react-intl";
 import { NavbarLink } from "../../../../../models/global";
+import { useTranslations } from "next-intl";
 
 interface NavbarProps {
     navLinkData: NavbarLink[];
     linkHoverHandler?: (menuItem:NavbarLink) => void
 }
-export default function Navbar({navLinkData,linkHoverHandler }:NavbarProps) {
+export default function Navbar({ navLinkData, linkHoverHandler }: NavbarProps) {
+    const t = useTranslations();
     return (
         <nav className={styles.navbar} data-testid='header-navbar'>
             <ul>
@@ -16,7 +17,7 @@ export default function Navbar({navLinkData,linkHoverHandler }:NavbarProps) {
                         <Link
                             href={menuItem.link}
                             onMouseEnter={() => linkHoverHandler && linkHoverHandler(menuItem)}>
-                            <FormattedMessage id={`header.navbar.${menuItem.name}`} />
+                            {t(`header.navbar.${menuItem.name}`)}
                         </Link>
                     </li>
                 )}

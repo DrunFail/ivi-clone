@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
 import ProfileDropdownCard from "./ProfileDropdownCard";
 import { PROFILE_IMG_LINK_DATA } from "../imgLinkData";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 import store from "../../../../../store/store";
 
 const data = PROFILE_IMG_LINK_DATA[0];
@@ -13,9 +12,7 @@ const meta: Meta<typeof ProfileDropdownCard> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

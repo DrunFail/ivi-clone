@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import CommentList from "./CommentList";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import { Provider } from "react-redux";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 import { ReviewTree } from "../../../models/types";
@@ -61,11 +60,9 @@ const commentData: ReviewTree[] = [
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <PageWrapper>
           <CommentList commentData={commentData} />
         </PageWrapper>
-      </WrapperIntl>
     </Provider>
   ),
 };

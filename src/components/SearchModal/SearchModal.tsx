@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FormattedMessage } from "react-intl";
 import styles from "./SearchModal.module.scss";
-import Modal from "../UI/Modal/Modal";
 import TextFieldWithLabel from "../UI/TextFieldWithLabel/TextFieldWithLabel";
 import DefaultSearchResult from "./DefaultSearchResult/DefaultSearchResult";
 import SearchResult from "./SearchResult/SearchResult";

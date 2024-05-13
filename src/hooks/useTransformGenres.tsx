@@ -1,20 +1,19 @@
-import { useIntl } from "react-intl";
 import { CLIENT_GENRE_LIST } from "../constants/genreList";
 import { LinkData } from "../models/global";
-import { useAppSelector } from "./reduxHook";
-import { getLang } from "../store/slices/switchLang";
 import { Genre } from "../models/types";
 import { calculateGenreName } from "../utils/calculateGenreName";
 import { getKeyByValue } from "../utils/getKeyByValue";
+import { useLocale, useTranslations } from "next-intl";
 
 type GenreKey = keyof typeof CLIENT_GENRE_LIST;
 
 export default function useTransformGenres(variant: "first" | "second", genreList:Genre[]) {
-    const intl = useIntl();
-    const lang = useAppSelector(getLang())
+    const lang = useLocale();
+    const t = useTranslations();
+
     if (variant === "first") {
         const getTranslateGenre = (key: GenreKey) => {
-            const genreName = intl.formatMessage({ id: `genre.${key}` });
+            const genreName = t(`genre.${key}`);
             return genreName
         }
         const getLinkGenre = (key: GenreKey) => {

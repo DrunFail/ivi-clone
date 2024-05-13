@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import store from "../../../store/store";
 import PageSection from "../../PageContainers/PageSection/PageSection";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 import MovieSlider from "./MovieSlider";
 import { rest } from "msw";
 import { MOVIE_SLIDER_LIST } from "../../../mockData/movieSliderList";
@@ -14,13 +13,11 @@ const meta: Meta<typeof MovieSlider> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <PageSection>
             <PageWrapper>
               <Story />
             </PageWrapper>
           </PageSection>
-        </WrapperIntl>
       </Provider>
     ),
   ],

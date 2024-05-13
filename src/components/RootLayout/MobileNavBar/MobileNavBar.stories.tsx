@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof MobileNavBar> = {
   title: "mobileNavBar/MobileNavBar",
@@ -12,9 +11,7 @@ const meta: Meta<typeof MobileNavBar> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

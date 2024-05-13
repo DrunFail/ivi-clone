@@ -1,14 +1,19 @@
 {
-  "auth.vk": "Login with VK",
 
-  "breadcrumbs.FILM": "Movies",
-  "breadcrumbs.TV_SERIES": "Serials",
-  "breadcrumbs.movies": "Movies",
-
-  "comment.about": "of the film {movie}",
-  "comment.comment": "New comment",
-  "comment.empty": "There are no comments here yet. Be the first!",
-  "comment.unauthorized": "Only registered users can leave comments",
+  "auth": {
+    "vk": "Login with VK"
+  },
+  "breadcrumbs": {
+    "FILM": "Movies",
+    "TV_SERIES": "Serials",
+    "movies": "Movies"
+  },
+  "comment": {
+    "about": "of the film {movie}",
+    "comment": "New comment",
+    "empty": "There are no comments here yet. Be the first!",
+    "unauthorized": "Only registered users can leave comments"
+  },
 
   "header": {
     "genres": "Genres",
@@ -23,7 +28,7 @@
     }
   },
 
-  
+
 
   "footer": {
     "about": "About us",
@@ -47,7 +52,7 @@
     "activate": "Activate sertificate"
 
   },
- 
+
 
   "hour": "h.",
   "minute": "min.",
@@ -75,7 +80,7 @@
     "stsCartoons": "STS Kids cartoons"
   },
 
-  
+
 
 
 
@@ -168,45 +173,57 @@
   "Error": "Error",
   "TheRequested": "The requested page does not exist",
 
-  "admin.heading": "Admin Dashboard",
+  "admin": {
+    "heading": "Admin Dashboard"
+  },
+  "button": {
+    "cancel": "cancel",
+    "confirm": "confirm",
+    "edit": "edit",
+    "delete": "delete",
+    "hint": {
+      "similar": "similar",
+      "dislike": "dislike",
+      "watchLater": "watch later",
+      "rate": "already watched, rate",
+      "edit": "edit",
+      "delete": "delete"
+    }
 
-
-  "button.cancel": "cancel",
-  "button.confirm": "confirm",
-  "button.edit": "edit",
-  "button.delete": "delete",
-
-  "button.hint.similar": "similar",
-  "button.hint.dislike": "dislike",
-  "button.hint.watchLater": "watch later",
-  "button.hint.rate": "already watched, rate",
-  "button.hint.edit": "edit",
-  "button.hint.delete": "delete",
-
-
-  "movie.back": "To movie",
+    
+  },
   "movies": "movies",
-  "movie.kinopoiskId": "id",
-  "movie.year": "year",
-  "movie.countries": "countries",
-  "movie.rating": "rating",
-  "movie.length": "duration",
-  "movie.genres": "genres",
-  "movie.currentNameRu": "current movie name (Rus)",
-  "movie.currentNameEng": "current movie name (Eng)",
-  "movie.newNameRu": "new movie name (Rus)",
-  "movie.newNameEng": "new movie name (Eng)",
+  "movie": {
+    "back": "To movie",
+    "kinopoiskId": "id",
+    "year": "year",
+    "countries": "countries",
+    "rating": "rating",
+    "length": "duration",
+    "genres": "genres",
+    "currentNameRu": "current movie name (Rus)",
+    "currentNameEng": "current movie name (Eng)",
+    "newNameRu": "new movie name (Rus)",
+    "newNameEng": "new movie name (Eng)"
+  },
+
+
+
 
   "genres": "genres",
-  "genre.id": "id",
-  "genre.currentNameRu": "current genre name (Rus)",
-  "genre.currentNameEng": "current genre name (Eng)",
-  "genre.newNameRu": "new genre name (Rus)",
-  "genre.newNameEng": "new genre name (Eng)",
+  
+  
 
   "error.required": "required field",
 
   "genre": {
+    "id": "id",
+    "currentNameRu": "current genre name (Rus)",
+    "currentNameEng": "current genre name (Eng)",
+    "newNameRu": "new genre name (Rus)",
+    "newNameEng": "new genre name (Eng)",
+
+
     "all.title": "All Films",
     "0.title": "All Films",
     "all.description": "Do you like to watch movies online and spend a lot of time combing websites in search of something interesting? Then you should linger – the films that we have collected will be enough for you for a long time. The collection is constantly updated with both new films and recognized masterpieces of the past years! No matter who you are – a fan of energetic action movies or a fan of youth TV series, the abundance of our catalog will make you forget about all other ways of spending leisure time, and you will watch your favorite movies online again and again!",
@@ -355,16 +372,16 @@
     "story.title": "Historical films",
     "story.short": "Historical",
     "story.description": "Is a historical film true or a director's fiction? Most often, both: the place, time and hero are real, and the details and circumstances are fictional. Therefore, watching movies about characters who actually existed is sometimes more interesting than reading a boring textbook. The best historical films are collected on the ivi portal, and the collection is constantly updated with new products. A good historical feature film gives an idea that a century and a thousand years ago people were tormented by the same passions and doubts as they are now. Among the fans of such a genre as historical cinema, there are representatives of all ages and professions. After all, the best historical films have a huge advantage: they do not distract from reality, but simply give an opportunity to see how people lived in bygone eras.",
-    
+
     "thriller": "Thriller",
     "thriller.title": "Thrillers",
     "thriller.short": "Thrillers",
     "thriller.description": "Do you want thrills? So, it's time to watch a chilling thriller. And there have been more than enough such films made in recent years. Among their heroes are monsters from the underworld, revived field scarecrows and collectors of human organs. To be in the same company with them is not just unpleasant, but deadly. But unlike their victims, you can escape to another room at any time. If, of course, you free yourself from the horror that has bound you.",
-    
+
     "turkish": "Turkish",
-    
+
     "tvshow": "TV show",
-    
+
     "western.title": "Westerns",
     "western.short": "Westerns",
     "western.description": "For the release of the eighth film by Quentin Tarantino, we would like to invite you to trace the history of the genre «western» and watch the best films of the genre in a special selection «Charming Eight». Here is everyone's favorite Soviet parody comedy «The Man from Capuchin Boulevard», and the cruel and bloody «Bone Tomahawk», which so amazed critics last year, and Tarantino's previous hit «Django Unchained», and Nikita Mikhalkov's inimitable action movie «A Friend among Strangers, a Stranger among his own». We wish you a pleasant viewing!"
@@ -372,24 +389,6 @@
 
 
   },
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -466,18 +465,26 @@
   "country.USSR.title": "USSR",
   "country.Yugoslavia.title": "Yugoslavia",
 
-  "sort.variant.nameRu": "By name",
-  "sort.variant.year": "By novelty",
-  "sort.variant.ratingKinopoiskVoteCount": "By number of votes",
-  "sort.variant.ratingKinopoisk": "By rating",
+  "sort": {
+    "variant": {
+      "nameRu": "By name",
+      "year": "By novelty",
+      "ratingKinopoiskVoteCount": "By number of votes",
+      "ratingKinopoisk": "By rating"
+    }
+  },
 
-  "label.ratingKinopoisk": "Rate from {value}",
-  "label.ratingKinopoiskVoteCount": "Num-r of rat-s from {value} mil.",
+  "label": {
+    "ratingKinopoisk": "Rate from {value}",
+    "ratingKinopoiskVoteCount": "Num-r of rat-s from {value} mil.",
 
-  "label.DIRECTOR": "Director",
-  "label.ACTOR": "Actor",
-  "label.countryId": "Country",
-  "label.genreId": "Genre",
+    "DIRECTOR": "Director",
+    "ACTOR": "Actor",
+    "countryId": "Country",
+    "genreId": "Genre"
+  },
+
+ 
 
   "year": {
     "movies": {
@@ -500,5 +507,5 @@
     }
 
   }
-  
+
 }

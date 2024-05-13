@@ -1,6 +1,6 @@
+import { useTranslations } from "next-intl";
 import Button from "../../UI/core/Button/Button";
 import styles from "./EditCardContainer.module.scss";
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 
 interface EditCardContainerProps {
     children: React.ReactNode,
@@ -8,7 +8,8 @@ interface EditCardContainerProps {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-export default function EditCardContainer({children,handleCloseEdit, handleSubmit }:EditCardContainerProps) {
+export default function EditCardContainer({ children, handleCloseEdit, handleSubmit }: EditCardContainerProps) {
+    const t = useTranslations();
     return (
         <form className={styles.container} onSubmit={handleSubmit }>
             {children}
@@ -19,7 +20,7 @@ export default function EditCardContainer({children,handleCloseEdit, handleSubmi
                     type="button"
                     onClick={handleCloseEdit}
                 >
-                    <MemoizedFormattedMessage id="button.cancel" />
+                    {t("button.cancel")}
                 </Button>
                 <Button
                     as="button"

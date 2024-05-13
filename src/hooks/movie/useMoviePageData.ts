@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
 import { MovieById } from "../../models/types";
-import { getLang } from "../../store/slices/switchLang";
 import { calculateGenreName } from "../../utils/calculateGenreName";
 import { calculateCountryName } from "../../utils/calculateCountryName";
 import { calculateMovieName } from "../../utils/calculateMovieName";
 import { minHours } from "../../utils/minHours";
 import { getInfoProduct } from "../../utils/getInfoProduct";
+import { useLocale } from "next-intl";
 
 
 interface UseMoviePageDataProps {
@@ -13,7 +12,7 @@ interface UseMoviePageDataProps {
 }
 
 export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
-    const lang = useSelector(getLang())
+    const lang = useLocale();
 
     if (!movieData) return null;
     const movieName = calculateMovieName(movieData.film, lang);

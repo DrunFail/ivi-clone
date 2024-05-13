@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import ButtonPromoContainer from "./ButtonPromoContainer/ButtonPromoContainer";
 import Button from "../UI/core/Button/Button";
 

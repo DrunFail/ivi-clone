@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
 
 import AboutBlockAccordion from "./AboutBlockAccordion";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 import store from "../../../../../store/store";
 
 const meta: Meta<typeof AboutBlockAccordion> = {
@@ -16,9 +15,7 @@ type Story = StoryObj<typeof AboutBlockAccordion>;
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <AboutBlockAccordion />
-      </WrapperIntl>
     </Provider>
   ),
 };

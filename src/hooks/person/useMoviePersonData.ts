@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
+import { useLocale } from "next-intl";
 import { DetailedPerson } from "../../models/types";
-import { getLang } from "../../store/slices/switchLang";
 
 export default function useMoviePersonData({ personData }: { personData: DetailedPerson | undefined }) {
-    const lang = useSelector(getLang());
+    const lang = useLocale();
 
     if (!personData) return;
     const personInfo = personData.person;

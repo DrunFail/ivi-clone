@@ -6,7 +6,6 @@ import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
 import { NAV_MENU } from "../../../../../constants/headerConstants";
 import store from "../../../../../store/store";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 
 const currentLink = NAV_MENU[3];
 
@@ -16,9 +15,7 @@ const meta: Meta<typeof HeaderNavbarDropdownContent> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

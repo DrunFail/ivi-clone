@@ -43,7 +43,7 @@ const newTabs: { tabName: string, count: number | null, isShowCount: boolean }[]
 
 
 
-export default function MoviePageModalLayout({ movie, dict, lang, children }: { movie: MovieById, dict: { [key: string]: string }, lang: "ru" | "en", children: React.ReactNode }) {
+export default function MoviePageModalLayout({ movie, lang,dict, children }: { movie: MovieById, dict:any, lang: "ru" | "en", children: React.ReactNode }) {
     const movieName = calculateMovieName(movie.film, lang);
     const movieDuration = calculateDurationMovie(movie.film.filmLength);
     const movieInfo = getInfoProduct(movie.film);

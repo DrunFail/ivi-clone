@@ -1,6 +1,5 @@
 import { useSwiper } from "swiper/react";
 import FontIcon from "../../UI/FontIcon/FontIcon";
-import { FormattedMessage } from "react-intl";
 
 interface ArrowsProps {
     styles: { [key: string]: string };

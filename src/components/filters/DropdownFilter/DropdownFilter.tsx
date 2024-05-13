@@ -1,4 +1,6 @@
-import { FormattedMessage } from "react-intl";
+"use client";
+
+
 import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
 import FilterName from "../../UI/filter/FilterName/FilterName";
 import FilterWrapperContainer from "../../UI/filter/FilterWrapperContainer/FilterWrapperContainer";
@@ -9,8 +11,8 @@ import { useEffect, useRef, useState } from "react";
 import FontIcon from "../../UI/FontIcon/FontIcon";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import styles from "./DropdownFilter.module.scss";
-import React from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface DropdownFilterProps {
     name: "genre" | "country";
@@ -24,6 +26,7 @@ interface DropdownFilterProps {
 
 export default function DropdownFilter({ name, clearArray, filterKey, setFilterParams, initValue = 0, variant, typeItemList }: DropdownFilterProps) {
     const [isVisibleDropdown, setIsVisibleDropdown] = useState(false);
+    const t = useTranslations();
 
     const path = usePathname()!;
 
@@ -47,11 +50,11 @@ export default function DropdownFilter({ name, clearArray, filterKey, setFilterP
             <div className={styles.container}  onClick={toggleVisibleDropdown}>
                 <div>
                     <FilterName>
-                        <FormattedMessage id={`label.${filterKey}`} />
+                        {t(`label.${filterKey}`) }
                     </FilterName>
 
                     <SelectedFilterValue>
-                        <FormattedMessage id={`${name}.${initValue}.title`} />
+                        {t(`${name}.${initValue}.title`) }
                     </SelectedFilterValue>
                 </div>
                 <FontIcon variant="arrowDown" size={12} />

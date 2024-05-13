@@ -1,11 +1,10 @@
+import { useLocale } from "next-intl";
 import { LinkData } from "../models/global";
 import { Country } from "../models/types";
-import { getLang } from "../store/slices/switchLang";
 import { calculateCountryName } from "../utils/calculateCountryName";
-import { useAppSelector } from "./reduxHook";
 
 export default function useTransformCountries(countriesList: Country[]):LinkData[] {
-    const lang = useAppSelector(getLang())
+    const lang = useLocale();
     const transformData = countriesList.map(country => {
         const name = calculateCountryName(country, lang);
         const link = "";

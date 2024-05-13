@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import ProfileDropdownWindow from "./ProfileDropdownWindow";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 import store from "../../../../../store/store";
 
 const meta: Meta<typeof ProfileDropdownWindow> = {
@@ -13,9 +12,7 @@ const meta: Meta<typeof ProfileDropdownWindow> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import RootLayout from "./RootLayout";
 import { Provider } from "react-redux";
 import store from "../../store/store";
-import WrapperIntl from "../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof RootLayout> = {
   title: "layouts/RootLayout",
@@ -16,7 +15,6 @@ type Story = StoryObj<typeof RootLayout>;
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <RootLayout>
           <div
             style={{
@@ -28,7 +26,6 @@ export const Primary: Story = {
             content
           </div>
         </RootLayout>
-      </WrapperIntl>
     </Provider>
   ),
 };

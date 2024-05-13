@@ -9,8 +9,7 @@ async function getMovieById(movieId: string) {
 
 export default async function Layout({children, params: { id, locale } }: {children:React.ReactNode, params: { id: string, locale: "en" | "ru" } }) {
     const movie = await getMovieById(id);
-    const dict = await getDictionary(locale);
-
+    const dict = await getDictionary(locale)
 
 
 
@@ -18,8 +17,8 @@ export default async function Layout({children, params: { id, locale } }: {child
       
         <MoviePageModalLayout
             movie={movie}
-            dict={dict}
             lang={locale}
+            dict={dict }
         >
             <div id="not-inter">
            

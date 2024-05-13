@@ -1,10 +1,10 @@
 "use client";
 
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 import ShareButtonWithModal from "../../Share/ShareButtonWithModal";
 import FontIcon from "../../UI/FontIcon/FontIcon";
 import Button from "../../UI/core/Button/Button";
 import styles from "./ButtonPlayerBlock.module.scss";
+import { useTranslations } from "next-intl";
 
 interface ButtonPlayerBlockProps {
     moviePosterUrl: string;
@@ -17,11 +17,11 @@ export default function ButtonPlayerBlock({ moviePosterUrl, movieName, movieYear
     ${styles.container}
     ${styles[variant]}
     `
-
+    const t = useTranslations();
     return (
         <div className={defaultClasses}>
             <Button as="button">
-                <MemoizedFormattedMessage id="trailer" />
+                {t("trailer") }
             </Button>
             <Button
                 as="button"

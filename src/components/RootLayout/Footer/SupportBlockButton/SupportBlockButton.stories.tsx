@@ -4,7 +4,6 @@ import SupportBlockButton from "./SupportBlockButton";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
 import store from "../../../../store/store";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SupportBlockButton> = {
   title: "footer/components/SupportBlockButton",
@@ -12,9 +11,7 @@ const meta: Meta<typeof SupportBlockButton> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

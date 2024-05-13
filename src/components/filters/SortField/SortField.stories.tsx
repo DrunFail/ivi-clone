@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import SortField from "./SortField";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SortField> = {
   title: "filters/SortField",
@@ -17,7 +16,6 @@ const sortHandler = () => console.log("click");
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <div style={{ inlineSize: "250px" }}>
           <SortField
             setFilterParams={sortHandler}
@@ -25,7 +23,6 @@ export const Primary: Story = {
             currentSortVariant="nameRu"
           />
         </div>
-      </WrapperIntl>
     </Provider>
   ),
 };

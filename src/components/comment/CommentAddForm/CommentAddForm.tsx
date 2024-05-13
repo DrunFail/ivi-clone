@@ -1,11 +1,11 @@
 "use client";
 
-import { FormattedMessage } from "react-intl";
 import styles from "./CommentAddForm.module.scss";
 import { ReviewTree } from "../../../models/types";
 import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 import useCommentAddForm from "../../../hooks/comment/useCommentAddForm";
 import Button from "../../UI/core/Button/Button";
+import { useTranslations } from "next-intl";
 
 interface CommentAddFormProps {
     movieKinopoiskId: number,
@@ -17,6 +17,7 @@ interface CommentAddFormProps {
 
 export default function CommentAddForm({ movieKinopoiskId, parentId, sendCommentHandler,inputId }: CommentAddFormProps) {
     const { commentValue, updateCommentValue, createReview } = useCommentAddForm({ sendCommentHandler, parentId, movieKinopoiskId });
+    const t = useTranslations();
 
     return (
         <form className={styles.form} onSubmit={(e) => { e.preventDefault(); createReview() }}>
@@ -27,7 +28,7 @@ export default function CommentAddForm({ movieKinopoiskId, parentId, sendComment
                 onChange={updateCommentValue}
             />
             <Button color="red" type="submit">
-                <FormattedMessage id="Send" />
+                {t("Send") }
             </Button>
         </form>
     );

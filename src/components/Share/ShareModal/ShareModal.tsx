@@ -1,8 +1,8 @@
 import Modal from "../../UI/Modal/Modal";
 import Image from "next/image";
 import styles from "./ShareModal.module.scss";
-import { FormattedMessage } from "react-intl";
 import Button from "../../UI/core/Button/Button";
+import { useTranslations } from "next-intl";
 
 interface ShareModalProps {
     visible: boolean,
@@ -17,7 +17,7 @@ export default function ShareModal({ visible, isModalClose, urlMovieImage, movie
         navigator.clipboard.writeText(window.location.href);
         isModalClose();
     }
-
+    const t = useTranslations();
     return (
         <Modal visible={visible} callback={isModalClose}>
             <div className={styles.wrapper}>
@@ -38,7 +38,7 @@ export default function ShareModal({ visible, isModalClose, urlMovieImage, movie
                     </div>
                     <div className={styles.button}>
                         <Button onClick={copyToClipboard}>
-                            <FormattedMessage id="CopyLink" />
+                            {t("CopyLink") }
                         </Button>
 
                     </div>

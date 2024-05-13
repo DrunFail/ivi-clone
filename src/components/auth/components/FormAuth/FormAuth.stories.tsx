@@ -3,7 +3,6 @@ import { Title, Canvas } from "@storybook/blocks";
 
 import FormAuth from "./FormAuth";
 import { Provider } from "react-redux";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 import PageWrapper from "../../../PageContainers/PageWrapper/PageWrapper";
 import store from "../../../../store/store";
 import TextFieldWithLabel from "../../../UI/TextFieldWithLabel/TextFieldWithLabel";
@@ -16,11 +15,9 @@ const meta: Meta<typeof FormAuth> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <PageWrapper>
             <Story />
           </PageWrapper>
-        </WrapperIntl>
       </Provider>
     ),
   ],

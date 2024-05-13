@@ -1,4 +1,3 @@
-import { FormattedMessage } from "react-intl";
 import Modal from "../../UI/Modal/Modal";
 import RatingHeading from "./components/RatingHeading/RatingHeading";
 import RatingTextDescription from "./components/RatingTextDescription/RatingTextDescription";
@@ -8,22 +7,24 @@ import RatingModalContentContainer from "./containers/RaringModalContentContaine
 import RatingModalContainer from "./containers/RatingModalContainer/RatingModalContainer";
 import RatingModalTextContainer from "./containers/RatingModalTextContainer/RatingModalTextContainer";
 import RatingModalVoteContainer from "./containers/RatingModalVoteContainer/RatingModalVoteContainer";
+import { useTranslations } from "next-intl";
 
 interface RatingModalProps {
     visible: boolean,
     call: () => void
 }
-export default function RatingModal({ visible, call}: RatingModalProps) {
+export default function RatingModal({ visible, call }: RatingModalProps) {
+    const t = useTranslations();
     return (
         <Modal callback={() => call()} visible={visible}>
             <RatingModalContainer>
                 <RatingModalContentContainer>
                     <RatingModalTextContainer>
                         <RatingHeading>
-                            <FormattedMessage id="YourMark" />
+                            {t("YourMark") }
                         </RatingHeading>
                         <RatingTextDescription>
-                            <FormattedMessage id="MarkImproveRecomendation" />
+                            {t("MarkImproveRecomendation") }
                         </RatingTextDescription>
                     </RatingModalTextContainer>
                     <RatingModalVoteContainer>

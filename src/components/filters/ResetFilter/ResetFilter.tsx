@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { FormattedMessage } from "react-intl";
 import styles from "./ResetFilter.module.scss";
 import FontIcon from "../../UI/FontIcon/FontIcon";
+import { useTranslations } from "next-intl";
 
 export default function ResetFilter({ resetHandler, variant }: { resetHandler: () => void, variant: "admin" | "genrePage" }) {
+    const t = useTranslations();
     return (
         <>
             {variant === "genrePage"
@@ -13,7 +14,7 @@ export default function ResetFilter({ resetHandler, variant }: { resetHandler: (
                             <FontIcon variant="close" />
                         </span>
                         <span>
-                            <FormattedMessage id="ResetFilters" />
+                            {t("ResetFilters") }
                         </span>
                     </div>
                 </Link>
@@ -22,7 +23,7 @@ export default function ResetFilter({ resetHandler, variant }: { resetHandler: (
                         <FontIcon variant="close" />
                     </span>
                     <span>
-                        <FormattedMessage id="ResetFilters" />
+                        {t("ResetFilters") }
                     </span>
                 </div>
             }

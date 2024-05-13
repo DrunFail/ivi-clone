@@ -1,6 +1,5 @@
 "use client";
 
-import { FormattedMessage } from "react-intl";
 import Carousel from "../../UI/Carousel/Carousel";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
@@ -9,25 +8,25 @@ import { ResponseWithCountAndRows } from "../../../models/response";
 import CommentCardContainer from "./CommentCardContainer/CommentCardContainer";
 import Button from "../../UI/core/Button/Button";
 import { REVIEWLIST_SIZE } from "../../../constants/sliderItemSize";
+import { useTranslations } from "next-intl";
 
 interface CommentSliderProps {
     commentData: ResponseWithCountAndRows<Review>,
     movieName: string,
     movieId: number
 }
-export default function CommentSlider({  commentData, movieName, movieId }: CommentSliderProps) {
+export default function CommentSlider({ commentData, movieName, movieId }: CommentSliderProps) {
+    const t = useTranslations();
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.text}>
                     <p>
-                        <FormattedMessage
-                            id="comment.about"
-                            values={{ movie: movieName }} />
+                        {t("comment.about", {movie:movieName}) }
                     </p>
                 </div>
                 <Button>
-                    <FormattedMessage id="comment.comment" />
+                    {t("comment.comment") }
                 </Button>
             </div>
             <div className={styles.slider}>

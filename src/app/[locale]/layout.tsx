@@ -1,5 +1,4 @@
 import { NextIntlClientProvider } from "next-intl";
-import WrapperIntl from "../../components/WrapperIntl/WrapperIntl";
 import { AuthProvider } from "../../components/auth/context/AuthProvider";
 import ReduxProvider from "../../store/ReduxProvider";
 import "../../styles/index.scss";
@@ -44,7 +43,6 @@ export default async function RootLayout({
     return (
         <ReduxProvider>
             <AuthProvider>
-                <WrapperIntl>
                     <NextIntlClientProvider messages={messages}>
                         <html lang={locale} className={iviFont.className}>
                         <body>
@@ -53,7 +51,6 @@ export default async function RootLayout({
                         </body>
                         </html>
                     </NextIntlClientProvider>
-                </WrapperIntl>
             </AuthProvider>
         </ReduxProvider>
     )

@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 
 import ServiceBlockAccordion from "./ServiceBlockAccordion";
 import store from "../../../../../store/store";
-import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof ServiceBlockAccordion> = {
   title: "mobileNavBar/ServiceBlockAccordion",
@@ -16,9 +15,7 @@ type Story = StoryObj<typeof ServiceBlockAccordion>;
 export const Primary: Story = {
   render: () => (
     <Provider store={store}>
-      <WrapperIntl>
         <ServiceBlockAccordion />
-      </WrapperIntl>
     </Provider>
   ),
 };

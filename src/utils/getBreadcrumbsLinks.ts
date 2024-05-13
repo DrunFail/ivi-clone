@@ -6,7 +6,7 @@ import { getKeyByValue } from "./getKeyByValue";
 interface Props {
     movie: MovieById,
     lang: "ru" | "en",
-    dict: { [key: string]: string }
+    dict: any
 }
 
 const TYPE_MOVIE_LINK = {

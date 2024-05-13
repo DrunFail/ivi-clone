@@ -1,15 +1,13 @@
-"use client";
-
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 import Button from "../../UI/core/Button/Button";
 import styles from "./UnauthorizedAlert.module.scss";
-import { FormattedMessage } from "react-intl";
+import { useTranslations } from "next-intl";
 
 export default function UnauthorizedAlert() {
+    const t = useTranslations();
     return (
         <div className={styles.alert}>
             <div className={styles.text }>
-                <FormattedMessage id="comment.unauthorized"/>
+                {t("comment.unauthorized") }
             </div>
             
             <Button
@@ -17,7 +15,7 @@ export default function UnauthorizedAlert() {
                 color="red"
                 href="/auth/login"
             >
-                <MemoizedFormattedMessage id="EnterOrRegister" />
+                {t("EnterOrRegister") }
             </Button>
 
         </div>

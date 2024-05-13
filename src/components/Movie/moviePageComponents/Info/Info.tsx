@@ -1,8 +1,8 @@
 "use client";
 
-import { FormattedMessage } from "react-intl";
 import MovieTitleWithYear from "../../MovieTitleWithYear/MovieTitleWithYear";
 import styles from "./Info.module.scss";
+import { useTranslations } from "next-intl";
 
 interface InfoProps {
     movieTitle: string,
@@ -14,6 +14,7 @@ interface InfoProps {
 
 }
 export default function Info({ movieTitle, movieYear, ageLimit, movieDuration, movieCountry, movieGenre }: InfoProps) {
+    const t = useTranslations();
     return (
         <div className={styles.container}>
             <MovieTitleWithYear
@@ -23,7 +24,14 @@ export default function Info({ movieTitle, movieYear, ageLimit, movieDuration, m
             <div className={styles.info_container }>
                 <div className={styles.top}>
                     <span>{movieYear}</span>
-                    <span>{movieDuration.hours}{" "}<FormattedMessage id="hour" />{movieDuration.minutes}{" "}<FormattedMessage id="minute" /></span>
+                    <span>
+                        {movieDuration.hours}
+                        {" "}
+                        {t("hour")}
+                        {movieDuration.minutes}
+                        {" "}
+                        {t("minute")}
+                    </span>
                     <span>{ageLimit}+</span>
                 </div>
                 <div className={styles.bottom}>
