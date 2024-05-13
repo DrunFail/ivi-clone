@@ -1,7 +1,5 @@
-
 .container{
     cursor: pointer;
-
     display: grid;
     place-items: center;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -9,12 +7,12 @@
     block-size: 32px;
     inline-size: 32px;
     position: relative;
-    &__text {
+    .currentLocale {
         color:rgba(255, 255, 255, 0.5);
         font-size: 16px;
         line-height: 1;
     }
-    .switcher_btn {
+    .localeVariant {
         bottom: -80px;
         right: 0;
         position: absolute;
@@ -24,7 +22,7 @@
         border-radius: 5px;
         overflow: hidden;
         z-index: 2;
-        button {
+         a {
             height: 40px;
             display: flex;
             width: 100%;
