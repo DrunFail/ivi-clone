@@ -15,7 +15,6 @@ const meta: Meta<typeof StaffSlider> = {
 export default meta;
 type Story = StoryObj<typeof StaffSlider>;
 
-const callback = () => console.log("click");
 
 export const Primary: Story = {
   render: () => (
@@ -23,7 +22,7 @@ export const Primary: Story = {
       <WrapperIntl>
         <PageSection>
           <PageWrapper>
-            <StaffSlider data={PERSON_MOCK_DATA} callback={callback} />
+            <StaffSlider data={PERSON_MOCK_DATA}/>
           </PageWrapper>
         </PageSection>
       </WrapperIntl>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useResize } from "../../../hooks/useResize";
 import { Person } from "../../../models/types";
 import RatingBlock from "../../Rating/RatingBlock/RatingBlock";
@@ -13,7 +15,7 @@ interface PersonListWithRatingProps {
 export default function PersonListWithRating({ persons,movieRating }: PersonListWithRatingProps) {
     const size = useResize();
     let personAmount: number = 4;
-    if (size < 1160) personAmount = 5;
+    if (size && size < 1160) personAmount = 5;
     const slicedPersons = persons.length > personAmount ? persons.slice(0, personAmount) : persons
 
     return (

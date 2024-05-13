@@ -1,12 +1,10 @@
 .container {
     display: grid;
     grid-auto-flow: column;
-   justify-content: flex-start;
-   
+    column-gap: 15px;
+    justify-content: flex-start;
     inline-size: 100%;
     font-size: 15px;
     font-weight: var(--fw-bold);
-    gap: 30px;
-    margin-top: 30px;
     border-bottom: 2px solid rgba(255,255,255,0.3);
 }

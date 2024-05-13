@@ -1,0 +1,11 @@
+.link {
+    font-size: 15px;
+    display: flex;
+    column-gap: 8px;
+    color: #fff;
+    opacity: 0.72;
+
+    &:hover{
+        opacity: 1;
+    }
+}

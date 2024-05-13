@@ -2,6 +2,7 @@ import Crumb from "./Crumb/Crumb";
 import styles from "./BreadCrumbs.module.scss";
 import DefaultSeparator from "./DefaultSeparator/DefaultSeparator";
 import Link from "next/link";
+import { Fragment } from "react";
 
 interface BreadCrumbsProps {
     breadcrumbs: { children: React.ReactNode, href: string }[],
@@ -19,16 +20,16 @@ export default function BreadCrumbs({ breadcrumbs, isLastCrumbActive = true, sep
 
 
                 return (
-                    <>
+                    <Fragment key={index}>
                         {isLastCrumb && !isLastCrumbActive
-                            ? <div>{renderedCrumb}</div>
+                            ? <div >{renderedCrumb}</div>
                             : <Link href={crumb.href}>
                                 {renderedCrumb}
                             </Link>
                         }
 
                         {!isLastCrumb && separator}
-                    </>)
+                    </Fragment>)
             }
             )}
         </div>

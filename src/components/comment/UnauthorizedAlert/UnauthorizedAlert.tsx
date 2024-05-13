@@ -1,3 +1,5 @@
+"use client";
+
 import MemoizedFormattedMessage from "react-intl/src/components/message";
 import Button from "../../UI/core/Button/Button";
 import styles from "./UnauthorizedAlert.module.scss";
@@ -14,7 +16,6 @@ export default function UnauthorizedAlert() {
                 as="link"
                 color="red"
                 href="/auth/login"
-                data-testId="btn-login"
             >
                 <MemoizedFormattedMessage id="EnterOrRegister" />
             </Button>

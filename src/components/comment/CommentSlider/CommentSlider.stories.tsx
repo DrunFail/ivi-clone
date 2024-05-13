@@ -24,9 +24,6 @@ export const Primary: Story = {
               count: 0,
               rows: [],
             }}
-            callback={function (): void {
-              throw new Error("Function not implemented.");
-            }}
             movieName={""}
             movieId={0}
           />

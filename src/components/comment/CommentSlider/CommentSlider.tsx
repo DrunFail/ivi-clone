@@ -1,3 +1,5 @@
+"use client";
+
 import { FormattedMessage } from "react-intl";
 import Carousel from "../../UI/Carousel/Carousel";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
@@ -10,25 +12,21 @@ import { REVIEWLIST_SIZE } from "../../../constants/sliderItemSize";
 
 interface CommentSliderProps {
     commentData: ResponseWithCountAndRows<Review>,
-    callback: () => void,
     movieName: string,
     movieId: number
 }
-export default function CommentSlider({ callback, commentData, movieName, movieId }: CommentSliderProps) {
+export default function CommentSlider({  commentData, movieName, movieId }: CommentSliderProps) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.text}>
-                    <h1 onClick={() => callback()}>
-                        <FormattedMessage id="Review" />
-                    </h1>
                     <p>
                         <FormattedMessage
                             id="comment.about"
                             values={{ movie: movieName }} />
                     </p>
                 </div>
-                <Button onClick={callback}>
+                <Button>
                     <FormattedMessage id="comment.comment" />
                 </Button>
             </div>
@@ -40,7 +38,6 @@ export default function CommentSlider({ callback, commentData, movieName, movieI
                         data={commentData.rows}
                         count={commentData.rows.length}
                         sizes={REVIEWLIST_SIZE}
-                        callback={() => callback()}
                         component={CommentCardContainer}
                     />
                     : <EmptyCommentCard variant="slider" />

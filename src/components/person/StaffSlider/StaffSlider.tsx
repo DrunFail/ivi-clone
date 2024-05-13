@@ -1,27 +1,20 @@
+"use client";
+
 import { FormattedMessage } from "react-intl";
 import Carousel from "../../UI/Carousel/Carousel";
 import { Person } from "../../../models/types";
 import { STAFF_CARD_SIZES } from "./StaffCard/const";
 import StaffCardContainer from "./StaffCardContainer/StaffCardContainer";
 import styles from "./StaffSlider.module.scss";
-import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 import Button from "../../UI/core/Button/Button";
 
 interface StaffSliderProps {
     data: Person[],
-    callback: () => void
 }
-export default function StaffSlider({ data, callback }: StaffSliderProps) {
+
+export default function StaffSlider({ data }: StaffSliderProps) {
     
     return (
-        <>
-           
-            <div onClick={callback}>
-                <SectionTitle withArrow={false}>
-                    <FormattedMessage id="CreatersAndActors" />
-                </SectionTitle>
-                </div>
-           
             <div className={styles.content}>
                 <Carousel
                     mode={"collection"}
@@ -35,6 +28,5 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
                     <FormattedMessage id="More" />
                 </Button>
             </div>
-        </>
     );
 }

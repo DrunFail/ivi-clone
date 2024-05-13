@@ -1,0 +1,13 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 152px;
+    margin-inline: auto;
+    max-inline-size: 880px;
+    column-gap: 200px;
+    margin-block-start: 60px;
+
+    .header{
+        display: grid;
+        row-gap: 20px;
+    }
+}

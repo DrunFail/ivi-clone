@@ -1,3 +1,5 @@
+"use client";
+
 import { FormattedMessage } from "react-intl";
 import styles from "./CommentAddForm.module.scss";
 import { ReviewTree } from "../../../models/types";

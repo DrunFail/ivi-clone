@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./PageWrapper.module.scss";
 
 interface PageWrapperProps {

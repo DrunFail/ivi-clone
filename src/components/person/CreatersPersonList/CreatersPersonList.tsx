@@ -1,21 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FormattedMessage } from "react-intl";
 import styles from "./CreatersPersonList.module.scss";
 import { Person } from "../../../models/types";
 import { calculatePersonName } from "../../../utils/calculatePersonName";
 
 interface CreatersPersonListProps {
     personList: Person[],
-    intlId: string
+    listTitle: string
 }
-export default function CreatersPersonList({ personList, intlId }: CreatersPersonListProps) {
+export default function CreatersPersonList({ personList, listTitle }: CreatersPersonListProps) {
 
 
     return (
         <div className={styles.container}>
             <h3>
-                <FormattedMessage id={intlId} />
+                {listTitle}
             </h3>
             <div className={styles.list}>
                 {personList
