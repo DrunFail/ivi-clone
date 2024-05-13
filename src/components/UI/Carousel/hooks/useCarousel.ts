@@ -24,18 +24,20 @@ export default function useCarousel({ dataLength, sizes, count }: UseCarouselPro
         if (!slider) {
             throw new Error("не удалось получить slider по id");
         }
+        if (size) {
+            const currentSize = sortedSizes.find(elem => elem.resol <= size);
+            if (currentSize) {
+                setItemAmountOnPage(currentSize.items);
+                setItemCount(currentSize.items);
+                slider.style.setProperty("--item-amount", currentSize.items.toString());
+            } else {
+                setItemAmountOnPage(+lastSize);
+                setItemCount(+lastSize);
+                slider.style.setProperty("--item-amount", lastSize);
 
-        const currentSize = sortedSizes.find(elem => elem.resol <= size);
-        if (currentSize) {
-            setItemAmountOnPage(currentSize.items);
-            setItemCount(currentSize.items);
-            slider.style.setProperty("--item-amount", currentSize.items.toString());
-        } else {
-            setItemAmountOnPage(+lastSize);
-            setItemCount(+lastSize);
-            slider.style.setProperty("--item-amount", lastSize);
-
+            }
         }
+        
     }, [size]);
 
     const handleClickNextSlide = () => {

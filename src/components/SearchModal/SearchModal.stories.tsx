@@ -17,10 +17,6 @@ export const Primary: Story = {
     <Provider store={store}>
       <WrapperIntl>
         <SearchModal
-          visible
-          handleVisible={function (): void {
-            throw new Error("Function not implemented.");
-          }}
         />
       </WrapperIntl>
     </Provider>

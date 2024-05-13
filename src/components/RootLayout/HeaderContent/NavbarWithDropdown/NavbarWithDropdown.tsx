@@ -1,4 +1,6 @@
-import {useState } from "react";
+"use client";
+
+import { useState } from "react";
 import styles from "./NavbarWithDropdown.module.scss";
 import Navbar from "./Navbar/Navbar";
 import dynamic from "next/dynamic";

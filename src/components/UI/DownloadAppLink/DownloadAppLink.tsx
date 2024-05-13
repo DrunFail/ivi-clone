@@ -1,3 +1,5 @@
+"use client";
+
 import { FormattedMessage } from "react-intl";
 import Image from "next/image";
 import apple from "../../../assets/SVG/Apps/Apple.svg";

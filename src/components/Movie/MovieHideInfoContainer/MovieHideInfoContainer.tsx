@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import MovieDescription from "../moviePageComponents/MovieDescription/MovieDescription";
 import ButtonHide from "./ButtonHide/ButtonHide";

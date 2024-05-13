@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import useOutsideClick from "../../../hooks/useOutsideClick";
 import AccordionContent from "./AccordionContent/AccordionContent";

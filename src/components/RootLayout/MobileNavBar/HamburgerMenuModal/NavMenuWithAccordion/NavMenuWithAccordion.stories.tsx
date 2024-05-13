@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import NavMenuWithAccordion from "./NavMenuWithAccordion";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
-import store from "../../../../../../store/store";
-import WrapperIntl from "../../../../../WrapperIntl/WrapperIntl";
+import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
+import store from "../../../../../store/store";
 
 const meta: Meta<typeof NavMenuWithAccordion> = {
   title: "mobileNavBar/NavMenuWithAccordion",

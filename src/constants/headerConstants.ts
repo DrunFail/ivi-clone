@@ -101,10 +101,10 @@ export const NAV_MENU: NavbarLink[] = [
                 { name: "iviMovies", link: "https://www.ivi.ru/collections/ivi-originals" }
             ],
             years: [
-                { name: "movie.2023", link: "https://www.ivi.ru/movies/2023" },
-                { name: "movie.2022", link: "https://www.ivi.ru/movies/2022" },
-                { name: "movie.2021", link: "https://www.ivi.ru/movies/2021" },
-                { name: "movie.2020", link: "https://www.ivi.ru/movies/2020" }
+                { name: "2023", link: "https://www.ivi.ru/movies/2023" },
+                { name: "2022", link: "https://www.ivi.ru/movies/2022" },
+                { name: "2021", link: "https://www.ivi.ru/movies/2021" },
+                { name: "2020", link: "https://www.ivi.ru/movies/2020" }
             ]
         }
     },
@@ -152,10 +152,10 @@ export const NAV_MENU: NavbarLink[] = [
                 { name: "paramountSerials", link: "https://www.ivi.ru/collections/series-paramount-play" }
             ],
             years: [
-                { name: "serial.2023", link: "https://www.ivi.ru/series/2023" },
-                { name: "serial.2022", link: "https://www.ivi.ru/series/2022" },
-                { name: "serial.2021", link: "https://www.ivi.ru/series/2021" },
-                { name: "serial.2020", link: "https://www.ivi.ru/series/2020" }
+                { name: "2023", link: "https://www.ivi.ru/series/2023" },
+                { name: "2022", link: "https://www.ivi.ru/series/2022" },
+                { name: "2021", link: "https://www.ivi.ru/series/2021" },
+                { name: "2020", link: "https://www.ivi.ru/series/2020" }
             ]
         },
     },
@@ -200,10 +200,10 @@ export const NAV_MENU: NavbarLink[] = [
                 { name: "stsCartoons", link: "https://www.ivi.ru/collections/ctc-kids" }
             ],
             years: [
-                { name: "cartoon.2023", link: "https://www.ivi.ru/animation/2023" },
-                { name: "cartoon.2022", link: "https://www.ivi.ru/animation/2022" },
-                { name: "cartoon.2021", link: "https://www.ivi.ru/animation/2021" },
-                { name: "cartoon.2020", link: "https://www.ivi.ru/animation/2020" }
+                { name: "2023", link: "https://www.ivi.ru/animation/2023" },
+                { name: "2022", link: "https://www.ivi.ru/animation/2022" },
+                { name: "2021", link: "https://www.ivi.ru/animation/2021" },
+                { name: "2020", link: "https://www.ivi.ru/animation/2020" }
             ]
         },
     }

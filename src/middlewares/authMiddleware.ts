@@ -12,25 +12,25 @@ export const authMiddleware: MiddlewareFactory = (next) => {
         const res = NextResponse.next();
 
         
-        let locales = [ 'ru', 'en']
-        let defaultLocale = 'ru'
-        const langHeaders = request.headers.get("Accept-Language")!;
-        let languages = new Negotiator({ headers: { "Accept-Language": langHeaders } }).language(locales)!;
-        const langCookie = request.cookies.get("locale")?.value;
-        /* eslint-disable */
-        //@ts-ignore
-        const locale = match(languages, locales, defaultLocale)
-        const currentLocale = langCookie || locale;
-        const { pathname } = request.nextUrl
-        const pathnameHasLocale = locales.some(
-            (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-        )
-        const PUBLIC_FILE = /\.(.*)$/;
-        if (!pathnameHasLocale && !request.nextUrl.pathname.startsWith('/_next') && !PUBLIC_FILE.test(request.nextUrl.pathname) ) {
-            request.nextUrl.pathname = `/${currentLocale}${pathname}`;
+        //let locales = [ 'ru', 'en']
+        //let defaultLocale = 'ru'
+        //const langHeaders = request.headers.get("Accept-Language")!;
+        //let languages = new Negotiator({ headers: { "Accept-Language": langHeaders } }).language(locales)!;
+        //const langCookie = request.cookies.get("locale")?.value;
+        ///* eslint-disable */
+        ////@ts-ignore
+        //const locale = match(languages, locales, defaultLocale)
+        //const currentLocale = langCookie || locale;
+        //const { pathname } = request.nextUrl
+        //const pathnameHasLocale = locales.some(
+        //    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+        //)
+        //const PUBLIC_FILE = /\.(.*)$/;
+        //if (!pathnameHasLocale && !request.nextUrl.pathname.startsWith('/_next') && !PUBLIC_FILE.test(request.nextUrl.pathname) ) {
+        //    request.nextUrl.pathname = `/${currentLocale}${pathname}`;
             
-            return NextResponse.redirect(request.nextUrl)
-        }
+        //    return NextResponse.redirect(request.nextUrl)
+        //}
 
 
 

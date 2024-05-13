@@ -75,8 +75,8 @@
   "ToggleMovieHide": "Details film",
   "ToggleMovieShow": "Hide details",
   "Creaters": "Creators",
-  "Review": "Review",
-  "Actors": "Actors",
+  "review": "Review",
+  "actors": "Actors",
   "CreatersAndActors": "Actors and creators",
   "TrailerAndMaterial": "Trailer and material",
   "WithFilm": "With film «{name}» watch",
@@ -140,7 +140,7 @@
   "Expand": "Expand",
   "FullFilmography": "Full filmography",
   "Detail": "Detail",
-  "Director": "Director",
+  "director": "Director",
   "Slogan": "Slogan",
   "WatchInTheGalery": "Watch in the galery",
   "MainPage": "Main page",
@@ -171,6 +171,8 @@
   "button.hint.edit": "edit",
   "button.hint.delete": "delete",
 
+
+  "movie.back": "To movie",
   "movies": "movies",
   "movie.kinopoiskId": "id",
   "movie.year": "year",

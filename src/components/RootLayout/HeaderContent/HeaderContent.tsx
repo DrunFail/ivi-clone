@@ -1,19 +1,25 @@
 import styles from "./HeaderContent.module.scss";
 import HeaderPortalContainer from "./portal/HeaderPortalContainer";
-import LanguageSwitcher from "../../UI/LanguageSwitcher/LanguageSwitcher";
-import { useResize } from "../../../hooks/useResize";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHook";
-import { fetchGenres, selectAllGenres } from "../../../store/slices/genresSlice";
-import { useEffect } from "react";
-import useTransformGenres from "../../../hooks/useTransformGenres";
 import { LinkData, NavbarLink } from "../../../models/global";
 import { NAV_MENU } from "../../../constants/headerConstants";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
-import NavbarWithDropdown from "./NavbarWithDropdown/NavbarWithDropdown";
-import ButtonSubscription from "./ButtonSubscription/ButtonSubscription";
-import SearchButtonWithModal from "./SearchButtonWithModal/SearchButtonWithModal";
-import SearchButtonDesktop from "./SearchButtonDesktop/SearchButtonDesktop";
 import ProfileIconWithDropdown from "./ProfileIconWithDropdown/ProfileIconWithDropdown";
+import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
+import dynamic from "next/dynamic";
+
+const ButtonSubscription = dynamic(() => import('./ButtonSubscription/ButtonSubscription'));
+const LanguageSwitcher = dynamic(() => import('../../UI/LanguageSwitcher/LanguageSwitcher'));
+const SearchButtonWithModal = dynamic(() => import('./SearchButtonWithModal/SearchButtonWithModal'));
+const SearchButtonDesktop = dynamic(() => import('./SearchButtonDesktop/SearchButtonDesktop'));
+const SearchModal = dynamic(() => import('../../SearchModal/SearchModal'));
+
+const NavbarWithDropdown = dynamic(() => import('./NavbarWithDropdown/NavbarWithDropdown'));
+
+const ProfileDropdownWindow = dynamic(() => import('./ProfileIconWithDropdown/ProfileDropdownWindow/ProfileDropdownWindow'));
+
+
+
+
 
 const focusLinkData = (navMenu: NavbarLink[], genresList: LinkData[] | undefined) => {
     if (genresList) {
@@ -30,22 +36,10 @@ const focusLinkData = (navMenu: NavbarLink[], genresList: LinkData[] | undefined
 
 
 export default function HeaderContent() {
-    const size = useResize();
-    const dispatch = useAppDispatch();
-    const genresList = useAppSelector(selectAllGenres);
 
-    useEffect(() => {
-        if (genresList.status === "idle") {
-            dispatch(fetchGenres())
-        }
-    }, [])
-        
-        
-        
-    
-    const genres = useTransformGenres("second", genresList.genres);
+    /*const genres = useTransformGenres("second", genresList.genres);*/
 
-    const newNav = focusLinkData(NAV_MENU, genres);
+   /* const newNav = focusLinkData(NAV_MENU, genres);*/
 
 
     return (
@@ -53,22 +47,28 @@ export default function HeaderContent() {
             <div className={styles.content}>
                 <HeaderLogo />
                 <div className={styles.navbar}>
-                    {size > 1160 &&
+                    <SizeConditionContainer more={1160}>
                         <NavbarWithDropdown
-                            navLinkData={newNav}
-                        />}
+                            navLinkData={NAV_MENU}
+                        />
+                    </SizeConditionContainer>
+
+
                 </div>
-                {size > 1160 &&
-                    <>
-                        <ButtonSubscription />
-                        <SearchButtonWithModal>
-                            <SearchButtonDesktop />
-                        </SearchButtonWithModal>
+                <SizeConditionContainer more={1160}>
+                    <ButtonSubscription />
+                    <SearchButtonWithModal
+                        button={<SearchButtonDesktop />}
+                        modal={<SearchModal /> }
+                    />
                         <LanguageSwitcher />
-                    </>
-                }
+                </SizeConditionContainer>
+
+
                 <ProfileIconWithDropdown
+                    dropdownContent={<ProfileDropdownWindow />}
                 />
+                
             </div>
             <HeaderPortalContainer />
         </div>

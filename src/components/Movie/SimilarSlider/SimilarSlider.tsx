@@ -1,8 +1,8 @@
+"use client";
+
 import { SimilarMovie } from "../../../models/types";
 import Carousel from "../../UI/Carousel/Carousel";
 import MovieListCardWithOverlayContainer from "../MovieListCardContainer/MovieListCardWithOverlayContainer";
-import SectionTitle from "../../UI/SectionTitle/SectionTitle";
-import { FormattedMessage } from "react-intl";
 import SimilarMovieListCardWithOverlayContainer from "../SimilarMovieListCardContainer/SimilarMovieListCardWithOverlayContainer";
 import useSimilarSlider from "../../../hooks/movie/useSimilarSlider";
 import { MOVIE_LIST_SIZES } from "../../../constants/sliderItemSize";
@@ -19,14 +19,11 @@ export default function SimilarSlider({
     movieName
 }: SimilarSliderProps) {
     const data = useSimilarSlider({ similarMovieList, similarGenreId })
-
     if (!data.rows || !data.count) return <></>
 
     return (
         <>
-            <SectionTitle withArrow={false}>
-                <FormattedMessage id="WithFilm" values={{ name: movieName }} />
-            </SectionTitle>
+           
             <Carousel
                 mode={"slider"}
                 /* eslint-disable */

@@ -77,8 +77,8 @@
   "ToggleMovieHide": "Детали фильма",
   "ToggleMovieShow": "Свернуть детали",
   "Creaters": "Создатели",
-  "Review": "Отзывы",
-  "Actors": "Актёры",
+  "review": "Отзывы",
+  "actors": "Актёры",
   "CreatersAndActors": "Актёры и создатели",
   "TrailerAndMaterial": "Трейлер и доп. материалы",
   "WithFilm": "С фильмом «{name}» смотрят",
@@ -142,7 +142,7 @@
   "Expand": "Развернуть",
   "FullFilmography": "Полная фильмография",
   "Detail": "Подробнее",
-  "Director": "Режиссер",
+  "director": "Режиссер",
   "Slogan": "Слоган",
   "WatchInTheGalery": "Смотреть в подборке",
   "MainPage": "Главная",
@@ -175,7 +175,7 @@
 
 
 
-
+  "movie.back": "К фильму",
   "movies": "фильмы",
   "movie.kinopoiskId": "id",
   "movie.year": "год",

@@ -16,7 +16,7 @@ export const Primary: Story = {
   render: () => (
     <Provider store={store}>
       <WrapperIntl>
-        <ButtonSocialBlock />
+                <ButtonSocialBlock />
       </WrapperIntl>
     </Provider>
   ),

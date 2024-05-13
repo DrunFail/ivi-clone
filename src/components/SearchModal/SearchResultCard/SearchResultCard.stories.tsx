@@ -19,10 +19,6 @@ export const Primary: Story = {
         <SearchResultCard
           name={"name"}
           year={2022}
-          id={5}
-          callback={function (): void {
-            throw new Error("Function not implemented.");
-          }}
         />
       </WrapperIntl>
     </Provider>

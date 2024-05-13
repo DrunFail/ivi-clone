@@ -1,12 +1,13 @@
-import { FormattedMessage } from "react-intl";
-import NavBarModalTitle from "../NavBarModalTitle/NavBarModalTitle";
 import NavMenuList from "../NavMenuList/NavMenuList";
 import styles from "./NavMenuWithAccordion.module.scss";
 import Link from "next/link";
-import AccordionItem from "../../../../../UI/AccordionItem/AccordionItem";
-import { NAV_MENU } from "../../../../../../constants/headerConstants";
+import { useTranslations } from "next-intl";
+import AccordionItem from "../../../../UI/AccordionItem/AccordionItem";
+import NavigationBlockTitle from "../../../Footer/NavigationBlockTitle/NavigationBlockTitle";
+import { NAV_MENU } from "../../../../../constants/headerConstants";
 
 export default function NavMenuWithAccordion() {
+    const t = useTranslations();
     return (
         <div className={styles.container} data-testId="nav-acc-hamb">
             {NAV_MENU.map((link, index) =>
@@ -14,9 +15,9 @@ export default function NavMenuWithAccordion() {
                     ? <AccordionItem
                         key={index}
                         heading={
-                            <NavBarModalTitle>
-                                <FormattedMessage id={`header.navbar.${link.name}`} />
-                            </NavBarModalTitle>
+                            <NavigationBlockTitle>
+                                {t(`header.navbar.${link.name}`) }
+                            </NavigationBlockTitle>
                         }
                         content={
                             <div style={{ marginBlockStart: "20px" }}>
@@ -24,16 +25,18 @@ export default function NavMenuWithAccordion() {
                                     genres={link.data.genres}
                                     country={link.data.country}
                                     years={link.data.years}
-                                    aside={link.data.aside} />
+                                    aside={link.data.aside}
+                                    typeContent={link.name}
+                                />
                             </div>
                         }
                         testId="nav-menu-acc"
                     />
-                    : <NavBarModalTitle key={index}>
+                    : <NavigationBlockTitle key={index}>
                         <Link href={link.link}>
-                            <FormattedMessage id={`header.navbar.${link.name}`} />
+                            {t(`header.navbar.${link.name}`) }
                         </Link>
-                    </NavBarModalTitle>
+                    </NavigationBlockTitle>
 
             )}
         </div>

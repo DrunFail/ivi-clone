@@ -1,3 +1,5 @@
+"use client";
+
 import { FormattedMessage } from "react-intl";
 import MovieTitleWithYear from "../../MovieTitleWithYear/MovieTitleWithYear";
 import styles from "./Info.module.scss";

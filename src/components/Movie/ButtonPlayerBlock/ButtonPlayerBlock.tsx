@@ -1,3 +1,5 @@
+"use client";
+
 import MemoizedFormattedMessage from "react-intl/src/components/message";
 import ShareButtonWithModal from "../../Share/ShareButtonWithModal";
 import FontIcon from "../../UI/FontIcon/FontIcon";

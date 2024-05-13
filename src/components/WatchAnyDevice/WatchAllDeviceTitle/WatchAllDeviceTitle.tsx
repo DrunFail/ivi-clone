@@ -1,13 +1,11 @@
-import { FormattedMessage } from "react-intl";
 import SectionTitle from "../../UI/SectionTitle/SectionTitle";
+import { useTranslations } from "next-intl";
 
-export default function WatchAllDeviceTitle({ movieName }: {movieName:string}) {
+export default function WatchAllDeviceTitle({ movieName }: { movieName: string }) {
+    const t = useTranslations();
     return (
         <SectionTitle>
-            <FormattedMessage
-                id="WatchOnAllDevices"
-                values={{ value: movieName }}
-            />
+            {t("WatchOnAllDevices", {value: movieName}) }
         </SectionTitle>
     );
 }

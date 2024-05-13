@@ -4,6 +4,8 @@ import WatchMoviesLink from "./WatchMoviesLink";
 import store from "../../../../store/store";
 import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 
+
+
 const meta: Meta<typeof WatchMoviesLink> = {
   title: "footer/components/WatchMoviesLink",
   component: WatchMoviesLink,

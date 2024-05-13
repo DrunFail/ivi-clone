@@ -1,14 +1,13 @@
 import ProfileDropdownCard from "../ProfileDropdownCard/ProfileDropdownCard";
 import styles from "./ProfileDropdownWindow.module.scss";
 import { PROFILE_IMG_LINK_DATA } from "../imgLinkData";
-import MemoizedFormattedMessage from "react-intl/src/components/message";
-import useAuth from "../../../../../hooks/auth/useAuth";
-import useLogout from "../../../../../hooks/auth/useLogout";
 import Button from "../../../../UI/core/Button/Button";
+import { useTranslations } from "next-intl";
+import CheckIsAuthUser from "../../../CheckIsAuthUser/CheckIsAuthUser";
+import ClickLogoutHandler from "../../../ClickLogoutHandler/ClickLogoutHandler";
 
 export default function ProfileDropdownWindow() {
-    const auth = useAuth().auth;
-    const handleLogout = useLogout();
+    const t = useTranslations();
     return (
         <div className={styles.container}>
             <div className={styles.cardBlock}>
@@ -16,29 +15,35 @@ export default function ProfileDropdownWindow() {
                     <ProfileDropdownCard
                         key={card.id}
                         variant={card.imgLink}
-                        idTranslate={card.idTranslate} />
+                    >
+                        {t(card.idTranslate)}
+                    </ProfileDropdownCard>
                 )}
 
             </div>
             <div className={styles.authButton}>
-                {auth.token
-                    ? <Button
-                        as="button"
-                        color="red"
-                        onClick={handleLogout}
-                    >
-                        Выйти
-                    </Button>
-
-                    : <Button
-                        as="link"
-                        color="red"
-                        href="/auth/login"
-                        data-testId="btn-login"
-                    >
-                        <MemoizedFormattedMessage id="EnterOrRegister" />
-                    </Button>
-                }
+                <CheckIsAuthUser
+                    isTrue={
+                        <ClickLogoutHandler>
+                            <Button
+                                as="button"
+                                color="red"
+                            >
+                                Выйти
+                            </Button>
+                        </ClickLogoutHandler>
+                    }
+                    isFalse={
+                        <Button
+                            as="link"
+                            color="red"
+                            href="/auth/login"
+                            data-testId="btn-login"
+                        >
+                            {t("EnterOrRegister")}
+                        </Button>
+                    }
+                />
             </div>
         </div>
     );

@@ -16,7 +16,9 @@ export const Primary: Story = {
   render: () => (
     <Provider store={store}>
       <WrapperIntl>
-        <DownloadAppLinkBlock variant={"desktop"} />
+                <DownloadAppLinkBlock>
+                app links
+                </DownloadAppLinkBlock>
       </WrapperIntl>
     </Provider>
   ),

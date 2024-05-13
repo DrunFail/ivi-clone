@@ -18,9 +18,6 @@ const meta: Meta<typeof SupportBlock> = {
       </Provider>
     ),
   ],
-  args: {
-    variant: "desktop",
-  },
 };
 
 export default meta;

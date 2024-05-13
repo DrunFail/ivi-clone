@@ -5,8 +5,8 @@ export default function ButtonSocialBlock() {
     return (
         <div className={styles.container} data-testid="btn-social-block">
             <SocialButton variant="vk" />
-            <SocialButton variant="twitter" />
             <SocialButton variant="telegram" />
+            <SocialButton variant="twitter" />
         </div>
     );
 }

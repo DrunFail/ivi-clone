@@ -1,45 +1,56 @@
-import { FormattedMessage } from "react-intl";
 import styles from "./HamburgerMenuModal.module.scss";
-import ButtonTopContainer from "./components/ButtonTopContainer/ButtonTopContainer";
 import Button from "../../../UI/core/Button/Button";
 import FontIcon from "../../../UI/FontIcon/FontIcon";
-import NavMenuWithAccordion from "./components/NavMenuWithAccordion/NavMenuWithAccordion";
-import AboutBlockAccordion from "./components/AboutBlockAccordion/AboutBlockAccordion";
-import NavBarModalTitle from "./components/NavBarModalTitle/NavBarModalTitle";
 import DownloadAppLinkBlock from "../../../UI/DownloadAppLinkBlock/DownloadAppLinkBlock";
-import ServiceBlockAccordion from "./components/ServiceBlockAccordion/ServiceBlockAccordion";
 import ButtonSocialBlock from "../../../UI/ButtonSocialBlock/ButtonSocialBlock";
+import { useTranslations } from "next-intl";
+import DownloadAppLink from "../../../UI/DownloadAppLink/DownloadAppLink";
+import ButtonTopContainer from "./ButtonTopContainer/ButtonTopContainer";
+import NavMenuWithAccordion from "./NavMenuWithAccordion/NavMenuWithAccordion";
+import AboutBlockAccordion from "./AboutBlockAccordion/AboutBlockAccordion";
+import ServiceBlockAccordion from "./ServiceBlockAccordion/ServiceBlockAccordion";
+import NavigationBlockTitle from "../../Footer/NavigationBlockTitle/NavigationBlockTitle";
 
 
 export default function HamburgerMenuModal() {
+    const t = useTranslations();
     return (
-
         <div className={styles.container}>
             <ButtonTopContainer>
                 <Button>
-                    <FontIcon variant="diamond" size={20} />
+                    <FontIcon
+                        variant="diamond"
+                        size={20}
+                    />
                     <span>
-                        <FormattedMessage id="ConnectSubscription" />
+                        {t("ConnectSubscription")}
                     </span>
                 </Button>
 
                 <Button>
-                    <FontIcon variant="reward" size={20} />
+                    <FontIcon
+                        variant="reward"
+                        size={20}
+                    />
                     <span>
-                        <FormattedMessage id="CertificateActivation" />
+                        {t("CertificateActivation")}
                     </span>
                 </Button>
             </ButtonTopContainer>
             <NavMenuWithAccordion />
             <div style={{ display: "grid", rowGap: "30px" }}>
                 <AboutBlockAccordion />
-                <NavBarModalTitle>
+                <NavigationBlockTitle>
                     <p>enter by code</p>
-                </NavBarModalTitle>
-                <DownloadAppLinkBlock variant="tablet" />
+                </NavigationBlockTitle>
+                <DownloadAppLinkBlock>
+                    <DownloadAppLink variant="apple" />
+                    <DownloadAppLink variant="google" />
+                </DownloadAppLinkBlock>
             </div>
             <ServiceBlockAccordion />
             <ButtonSocialBlock />
+
         </div>
 
     );

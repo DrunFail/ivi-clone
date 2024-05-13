@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
 
 import AboutBlockAccordion from "./AboutBlockAccordion";
-import store from "../../../../../../store/store";
-import WrapperIntl from "../../../../../WrapperIntl/WrapperIntl";
+import WrapperIntl from "../../../../WrapperIntl/WrapperIntl";
+import store from "../../../../../store/store";
 
 const meta: Meta<typeof AboutBlockAccordion> = {
   title: "mobileNavBar/AboutBlockAccordion",

@@ -21,7 +21,7 @@ const meta: Meta<typeof ProfileDropdownCard> = {
   ],
   args: {
     variant: data.imgLink,
-    idTranslate: data.idTranslate,
+    children: data.idTranslate
   },
 };
 

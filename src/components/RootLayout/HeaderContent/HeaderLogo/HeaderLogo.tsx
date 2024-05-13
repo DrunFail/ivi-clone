@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../../assets/SVG/Logo/Logo.svg";
+import { Link } from "../../../../navigation";
 
 export default function HeaderLogo() {
     return (
