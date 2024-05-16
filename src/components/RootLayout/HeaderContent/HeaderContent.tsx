@@ -1,7 +1,6 @@
 import styles from "./HeaderContent.module.scss";
 import HeaderPortalContainer from "./portal/HeaderPortalContainer";
-import { LinkData, NavbarLink } from "../../../models/global";
-import { NAV_MENU } from "../../../constants/headerConstants";
+import {NavbarLink } from "../../../models/global";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import ProfileIconWithDropdown from "./ProfileIconWithDropdown/ProfileIconWithDropdown";
 import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
@@ -17,31 +16,7 @@ const NavbarWithDropdown = dynamic(() => import('./NavbarWithDropdown/NavbarWith
 
 const ProfileDropdownWindow = dynamic(() => import('./ProfileIconWithDropdown/ProfileDropdownWindow/ProfileDropdownWindow'));
 
-
-
-
-
-const focusLinkData = (navMenu: NavbarLink[], genresList: LinkData[] | undefined) => {
-    if (genresList) {
-        const nav = navMenu.map(navBlock => navBlock.name === "movies" ? { ...navBlock, data: { ...navBlock.data, genres: genresList } } : navBlock)
-
-        return nav as NavbarLink[]
-
-
-    }
-    return navMenu
-
-}
-
-
-
-export default function HeaderContent() {
-
-    /*const genres = useTransformGenres("second", genresList.genres);*/
-
-   /* const newNav = focusLinkData(NAV_MENU, genres);*/
-
-
+export default function HeaderContent({ navList }: {navList:NavbarLink[]}) {
     return (
         <div className={styles.container} >
             <div className={styles.content}>
@@ -49,7 +24,7 @@ export default function HeaderContent() {
                 <div className={styles.navbar}>
                     <SizeConditionContainer more={1160}>
                         <NavbarWithDropdown
-                            navLinkData={NAV_MENU}
+                            navLinkData={navList}
                         />
                     </SizeConditionContainer>
 

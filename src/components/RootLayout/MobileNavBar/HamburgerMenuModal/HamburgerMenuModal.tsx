@@ -10,9 +10,10 @@ import NavMenuWithAccordion from "./NavMenuWithAccordion/NavMenuWithAccordion";
 import AboutBlockAccordion from "./AboutBlockAccordion/AboutBlockAccordion";
 import ServiceBlockAccordion from "./ServiceBlockAccordion/ServiceBlockAccordion";
 import NavigationBlockTitle from "../../Footer/NavigationBlockTitle/NavigationBlockTitle";
+import { NavbarLink } from "../../../../models/global";
 
 
-export default function HamburgerMenuModal() {
+export default function HamburgerMenuModal({ navMenu }: {navMenu:NavbarLink[]}) {
     const t = useTranslations();
     return (
         <div className={styles.container}>
@@ -37,7 +38,7 @@ export default function HamburgerMenuModal() {
                     </span>
                 </Button>
             </ButtonTopContainer>
-            <NavMenuWithAccordion />
+            <NavMenuWithAccordion navMenu={navMenu } />
             <div style={{ display: "grid", rowGap: "30px" }}>
                 <AboutBlockAccordion />
                 <NavigationBlockTitle>

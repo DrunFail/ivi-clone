@@ -24,7 +24,7 @@ export default function NavMenuList({ genres, country, years, aside,typeContent 
                 <DropdownList
                     oneColumn
                     linkDataList={genres}
-                    intlPrefix="genre"
+                    
 
                 />
             </div>
@@ -37,7 +37,7 @@ export default function NavMenuList({ genres, country, years, aside,typeContent 
                     <DropdownList
                         oneColumn
                         linkDataList={country}
-                        intlPrefix="genre"
+                        
                     />
                 </div>
                 <div>
@@ -48,7 +48,7 @@ export default function NavMenuList({ genres, country, years, aside,typeContent 
                     <DropdownList
                         oneColumn
                         linkDataList={years}
-                        intlPrefix={`year.${typeContent}`}
+                        
                     />
                 </div>
                

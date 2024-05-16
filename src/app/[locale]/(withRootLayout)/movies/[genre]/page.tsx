@@ -21,7 +21,7 @@ import { useTranslations } from "next-intl";
 
 
 
-export default function MoviesByGenre() {
+export default function MoviesByGenre({ params: { genre } }: { params: {genre:string}}) {
     const {
         currentGenre,
         genres,
@@ -33,13 +33,15 @@ export default function MoviesByGenre() {
         filterParams,
         changeCurrentMoviePage,
         transformedCountries,
-        transformedGenres
+        transformedGenres,
+        translatedCurrentCountry
+        
     } = useFilterWatchPage({ variant: "genrePage" });
 
     const t = useTranslations();
     const breadcrumbsData = useBreadCrumbsStandart();
 
-
+    const currentSelectedGenre = t(`genre.${genre}.title`)
 
     return (
         <>
@@ -75,6 +77,8 @@ export default function MoviesByGenre() {
                         setFilterParams={handleChangeFilterParams}
                         clearFiltersWithoutSort={clearFiltersWithoutSort}
                         filterParams={filterParams}
+                        currentSelectedGenre={currentSelectedGenre}
+                        translatedCurrentCountry={translatedCurrentCountry }
                         variant={"genrePage"}
 
                     />

@@ -23,7 +23,7 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
                     linkDataList={currentLink.data!.genres}
                     onClick={closeDropdown}
                     testId="genres"
-                    intlPrefix={currentLink.name === "movies" ? undefined : "genre" }
+                    
                     
                 />
                 </div>
@@ -36,7 +36,7 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
                     oneColumn
                     onClick={closeDropdown}
                     testId="countries"
-                    intlPrefix="genre"
+                    
                     />
                 </div>
                 <div>
@@ -48,7 +48,7 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
                     oneColumn
                     onClick={closeDropdown}
                     testId="year"
-                    intlPrefix="year"
+                    
                     />
                 </div>
             </div>

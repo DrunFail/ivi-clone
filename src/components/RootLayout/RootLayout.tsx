@@ -3,21 +3,23 @@ import HeaderContent from "./HeaderContent/HeaderContent";
 import styles from "./RootLayout.module.scss";
 import CheckIsMobile from "./CheckIsMobile/CheckIsMobile";
 import dynamic from "next/dynamic";
+import { NavbarLink } from "../../models/global";
 
 const MobileNavBar = dynamic(() => import('./MobileNavBar/MobileNavBar'))
 const Footer = dynamic(() => import('./Footer/Footer'))
 
 interface RootLayoutProps {
     children: React.ReactNode;
+    navList: NavbarLink[]
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children,navList }: RootLayoutProps) {
 
     return (
         <>
             <header>
                 <PageWrapper>
-                    <HeaderContent />
+                    <HeaderContent navList={navList} />
                 </PageWrapper>
             </header>
             <main className={styles.main}>
@@ -25,7 +27,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </main>
 
             <CheckIsMobile
-                mobileNav={<MobileNavBar />}
+                mobileNav={<MobileNavBar navMenu={navList} />}
                 footer={
                     <PageWrapper>
                         <Footer />

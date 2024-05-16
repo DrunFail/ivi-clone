@@ -14,7 +14,9 @@ interface FiltersFieldProps {
     clearFiltersWithoutSort: () => void;
     setFilterParams: (filterKey: keyof FilterParams, filterValue:string | number) => void,
     filterParams: FilterParams,
-    variant: "admin" | "genrePage"
+    variant: "admin" | "genrePage",
+    currentSelectedGenre: string,
+    translatedCurrentCountry
 }
 export default function FiltersField({
     genreObjects,
@@ -22,7 +24,9 @@ export default function FiltersField({
     filterParams,
     clearFiltersWithoutSort,
     setFilterParams,
-    variant
+    variant,
+    currentSelectedGenre,
+    translatedCurrentCountry
 
 }: FiltersFieldProps) {
     
@@ -31,13 +35,14 @@ export default function FiltersField({
         <div className={styles.filters}>
             <FilterWrapperContainer>
                 <DropdownFilter
-                typeItemList="link"
+                    typeItemList="link"
                     filterKey="genreId"
                     clearArray={genreObjects}
                     name="genre"
                     setFilterParams={setFilterParams}
                     initValue={filterParams.genreId}
-                    variant={variant }
+                    variant={variant}
+                    currentSelect={currentSelectedGenre }
                 />
             </FilterWrapperContainer>
             <FilterWrapperContainer>
@@ -48,6 +53,7 @@ export default function FiltersField({
                     name="country"
                     setFilterParams={setFilterParams}
                     initValue={filterParams.countryId}
+                    currentSelect={translatedCurrentCountry}
                     variant={variant }
                 />
             </FilterWrapperContainer>

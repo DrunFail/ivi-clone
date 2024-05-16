@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import AccordionItem from "../../../../UI/AccordionItem/AccordionItem";
 import NavigationBlockTitle from "../../../Footer/NavigationBlockTitle/NavigationBlockTitle";
-import { NAV_MENU } from "../../../../../constants/headerConstants";
+import { NavbarLink } from "../../../../../models/global";
 
-export default function NavMenuWithAccordion() {
+export default function NavMenuWithAccordion({ navMenu }: {navMenu:NavbarLink[]}) {
     const t = useTranslations();
     return (
         <div className={styles.container} data-testId="nav-acc-hamb">
-            {NAV_MENU.map((link, index) =>
+            {navMenu.map((link, index) =>
                 link.data
                     ? <AccordionItem
                         key={index}

@@ -21,9 +21,6 @@ export default function HeaderNavbarWithDropdown({ navLinkData }: HeaderNavbarWi
     const [isVisiblePortal, setIsVisiblePortal] = useState(false);
     const [focusLink, setFocusLink] = useState<NavbarLink | null>(null);
 
-   
-
-    
     const openNavDropdown = (menuItem: NavbarLink) => {
         setIsVisiblePortal(Boolean(menuItem.data));
         setFocusLink(menuItem)

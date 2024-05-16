@@ -11,6 +11,9 @@ import useTransformCountries from "../useTransformCountries";
 import useTransformGenres from "../useTransformGenres";
 import { CLIENT_GENRE_LIST } from "../../constants/genreList";
 import { ResponseWithCountAndRows } from "../../models/response";
+import { transform } from "typescript";
+import { calculateCountryName } from "../../utils/calculateCountryName";
+import { useLocale, useTranslations } from "next-intl";
 
 type InitParamsForFilters = Pick<MovieFilterParams, "ratingKinopoisk" | "ratingKinopoiskVoteCount" | "orderBy">
 type MoviePage = Pick<MovieFilterParams, "page">
@@ -35,7 +38,9 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     const [filterParams, setFilterParams] = useState<FilterParams>({} as FilterParams);
     const [filteredMovie, setFilteredMovie] = useState({} as ResponseWithCountAndRows<Movie>);
     const [currentMoviePage, setCurrentMoviePage] = useState(INIT_MOVIE_PAGE);
-    const [amountMovieOnPage, setAmountMovieOnPage] = useState(0)
+    const [amountMovieOnPage, setAmountMovieOnPage] = useState(0);
+    const locale = useLocale();
+    const t = useTranslations();
 
     const dispatch = useAppDispatch()
 
@@ -125,8 +130,12 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     }, [currentMoviePage])
 
     const transformedCountries = useTransformCountries(countries.countries);
-    const transformedGenres = useTransformGenres("second" ,genres.genres);
+    const transformedGenres = useTransformGenres("second", genres.genres);
 
+    const currentCountry = countries.countries.find(country => country.id === filterParams.countryId) 
+    const translatedCurrentCountry = currentCountry ? calculateCountryName(currentCountry, locale) : t("all")
+    
+    
     return {
         filteredMovie,
         handleChangeFilterParams,
@@ -138,6 +147,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
         filterParams,
         changeCurrentMoviePage,
         transformedCountries,
-        transformedGenres
+        transformedGenres,
+        translatedCurrentCountry
     }
 }

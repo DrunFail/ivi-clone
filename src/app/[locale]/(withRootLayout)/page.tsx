@@ -22,6 +22,7 @@ const fetchMovieSetByGenre = async (genreId:number) => {
 }
 
 import type { Metadata } from 'next'
+import MovieSliderSizeContainer from "../../../components/Movie/MovieSliderSizeContainer/MovieSliderSizeContainer";
 
 export const metadata: Metadata = {
     title: 'Главная страница',
@@ -68,7 +69,7 @@ export default async function Page({ params: { locale } }: { params: { locale:"e
                         <MovieSlider
                             data={firstSet}
                             href={renderFirstLink}
-                        />
+                            />
                     </PageWrapperInner>
                 </PageWrapper>
             </PageSection>

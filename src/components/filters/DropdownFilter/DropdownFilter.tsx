@@ -21,10 +21,11 @@ interface DropdownFilterProps {
     setFilterParams: (filterKey: keyof FilterParams, filterValue: string) => void;
     initValue: number | undefined;
     variant: "admin" | "genrePage",
-    typeItemList: "link" | "clickable"
+    typeItemList: "link" | "clickable",
+    currentSelect:string
 }
 
-export default function DropdownFilter({ name, clearArray, filterKey, setFilterParams, initValue = 0, variant, typeItemList }: DropdownFilterProps) {
+export default function DropdownFilter({ name, clearArray, filterKey, setFilterParams, initValue = 0, variant, typeItemList,currentSelect }: DropdownFilterProps) {
     const [isVisibleDropdown, setIsVisibleDropdown] = useState(false);
     const t = useTranslations();
 
@@ -54,7 +55,7 @@ export default function DropdownFilter({ name, clearArray, filterKey, setFilterP
                     </FilterName>
 
                     <SelectedFilterValue>
-                        {t(`${name}.${initValue}.title`) }
+                        {currentSelect}
                     </SelectedFilterValue>
                 </div>
                 <FontIcon variant="arrowDown" size={12} />

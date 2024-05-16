@@ -6,8 +6,9 @@ import MobileNavBarItemNew from "./MobileNavBarItemNew/MobileNavBarItemNew";
 import SearchModal from "../../SearchModal/SearchModal";
 import HamburgerMenuButtonWithModal from "./HamburgerMenuButtonWithModal/HamburgerMenuButtonWithModal";
 import HamburgerMenuModal from "./HamburgerMenuModal/HamburgerMenuModal";
+import { NavbarLink } from "../../../models/global";
 
-export default function MobileNavBar() {
+export default function MobileNavBar({ navMenu }: {navMenu:NavbarLink[]}) {
     const t = useTranslations();
     return (
         <div className={styles.container}>
@@ -59,7 +60,7 @@ export default function MobileNavBar() {
 
                 </Button>
                 <HamburgerMenuButtonWithModal
-                    modal={<HamburgerMenuModal />}
+                    modal={<HamburgerMenuModal navMenu={navMenu} />}
                     closeBtn={
                         <MobileNavBarItemNew
                             variant={"close"}

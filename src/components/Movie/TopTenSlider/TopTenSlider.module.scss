@@ -1,4 +1,6 @@
 .container {
+    --amount: 5;
+
     @media only screen and (max-width:1400px) {
         --amount: 5;
     }
@@ -14,6 +16,4 @@
     @media only screen and (max-width:440px) {
         --amount: 2;
     }
-
-    
 }
