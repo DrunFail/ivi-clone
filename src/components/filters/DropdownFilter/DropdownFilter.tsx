@@ -44,6 +44,7 @@ export default function DropdownFilter({ name, clearArray, filterKey, setFilterP
     useEffect(() => {
         closeDropdown();
     },[path])
+
     
 
     return (
@@ -69,7 +70,7 @@ export default function DropdownFilter({ name, clearArray, filterKey, setFilterP
                             variant={variant}
                             filterKey={filterKey}
                             setFilterParams={setFilterParams}
-                            toggleVisibleDropdown={toggleVisibleDropdown}
+                            toggleVisibleDropdown={closeDropdown}
                         />
                     </FilterWrapperContainer>
                 </PositionContainer>

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import styles from "./DropdownFilterContent.module.scss";
 import { FilterParams } from "../../../../hooks/filters/useFiltersWatchPage";
 import { Fragment } from "react";
+import { Link } from "../../../../navigation";
 
 interface DropdownFilterContentProps {
     dataArray: any;
@@ -25,12 +25,12 @@ export default function DropdownFilterContent({ dataArray, typeItemList,variant,
                                 ? <Link
                                     className={styles.dropdownItem}
                                     href={item.link}
-                                    onClick={() => {  setFilterParams(filterKey, item.id) }}
+                                    onClick={() => { setFilterParams(filterKey, item.id); toggleVisibleDropdown(); }}
                                 >
                                     {item.name }
                                 </Link>
                                 : <p
-                                    onClick={() => {  setFilterParams(filterKey, item.id) }}
+                                    onClick={() => { setFilterParams(filterKey, item.id); toggleVisibleDropdown(); }}
                                     className={styles.dropdownItem}>
                                     {item.name}
                                 </p>

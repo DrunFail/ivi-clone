@@ -23,7 +23,7 @@ export default function SortField({ currentSortVariant,  setFilterParams, filter
                     {t(`sort.variant.${currentSortVariant}`) }
                 </span>
                 <span className={styles.arrowCol + (isOpen ? ` ${styles.arrowColRev}` : "")}>
-                    <FontIcon variant="arrowDown" />
+                    <FontIcon variant="arrowDown" size={8} />
                 </span>
             </div>
             <div  className={styles.dropdownArea + (isOpen ? ` ${styles.dropdownOpen}` : "")}>

@@ -11,7 +11,6 @@ import useTransformCountries from "../useTransformCountries";
 import useTransformGenres from "../useTransformGenres";
 import { CLIENT_GENRE_LIST } from "../../constants/genreList";
 import { ResponseWithCountAndRows } from "../../models/response";
-import { transform } from "typescript";
 import { calculateCountryName } from "../../utils/calculateCountryName";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -108,7 +107,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
             setAmountMovieOnPage(pageSize)
         }
        
-    }, [])
+    }, [size])
 
     useEffect(() => {
         if (amountMovieOnPage) {
@@ -119,7 +118,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
                 })
                 .catch(error => console.log(error));
         }
-    }, [filterParams])
+    }, [filterParams,amountMovieOnPage])
 
     useEffect(() => {
         if (currentMoviePage.page) {
@@ -133,7 +132,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
     const transformedGenres = useTransformGenres("second", genres.genres);
 
     const currentCountry = countries.countries.find(country => country.id === filterParams.countryId) 
-    const translatedCurrentCountry = currentCountry ? calculateCountryName(currentCountry, locale) : t("all")
+    const translatedCurrentCountry = currentCountry ? calculateCountryName(currentCountry, locale) : t("country.all")
     
     
     return {

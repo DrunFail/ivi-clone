@@ -7,13 +7,32 @@
     "TV_SERIES": "Сериалы",
     "movies": "Фильмы"
   },
+  "country": {
+    "all": "Все страны"
+  },
   "comment": {
     "about": "о фильме {movie}",
     "comment": "Написать",
     "empty": "Здесь пока нет комментариев. Будь первым!",
     "unauthorized": "Оставлять комментарии могут только зарегистрированные пользователи"
   },
-
+  "page": {
+    "genre": {
+      "title": "{genre} - смотреть онлайн, бесплатно,в отличном качестве",
+      "description": "",
+      "keywords": ""
+    },
+    "person": {
+      "title": "",
+      "description": "",
+      "keywords": ""
+    },
+    "movie": {
+      "title": "",
+      "description": "",
+      "keywords": ""
+    }
+  },
 
 
   "header": {
@@ -435,7 +454,7 @@
       "ratingKinopoisk": "По рейтингу"
     }
   },
-  
+
   "label": {
     "ratingKinopoisk": "Рейтинг от {value}",
     "ratingKinopoiskVoteCount": "Оценки от {value} млн.",

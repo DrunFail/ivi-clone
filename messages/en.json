@@ -1,5 +1,4 @@
 {
-
   "auth": {
     "vk": "Login with VK"
   },
@@ -8,6 +7,29 @@
     "TV_SERIES": "Serials",
     "movies": "Movies"
   },
+  "country": {
+    "all": "All countries"
+  },
+
+  "page": {
+    "genre": {
+      "title": "{genre} - watch online, for free, in excellent quality",
+      "description": "",
+      "keywords": ""
+    },
+    "person": {
+      "title": "",
+      "description": "",
+      "keywords": ""
+    },
+    "movie": {
+      "title": "",
+      "description": "",
+      "keywords":""
+    }
+  },
+
+
   "comment": {
     "about": "of the film {movie}",
     "comment": "New comment",
@@ -197,7 +219,7 @@
       "delete": "delete"
     }
 
-    
+
   },
   "movies": "movies",
   "movie": {
@@ -218,8 +240,8 @@
 
 
   "genres": "genres",
-  
-  
+
+
 
   "error.required": "required field",
 
@@ -245,7 +267,7 @@
     },
     "american": {
       "title": "American",
-      "short":  "American"
+      "short": "American"
     },
     "anime": {
       "title": "Anime",
@@ -321,7 +343,7 @@
     },
     "history": {
       "title": "History",
-      "short":  "History"
+      "short": "History"
     },
     "horror": {
       "title": "Horrors",
@@ -427,7 +449,7 @@
 
 
 
- 
+
 
   "sort": {
     "variant": {
@@ -448,7 +470,7 @@
     "genreId": "Genre"
   },
 
- 
+
 
   "year": {
     "movies": {
