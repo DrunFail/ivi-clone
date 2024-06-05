@@ -1,7 +1,44 @@
 {
   "auth": {
-    "vk": "Login with VK"
+    "backButton": "Main page",
+    "backButtonModal": "Back",
+    "vk": "Login with VK",
+    "loginTitle": "Sign in",
+    "registrationTitle": "Sign up",
+    "noAccount": "No account?",
+    "hasAccount": "Has account?",
+    "label": {
+      "email": "Enter email",
+      "pwd": "Enter password",
+      "confirmPwd": "Confirm password"
+    },
+    "submit": "Submit",
+    "privacy": "Privacy Policy",
+    "agreement": "User Agreement",
+    "template": "By clicking «Continue», I agree",
+    "with": "with",
+    "and": "and",
+    "btnSubmitRequest": "Checking...",
+    "error": {
+      "minPwd": "password must contain at least 8 characters",
+      "maxPwd": "password must contain no more than 20 characters",
+      "confirmPwd": "passwords don't match",
+      "userAlreadyExist": "user already exist",
+      "invalidEmail": "invalid email",
+      "invalidLoginData": "invalid email or password",
+      "noResponse": "server error",
+      "initServerFail": "server init error",
+      "createUserFail": "create user error"
+    },
+    "page": {
+      "loginTitle": "Sign in to Ivi",
+      "loginDescription": "Ivi is a place where thousands of films of different genres are collected",
+      "registrationTitle": "Join Ivi",
+      "registrationDescription": "Ivy - get access to watching movies"
+    }
+
   },
+
   "breadcrumbs": {
     "FILM": "Movies",
     "TV_SERIES": "Serials",
@@ -12,21 +49,40 @@
   },
 
   "page": {
+    "main": {
+      "title": "Ivi - online movies and TV series",
+      "description": "",
+      "keywords": ""
+    },
     "genre": {
       "title": "{genre} - watch online, for free, in excellent quality",
       "description": "",
       "keywords": ""
     },
     "person": {
-      "title": "",
-      "description": "",
+      "title": "{personName}: filmography,photos, biography.{personProfession}",
+      "description": "List of films featuring {personName}",
       "keywords": ""
     },
     "movie": {
-      "title": "",
-      "description": "",
-      "keywords":""
+      "title": "{movieName} watch in excellent quality",
+      "description": "Here you can watch {movieName} in excellent quality, read reviews from other people and see who took part in the creation of the film",
+      "keywords": ""
+    },
+    "actors": {
+      "title": "Сast of the film {movieName}",
+      "description": "Here you can find out who was involved in the creation of the film {movieName}",
+      "keywords": ""
+    },
+    "comment": {
+      "title": "Comments on the film {movieName}",
+      "description": "Here you can read reviews about the film {movieName} and leave your own",
+      "keywords": ""
     }
+  },
+  "rating": {
+    "bad": "bad",
+    "good": "good"
   },
 
 
@@ -34,7 +90,10 @@
     "about": "of the film {movie}",
     "comment": "New comment",
     "empty": "There are no comments here yet. Be the first!",
-    "unauthorized": "Only registered users can leave comments"
+    "unauthorized": "Only registered users can leave comments",
+    "inputLabel": "Write a comment",
+    "showChild": "Comments",
+    "hideChild": "Hide"
   },
 
   "header": {
@@ -242,8 +301,10 @@
   "genres": "genres",
 
 
+  "error": {
+    "required": "required field"
+  },
 
-  "error.required": "required field",
 
   "genre": {
     "all": {

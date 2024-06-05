@@ -4,6 +4,7 @@ import ReduxProvider from "../../store/ReduxProvider";
 import "../../styles/index.scss";
 import localFont from 'next/font/local';
 import { getMessages } from "next-intl/server";
+import CheckIsVisibleInterceptRoute from "../../components/auth/CheckIsVisibleInterceptRoute";
 
 const iviFont = localFont({
     src: [
@@ -28,29 +29,30 @@ const iviFont = localFont({
     ]
 })
 
+interface RootLayoutProps {
+    children: React.ReactNode,
+    loginModal: React.ReactNode,
+    params: { locale: string }
+}
 
-
-export default async function RootLayout({
-    children,
-    params: { locale }
-}: {
-    children: React.ReactNode;
-    params: { locale: string };
-}) {
+export default async function RootLayout({ children, loginModal, params: { locale } }: RootLayoutProps) {
     const messages = await getMessages();
-
 
     return (
         <ReduxProvider>
             <AuthProvider>
-                    <NextIntlClientProvider messages={messages}>
-                        <html lang={locale} className={iviFont.className}>
+                <NextIntlClientProvider messages={messages}>
+                    <html lang={locale} className={iviFont.className}>
                         <body>
-                        <div id="portal" />
+                            <div id="portal" />
                             {children}
+                            <CheckIsVisibleInterceptRoute id="notLoginModal">
+                                {loginModal}
+                            </CheckIsVisibleInterceptRoute>
+
                         </body>
-                        </html>
-                    </NextIntlClientProvider>
+                    </html>
+                </NextIntlClientProvider>
             </AuthProvider>
         </ReduxProvider>
     )

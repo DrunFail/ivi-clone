@@ -19,7 +19,8 @@ export default function AdminMovies() {
         clearFiltersWithoutSort,
         filteredMovie,
         currentSortVariant,
-        filterParams
+        filterParams,
+        translatedCurrentCountry
     } = useFilterWatchPage({ variant: "admin" });
 
 
@@ -28,6 +29,8 @@ export default function AdminMovies() {
         <div>
             <PageSection>
                 <FiltersField
+                    translatedCurrentCountry={translatedCurrentCountry}
+                    currentSelectedGenre={""}
                     genreObjects={transformedGenres}
                     countryObjects={transformedCountries}
                     setFilterParams={handleChangeFilterParams}

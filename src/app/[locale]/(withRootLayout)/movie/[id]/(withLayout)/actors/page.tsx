@@ -1,19 +1,33 @@
+import { getTranslations } from "next-intl/server";
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
 import CreatersTab from "../../../../../../../components/componentsTab/CreatersTab/CreatersTab";
-import MoviePageModalLayout from "../../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
 import CreatersPersonList from "../../../../../../../components/person/CreatersPersonList/CreatersPersonList";
-import { getDictionary } from "../../../../../dictionaries";
+import { Metadata } from "next";
+import { calculateMovieName } from "../../../../../../../utils/calculateMovieName";
 
 
-
-async function getMovieById(movieId: string) {
-    const movie = await MovieAPI.getMovieById(movieId);
-    return movie;
+type Props = {
+    params: { id: string, locale: "ru" | "en" }
+    searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function ActorsPage({params:{ id,locale } }:{ params: { id:string,locale:"en" | "ru" } }) {
-    const movie = await getMovieById(id);
-    const dict = await getDictionary(locale);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const id = params.id;
+    const locale = params.locale;
+    const t = await getTranslations();
+    const movie = await MovieAPI.getMovieById(id);
+    const movieName = calculateMovieName(movie.film, locale);
+    return {
+        title: t("page.actors.title", { movieName: movieName }),
+        description: t("page.actors.description", { movieName })
+    }
+}
+
+
+
+export default async function ActorsPage({ params: { id, locale } }: { params: { id: string, locale: "en" | "ru" } }) {
+    const movie = await MovieAPI.getMovieById(id);
+    const t = await getTranslations();
 
     const personList = movie.staff;
 
@@ -22,22 +36,16 @@ export default async function ActorsPage({params:{ id,locale } }:{ params: { id:
     const writerList = personList.filter(person => person.profession && person.profession.includes("Сценарист"));
 
     return (
-        
-          
-
         <CreatersTab>
             <CreatersPersonList
                 personList={actorList}
-                listTitle={dict.actors} />
+                listTitle={t('actors')} />
             <CreatersPersonList
                 personList={directorList}
-                listTitle={dict.director} />
+                listTitle={t("director")} />
             <CreatersPersonList
                 personList={writerList}
-                listTitle={dict.actors} />
-
-            </CreatersTab>
-            
-       
+                listTitle={t("actors")} />
+        </CreatersTab>
     );
 }

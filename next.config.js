@@ -11,13 +11,29 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: [
-            "thumbs.dfs.ivi.ru",
-            "zetflis.online",
-            "static.okko.tv",
-            "kinopoiskapiunofficial.tech",
-            "avatars.mds.yandex.net",
-            "youtu.be"
+        remotePatterns: [
+            {
+            //movie and person images
+                protocol: "https",
+                hostname:"kinopoiskapiunofficial.tech"
+            },
+            {
+                protocol: "https",
+                hostname: "avatars.mds.yandex.net"
+            },
+            {
+                protocol: "https",
+                hostname: "static.okko.tv"
+            },
+            {
+                protocol: "https",
+                hostname: "zetflis.online"
+            },
+            {
+                protocol: "https",
+                hostname: "thumbs.dfs.ivi.ru"
+            },
+
         ]
     },
     

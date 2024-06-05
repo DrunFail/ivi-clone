@@ -1,6 +1,6 @@
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
 import { ReviewAPI } from "../../../../../../../api/ReviewAPI";
-import CommentTabContainer from "../../../../../../../components/comment/CommentTabContainer/CommentTabContainer";
+import CommentPageContent from "../../../../../../../components/comment/CommentPageContent/CommentPageContent";
 import MoviePageModal from "../../../../../../../components/componentsTab/MoviePageModal/MoviePageModal";
 import MoviePageModalLayout from "../../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
 import { getDictionary } from "../../../../../dictionaries";
@@ -29,7 +29,7 @@ export default async function ReviewPageModal({ params: { id,locale } }: { param
                 lang={locale}
             >
 
-                <CommentTabContainer
+                <CommentPageContent
                     movieKinopoiskId={+id}
                     commentTree={commentTree}
                 />

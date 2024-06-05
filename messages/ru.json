@@ -1,7 +1,46 @@
 {
   "auth": {
-    "vk": "Войти с ВКонтакте"
+    "backButton": "На главную",
+    "backButtonModal": "Вернуться",
+    "vk": "Войти с ВКонтакте",
+    "loginTitle": "Войти",
+    "registrationTitle": "Зарегистрироваться",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Есть аккаунт?",
+    "label": {
+      "email": "Введите email",
+      "pwd": "Введите пароль",
+      "confirmPwd": "Подтвердите пароль"
+    },
+    "submit": "Продолжить",
+    "privacy": "Политикой конфиденциальности",
+    "agreement": "Пользовательским соглашением",
+    "template": "Нажимая «Продолжить», я соглашаюсь",
+    "with": "с",
+    "and": "и",
+    "btnSubmitRequest": "Проверяем...",
+    "error": {
+      "minPwd": "пароль должен содержать не менее 8 знаков",
+      "maxPwd": "пароль должен содержать не более 20 знаков",
+      "confirmPwd": "пароли не совпадают",
+      "userAlreadyExist": "пользователь уже существует",
+      "invalidEmail": "неверный email",
+      "invalidLoginData": "неверный логин или пароль",
+      "noResponse": "ошибка сервера",
+      "initServerFail": "ошибка инициализации",
+      "createUserFail": "ошибка создания профиля"
+
+    },
+    "page": {
+      "loginTitle": "Войти на Иви",
+      "loginDescription": "Иви - место, где собраны тысячи фильмов разных жанров",
+      "registrationTitle": "Зарегистрироваться на Иви",
+      "registrationDescription": "Иви - получить доступ к просмотру фильмов"
+    }
+
   },
+
+
   "breadcrumbs": {
     "FILM": "Фильмы",
     "TV_SERIES": "Сериалы",
@@ -14,26 +53,49 @@
     "about": "о фильме {movie}",
     "comment": "Написать",
     "empty": "Здесь пока нет комментариев. Будь первым!",
-    "unauthorized": "Оставлять комментарии могут только зарегистрированные пользователи"
+    "unauthorized": "Оставлять комментарии могут только зарегистрированные пользователи",
+    "inputLabel": "Написать отзыв",
+    "showChild": "Комментарии",
+    "hideChild": "Скрыть"
   },
   "page": {
+    "main": {
+      "title": "Иви - онлайн фильмы и сериалы",
+      "description": "Thousands of movies and TV series for every taste, for free and in excellent quality!",
+      "keywords": ""
+    },
     "genre": {
       "title": "{genre} - смотреть онлайн, бесплатно,в отличном качестве",
       "description": "",
       "keywords": ""
     },
     "person": {
-      "title": "",
-      "description": "",
+      "title": "{personName}: фильмография,фото,биография.{personProfession}",
+      "description": "Список фильмов с участием {personName}",
       "keywords": ""
     },
     "movie": {
-      "title": "",
-      "description": "",
+      "title": "{movieName} смотреть в отличном качестве",
+      "description": "Здесь можно посмотреть {movieName} в отличном качестве, ознакомиться с отзывами других людей и посмотреть, кто принимал участие в создании фильма ",
+      "keywords": ""
+    },
+    "actors": {
+      "title": "Актерский состав фильма {movieName}",
+      "description": "Здесь вы можете узнать, кто принимал участие в создании фильма {movieName}",
+      "keywords": ""
+    },
+
+    "comment": {
+      "title": "Комментарии к фильму {movieName}",
+      "description": "Здесь вы можете прочитать отзывы о фильме {movieName} и оставить свой",
       "keywords": ""
     }
-  },
 
+  },
+  "rating": {
+    "bad": "Плохо",
+    "good": "Отлично"
+  },
 
   "header": {
     "genres": "Жанры",

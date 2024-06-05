@@ -22,15 +22,23 @@ const fetchMovieSetByGenre = async (genreId:number) => {
 }
 
 import type { Metadata } from 'next'
-import MovieSliderSizeContainer from "../../../components/Movie/MovieSliderSizeContainer/MovieSliderSizeContainer";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-    title: 'Главная страница',
-    description: 'Фильмы онлайн в отличном качестве',
+type Props = {
+    params: { id: string, locale: "en" | "ru" }
 }
 
 
-export default async function Page({ params: { locale } }: { params: { locale:"en" | "ru" }}){
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const t = await getTranslations();
+    return {
+        title: t("page.main.title"),
+        description: t("page.main.description")
+    }
+}
+
+export default async function Page({ params: { locale } }: { params: { locale: "en" | "ru" } }) {
+    const t = await getTranslations();
     const firstSet = await fetchMovieSetByGenre(2);
     const firstLink = getKeyByValue(CLIENT_GENRE_LIST, 2);
     const renderFirstLink = "/movies/" + CLIENT_GENRE_LIST[firstLink]
@@ -63,7 +71,7 @@ export default async function Page({ params: { locale } }: { params: { locale:"e
                     <PageWrapperInner>
                         <Link href={renderFirstLink}>
                             <SectionTitle withArrow>
-                                {"text"}
+                                {t(`genre.${firstLink}.short`)}
                             </SectionTitle>
                         </Link>
                         <MovieSlider
@@ -78,7 +86,7 @@ export default async function Page({ params: { locale } }: { params: { locale:"e
                     <PageWrapperInner>
                         <Link href={renderSecondLink}>
                             <SectionTitle withArrow>
-                                {"text"}
+                                {t(`genre.${secondLink}.short`)}
                             </SectionTitle>
                         </Link>
                         <MovieSlider

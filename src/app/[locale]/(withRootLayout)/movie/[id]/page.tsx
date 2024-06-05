@@ -23,39 +23,35 @@ import { getInfoProduct } from "../../../../../utils/getInfoProduct";
 import { calculateCountryName } from "../../../../../utils/calculateCountryName";
 import SectionTitle from "../../../../../components/UI/SectionTitle/SectionTitle";
 import { getDictionary } from "../../../dictionaries";
-import Link from "next/link";
 import BreadCrumbs from "../../../../../components/UI/BreadCrumbs/BreadCrumbs";
-import { getBreadcrumbsLinks } from "../../../../../utils/getBreadcrumbsLinks";
 import SizeConditionContainer from "../../../../../components/SizeConditionContainer/SizeConditionContainer";
 import type { Metadata } from "next";
 import CommentSlider from "../../../../../components/comment/CommentSlider/CommentSlider";
 import { getTranslations } from "next-intl/server";
-
-
+import useBreadcrumbsLinks from "../../../../../hooks/breadcrumbs/useBreadcrumbsLinks";
+import { Link } from "../../../../../navigation";
+import RatingModalContent from "../../../../../components/Rating/RatingModal/RatingModalContent";
+import RatingLarge from "../../../../../components/Rating/RatingLarge/RatingLarge";
+import RatingBlock from "../../../../../components/Rating/RatingBlock/RatingBlock";
+import { MovieById, Movie } from "../../../../../models/types";
 
 type Props = {
     params: { id: string, locale: "en" | "ru" }
 }
 
-async function getMovieById(movieId: string) {
-    const movie = await MovieAPI.getMovieById(movieId);
-    return movie;
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id, locale } = params;
-    const movie = await getMovieById(id);
+    const t = await getTranslations();
+    const movie = await MovieAPI.getMovieById(id);
     const movieName = calculateMovieName(movie.film, locale);
 
     return {
-        title: `${movieName} смотреть в хорошем качестве`,
+        title: t("page.movie.title", { movieName }),
+        description: t("page.movie.description", {movieName})
     }
 }
-
-
-
 export default async function Movie({ params: { id, locale } }: { params: { id: string, locale: "ru" | "en" } }) {
-    const movie = await getMovieById(id);
+    const movie = await MovieAPI.getMovieById(id);
     const dict = await getDictionary(locale);
     const t = await getTranslations();
 
@@ -71,7 +67,21 @@ export default async function Movie({ params: { id, locale } }: { params: { id: 
     const {firstTrailerLink,trailerLinkList } = getLinksForPlayer(movie.film.trailers);
 
 
-    const breadCrumbsData = getBreadcrumbsLinks({ movie, lang:locale, dict });
+    const breadCrumbsData = await useBreadcrumbsLinks({ movie });
+
+    async function getSimilarMovieList(movie: MovieById) {
+        const hasSimilar = !!movie.film.similar.length;
+        if (hasSimilar) return { rows:movie.film.similar, count: movie.film.similar.length, isSimilarList: hasSimilar };
+        const currentMovieFirstGenre = movie.film.genres[0].id;
+        const similarMovieList = await MovieAPI.getFilteredMovie({ genreId: currentMovieFirstGenre });
+        return {rows: similarMovieList.rows, count: similarMovieList.count, isSimilarList: hasSimilar};
+    }
+   
+    const similar = await getSimilarMovieList(movie);
+
+    const personAmount = 5;
+    const movieStaffSliced  = movie.staff.length > personAmount ? movie.staff.slice(0, personAmount) : movie.staff
+
 
     return (
         <>
@@ -108,7 +118,7 @@ export default async function Movie({ params: { id, locale } }: { params: { id: 
                             <MoviePageGridArea area="person">
                                 <PersonListWithRating
                                     movieRating={movie.film.ratingKinopoisk ?? 5}
-                                    persons={movie.staff}
+                                    persons={movieStaffSliced}
                                 />
                             </MoviePageGridArea>
 
@@ -137,7 +147,17 @@ export default async function Movie({ params: { id, locale } }: { params: { id: 
 
                             <SizeConditionContainer more={1160}>
                                 <MoviePageGridArea area="rating">
-                                    <Rating variant="large" movieRating={+(movie.film.ratingKinopoisk ?? 5)} />
+                                    <Rating
+                                        ratingButton={
+                                            <RatingLarge>
+                                                <RatingBlock ratingValue={+(movie.film.ratingKinopoisk ?? 5)} />
+                                            <p>{t("RatingIvi")}</p>
+                                            <div>
+                                                <p>{t("Estimate")}</p>
+                                            </div>
+                                        </RatingLarge> }
+                                        ratingModalContent={<RatingModalContent /> }
+                                    />
                                 </MoviePageGridArea>
                             </SizeConditionContainer>
 
@@ -155,6 +175,7 @@ export default async function Movie({ params: { id, locale } }: { params: { id: 
                             {t("WithFilm", { name: movieName })}
                         </SectionTitle>
                         <SimilarSlider
+                            similarData={similar}
                             similarGenreId={movie.film.genres[0].id}
                             similarMovieList={movie.film.similar}
                             movieName={movieName}

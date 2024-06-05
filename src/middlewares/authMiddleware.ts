@@ -10,7 +10,7 @@ export const authMiddleware: MiddlewareFactory = (next) => {
         const refreshToken = request.cookies.get("refreshToken")?.value;
         const url = request.nextUrl.clone();
         const res = NextResponse.next();
-
+        
         
         //let locales = [ 'ru', 'en']
         //let defaultLocale = 'ru'

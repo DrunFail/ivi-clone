@@ -12,26 +12,22 @@ import FilmographyList from "../../../../../components/person/Filmography/Filmog
 import { getDictionary } from "../../../dictionaries";
 import type { Metadata } from 'next'
 import FilmographyItemCard from "../../../../../components/person/Filmography/FilmographyItemCard/FilmographyItemCard";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
     params: { id: string, locale: "en" | "ru" }
 }
 
-const DEFAULT_TEXT_TITLE = ": фильмография,фото,биография."
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id, locale } = params;
-    const person = await getPersonDataById(+id);
+    const t = await getTranslations();
+    const person = await NewPersonAPI.getPersonById(+id);
     const personName = calculatePersonName(person, locale);
+    const personProfession = person.person.profession ?? "";
     return {
-        title: `${personName}${ DEFAULT_TEXT_TITLE }${ person.person.profession ?? ""} .`,
-        keywords: `${personName}.${person.person.profession ?? ""}.`
+        title: t("page.person.title", { personName, personProfession }),
+        description: t("page.person.description", {personName})
     }
-}
-
-async function getPersonDataById(personId: number) {
-    const person = await NewPersonAPI.getPersonById(personId);
-    return person;
 }
 
 const calculatePersonName = (person:DetailedPerson,lang:string) => {
@@ -41,7 +37,7 @@ const calculatePersonName = (person:DetailedPerson,lang:string) => {
 
 
 export default async function PersonPage({ params: { id,locale } }: { params: { id: string,locale:"en" | "ru" } }) {
-    const person =  await getPersonDataById(+id);
+    const person = await NewPersonAPI.getPersonById(+id);
     const personName = calculatePersonName(person, locale);
     const dict = await getDictionary(locale);
    

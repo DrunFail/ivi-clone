@@ -6,6 +6,8 @@ import { NAV_MENU } from "../../../constants/headerConstants";
 import { NavbarLink } from "../../../models/global";
 import { calculateGenreName } from "../../../utils/calculateGenreName";
 import { getKeyByValue } from "../../../utils/getKeyByValue";
+import { cookies } from "next/headers";
+import useRefreshToken from "../../../hooks/auth/useRefreshToken";
 
 async function getGenreListFromDB() {
     const genreListFromDB = await MovieAPI.getGenreList();
@@ -13,11 +15,44 @@ async function getGenreListFromDB() {
 }
 
 
+async function getUserProfileDataFromDB(token:string){
+    
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/profiles/me`, {
+            method: "get",
+            headers: {
 
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) {
+            console.log("error fetch user data")
+        }
+        return response.json();
+}
 
 export default async function MovieLayout({ children, params: { locale } }: { children: React.ReactNode, params: { locale: "ru" | "en" } }) {
     const genreListFromDB = await getGenreListFromDB();
     const t = await getTranslations();
+
+    const session = await cookies().get("session")?.value;
+    let userProfileData;
+    if (session) {
+        userProfileData = await getUserProfileDataFromDB(session);
+    }
+    else {
+        const refresh = await cookies().get("refreshToken")?.value;
+        if (refresh) {
+            //get new token
+            console.log("need refresh")
+        }
+        
+    }
+    
+    
+   console.log(userProfileData)
+    
+    
 
     function translateCountryNavBlock(navBlock: NavbarLink) {
         return navBlock.data!.country.map(country => {
@@ -90,7 +125,7 @@ export default async function MovieLayout({ children, params: { locale } }: { ch
 
 
     return (
-        <RootLayout navList={transformedNav as NavbarLink[]}>
+        <RootLayout navList={transformedNav as NavbarLink[]} userProfileData={userProfileData}>
             {children}
         </RootLayout>
     );
