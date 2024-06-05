@@ -1,20 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
+
 import Footer from "./Footer";
 import { within } from "@storybook/test";
 import { expect } from "@storybook/test";
-import store from "../../../store/store";
 
 const meta: Meta<typeof Footer> = {
   title: "footer/Footer",
   component: Footer,
-  decorators: [
-    (Story) => (
-      <Provider store={store}>
-          <Story />
-      </Provider>
-    ),
-  ],
 };
 
 export default meta;

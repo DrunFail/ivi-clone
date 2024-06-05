@@ -1,13 +1,11 @@
-"use client";
-
-import useAuth from "../../../hooks/auth/useAuth";
+import { cookies } from "next/headers";
 
 export default function CheckIsAuthUser({ isTrue, isFalse }: {isTrue: React.ReactNode, isFalse: React.ReactNode}) {
-	const auth = useAuth().auth;
+	const session = cookies().get("refreshToken")
 
 	return (
 		<>
-			{auth.token ? isTrue : isFalse }
+			{session ? isTrue : isFalse }
 		</>
 	);
 }

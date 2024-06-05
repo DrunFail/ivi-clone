@@ -11,5 +11,7 @@ export default meta;
 type Story = StoryObj<typeof FilmTitleTop>;
 
 export const Primary: Story = {
-  render: () => <FilmTitleTop rating={5} />,
+    args: {
+        rating: 5
+    }
 };

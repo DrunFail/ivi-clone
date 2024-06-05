@@ -6,11 +6,9 @@ import InfoProductOverlay from "../../UI/movie/InfoProductOverlay/InfoProductOve
 import RatingOverlayContainer from "../../UI/movie/RaitingOverlayContainer/RatingOverlayContainer";
 import RatingFromNumbers from "../../UI/movie/RatingFromNumbers/RatingFromNumbers";
 import RatingProgressBarBlock from "../../UI/movie/RatingProgressBarBlock/RatingProgressBarBlock";
-import Link from "next/link";
 import ActiveTab from "../ActiveTab/ActiveTab";
 import TabTitle from "../TabTitle/TabTitle";
 import TabTitleContainer from "../TabTitleContainer/TabTitleContainer";
-import BackToMovieLink from "../BackToMovieLink/BackToMovieLink";
 import MovieTitleWithYear from "../../Movie/MovieTitleWithYear/MovieTitleWithYear";
 import { MovieById } from "../../../models/types";
 import { calculateDurationMovie } from "../../../utils/calculateDurationMovie";
@@ -18,6 +16,10 @@ import { getInfoProduct } from "../../../utils/getInfoProduct";
 import { calculateMovieName } from "../../../utils/calculateMovieName";
 import styles from "./MoviePageModalLayout.module.scss";
 import { getLinksForPlayer } from "../../../utils/getLinksForPlayer";
+import { Link } from "../../../navigation";
+import BackButtonFromModal from "../../BackButtonFromModal/BackButtonFromModal";
+import { useTranslations } from "next-intl";
+import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
 
 const newTabs: { tabName: string, count: number | null, isShowCount: boolean }[] = [
     {
@@ -43,11 +45,12 @@ const newTabs: { tabName: string, count: number | null, isShowCount: boolean }[]
 
 
 
-export default function MoviePageModalLayout({ movie, lang,dict, children }: { movie: MovieById, dict:any, lang: "ru" | "en", children: React.ReactNode }) {
+export default function MoviePageModalLayout({ movie, lang, dict, children }: { movie: MovieById, dict: any, lang: "ru" | "en", children: React.ReactNode }) {
     const movieName = calculateMovieName(movie.film, lang);
     const movieDuration = calculateDurationMovie(movie.film.filmLength);
     const movieInfo = getInfoProduct(movie.film);
-    const {trailerLinkList } = getLinksForPlayer(movie.film.trailers)
+    const { trailerLinkList } = getLinksForPlayer(movie.film.trailers);
+    const t = useTranslations();
 
     const generateTabs = () => {
 
@@ -70,10 +73,11 @@ export default function MoviePageModalLayout({ movie, lang,dict, children }: { m
     return (
         <>
             <PageWrapper>
-                <BackToMovieLink
-                    backLink={`/movie/${movie.film.kinopoiskId}`}
-                    textLink={dict["movie.back"]}
-                />
+                <Link href={`/movie/${movie.film.kinopoiskId}`}>
+                    <BackButtonFromModal
+                        textLink={t("movie.back")}
+                    />
+                </Link>
             </PageWrapper>
             <div className={styles.main}>
                 <div>
@@ -89,9 +93,9 @@ export default function MoviePageModalLayout({ movie, lang,dict, children }: { m
                                 <Fragment key={index}>
                                     {tab.tabName === "trailer" && !trailerLinkList.length
                                         ? <></>
-                                        : <Link href={`/movie/${movie.film.kinopoiskId}/${tab.tabName}` }>
+                                        : <Link href={`/movie/${movie.film.kinopoiskId}/${tab.tabName}`}>
 
-                                           
+
                                             <ActiveTab partPathname={tab.tabName}>
                                                 <TabTitle
                                                     active={false}
@@ -99,8 +103,8 @@ export default function MoviePageModalLayout({ movie, lang,dict, children }: { m
                                                     showCount={tab.isShowCount}
                                                     count={tab.count}
                                                 />
-                                                </ActiveTab>
-                                            
+                                            </ActiveTab>
+
                                         </Link>
 
                                     }
@@ -115,22 +119,23 @@ export default function MoviePageModalLayout({ movie, lang,dict, children }: { m
                         {children}
                     </div>
                 </div>
+                <SizeConditionContainer more={850}>
+                    <div className={styles.poster}>
+                        <MoviePoster posterUrl={movie.film.posterUrl} />
+                        <div>
+                            <RatingOverlayContainer>
+                                <RatingFromNumbers rating={["5", "5"]} />
+                                <RatingProgressBarBlock />
+                            </RatingOverlayContainer>
 
-                <div>
-                    <MoviePoster posterUrl={movie.film.posterUrl} />
-                    <div>
-                        <RatingOverlayContainer>
-                            <RatingFromNumbers rating={["5", "5"]} />
-                            <RatingProgressBarBlock />
-                        </RatingOverlayContainer>
+                            <InfoProductOverlay
+                                string={movieInfo.infoProduct} />
 
-                        <InfoProductOverlay
-                            string={movieInfo.infoProduct} />
-
-                        <DurationOverlay
-                            duration={movieDuration} />
+                            <DurationOverlay
+                                duration={movieDuration} />
+                        </div>
                     </div>
-                </div>
+                </SizeConditionContainer>
             </div>
         </>
     );

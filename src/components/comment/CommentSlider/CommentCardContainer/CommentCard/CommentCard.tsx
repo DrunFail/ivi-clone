@@ -2,12 +2,11 @@ import CommentBody from "../../../../UI/comment/CommentBody/CommentBody";
 import CommentDateCreated from "../../../../UI/comment/CommentDateCreated/CommentDateCreated";
 import CommentLikeCounter from "../../../../UI/comment/CommentLikeCounter/CommentLikeCounter";
 import CommentUserName from "../../../../UI/comment/CommentUserName/CommentUserName";
-import { ModifiedCommentData } from "../../../interfaces/interfaces";
 import styles from "./CommentCard.module.scss";
 
 
 interface CommentCardProps {
-    modifiedCommentData: ModifiedCommentData,
+    modifiedCommentData: {commentAuthor: string, commentBody: string, commentCreatedDate: string},
 }
 
 

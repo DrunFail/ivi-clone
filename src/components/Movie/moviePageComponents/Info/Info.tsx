@@ -1,5 +1,3 @@
-"use client";
-
 import MovieTitleWithYear from "../../MovieTitleWithYear/MovieTitleWithYear";
 import styles from "./Info.module.scss";
 import { useTranslations } from "next-intl";

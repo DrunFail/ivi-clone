@@ -1,19 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import MovieListCard from "./MovieListCard";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
 
 const meta: Meta<typeof MovieListCard> = {
   title: "movie/MovieListCard",
   component: MovieListCard,
   decorators: [
     (Story) => (
-      <Provider store={store}>
           <div style={{ inlineSize: "350px" }}>
             <Story />
           </div>
-      </Provider>
     ),
   ],
   args: {

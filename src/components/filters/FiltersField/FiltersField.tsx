@@ -16,7 +16,7 @@ interface FiltersFieldProps {
     filterParams: FilterParams,
     variant: "admin" | "genrePage",
     currentSelectedGenre: string,
-    translatedCurrentCountry
+    translatedCurrentCountry:string
 }
 export default function FiltersField({
     genreObjects,

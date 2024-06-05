@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import RatingBlock from "./RatingBlock";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
 
 const meta: Meta<typeof RatingBlock> = {
   title: "ui/rating/RatingBlock",
@@ -13,9 +10,7 @@ export default meta;
 type Story = StoryObj<typeof RatingBlock>;
 
 export const Large: Story = {
-  render: () => (
-    <Provider store={store}>
-        <RatingBlock ratingValue={8} />
-    </Provider>
-  ),
+    args: {
+        ratingValue: 8
+    }
 };

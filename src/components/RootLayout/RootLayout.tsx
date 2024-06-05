@@ -10,16 +10,17 @@ const Footer = dynamic(() => import('./Footer/Footer'))
 
 interface RootLayoutProps {
     children: React.ReactNode;
-    navList: NavbarLink[]
+    navList: NavbarLink[];
+    userProfileData: any
 }
 
-export default function RootLayout({ children,navList }: RootLayoutProps) {
+export default function RootLayout({ children,navList,userProfileData }: RootLayoutProps) {
 
     return (
         <>
             <header>
                 <PageWrapper>
-                    <HeaderContent navList={navList} />
+                    <HeaderContent navList={navList} userProfileData={userProfileData } />
                 </PageWrapper>
             </header>
             <main className={styles.main}>

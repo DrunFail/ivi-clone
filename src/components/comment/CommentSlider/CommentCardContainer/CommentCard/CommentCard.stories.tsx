@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import CommentCard from "./CommentCard";
-import { Provider } from "react-redux";
-import store from "../../../../../store/store";
 
 const meta: Meta<typeof CommentCard> = {
   title: "comment/CommentCard",
-  component: CommentCard,
+    component: CommentCard,
+    decorators: [
+        (Story) => 
+            <div style={{ inlineSize: "350px" }}>
+                <Story />
+            </div>
+    ]
 };
 
 export default meta;
@@ -22,11 +26,7 @@ const comment = {
 };
 
 export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-        <div style={{ inlineSize: "350px" }}>
-          <CommentCard modifiedCommentData={comment} />
-        </div>
-    </Provider>
-  ),
+    args: {
+        modifiedCommentData: comment,
+    }
 };

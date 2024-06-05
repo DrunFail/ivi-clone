@@ -10,6 +10,4 @@ const meta: Meta<typeof HeaderTitleTop> = {
 export default meta;
 type Story = StoryObj<typeof HeaderTitleTop>;
 
-export const Primary: Story = {
-  render: () => <HeaderTitleTop />,
-};
+export const Primary: Story = {};

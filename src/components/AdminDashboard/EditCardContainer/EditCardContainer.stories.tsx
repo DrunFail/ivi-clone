@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Title, Canvas } from "@storybook/blocks";
 
 import EditCardContainer from "./EditCardContainer";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
 import EditMovieCardContent from "../cards/EditMovieCardContent/EditMovieCardContent";
 import DeleteMovieCardContent from "../cards/DeleteMovieCardContent/DeleteMovieCardContent";
 import EditGenreCardContent from "../cards/EditGenreCardContent/EditGenreCardContent";
@@ -12,13 +10,6 @@ import { MOVIE_SINGLE } from "../../../mockData/movieSingle";
 const meta: Meta<typeof EditCardContainer> = {
   title: "admin/EditCardContainer",
   component: EditCardContainer,
-  decorators: [
-    (Story) => (
-      <Provider store={store}>
-          <Story />
-      </Provider>
-    ),
-  ],
   tags: ["autodocs"],
   parameters: {
     docs: {

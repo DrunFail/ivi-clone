@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
 
-import store from "../../../../store/store";
 import HamburgerMenuButtonWithModal from "./HamburgerMenuButtonWithModal";
 import HamburgerMenuModal from "../HamburgerMenuModal/HamburgerMenuModal";
+import { NAV_MENU } from "../../../../constants/headerConstants";
 
 const meta: Meta<typeof HamburgerMenuButtonWithModal> = {
     title: "mobileNavBar/HamburgerMenuButtonWithModal",
@@ -14,9 +13,9 @@ export default meta;
 type Story = StoryObj<typeof HamburgerMenuButtonWithModal>;
 
 export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-                <HamburgerMenuButtonWithModal openBtn={"openBtn"} closeBtn={"closeBtn"} modal={<HamburgerMenuModal /> } />
-    </Provider>
-  ),
+    args: {
+        openBtn: "openBtn",
+        closeBtn: "closeBtn",
+        modal: <HamburgerMenuModal navMenu={NAV_MENU} />
+    }
 };

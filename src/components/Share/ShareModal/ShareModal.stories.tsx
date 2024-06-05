@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import ShareModal from "./ShareModal";
-import store from "../../../store/store";
-import { Provider } from "react-redux";
-import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 
 const meta: Meta<typeof ShareModal> = {
   title: "modals/ShareModal",
@@ -14,18 +11,12 @@ export default meta;
 type Story = StoryObj<typeof ShareModal>;
 
 export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-        <PageWrapper>
-          <ShareModal
-            isModalClose={() => console.log("close")}
-            visible
-            movieDuration="25"
-            movieName="Movie"
-            movieYear={2022}
-            urlMovieImage=""
-          />
-        </PageWrapper>
-    </Provider>
-  ),
+    args: {
+        visible: true,
+        isModalClose: () => console.log("close"),
+        movieDuration: "25",
+        movieName: "movieName",
+        movieYear: 2022,
+        urlMovieImage: ""
+    }
 };

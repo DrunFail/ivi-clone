@@ -1,5 +1,3 @@
-"use client";
-
 import ShareButtonWithModal from "../../Share/ShareButtonWithModal";
 import FontIcon from "../../UI/FontIcon/FontIcon";
 import Button from "../../UI/core/Button/Button";

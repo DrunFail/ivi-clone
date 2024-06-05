@@ -5,6 +5,7 @@ import Button from "../../../../UI/core/Button/Button";
 import { useTranslations } from "next-intl";
 import CheckIsAuthUser from "../../../CheckIsAuthUser/CheckIsAuthUser";
 import ClickLogoutHandler from "../../../ClickLogoutHandler/ClickLogoutHandler";
+import SetCookierForRedirectAfterLogin from "../../../SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin";
 
 export default function ProfileDropdownWindow() {
     const t = useTranslations();
@@ -30,18 +31,20 @@ export default function ProfileDropdownWindow() {
                                 color="red"
                             >
                                 Выйти
-                            </Button>
+                                </Button>
                         </ClickLogoutHandler>
                     }
                     isFalse={
-                        <Button
-                            as="link"
-                            color="red"
-                            href="/auth/login"
-                            data-testId="btn-login"
-                        >
-                            {t("EnterOrRegister")}
-                        </Button>
+                        <SetCookierForRedirectAfterLogin>
+                            <Button
+                                as="link"
+                                color="red"
+                                href="/auth/login"
+                                data-testId="btn-login"
+                            >
+                                {t("EnterOrRegister")}
+                            </Button>
+                        </SetCookierForRedirectAfterLogin>
                     }
                 />
             </div>

@@ -4,15 +4,15 @@ import { TOP_10_DATA } from "./data";
 import TopTenSlider from "./TopTenSlider";
 
 const meta: Meta<typeof TopTenSlider> = {
-  title: "movie/TopTenSlider/TopTenSlider",
-  component: TopTenSlider,
+    title: "movie/TopTenSlider/TopTenSlider",
+    component: TopTenSlider,
+    args: {
+        count: 10,
+        data: TOP_10_DATA
+    }
 };
 
 export default meta;
 type Story = StoryObj<typeof TopTenSlider>;
 
-export const Primary: Story = {
-  render: () => (
-    <TopTenSlider count={10}  data={TOP_10_DATA} />
-  ),
-};
+export const Primary: Story = {};

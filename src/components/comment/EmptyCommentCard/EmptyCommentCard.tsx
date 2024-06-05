@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 interface EmptyCommentCardProps {
     variant: "slider" | "list"
 }
+
 export default function EmptyCommentCard({ variant }: EmptyCommentCardProps) {
     const t = useTranslations();
     return (

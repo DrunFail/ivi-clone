@@ -6,6 +6,7 @@ import Modal from "../../UI/Modal/Modal";
 export default function MoviePageModal({ children }:{children:React.ReactNode}) {
     const path = usePathname();
 
+
     const isVisibleModal = path.includes("actors") || path.includes("review") || path.includes("trailer");
 
     return (
