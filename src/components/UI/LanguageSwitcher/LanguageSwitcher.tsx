@@ -3,19 +3,17 @@
 import { useState } from "react";
 import styles from "./LanguageSwitcher.module.scss";
 import { usePathname } from "next/navigation";
-import { Link } from "../../../navigation";
-import { useLocale } from 'next-intl';
+import dynamic from "next/dynamic";
 
-const LOCALE = {
-    ru: "RU",
-    en: "EN"
+const LocaleVariantMenu = dynamic(() => import("./LocaleVariantMenu/LocaleVariantMenu"));
+
+interface LanguageSwitcherProps {
+    button: React.ReactNode
 }
 
-
-export default function SwitchButton() {
+export default function LanguageSwitcher({ button }: LanguageSwitcherProps) {
     const [visible, setVisible] = useState<boolean>();
     const path = usePathname();
-    const locale = useLocale();
     const pathWithoutLocale = `/${path.slice(4)}`;
 
     const hoverVisible = (bol: boolean) => {
@@ -30,12 +28,11 @@ export default function SwitchButton() {
             onClick={() => hoverVisible(!visible)}
             data-testid="lng-switcher"
         >
-            <span className={styles.currentLocale}>{LOCALE[locale as keyof typeof LOCALE]}</span>
+            {button}
             {visible &&
-                <div className={styles.localeVariant}>
-                    <Link href={pathWithoutLocale} locale="ru">RU</Link>
-                    <Link href={pathWithoutLocale} locale="en">EN</Link>
-                </div>
+                <LocaleVariantMenu
+                    pathWithoutLocale={pathWithoutLocale}
+                />
             }
         </div>
     );

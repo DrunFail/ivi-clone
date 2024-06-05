@@ -11,6 +11,7 @@ import FontIcon from "../../UI/FontIcon/FontIcon";
 import SetCookierForRedirectAfterLogin from "../SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin";
 import ButtonSubscription from "./ButtonSubscription/ButtonSubscription";
 import SearchButtonDesktop from "./SearchButtonDesktop/SearchButtonDesktop";
+import ButtonWithCurrentLocale from "../../UI/LanguageSwitcher/ButtonWithCurrentLocale/ButtonWithCurrentLocale";
 
 
 const LanguageSwitcher = dynamic(() => import('../../UI/LanguageSwitcher/LanguageSwitcher'));
@@ -41,7 +42,10 @@ export default function HeaderContent({ navList, userProfileData }: { navList: N
                         button={<SearchButtonDesktop />}
                         modal={<SearchModal />}
                     />
-                    <LanguageSwitcher />
+                    <LanguageSwitcher
+                        button={<ButtonWithCurrentLocale />}
+
+                    />
                 </SizeConditionContainer>
 
 
