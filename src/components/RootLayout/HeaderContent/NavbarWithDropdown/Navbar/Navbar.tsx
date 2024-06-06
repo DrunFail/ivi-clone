@@ -5,18 +5,15 @@ import { useTranslations } from "next-intl";
 
 interface NavbarProps {
     navLinkData: NavbarLink[];
-    linkHoverHandler?: (menuItem:NavbarLink) => void
 }
-export default function Navbar({ navLinkData, linkHoverHandler }: NavbarProps) {
+export default function Navbar({ navLinkData }: NavbarProps) {
     const t = useTranslations();
     return (
         <nav className={styles.navbar} data-testid='header-navbar'>
             <ul>
                 {navLinkData.map((menuItem, idx) =>
                     <li key={idx}>
-                        <Link
-                            href={menuItem.link}
-                            onMouseEnter={() => linkHoverHandler && linkHoverHandler(menuItem)}>
+                        <Link href={menuItem.link}>
                             {t(`header.navbar.${menuItem.name}`)}
                         </Link>
                     </li>

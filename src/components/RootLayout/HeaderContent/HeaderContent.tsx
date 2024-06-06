@@ -3,7 +3,6 @@ import HeaderPortalContainer from "./portal/HeaderPortalContainer";
 import { NavbarLink } from "../../../models/global";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import ProfileIconWithDropdown from "./ProfileIconWithDropdown/ProfileIconWithDropdown";
-import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
 import dynamic from "next/dynamic";
 import CheckIsAuthUser from "../CheckIsAuthUser/CheckIsAuthUser";
 import Button from "../../UI/core/Button/Button";
@@ -12,6 +11,7 @@ import SetCookierForRedirectAfterLogin from "../SetCookierForRedirectAfterLogin/
 import ButtonSubscription from "./ButtonSubscription/ButtonSubscription";
 import SearchButtonDesktop from "./SearchButtonDesktop/SearchButtonDesktop";
 import ButtonWithCurrentLocale from "../../UI/LanguageSwitcher/ButtonWithCurrentLocale/ButtonWithCurrentLocale";
+import Navbar from "./NavbarWithDropdown/Navbar/Navbar";
 
 
 const LanguageSwitcher = dynamic(() => import('../../UI/LanguageSwitcher/LanguageSwitcher'));
@@ -28,26 +28,29 @@ export default function HeaderContent({ navList, userProfileData }: { navList: N
             <div className={styles.content}>
                 <HeaderLogo />
                 <div className={styles.navbar}>
-                    <SizeConditionContainer more={1160}>
-                        <NavbarWithDropdown
-                            navLinkData={navList}
-                        />
-                    </SizeConditionContainer>
-
+                    <NavbarWithDropdown
+                        navLinkData={navList}
+                    >
+                        <Navbar navLinkData={navList} />
+                    </NavbarWithDropdown>
 
                 </div>
-                <SizeConditionContainer more={1160}>
+                <div className={styles.subscription}>
                     <ButtonSubscription />
+                </div>
+
+                <div className={styles.search}>
                     <SearchButtonWithModal
                         button={<SearchButtonDesktop />}
                         modal={<SearchModal />}
                     />
+                </div>
+                <div className={styles.locale}>
                     <LanguageSwitcher
                         button={<ButtonWithCurrentLocale />}
 
                     />
-                </SizeConditionContainer>
-
+                </div>
 
                 <ProfileIconWithDropdown
                     userProfileData={userProfileData}
@@ -75,7 +78,6 @@ export default function HeaderContent({ navList, userProfileData }: { navList: N
                     />
 
                 </ProfileIconWithDropdown>
-
             </div>
             <HeaderPortalContainer />
         </div>
