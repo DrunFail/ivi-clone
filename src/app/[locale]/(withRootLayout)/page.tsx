@@ -16,11 +16,6 @@ const MovieSlider = dynamic(() =>
     import("../../../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
 
 
-const fetchMovieSetByGenre = async (genreId:number) => {
-        const responseData = await MovieAPI.getFilteredMovie({ genreId})
-    return responseData;
-}
-
 import type { Metadata } from 'next'
 import { getTranslations } from "next-intl/server";
 
@@ -37,14 +32,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
+const getMovieSet = async (genreId: number) => {
+    const movieList = await MovieAPI.getFilteredMovie({ genreId });
+    const movieListGenreName = getKeyByValue(CLIENT_GENRE_LIST, genreId);
+    const movieListLink = "/movies/" + CLIENT_GENRE_LIST[movieListGenreName];
+    return { movieList, movieListGenreName, movieListLink }
+}
+
+
 export default async function Page({ params: { locale } }: { params: { locale: "en" | "ru" } }) {
     const t = await getTranslations();
-    const firstSet = await fetchMovieSetByGenre(2);
-    const firstLink = getKeyByValue(CLIENT_GENRE_LIST, 2);
-    const renderFirstLink = "/movies/" + CLIENT_GENRE_LIST[firstLink]
-    const secondSet = await fetchMovieSetByGenre(1);
-    const secondLink = getKeyByValue(CLIENT_GENRE_LIST, 1);
-    const renderSecondLink = "/movies/" + CLIENT_GENRE_LIST[secondLink]
+    
+    const firstSet = await getMovieSet(2);
+    const secondSet = await getMovieSet(1);
+   
 
     return (
         <>
@@ -69,14 +70,14 @@ export default async function Page({ params: { locale } }: { params: { locale: "
             <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
-                        <Link href={renderFirstLink}>
+                        <Link href={firstSet.movieListLink}>
                             <SectionTitle withArrow>
-                                {t(`genre.${firstLink}.short`)}
+                                {t(`genre.${firstSet.movieListGenreName}.short`)}
                             </SectionTitle>
                         </Link>
                         <MovieSlider
-                            data={firstSet}
-                            href={renderFirstLink}
+                            data={firstSet.movieList}
+                            href={firstSet.movieListLink}
                             />
                     </PageWrapperInner>
                 </PageWrapper>
@@ -84,14 +85,14 @@ export default async function Page({ params: { locale } }: { params: { locale: "
             <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
-                        <Link href={renderSecondLink}>
+                        <Link href={secondSet.movieListLink}>
                             <SectionTitle withArrow>
-                                {t(`genre.${secondLink}.short`)}
+                                {t(`genre.${secondSet.movieListGenreName}.short`)}
                             </SectionTitle>
                         </Link>
                         <MovieSlider
-                            data={secondSet}
-                            href={renderSecondLink}
+                            data={secondSet.movieList}
+                            href={secondSet.movieListLink}
                         />
                     </PageWrapperInner>
                 </PageWrapper>
