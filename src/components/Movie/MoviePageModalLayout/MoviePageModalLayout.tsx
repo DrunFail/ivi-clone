@@ -1,25 +1,25 @@
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
+import { Link } from "../../../navigation";
+import BackButtonFromModal from "../../BackButtonFromModal/BackButtonFromModal";
 import MoviePoster from "../../Movie/MoviePoster/MoviePoster";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
+import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
 import DurationOverlay from "../../UI/movie/DurationOverlay/DurationOverlay";
 import InfoProductOverlay from "../../UI/movie/InfoProductOverlay/InfoProductOverlay";
 import RatingOverlayContainer from "../../UI/movie/RaitingOverlayContainer/RatingOverlayContainer";
 import RatingFromNumbers from "../../UI/movie/RatingFromNumbers/RatingFromNumbers";
 import RatingProgressBarBlock from "../../UI/movie/RatingProgressBarBlock/RatingProgressBarBlock";
-import ActiveTab from "../ActiveTab/ActiveTab";
-import TabTitle from "../TabTitle/TabTitle";
-import TabTitleContainer from "../TabTitleContainer/TabTitleContainer";
-import MovieTitleWithYear from "../../Movie/MovieTitleWithYear/MovieTitleWithYear";
-import { MovieById } from "../../../models/types";
-import { calculateDurationMovie } from "../../../utils/calculateDurationMovie";
-import { getInfoProduct } from "../../../utils/getInfoProduct";
+import ActiveTab from "../../componentsTab/ActiveTab/ActiveTab";
+import TabTitle from "../../componentsTab/TabTitle/TabTitle";
+import TabTitleContainer from "../../componentsTab/TabTitleContainer/TabTitleContainer";
+import MovieTitleWithYear from "../MovieTitleWithYear/MovieTitleWithYear";
 import { calculateMovieName } from "../../../utils/calculateMovieName";
+import {calculateDurationMovie } from "../../../utils/calculateDurationMovie";
 import styles from "./MoviePageModalLayout.module.scss";
+import { getInfoProduct } from "../../../utils/getInfoProduct";
 import { getLinksForPlayer } from "../../../utils/getLinksForPlayer";
-import { Link } from "../../../navigation";
-import BackButtonFromModal from "../../BackButtonFromModal/BackButtonFromModal";
-import { useTranslations } from "next-intl";
-import SizeConditionContainer from "../../SizeConditionContainer/SizeConditionContainer";
+import { MovieById } from "../../../models/types";
 
 const newTabs: { tabName: string, count: number | null, isShowCount: boolean }[] = [
     {
@@ -68,8 +68,6 @@ export default function MoviePageModalLayout({ movie, lang, dict, children }: { 
     }
     const renderTabs = generateTabs();
 
-
-
     return (
         <>
             <PageWrapper>
@@ -81,8 +79,6 @@ export default function MoviePageModalLayout({ movie, lang, dict, children }: { 
             </PageWrapper>
             <div className={styles.main}>
                 <div>
-
-
                     <div className={styles.header}>
                         <MovieTitleWithYear
                             movieTitle={movieName}
@@ -98,7 +94,6 @@ export default function MoviePageModalLayout({ movie, lang, dict, children }: { 
 
                                             <ActiveTab partPathname={tab.tabName}>
                                                 <TabTitle
-                                                    active={false}
                                                     tabTitle={dict[tab.tabName as keyof typeof dict]}
                                                     showCount={tab.isShowCount}
                                                     count={tab.count}

@@ -1,7 +1,7 @@
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
-import MoviePageModal from "../../../../../../../components/componentsTab/MoviePageModal/MoviePageModal";
-import MoviePageModalLayout from "../../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
-import TrailerTab from "../../../../../../../components/componentsTab/TrailerTab/TrailerTab";
+import MoviePageModal from "../../../../../../../components/Movie/MoviePageModal/MoviePageModal";
+import MoviePageModalLayout from "../../../../../../../components/Movie/MoviePageModalLayout/MoviePageModalLayout";
+import TrailerTab from "../../../../../../../components/TrailerTab/TrailerTab";
 import { getLinksForPlayer } from "../../../../../../../utils/getLinksForPlayer";
 import { getDictionary } from "../../../../../dictionaries";
 

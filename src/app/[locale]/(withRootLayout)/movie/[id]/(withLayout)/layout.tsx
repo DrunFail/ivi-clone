@@ -1,5 +1,5 @@
 import { MovieAPI } from "../../../../../../api/MovieAPI";
-import MoviePageModalLayout from "../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
+import MoviePageModalLayout from "../../../../../../components/Movie/MoviePageModalLayout/MoviePageModalLayout";
 import { getDictionary } from "../../../../dictionaries";
 
 async function getMovieById(movieId: string) {

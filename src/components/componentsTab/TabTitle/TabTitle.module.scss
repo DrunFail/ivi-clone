@@ -20,14 +20,3 @@
        color: #a5a1b2;
     }
 }
-.container[data-status="true"]:before {
-    bottom: 0;
-    content: "";
-    height: 4px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transition: background-color .4s;
-    background-color: #f30745;
-    transition-duration: 80ms;
-}

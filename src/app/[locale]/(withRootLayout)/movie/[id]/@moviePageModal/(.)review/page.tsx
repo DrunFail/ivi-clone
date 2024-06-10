@@ -1,8 +1,8 @@
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
 import { ReviewAPI } from "../../../../../../../api/ReviewAPI";
+import MoviePageModal from "../../../../../../../components/Movie/MoviePageModal/MoviePageModal";
+import MoviePageModalLayout from "../../../../../../../components/Movie/MoviePageModalLayout/MoviePageModalLayout";
 import CommentPageContent from "../../../../../../../components/comment/CommentPageContent/CommentPageContent";
-import MoviePageModal from "../../../../../../../components/componentsTab/MoviePageModal/MoviePageModal";
-import MoviePageModalLayout from "../../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
 import { getDictionary } from "../../../../../dictionaries";
 
 async function getCommentTree(id: number) {

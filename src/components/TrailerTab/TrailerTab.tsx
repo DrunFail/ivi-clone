@@ -1,4 +1,4 @@
-import CustomReactPlayer from "../../CustomReactPlayer/CustomReactPlayer";
+import CustomReactPlayer from "../CustomReactPlayer/CustomReactPlayer";
 
 interface TrailerTabProps {
     trailerList: string[]

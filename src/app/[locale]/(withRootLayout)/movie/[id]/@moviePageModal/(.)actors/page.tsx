@@ -1,8 +1,8 @@
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
-import CreatersTab from "../../../../../../../components/componentsTab/CreatersTab/CreatersTab";
-import MoviePageModal from "../../../../../../../components/componentsTab/MoviePageModal/MoviePageModal";
-import MoviePageModalLayout from "../../../../../../../components/componentsTab/MoviePageModalLayout/MoviePageModalLayout";
+import MoviePageModal from "../../../../../../../components/Movie/MoviePageModal/MoviePageModal";
+import MoviePageModalLayout from "../../../../../../../components/Movie/MoviePageModalLayout/MoviePageModalLayout";
 import CreatersPersonList from "../../../../../../../components/person/CreatersPersonList/CreatersPersonList";
+import CreatersTab from "../../../../../../../components/person/CreatersTab/CreatersTab";
 import { getDictionary } from "../../../../../dictionaries";
 
 async function getMovieById(movieId: string) {

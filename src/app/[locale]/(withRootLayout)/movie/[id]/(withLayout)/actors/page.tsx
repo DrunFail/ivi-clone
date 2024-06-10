@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
-import CreatersTab from "../../../../../../../components/componentsTab/CreatersTab/CreatersTab";
-import CreatersPersonList from "../../../../../../../components/person/CreatersPersonList/CreatersPersonList";
 import { Metadata } from "next";
 import { calculateMovieName } from "../../../../../../../utils/calculateMovieName";
+import CreatersTab from "../../../../../../../components/person/CreatersTab/CreatersTab";
+import CreatersPersonList from "../../../../../../../components/person/CreatersPersonList/CreatersPersonList";
 
 
 type Props = {

@@ -1,5 +1,5 @@
 import { MovieAPI } from "../../../../../../../api/MovieAPI";
-import TrailerTab from "../../../../../../../components/componentsTab/TrailerTab/TrailerTab";
+import TrailerTab from "../../../../../../../components/TrailerTab/TrailerTab";
 import { getTrailerLink } from "../../../../../../../utils/getTrailerLink";
 
 async function getMovieById(movieId: string) {
