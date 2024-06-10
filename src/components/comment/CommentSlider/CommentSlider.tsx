@@ -5,10 +5,10 @@ import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
 import { Review } from "../../../models/types";
 import { ResponseWithCountAndRows } from "../../../models/response";
-import CommentCardContainer from "./CommentCardContainer/CommentCardContainer";
 import Button from "../../UI/core/Button/Button";
 import { REVIEWLIST_SIZE } from "../../../constants/sliderItemSize";
 import { useTranslations } from "next-intl";
+import SliderCommentCardContainer from "../cardContainers/SliderCommentCardContainer/SliderCommentCardContainer";
 
 interface CommentSliderProps {
     commentData: ResponseWithCountAndRows<Review>,
@@ -37,7 +37,7 @@ export default function CommentSlider({ commentData, movieName, movieId }: Comme
                         data={commentData.rows}
                         count={commentData.rows.length}
                         sizes={REVIEWLIST_SIZE}
-                        component={CommentCardContainer}
+                        component={SliderCommentCardContainer}
                     />
                     : <EmptyCommentCard variant="slider" />
                 }

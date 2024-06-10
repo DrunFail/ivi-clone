@@ -26,7 +26,7 @@ const iviFont = localFont({
         {
             path: "../../styles/fonts/iconfont.woff2",
         },
-    ]
+    ],
 })
 
 interface RootLayoutProps {

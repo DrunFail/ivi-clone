@@ -1,20 +1,20 @@
 import FontIcon from "../../../UI/FontIcon/FontIcon";
-import CommentBody from "../../../UI/comment/CommentBody/CommentBody";
-import CommentDateCreated from "../../../UI/comment/CommentDateCreated/CommentDateCreated";
-import CommentLikeCounter from "../../../UI/comment/CommentLikeCounter/CommentLikeCounter";
-import CommentUserName from "../../../UI/comment/CommentUserName/CommentUserName";
 import Button from "../../../UI/core/Button/Button";
-import styles from "./CommentItemCard.module.scss";
+import CommentBody from "../../UI/CommentBody/CommentBody";
+import CommentDateCreated from "../../UI/CommentDateCreated/CommentDateCreated";
+import CommentLikeCounter from "../../UI/CommentLikeCounter/CommentLikeCounter";
+import CommentUserName from "../../UI/CommentUserName/CommentUserName";
+import styles from "./CommentTreeCard.module.scss";
 
-interface CommentItemCardProps {
+interface CommentTreeCardProps {
     authorName: string,
     dateCreated: string,
     commentBody: string,
-    replyToggle: () => void,
+    replyToggle?: () => void,
     isAuthUser: boolean
 }
 
-export default function CommentItemCard({ authorName, dateCreated, commentBody, replyToggle, isAuthUser }: CommentItemCardProps) {
+export default function CommentTreeCard({ authorName, dateCreated, commentBody, replyToggle, isAuthUser }:CommentTreeCardProps) {
     return (
         <>
             <div className={styles.commentGrid}>

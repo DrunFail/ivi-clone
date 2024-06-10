@@ -1,5 +1,5 @@
+import FontIcon from "../../../UI/FontIcon/FontIcon";
 import styles from "./CommentLikeCounter.module.scss";
-import FontIcon from "../../FontIcon/FontIcon";
 
 export default function CommentLikeCounter() {
     return (

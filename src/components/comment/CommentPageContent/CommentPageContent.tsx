@@ -6,9 +6,9 @@ import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import UnauthorizedAlert from "../UnauthorizedAlert/UnauthorizedAlert";
 import styles from "./CommentPageContent.module.scss";
 import { PickedReview } from "../interfaces/interfaces";
-import CommentListCardContainer from "../CommentListCardContainer/CommentListCardContainer";
 import { isAuthClient } from "../../auth/isAuthClient";
 import useOptimisticAddCommentWithFormState from "../../../hooks/comment/useOptimisticAddCommentWithFormState";
+import CommentTreeCardContainer from "../cardContainers/CommentTreeCardContainer/CommentTreeCardContainer";
 
 interface CommentTabContainerProps {
     movieKinopoiskId: number;
@@ -32,7 +32,7 @@ export default function CommentPageContent({ movieKinopoiskId, commentTree }: Co
             {!!commentTree.length
                 ? <CommentList variant="parent">
                     {optimisticReviews.map(comment =>
-                        <CommentListCardContainer
+                        <CommentTreeCardContainer
                             key={comment.id}
                             commentData={comment} />
                     )}
