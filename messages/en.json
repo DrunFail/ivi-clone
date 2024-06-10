@@ -95,6 +95,10 @@
     "showChild": "Comments",
     "hideChild": "Hide"
   },
+  "promo": {
+    "purchase": "30 days of subscription for 1 ₽",
+    "activate": "Activate certificate"
+  },
 
   "header": {
     "genres": "Genres",
