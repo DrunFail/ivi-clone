@@ -19,7 +19,7 @@ const config: StorybookConfig = {
 
   docs: {},
 
-  staticDirs: ["../public"],
+    staticDirs: ["../public", {from: "../public/fonts", to: "/fonts"}],
 
   typescript: {
     reactDocgen: "react-docgen-typescript"
