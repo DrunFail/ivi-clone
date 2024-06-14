@@ -45,7 +45,6 @@ export default async function Page({ params: { locale } }: { params: { locale: "
     
     const firstSet = await getMovieSet(2);
     const secondSet = await getMovieSet(1);
-   
 
     return (
         <>

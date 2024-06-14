@@ -9,7 +9,7 @@ export const NewPersonAPI = {
             method: "get",
             params: personQueryParams
         })
-        return response.data.rows
+        return response.data
     },
     getPersonById: async (personId: number) => {
         const response = await axiosAuth.request<DetailedPerson>({

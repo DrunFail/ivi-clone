@@ -86,7 +86,7 @@ export default function useFilterWatchPage({ variant = "genrePage" }: { variant?
                         genreId: isExistingGenre
                     })
                 } else {
-                    router.push('/404')
+                    /*router.push('/404')*/
                 }
             }
             if (currentGenre === "all" || variant === "admin") {

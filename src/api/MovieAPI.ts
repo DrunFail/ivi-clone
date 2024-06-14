@@ -21,12 +21,13 @@ export const MovieAPI = {
         })
         return response.data
     },
-    getMovieAll: async () => {
-        const response = await axiosAuth.request({
+    getMovieAll: async ({ size, page }: {size?:number,page?:number}) => {
+        const response = await axiosAuth.request<ResponseWithCountAndRows<Movie>>({
             url: `/api/movies`,
-            method: "get"
+            method: "get",
+            params: {size,page}
         })
-        return response.data.rows
+        return response.data
     },
     getFilteredMovie: async (filterParams: Partial<MovieFilterParams>) => {
         const response = await axiosAuth.request<ResponseWithCountAndRows<Movie>>({

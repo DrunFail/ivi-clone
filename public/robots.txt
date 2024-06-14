@@ -1,5 +1,0 @@
-User-agent: *
-User-agent: AdsBot-Google
-Disallow: /admin/
-Disallow: /ru/admin/
-Disallow: /en/admin/

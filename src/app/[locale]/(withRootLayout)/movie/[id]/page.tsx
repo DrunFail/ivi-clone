@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: t("page.movie.description", {movieName})
     }
 }
-export default async function Movie({ params: { id, locale } }: { params: { id: string, locale: "ru" | "en" } }) {
+export default async function MoviePage({ params: { id, locale } }: { params: { id: string, locale: "ru" | "en" } }) {
     const movie = await MovieAPI.getMovieById(id);
     const dict = await getDictionary(locale);
     const t = await getTranslations();

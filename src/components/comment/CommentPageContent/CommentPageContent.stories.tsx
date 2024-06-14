@@ -19,18 +19,29 @@ export const Primary: Story = {
                 filmId: 3,
                 profile: {
                     id: 4,
-                    username: "author"
+                    username: "author",
+                    name: "",
+                    lastName: "",
+                    avatarId: 4,
+                    favMovie: ""
                 },
                 text: "comment 1",
                 createdAt: "2024-05-29T10:17:14.996Z",
-                childs:[]
+                childs: [],
+                title: "",
+                parentId: null
+                
             },
             {
                 id: 1,
                 filmId: 3,
                 profile: {
                     id: 4,
-                    username: "author"
+                    username: "author",
+                    name: "",
+                    lastName: "",
+                    avatarId: 4,
+                    favMovie: ""
                 },
                 text: "comment 2",
                 createdAt: "2024-05-29T10:17:14.996Z",
@@ -40,24 +51,38 @@ export const Primary: Story = {
                         filmId: 3,
                         profile: {
                             id: 4,
-                            username: "author"
+                            username: "author",
+                            name: "",
+                            lastName: "",
+                            avatarId: 4,
+                            favMovie: ""
                         },
                         text: "comment 1",
                         createdAt: "2024-05-29T10:17:14.996Z",
-                        childs: []
+                        childs: [],
+                        title: "",
+                        parentId: null
                     },
                     {
                         id: 1,
                         filmId: 3,
                         profile: {
                             id: 4,
-                            username: "author"
+                            username: "author",
+                            name: "",
+                            lastName: "",
+                            avatarId: 4,
+                            favMovie: ""
                         },
                         text: "comment 2",
                         createdAt: "2024-05-29T10:17:14.996Z",
-                        childs: []
+                        childs: [],
+                        title: "",
+                        parentId: null
                     },
-                ]
+                ],
+                title: "",
+                parentId: null
             },
         ]
     }
