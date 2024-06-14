@@ -17,6 +17,7 @@ export default function useBreadCrumbsGenrePage() {
             const returnedLinkTitle = t("MyIvi");
             return { children: returnedLinkTitle, href: "/" }
         }
+        
         if (elem === genre) {
             const genreName = t(`genre.${elem}.short`);
             returnedLink = returnedLink + elem + "/";
@@ -25,7 +26,7 @@ export default function useBreadCrumbsGenrePage() {
 
         returnedLink = returnedLink + elem + "/";
         const returnedLinkTitle = t(`breadcrumbs.${elem}`);
-        return { children: returnedLinkTitle, href: returnedLink }
+        return { children: returnedLinkTitle, href: returnedLink + "all" }
 
     })
     return arrayLink;

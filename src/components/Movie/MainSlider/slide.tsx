@@ -1,10 +1,10 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import Link from "next/link";
 import Image from "next/image";
 import Button from "../../UI/core/Button/Button";
 import { useLocale, useTranslations } from "next-intl";
+import { Link } from "../../../navigation";
 
 interface SlideProps {
     styles: { [key: string]: string };

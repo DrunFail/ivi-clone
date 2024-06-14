@@ -56,8 +56,8 @@ export default async function MoviePage({ params: { id, locale } }: { params: { 
     const t = await getTranslations();
 
     const movieName = calculateMovieName(movie.film, locale);
-    const movieDuration = minHours(Number(movie.film.filmLength))
-    const ageLimit = movie.film.ratingAgeLimits.replace("age", "")
+    const movieDuration = minHours(Number(movie.film.filmLength));
+    const ageLimit = movie.film.ratingAgeLimits?.replace("age", "") || "18";
     const firstCounry = movie.film.countries[0];
     const movieCountry = calculateCountryName(firstCounry, locale);
     const firstGenre = movie.film.genres[0]

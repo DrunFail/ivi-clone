@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styles from "./FilmographyItemCard.module.scss";
-import Link from "next/link";
 import { MovieWithPerson } from "../../../../models/types";
 import Button from "../../../UI/core/Button/Button";
+import { Link } from "../../../../navigation";
 
 interface FilmographyItemCardProps {
     filmographyItem: MovieWithPerson;

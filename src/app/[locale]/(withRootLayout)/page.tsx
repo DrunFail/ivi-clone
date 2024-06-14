@@ -9,7 +9,6 @@ import { TOP_10_DATA } from "../../../components/Movie/TopTenSlider/data";
 import { MovieAPI } from "../../../api/MovieAPI";
 import { CLIENT_GENRE_LIST } from "../../../constants/genreList";
 import { getKeyByValue } from "../../../utils/getKeyByValue";
-import Link from "next/link";
 import SectionTitle from "../../../components/UI/SectionTitle/SectionTitle";
 
 const MovieSlider = dynamic(() =>
@@ -18,6 +17,7 @@ const MovieSlider = dynamic(() =>
 
 import type { Metadata } from 'next'
 import { getTranslations } from "next-intl/server";
+import { Link } from "../../../navigation";
 
 type Props = {
     params: { id: string, locale: "en" | "ru" }
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const getMovieSet = async (genreId: number) => {
     const movieList = await MovieAPI.getFilteredMovie({ genreId });
     const movieListGenreName = getKeyByValue(CLIENT_GENRE_LIST, genreId);
-    const movieListLink = "/movies/" + CLIENT_GENRE_LIST[movieListGenreName];
+    const movieListLink = "/movies/" + movieListGenreName;
     return { movieList, movieListGenreName, movieListLink }
 }
 
