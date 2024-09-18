@@ -1,21 +1,20 @@
-.clearFilters {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
+.button {
+    background-color: transparent;
+    color: inherit;
+    inline-size: max-content;
 
-    svg {
-        font-size: 20px;
+    .clearFilters {
+        padding: 5px;
         display: flex;
         align-items: center;
-    }
+        gap: 10px;
+        cursor: pointer;
+        transition: color 0.3s ease 0s;
 
-    transition: color 0.3s ease 0s;
-
-    @media (hover: hover) {
-        &:hover {
-            color: #c4053a;
+        @media (hover: hover) {
+            &:hover {
+                color: #c4053a;
+            }
         }
     }
 }

@@ -1,28 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import RangeFilter from "./RangeFilter";
 
 const meta: Meta<typeof RangeFilter> = {
     title: "filters/RangeFilter",
     component: RangeFilter,
+    args: {
+        filterKey: "DIRECTOR",
+        defaultValue: 5,
+        min: 0,
+        max: 10,
+        step: 1,
+        filterName: "FilterName"
+    },
     decorators: [
-        (Story) =>
-            <div style={{ inlineSize: "250px" }}>
+        (Story) => (
+            <div style={{ inlineSize: "350px", position: "relative" }}>
                 <Story />
             </div>
+        ),
     ]
 };
 
 export default meta;
 type Story = StoryObj<typeof RangeFilter>;
 
-const rangeHandler = () => console.log("click");
-export const Primary: Story = {
-    args: {
-        min: 0,
-        max: 100,
-        step: 10,
-        filterKey: "ratingKinopoisk",
-        initValue: 30,
-        setFilterParams: rangeHandler,
-    }
-};
+export const Primary: Story = {};

@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline: 20px;
+    padding-block-end: 10px;
+    row-gap: 10px;
+    column-gap: 10px;
+    background-color: #312b45;
+    max-inline-size: 600px;
+    inline-size: 100%;
+
+    input {
+        display: none;
+    }
+
+    input + label {
+        color: #a5a1b2;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    @media (max-width: 570px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding-inline: 10px;
+
+        label {
+            font-size: 12px;
+        }
+    }
+}

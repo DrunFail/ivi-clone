@@ -1,25 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import SortField from "./SortField";
 
 const meta: Meta<typeof SortField> = {
     title: "filters/SortField",
     component: SortField,
+    args: {
+        filterKey: "FilterName",
+        variants: ["nameRu", "year", "ratingKinopoiskVoteCount", "ratingKinopoisk"],
+        defaultSortValue: "year"
+    },
     decorators: [
-        (Story) =>
-            <div style={{ inlineSize: "250px" }}>
+        (Story) => (
+            <div style={{ inlineSize: "350px", position: "relative" }}>
                 <Story />
             </div>
+        ),
     ]
 };
 
 export default meta;
 type Story = StoryObj<typeof SortField>;
 
-const sortHandler = () => console.log("click");
-export const Primary: Story = {
-    args: {
-        setFilterParams: sortHandler,
-        filterKey: "orderBy",
-        currentSortVariant: "nameRu",
-    }
-};
+export const Primary: Story = {};

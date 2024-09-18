@@ -11,7 +11,7 @@ type BaseProps = {
 
 type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
     as?: "button",
-    type?: "button" | "submit",
+    type?: "button" | "submit" | "reset",
     disabled?:boolean
 }
 

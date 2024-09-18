@@ -1,4 +1,5 @@
 export const CLIENT_GENRE_LIST = {
+    all:0,
     crime: 1,
     comedy:  2, 
     detective: 3, 

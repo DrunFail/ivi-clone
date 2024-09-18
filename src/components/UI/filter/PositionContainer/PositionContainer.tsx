@@ -1,9 +1,13 @@
-export default function PositionContainer({ children, variant }: { children: React.ReactNode, variant: "content" | "container" }) {
-    const value = variant === "content" ? "auto" : "100%";
+import styles from "./PositionContainer.module.scss";
 
-   
-
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode,
+}
+export default function PositionContainer({ children, ...props }: Props) {
+    
     return (
-        <div style={{ position: "absolute", top: "100%", left: "0", inlineSize: value, zIndex: "3"} }>{children}</div>
+        <div className={styles.container} {...props }>
+            {children}
+        </div>
     );
 }

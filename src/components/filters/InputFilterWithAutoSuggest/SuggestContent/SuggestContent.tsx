@@ -3,28 +3,28 @@ import styles from "./SuggestContent.module.scss";
 
 interface SuggestContentProps {
     suggestList: PersonSuggest[];
-    handler: (suggestion:PersonSuggest) => void
+    filterKey: string
 }
 
-export default function SuggestContent({ suggestList, handler }: SuggestContentProps) {
+export default function SuggestContent({ suggestList, filterKey }: SuggestContentProps) {
     return (
-        <div className={styles.container }>
+        <div className={styles.container}>
             {suggestList.map(suggestion =>
-                <div
-                    className={styles.item +
-                        (suggestList.length === 2 ? " " + styles.dropdownItem_twoItem : "") +
-                        (suggestList.length === 1 ? " " + styles.dropdownItem_oneItem : "")
-                    }
-                    key={suggestion.personId}
-                    data-person-id={suggestion.personId}
-                    onClick={() => handler(suggestion)}
-                >
-                    <img src={`https://kinopoiskapiunofficial.tech/images/actor_posters/kp/${suggestion.personId}.jpg`} width={20 } />
+                <div key={suggestion.personId}>
+                    <label
+                        className={styles.item}
 
-                    {suggestion.nameRu}
+                        htmlFor={`${suggestion.personId}`}
+                    >
+                        <img src={`https://kinopoiskapiunofficial.tech/images/actor_posters/kp/${suggestion.personId}.jpg`} width={20} alt="" />
+
+                        {suggestion.nameRu}
+
+                    </label>
+                    <input type="radio" data-person-name={suggestion.nameRu} value={suggestion.personId} id={`${suggestion.personId}`} name={filterKey} />
                 </div>
             )}
         </div>
-    
+
     );
 }

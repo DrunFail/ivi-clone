@@ -1,75 +1,121 @@
-"use client";
+"use client"
 
-import { MOVIE_LIST_SIZES } from "../../../constants/sliderItemSize";
-import useFilterWatchPage from "../../../hooks/filters/useFiltersWatchPage";
-import EmptyMovieList from "../../Movie/EmptyMovieList/EmptyMovieList";
+import { useCallback, useEffect, useRef } from "react";
+import { ResponseWithCountAndRows } from "../../../models/response";
+import { Movie } from "../../../models/types";
 import MovieListCardWithOverlayContainer from "../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
-import PageSection from "../../PageContainers/PageSection/PageSection";
-import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
-import Carousel from "../../UI/Carousel/Carousel";
-import FiltersField from "../FiltersField/FiltersField";
-import SortField from "../SortField/SortField";
+import MovieSliderSizeContainer from "../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer";
+import ButtonShowMore from "../../UI/Carousel/ButtonShowMore/ButtonShowMore";
+import { useFormState } from "react-dom";
+import { getKeyByValue } from "../../../utils/getKeyByValue";
+import { CLIENT_GENRE_LIST } from "../../../constants/genreList";
+import { useRouter } from "../../../navigation";
+import { debounce } from "../../../utils/debounce";
+import { formFieldAction } from "../../../hooks/filters/formFieldAction";
 
-export default function FiltersFieldWithFilteredMoviesContainer({ currentSelectedGenre }: {currentSelectedGenre:string}) {
-    const {
-        currentGenre,
-        genres,
-        countries,
-        handleChangeFilterParams,
-        clearFiltersWithoutSort,
-        filteredMovie,
-        currentSortVariant,
-        filterParams,
-        changeCurrentMoviePage,
-        transformedCountries,
-        transformedGenres,
-        translatedCurrentCountry
+interface Props {
+    firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>,
+    children: React.ReactNode
+}
 
-    } = useFilterWatchPage({ variant: "genrePage" });
+export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMoviesByGenre, children }: Props) {
+    const [state, action] = useFormState(formFieldAction, { movie: firstLoadMoviesByGenre, isShowChangePageButton: true });
+    const listRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
+
+    useEffect(() => {
+        //get "--amount" property from css and set value for input[name=size]
+        if (listRef.current) {
+            const amount = getComputedStyle(listRef.current).getPropertyValue('--amount')
+            const inputSize = document.querySelector('input[name=size]') as HTMLInputElement;
+            const currentSize = +amount * 3
+            inputSize.value = currentSize.toString();
+        }
+    }, [])
+
+    useEffect(() => {
+        const resetButton = document.querySelector('button[type=reset]') as HTMLButtonElement;
+        const redirect = () => router.push('/movies/all');
+        resetButton.addEventListener('click', redirect);
+        return () => resetButton.removeEventListener('click', redirect);
+    }, [router])
+
+    useEffect(() => {
+        const button = document.getElementById('load-more');
+        const amountContainer = document.getElementById('get-amount') as HTMLDivElement;
+
+        const input = document.querySelector('input[name=page]') as HTMLInputElement;
+        if (button) {
+            button.addEventListener('click', () => {
+                input.stepUp(1);
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+                amountContainer.style.gridAutoRows = "auto";
+            })
+        }
+    }, [])
+
+    const submitForm = useCallback(() => {
+        const button = document.querySelector('button[type=submit]') as HTMLFormElement;
+        button.click();
+        console.log("func")
+    }, [])
+
+    const debouncedSubmit = debounce(() => submitForm());
+
+    const formChangeHandler = useCallback((e: any) => {
+        console.log(e)
+        //if set new genre => redirect to genre page
+        if (e.target.name === "genreId") {
+            const selectedGenreLink = getKeyByValue(CLIENT_GENRE_LIST, +e.target.value);
+            router.push(`/movies/${selectedGenreLink}`)
+        }
+        //if set new country => set current page value = 0
+        if (e.target.name === "countryId") {
+            const input = document.querySelector('input[name=page]') as HTMLInputElement;
+            input.value = "0";
+        }
+        if (e.target.type === "range") {
+            debouncedSubmit()
+        }
+        else {
+            submitForm();
+        }
+    }, [debouncedSubmit, router, submitForm])
 
     return (
         <>
-    <PageSection>
-                <PageWrapper>
-                    <FiltersField
-                        genreObjects={transformedGenres}
-                        countryObjects={transformedCountries}
-                        setFilterParams={handleChangeFilterParams}
-                        clearFiltersWithoutSort={clearFiltersWithoutSort}
-                        filterParams={filterParams}
-                        currentSelectedGenre={currentSelectedGenre}
-                        translatedCurrentCountry={translatedCurrentCountry }
-                        variant={"genrePage"}
 
-                    />
+            <form name="test" id="form" action={action} onChange={(e) => formChangeHandler(e)} noValidate>
+                {children}
+                <button type="submit" />
+            </form>
 
-                    {filteredMovie.rows &&
-                        <SortField
-                            setFilterParams={handleChangeFilterParams}
-                            currentSortVariant={currentSortVariant}
-                            filterKey="orderBy"
 
-                        />}
+            {state?.movie.count
 
-                </PageWrapper>
-            </PageSection>
-            <PageSection>
-                <PageWrapper>
-                    {filteredMovie.rows
-                        ? <Carousel
-                            component={MovieListCardWithOverlayContainer}
-                            mode={"list"}
-                            data={filteredMovie.rows}
-                            count={filteredMovie.count}
-                            sizes={MOVIE_LIST_SIZES}
-                            showMoreHandler={changeCurrentMoviePage}
-                        />
-                        : <EmptyMovieList />
-                    }
-                </PageWrapper>
-            </PageSection>
-    
+                ? <>
+                    <MovieSliderSizeContainer>
+                        <div
+                            ref={listRef}
+                            id={"get-amount"}
+                            style={{ display: "grid", gridTemplateColumns: "repeat(var(--amount), 1fr)", gridTemplateRows: "repeat(3, 1fr)", gridAutoRows: "0", overflowY: "hidden" }}
+                        >
+                            {state.movie.rows.map(movie =>
+                                <MovieListCardWithOverlayContainer
+                                    key={movie.id}
+                                    elem={movie}
+                                />
+                            )}
+                        </div>
+                    </MovieSliderSizeContainer>
+
+                    {state.isShowChangePageButton && <ButtonShowMore id="load-more" />}
+                </>
+                : <p>no movie</p>
+            }
+
+
         </>
     );
 }

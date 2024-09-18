@@ -1,0 +1,40 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    border-radius: 12px;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+
+    @media (max-width: 480px) {
+        gap: 10px;
+    }
+
+    & button {
+        color: inherit;
+    }
+    
+    //блок с выбранным вариантом, по умолчанию
+    div:has(button){
+        display: none;
+    }
+
+    //если есть выбранная персона
+    &:has(input:checked) {
+        
+        //блок с выбранным вариантом
+        div:has(button){
+            display: flex;
+        }
+
+        //варианты 
+        .variants {
+            display: none;
+        }
+
+        //блок с инпутом для ввода
+        div:has(input[type=text]){
+            display: none;
+        }
+    }
+}

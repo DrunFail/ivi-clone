@@ -1,38 +1,43 @@
+"use client";
+
 import styles from "./RangeFilter.module.scss";
 import RangeInput from "../../UI/RangeInput/RangeInput";
 import { FilterParams } from "../../../hooks/filters/useFiltersWatchPage";
 import FilterName from "../../UI/filter/FilterName/FilterName";
-import useRangeFilter from "../../../hooks/filters/useRangeFilter";
-import { useTranslations } from "next-intl";
+import { useRef } from "react";
 
 interface RangeFilterProps {
-    min: number;
-    max: number;
-    step: number;
-    setFilterParams: (filterKey: keyof FilterParams, filterValue: string | number) => void;
-    filterKey: keyof FilterParams;
-    initValue: number;
+    min: number,
+    max: number,
+    step: number,
+    filterKey: keyof FilterParams,
+    defaultValue: number,
+    filterName: string
 }
 
-export default function RangeFilter({ initValue, min, max, step, filterKey, setFilterParams }: RangeFilterProps){
-    const {changeRange, currentValue } = useRangeFilter({setFilterParams, initValue,filterKey});
-    const t = useTranslations();
-    
+export default function RangeFilter({ min, max, step, filterKey,defaultValue,filterName }: RangeFilterProps) {
+    const filterRef = useRef<HTMLDivElement>(null);
+
+    const changeHandler = (e: any) => {
+        if (filterRef.current) {
+            const value = filterRef.current.querySelector(`#selected-${filterKey}`) as HTMLDivElement;
+            value.innerText = e.target.value;
+        }
+    }
+
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} ref={filterRef} onChange={(e) => changeHandler(e)}>
             <FilterName>
-                {t(`label.${filterKey}`, {value:currentValue}) }
+                {filterName}
+                <div id={`selected-${filterKey}`} style={{ marginInlineStart: "8px" }}>0</div>
             </FilterName>
-            <div className={styles.rangeContainer}>
-                <RangeInput
-                    inputId={filterKey}
-                    initValue={currentValue}
-                    min={min}
-                    max={max}
-                    step={step}
-                    changeHandler={changeRange}
-                />
-            </div>
+            <RangeInput
+                inputId={filterKey}
+                defaultValue={defaultValue}
+                min={min}
+                max={max}
+                step={step}
+            />
         </div>
     );
 };
