@@ -1,35 +1,32 @@
-import { FormattedMessage } from "react-intl";
+"use client";
+
 import Carousel from "../../UI/Carousel/Carousel";
 import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import styles from "./CommentSlider.module.scss";
 import { Review } from "../../../models/types";
 import { ResponseWithCountAndRows } from "../../../models/response";
-import CommentCardContainer from "./CommentCardContainer/CommentCardContainer";
 import Button from "../../UI/core/Button/Button";
 import { REVIEWLIST_SIZE } from "../../../constants/sliderItemSize";
+import { useTranslations } from "next-intl";
+import SliderCommentCardContainer from "../cardContainers/SliderCommentCardContainer/SliderCommentCardContainer";
 
 interface CommentSliderProps {
     commentData: ResponseWithCountAndRows<Review>,
-    callback: () => void,
     movieName: string,
     movieId: number
 }
-export default function CommentSlider({ callback, commentData, movieName, movieId }: CommentSliderProps) {
+export default function CommentSlider({ commentData, movieName, movieId }: CommentSliderProps) {
+    const t = useTranslations();
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.text}>
-                    <h1 onClick={() => callback()}>
-                        <FormattedMessage id="Review" />
-                    </h1>
                     <p>
-                        <FormattedMessage
-                            id="comment.about"
-                            values={{ movie: movieName }} />
+                        {t("comment.about", {movie:movieName}) }
                     </p>
                 </div>
-                <Button onClick={callback}>
-                    <FormattedMessage id="comment.comment" />
+                <Button>
+                    {t("comment.comment") }
                 </Button>
             </div>
             <div className={styles.slider}>
@@ -40,8 +37,7 @@ export default function CommentSlider({ callback, commentData, movieName, movieI
                         data={commentData.rows}
                         count={commentData.rows.length}
                         sizes={REVIEWLIST_SIZE}
-                        callback={() => callback()}
-                        component={CommentCardContainer}
+                        component={SliderCommentCardContainer}
                     />
                     : <EmptyCommentCard variant="slider" />
                 }

@@ -1,16 +1,13 @@
 .container {
     position: relative;
 
-
-
-
     .content {
-        block-size: 72px;
         display: grid;
+        grid-template-columns: max-content 1fr repeat(4, max-content);
+        block-size: 72px;
         column-gap: 12px;
         position: relative;
         inline-size: 100%;
-        grid-template-columns: max-content 1fr repeat(4, max-content);
         align-items: center;
         color: hsla(0,0%,100%,.48);
 
@@ -46,3 +43,13 @@
         border-top-right-radius: 8px;
     }
 
+@media  (max-width: 1160px){
+    .container {
+        .content {
+            grid-template-columns: 1fr max-content;
+            .navbar, .subscription, .locale, .search {
+                display: none;
+            }
+        }
+    }
+}

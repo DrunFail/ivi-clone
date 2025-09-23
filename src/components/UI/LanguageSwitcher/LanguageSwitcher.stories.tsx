@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import store from "../../../store/store";
 import { Provider } from "react-redux";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof LanguageSwitcher> = {
   title: "ui/LanguageSwitcher",
@@ -10,9 +9,7 @@ const meta: Meta<typeof LanguageSwitcher> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

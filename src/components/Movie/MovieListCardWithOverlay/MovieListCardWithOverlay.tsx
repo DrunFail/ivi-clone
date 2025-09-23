@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import MovieListCard from "../MovieListCard/MovieListCard";
 import OverlayMovieListCard from "../OverlayMovieListCard/OverlayMovieListCard";

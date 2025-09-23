@@ -10,7 +10,7 @@ export default function MoviePoster({posterUrl }:MoviePosterProps) {
             <Image
                 fill
                 alt=""
-                src={posterUrl || ""}
+                src={posterUrl}
             />
         </div>
     );

@@ -6,6 +6,10 @@ interface FormContentContainerProps {
 
 export default function FormContentContainer({ children }:FormContentContainerProps) {
     return (
-        <div className={styles.container}>{children}</div>
+        <div className={styles.wrapper }>
+            <div className={styles.container}>
+                {children}
+            </div>
+        </div>
     );
 }

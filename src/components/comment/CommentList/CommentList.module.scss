@@ -1,4 +1,10 @@
-.container{
+.parent {
     display: grid;
     grid-row-gap: 20px;
+}
+.child {
+    display: grid;
+    row-gap: 15px;
+    margin-inline-start: 20px;
+    margin-block-start: 10px;
 }

@@ -1,34 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import RangeFilter from "./RangeFilter";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof RangeFilter> = {
-  title: "filters/RangeFilter",
-  component: RangeFilter,
+    title: "filters/RangeFilter",
+    component: RangeFilter,
+    args: {
+        filterKey: "DIRECTOR",
+        defaultValue: 5,
+        min: 0,
+        max: 10,
+        step: 1,
+        filterName: "FilterName"
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ inlineSize: "350px", position: "relative" }}>
+                <Story />
+            </div>
+        ),
+    ]
 };
 
 export default meta;
 type Story = StoryObj<typeof RangeFilter>;
 
-const rangeHandler = () => console.log("click");
-export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-      <WrapperIntl>
-        <div style={{ inlineSize: "250px" }}>
-          <RangeFilter
-            min={0}
-            max={100}
-            step={10}
-            filterKey={"ratingKinopoisk"}
-            initValue={30}
-            setFilterParams={rangeHandler}
-          />
-        </div>
-      </WrapperIntl>
-    </Provider>
-  ),
-};
+export const Primary: Story = {};

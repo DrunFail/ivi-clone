@@ -11,9 +11,10 @@ export default meta;
 type Story = StoryObj<typeof FadeBottomTop>;
 
 export const Primary: Story = {
-  render: () => (
-    <FadeBottomTop>
-      <div style={{ blockSize: "100px" }}>component</div>
-    </FadeBottomTop>
-  ),
+    args: {
+        children: 
+            <div style={{ blockSize: "100px" }}>
+                component
+            </div>,
+    }
 };

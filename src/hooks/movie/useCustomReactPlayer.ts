@@ -1,13 +1,12 @@
 import { Trailer } from "../../models/types";
+import { getTrailerLink } from "../../utils/getTrailerLink";
 
-const DEFAULT_TRAILER_LINK = "https://www.youtube.com/embed/pCbPwpcgUbM"
 
-const getTrailerLink = (trailer: Trailer) => {
-    const trailerLink = trailer && trailer.site === "YOUTUBE" ? trailer.url : DEFAULT_TRAILER_LINK;
-    return trailerLink;
-}
 
-export default function useCustomReactPlayer(trailer:Trailer[]) {
+
+
+export default function useCustomReactPlayer(trailer: Trailer[] | undefined) {
+    if (!trailer) return null;
     const firstTrailer = trailer[0];
     
     const firstTrailerLink = getTrailerLink(firstTrailer)

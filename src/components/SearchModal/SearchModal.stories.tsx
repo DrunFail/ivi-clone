@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
 import SearchModal from "./SearchModal";
-import store from "../../store/store";
-import WrapperIntl from "../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SearchModal> = {
   title: "search/SearchModal",
@@ -12,17 +9,4 @@ const meta: Meta<typeof SearchModal> = {
 export default meta;
 type Story = StoryObj<typeof SearchModal>;
 
-export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-      <WrapperIntl>
-        <SearchModal
-          visible
-          handleVisible={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
-      </WrapperIntl>
-    </Provider>
-  ),
-};
+export const Primary: Story = {};

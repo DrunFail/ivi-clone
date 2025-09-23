@@ -1,46 +1,39 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+"use client";
+
+import { useState } from "react";
 import styles from "./LanguageSwitcher.module.scss";
-import { getLang, langAction } from "../../../store/slices/switchLang";
+import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 
-const SwitchButton = () => {
+const LocaleVariantMenu = dynamic(() => import("./LocaleVariantMenu/LocaleVariantMenu"));
+
+interface LanguageSwitcherProps {
+    button: React.ReactNode
+}
+
+export default function LanguageSwitcher({ button }: LanguageSwitcherProps) {
     const [visible, setVisible] = useState<boolean>();
-    const lang = useSelector(getLang());
-    const dispatch = useDispatch();
-
-    const switchLang = (langType: string) => {
-        dispatch(langAction(langType));
-    };
+    const path = usePathname();
+    const pathWithoutLocale = `/${path.slice(4)}`;
 
     const hoverVisible = (bol: boolean) => {
         setVisible(bol);
     };
 
     return (
-        <>
-            <div
-                onMouseOver={() => hoverVisible(true)}
-                onMouseOut={() => hoverVisible(false)}
-                onClick={() => hoverVisible(!visible)}
-                className={styles.container}
-                data-testid="lng-switcher"
-            >
-                <span className={styles.SwitchButton__text}>{lang}</span>
-                {visible ? (
-                    <div className={styles.switcher_btn}>
-                        <button onClick={() => { switchLang("Ru") } }>
-                            RU
-                        </button>
-                        <button onClick={() => switchLang("En")}>
-                            EN
-                        </button>
-                    </div>
-                ) : (
-                    ""
-                )}
-            </div>
-        </>
+        <div
+            className={styles.container}
+            onMouseOver={() => hoverVisible(true)}
+            onMouseOut={() => hoverVisible(false)}
+            onClick={() => hoverVisible(!visible)}
+            data-testid="lng-switcher"
+        >
+            {button}
+            {visible &&
+                <LocaleVariantMenu
+                    pathWithoutLocale={pathWithoutLocale}
+                />
+            }
+        </div>
     );
 };
-
-export default SwitchButton;

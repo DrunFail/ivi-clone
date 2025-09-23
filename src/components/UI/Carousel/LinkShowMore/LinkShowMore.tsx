@@ -1,6 +1,5 @@
-import Link from "next/link";
+import { Link } from "../../../../navigation";
 import styles from "./LinkShowMore.module.scss";
-import React from "react";
 
 interface LinkShowMoreProps {
     valueDirection: number,

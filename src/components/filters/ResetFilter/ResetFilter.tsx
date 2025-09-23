@@ -1,33 +1,20 @@
-import Link from "next/link";
-import { FormattedMessage } from "react-intl";
 import styles from "./ResetFilter.module.scss";
 import FontIcon from "../../UI/FontIcon/FontIcon";
+import { useTranslations } from "next-intl";
 
-export default function ResetFilter({ resetHandler, variant }: { resetHandler: () => void, variant: "admin" | "genrePage" }) {
+export default function ResetFilter() {
+    const t = useTranslations();
     return (
-        <>
-            {variant === "genrePage"
-                ? <Link href={"/movies/all"}>
-                    <div className={styles.clearFilters} onClick={resetHandler}>
-                        <span>
-                            <FontIcon variant="close" />
-                        </span>
-                        <span>
-                            <FormattedMessage id="ResetFilters" />
-                        </span>
-                    </div>
-                </Link>
-                : <div className={styles.clearFilters} onClick={resetHandler}>
-                    <span>
-                        <FontIcon variant="close" />
-                    </span>
-                    <span>
-                        <FormattedMessage id="ResetFilters" />
-                    </span>
-                </div>
-            }
-           
-        </>
+        <button type="reset" className={styles.button }>
+            <div className={styles.clearFilters}>
+                <span>
+                    <FontIcon variant="close" />
+                </span>
+                <span>
+                    {t("ResetFilters")}
+                </span>
+            </div>
+        </button>
         
     );
 }

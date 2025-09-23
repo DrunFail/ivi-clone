@@ -1,14 +1,13 @@
 import Image from "next/image";
-import React from "react";
-import ButtonPromoContainer from "./ButtonPromoContainer/ButtonPromoContainer";
 import Button from "../UI/core/Button/Button";
+import styles from "./PromoSection.module.scss";
+import { useTranslations } from "next-intl";
 
 export default function PromoSection() {
+    const t = useTranslations("promo");
     return (
-        <ButtonPromoContainer>
-            <Button
-                aria-label="30 дней подписки за 1 рубль"
-            >
+        <div className={styles.container}>
+            <Button>
                 <Image
                     src="/lightning.svg"
                     width={24}
@@ -16,13 +15,10 @@ export default function PromoSection() {
                     alt=''
                     aria-hidden
                 />
-                        30 дней подписки за 1 ₽
+                {t("purchase")}
             </Button>
 
-            
-            <Button
-                aria-label="Активировать сертификат"
-            >
+            <Button>
                 <Image
                     src="/gift.svg"
                     width={56}
@@ -30,10 +26,9 @@ export default function PromoSection() {
                     alt=''
                     aria-hidden
                 />
-                    Активировать сертификат
-                </Button>
-            
-        </ButtonPromoContainer>
+                {t("activate")}
+            </Button>
 
+        </div>
     );
 }

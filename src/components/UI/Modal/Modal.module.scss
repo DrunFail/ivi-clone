@@ -1,6 +1,4 @@
 .Modal {
-    display: flex;
-    align-items: center;
     width: 100%;
     position: fixed;
     justify-content: center;
@@ -23,7 +21,6 @@
     }
     &__content {
         overflow-y: auto;
-        display: flex;
         overflow-x: hidden;
         min-height: 100%;
         border-radius: 20px;
@@ -31,7 +28,7 @@
         background: none;
         position: fixed;
         overflow-y: auto;
-        width: 70%;
+        inline-size: 100%;
         top:0;
         @media screen and (max-width: 1150px) {
             width: 100%;

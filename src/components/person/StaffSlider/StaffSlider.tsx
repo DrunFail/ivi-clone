@@ -1,30 +1,20 @@
-import { FormattedMessage } from "react-intl";
+"use client";
+
 import Carousel from "../../UI/Carousel/Carousel";
 import { Person } from "../../../models/types";
 import { STAFF_CARD_SIZES } from "./StaffCard/const";
 import StaffCardContainer from "./StaffCardContainer/StaffCardContainer";
 import styles from "./StaffSlider.module.scss";
-import SectionTitle from "../../UI/SectionTitle/SectionTitle";
 import Button from "../../UI/core/Button/Button";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface StaffSliderProps {
     data: Person[],
-    callback: () => void
 }
-export default function StaffSlider({ data, callback }: StaffSliderProps) {
-    const router = useRouter();
-    const { asPath } = router;
+
+export default function StaffSlider({ data }: StaffSliderProps) {
+    const t = useTranslations();
     return (
-        <>
-           
-            <div onClick={callback}>
-                <SectionTitle withArrow={false}>
-                    <FormattedMessage id="CreatersAndActors" />
-                </SectionTitle>
-                </div>
-           
             <div className={styles.content}>
                 <Carousel
                     mode={"collection"}
@@ -35,9 +25,8 @@ export default function StaffSlider({ data, callback }: StaffSliderProps) {
                     href={""}
                 />
                 <Button className={styles.button}>
-                    <FormattedMessage id="More" />
+                {t("More") }
                 </Button>
             </div>
-        </>
     );
 }

@@ -1,0 +1,20 @@
+.container {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    width: 95%;
+    height: 162px;
+    transition: 0.3s;
+    border-radius: 10px;
+    background-color: var(--clr-dark-700);
+    cursor: pointer;
+    padding: 15px;
+
+    &:hover {
+        background-color: #322b49;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}

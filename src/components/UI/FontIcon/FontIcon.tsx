@@ -34,7 +34,7 @@ export type FontIconVariant =
     | "filter"
 
 interface FontIconProps {
-    size?: 6 | 12| 16 | 20 | 32 | 64,
+    size?: 6 | 8 | 12| 16 | 20 | 32 | 64,
     variant: FontIconVariant
     
 }

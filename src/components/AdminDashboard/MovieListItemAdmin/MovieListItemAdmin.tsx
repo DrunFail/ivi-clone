@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import EditCardContainer from "../EditCardContainer/EditCardContainer";
 import useMovieListCardData from "../../../hooks/movie/useMovieListCardData";

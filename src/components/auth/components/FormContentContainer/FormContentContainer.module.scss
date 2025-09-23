@@ -1,12 +1,24 @@
-.container{
-    display: grid;
-    grid-auto-rows: 40px;
-    row-gap: var(--fs-500);
-    max-inline-size: 290px;
+.wrapper {
     inline-size: 100%;
-    margin-inline: auto;
+    block-size: 100%;
+    background-color: #07050e;
+    padding-block-start: 30px;
 
-    & button, input{
-        border-radius: 8px;
+    .container {
+        display: grid;
+        inline-size: 100%;
+        margin-inline: auto;
+        max-inline-size: 290px;
+        row-gap: 10px;
+
+
+        & button, input {
+            border-radius: 8px;
+        }
+
+        & form {
+            display: grid;
+            row-gap: 10px;
+        }
     }
 }

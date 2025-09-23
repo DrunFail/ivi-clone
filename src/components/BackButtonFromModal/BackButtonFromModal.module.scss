@@ -1,0 +1,13 @@
+.link {
+    font-size: 15px;
+    display: flex;
+    column-gap: 8px;
+    color: #fff;
+    opacity: 0.72;
+    padding: 20px 40px;
+
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}

@@ -1,67 +1,30 @@
+"use client";
+
 import { useState } from "react";
 import styles from "./Rating.module.scss";
-import { FormattedMessage } from "react-intl";
-import RatingBlock from "./RatingBlock/RatingBlock";
-import RatingLarge from "./RatingLarge/RatingLarge";
-import dynamic from "next/dynamic";
-
-const RatingModal = dynamic(() =>
-    import("./RatingModal/RatingModal").then((mod) => mod.default))
-
-
+import { useTranslations } from "next-intl";
+import Modal from "../UI/Modal/Modal";
 interface RatingProps {
-    variant: "small" | "large",
-    movieRating: number
+    ratingModalContent: React.ReactNode,
+    ratingButton:React.ReactNode
 }
 
-export default function Rating({ variant,movieRating }: RatingProps) {
+export default function Rating({ratingModalContent,ratingButton }: RatingProps) {
     const [visible, setVisible] = useState<boolean>(false);
-    const [slide, setSlide] = useState<number>(0);
+    const t = useTranslations();
 
-    const slideMove = (num: number) => {
-        setSlide((p) => p + num);
-    };
-
-
-
-    const call = () => {
-        setSlide(0);
-        setVisible(false);
+    const toggleVisibleModal = () => {
+        setVisible(visible => !visible);
     };
 
     return (
         <>
-            <div onClick={() => setVisible(true)} className={styles.container}>
-                {variant === "large" &&
-                    <RatingLarge>
-                        <RatingBlock ratingValue={movieRating} />
-                        <p><FormattedMessage id="RatingIvi" /></p>
-                        <div className={styles.Rating__review}>
-                            <p><FormattedMessage id="Estimate" /></p>
-                        </div>
-                    </RatingLarge>
-                }
-                    
-            {/*    {variant === "small" && */}
-            {/*        <>*/}
-            {/*            <MedallionContent>*/}
-            {/*                <RatingBlock ratingValue={movieRating} />*/}
-            {/*            </MedallionContent>*/}
-            {/*            <MedallionDescription>*/}
-            {/*                <div>*/}
-            {/*                    <span>Рейтинг</span>*/}
-            {/*                    <span>Иви</span>*/}
-            {/*                </div>*/}
-            {/*            </MedallionDescription>*/}
-
-            {/*        </>*/}
-            {/*}*/}
-                   
-                
+            <div onClick={toggleVisibleModal} className={styles.container}>
+                {ratingButton}
             </div>
-            <RatingModal
-                visible={visible}
-                call={call} />
+            <Modal callback={toggleVisibleModal} visible={visible}>
+                {ratingModalContent }
+            </Modal>
         </>
     );
 };

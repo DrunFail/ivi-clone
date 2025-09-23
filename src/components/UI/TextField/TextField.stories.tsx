@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import TextField from "./TextField";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof TextField> = {
   title: "ui/TextField",
@@ -11,9 +10,7 @@ const meta: Meta<typeof TextField> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

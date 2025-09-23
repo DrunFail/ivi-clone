@@ -1,13 +1,11 @@
-import {  useIntl } from "react-intl";
 import { MovieById } from "../models/types";
-import { useSelector } from "react-redux";
-import { getLang } from "../store/slices/switchLang";
 import { calculateMovieName } from "../utils/calculateMovieName";
 import { getKeyByValue } from "../utils/getKeyByValue";
 import { CLIENT_GENRE_LIST } from "../constants/genreList";
+import { useLocale, useTranslations } from "next-intl";
 
 interface UseBreadCrumbsMoviePageProps {
-    movie: MovieById
+    movie: MovieById | undefined
 }
 const TYPE_MOVIE_LINK = {
     "FILM": "/movies/all",
@@ -15,17 +13,18 @@ const TYPE_MOVIE_LINK = {
 }
 
 export default function useBreadCrumbsMoviePage({ movie }: UseBreadCrumbsMoviePageProps) {
-    const intl = useIntl();
-    const lang = useSelector(getLang());
+    const t = useTranslations();
+    const lang = useLocale();
+    if (!movie) return null;
     const typeMovie = movie.film.type;
     const typeMovieHref = TYPE_MOVIE_LINK[typeMovie]
     const movieGenre = movie.film.genres[0].id;
     const movieName = calculateMovieName(movie.film, lang);
-    const mainTitle = intl.formatMessage({ id: "MyIvi" });
-    const typeMovieTitle = intl.formatMessage({ id: `breadcrumbs.${typeMovie}` })
+    const mainTitle = t("MyIvi");
+    const typeMovieTitle = t(`breadcrumbs.${typeMovie}`)
 
     const genreTitleKey = getKeyByValue(CLIENT_GENRE_LIST,movieGenre)
-    const genreTitle = intl.formatMessage({ id: `genre.${genreTitleKey}` })
+    const genreTitle = t(`genre.${genreTitleKey}`)
 
     const returned = {
         fullList: [

@@ -1,16 +1,20 @@
-import { useRouter } from "next/router";
+"use client"
+
+
+import { useRouter,useSearchParams } from "next/navigation";
 import { useEffect } from "react"
 import useAuth from "./useAuth";
 import { AuthAPI } from "../../api/AuthAPI";
 import { authDecodeToken } from "../../utils/authDecodeToken";
 
 export default function useVKAuth() {
-    const { query, isReady, push } = useRouter();
+    const {  push } = useRouter();
+    const code = useSearchParams().get("code");
     const { setAuth } = useAuth();
 
     useEffect(() => {
-        if (isReady && query.code) {
-            const vkAuthCode = query.code as string;
+        if (code) {
+            
 
             const loginVk = async (vkCode: string) => {
                 try {
@@ -27,7 +31,7 @@ export default function useVKAuth() {
                     console.log(error);
                 }
             }
-            loginVk(vkAuthCode);
+            loginVk(code);
         }
-    }, [query, isReady])
+    }, [code])
 }

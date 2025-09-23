@@ -1,27 +1,13 @@
-import SearchResultCard from "../SearchResultCard/SearchResultCard";
 import styles from "./SearchResult.module.scss";
 
-interface SearchItem {
-    kinopoiskId: number,
-    nameRu: string,
-    year: number
-}
+
 interface SearchResultProps {
-    search: SearchItem[];
-    handleModalClose: () => void
+    children: React.ReactNode
 }
-export default function SearchResult({ search, handleModalClose }: SearchResultProps) {
+export default function SearchResult({children}: SearchResultProps) {
     return (
         <div className={styles.container}>
-                {search.map(({ nameRu, year, kinopoiskId }) => (
-                    <SearchResultCard
-                        key={kinopoiskId }
-                            id={kinopoiskId}
-                            name={nameRu}
-                            year={year}
-                            callback={handleModalClose}
-                        />
-                    ))}
+            {children}
         </div>
     );
 }

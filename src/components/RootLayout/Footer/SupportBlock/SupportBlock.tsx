@@ -1,28 +1,26 @@
-import { FormattedMessage } from "react-intl";
 import AskIvi from "../AskIvi/AskIvi";
 import SupportBlockButton from "../SupportBlockButton/SupportBlockButton";
 import styles from "./SupportBlock.module.scss";
+import { useTranslations } from "next-intl";
 
 interface SupportBlockProps {
-    variant: "desktop" | "tablet" | "mobile"
+    children?: React.ReactNode
 }
 
-export default function SupportBlock({ variant }:SupportBlockProps) {
+export default function SupportBlock({children }: SupportBlockProps) {
+    const t = useTranslations();
     return (
         <div className={styles.container} data-testid="support-block">
-            {variant === "desktop" &&
-                <h3>
-                    <FormattedMessage id="Support" />
-                </h3>
-            }
+            {children}
             <p>
-                <FormattedMessage id="WeAreAlwaysReadyToHelpYou" />
-                <br />
-                <FormattedMessage id="OurOperatorsAreOnline" />
-            </p>
-            <SupportBlockButton variant={variant} />
-            <AskIvi />
+                {t("WeAreAlwaysReadyToHelpYou")}
 
+                <br />
+                {t("OurOperatorsAreOnline")}
+
+            </p>
+            <SupportBlockButton variant={"desktop"} />
+            <AskIvi />
         </div>
     );
 }

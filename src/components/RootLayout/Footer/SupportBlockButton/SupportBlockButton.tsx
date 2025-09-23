@@ -1,18 +1,18 @@
-import MemoizedFormattedMessage from "react-intl/src/components/message";
 import styles from "./SupportBlockButton.module.scss";
 import Button from "../../../UI/core/Button/Button";
 import FontIcon from "../../../UI/FontIcon/FontIcon";
+import { useTranslations } from "next-intl";
 export default function SupportBlockButton({ variant }: {variant: "desktop" | "tablet" | "mobile"}) {
     const defaultClasses = `
     ${styles.container}
     ${styles[variant]}
     `
-
+    const t = useTranslations();
     return (
         <div className={defaultClasses} data-testid="btns-support-block">
             
             <Button as="button">
-                <MemoizedFormattedMessage id="WriteInChat" />
+                {t("WriteInChat") }
             </Button>
             <Button
                 as="button"

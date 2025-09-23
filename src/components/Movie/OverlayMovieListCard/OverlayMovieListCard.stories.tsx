@@ -1,17 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import OverlayMovieListCard from "./OverlayMovieListCard";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof OverlayMovieListCard> = {
   title: "movie/OverlayMovieListCard",
   component: OverlayMovieListCard,
   decorators: [
     (Story) => (
-      <Provider store={store}>
-        <WrapperIntl>
           <div
             style={{
               inlineSize: "350px",
@@ -21,8 +15,6 @@ const meta: Meta<typeof OverlayMovieListCard> = {
           >
             <Story />
           </div>
-        </WrapperIntl>
-      </Provider>
     ),
   ],
   args: {

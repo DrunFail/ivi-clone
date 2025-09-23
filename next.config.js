@@ -1,25 +1,42 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === "true",
+    enabled: false,
 })
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin();
+
 
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: [
-            "thumbs.dfs.ivi.ru",
-            "zetflis.online",
-            "static.okko.tv",
-            "kinopoiskapiunofficial.tech",
-            "avatars.mds.yandex.net",
-            "youtu.be"
+        remotePatterns: [
+            {
+            //movie and person images
+                protocol: "https",
+                hostname:"kinopoiskapiunofficial.tech"
+            },
+            {
+                protocol: "https",
+                hostname: "avatars.mds.yandex.net"
+            },
+            {
+                protocol: "https",
+                hostname: "static.okko.tv"
+            },
+            {
+                protocol: "https",
+                hostname: "zetflis.online"
+            },
+            {
+                protocol: "https",
+                hostname: "thumbs.dfs.ivi.ru"
+            },
+
         ]
     },
-    i18n: {
-        locales: ['en-US', 'fr', 'nl-NL','ru-RU'],
-        defaultLocale: 'ru-RU',
-    }
+    
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withNextIntl(withBundleAnalyzer(nextConfig))

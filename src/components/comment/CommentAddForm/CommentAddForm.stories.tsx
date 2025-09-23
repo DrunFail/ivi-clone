@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import CommentAddForm from "./CommentAddForm";
-import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
-import { Provider } from "react-redux";
-import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
 
 const meta: Meta<typeof CommentAddForm> = {
   title: "comment/CommentAddForm",
@@ -15,13 +11,10 @@ export default meta;
 type Story = StoryObj<typeof CommentAddForm>;
 
 export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-      <WrapperIntl>
-        <PageWrapper>
-          <CommentAddForm inputId="input" movieKinopoiskId={0} />
-        </PageWrapper>
-      </WrapperIntl>
-    </Provider>
-  ),
+    args: {
+        action: () => console.log("action"),
+        inputId: "input",
+        movieKinopoiskId: 5,
+        parentId: 45
+    }
 };

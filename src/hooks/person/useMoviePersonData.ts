@@ -1,18 +1,18 @@
-import { useSelector } from "react-redux";
+import { useLocale } from "next-intl";
 import { DetailedPerson } from "../../models/types";
-import { getLang } from "../../store/slices/switchLang";
 
-export default function useMoviePersonData({ personData }: {personData:DetailedPerson}) {
-    const lang = useSelector(getLang());
-    
-    const personInfo = personData?.person
+export default function useMoviePersonData({ personData }: { personData: DetailedPerson | undefined }) {
+    const lang = useLocale();
+
+    if (!personData) return;
+    const personInfo = personData.person;
     const calculatePersonName = () => {
         if (lang === "Ru") {
-            return `${personInfo?.nameRu}${personInfo?.nameEng ? (personInfo?.nameEng) : ""}`
+            return `${personInfo.nameRu}${personInfo.nameEng ? (personInfo.nameEng) : ""}`
         }
         const prop = `name${lang}`
 
-        if (prop in personData?.person) {
+        if (prop in personData.person) {
             /* eslint-disable */
             //@ts-ignore
             return `${personData.person[prop] ??  personInfo.nameRu}`
@@ -27,9 +27,9 @@ export default function useMoviePersonData({ personData }: {personData:DetailedP
 
     return {
         personName,
-        personProfession: personData?.person.profession,
-        personPosterUrl: personData?.person.posterUrl,
-        personMovieAmount: personData?.films.length,
-        personMovieList: personData?.films
+        personProfession: personData.person.profession,
+        personPosterUrl: personData.person.posterUrl,
+        personMovieAmount: personData.films.length,
+        personMovieList: personData.films
     }
 }

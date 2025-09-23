@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Button from "../UI/core/Button/Button";
 import FontIcon from "../UI/FontIcon/FontIcon";

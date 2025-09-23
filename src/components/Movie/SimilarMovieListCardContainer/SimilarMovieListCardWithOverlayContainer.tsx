@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { SimilarMovie } from "../../../models/types"
 import MovieListCardWithOverlay from "../MovieListCardWithOverlay/MovieListCardWithOverlay";
 import UserOverlayIcon from "../UserOverlayIcon/UserOverlayIcon";
 import useSimilarMovieListCardData from "../../../hooks/movie/useSimilarMovieListCardData";
+import { Link } from "../../../navigation";
 
 interface SimilarMovieListCardWithOverlayContainerProps {
     elem: SimilarMovie

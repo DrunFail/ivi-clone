@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import styles from "./GenreListItem.module.scss";
 import EditCardContainer from "../EditCardContainer/EditCardContainer";

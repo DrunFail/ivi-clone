@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
 import { Movie } from "../../models/types";
-import { getLang } from "../../store/slices/switchLang";
 import { calculateMovieName } from "../../utils/calculateMovieName";
 import { calculateDurationMovie } from "../../utils/calculateDurationMovie";
 import { calculateMovieRating } from "../../utils/calculateMovieRating";
 import { getInfoProduct } from "../../utils/getInfoProduct";
+import { useLocale } from "next-intl";
 
 interface UseMovieListCardDataProps<T extends Movie> {
     movieData: T
@@ -12,7 +11,7 @@ interface UseMovieListCardDataProps<T extends Movie> {
 
 
 export default function useMovieListCardData<T extends Movie>({ movieData }: UseMovieListCardDataProps<T>) {
-    const lang = useSelector(getLang());
+    const lang = useLocale();
 
 
     const movieName = calculateMovieName(movieData, lang);

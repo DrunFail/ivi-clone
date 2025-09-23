@@ -1,9 +1,11 @@
+"use client";
+
 import styles from './OAuthButton.module.scss';
 import Image from "next/image";
 import vk from "../../../../assets/SVG/Messangers/VK.svg";
 import google from "../../../../assets/SVG/Apps/Google.svg";
-import { FormattedMessage } from "react-intl";
 import Button from '../../../UI/core/Button/Button';
+import { useTranslations } from 'next-intl';
 
 const OAUTH_VARIANT = {
     vk: {
@@ -25,6 +27,7 @@ interface OAuthButtonProps {
 export default function OAuthButton({ variant, authHandler }: OAuthButtonProps) {
     const { redirect, icon, intl } = OAUTH_VARIANT[variant]
     authHandler && authHandler();
+    const t = useTranslations();
 
     return (
         <Button
@@ -33,7 +36,7 @@ export default function OAuthButton({ variant, authHandler }: OAuthButtonProps) 
             className={`${styles.button} ${styles[variant]}`}
         >
             <Image src={icon} alt="" height={20} width={20} />
-            <FormattedMessage id={intl} />
+            {t(intl) }
         </Button>
 
     );

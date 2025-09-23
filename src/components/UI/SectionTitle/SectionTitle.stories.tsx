@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
 import SectionTitle from "./SectionTitle";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SectionTitle> = {
   title: "UI/SectionTitle",
@@ -10,9 +9,7 @@ const meta: Meta<typeof SectionTitle> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

@@ -1,31 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import SortField from "./SortField";
-import { Provider } from "react-redux";
-import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SortField> = {
-  title: "filters/SortField",
-  component: SortField,
+    title: "filters/SortField",
+    component: SortField,
+    args: {
+        filterKey: "FilterName",
+        variants: ["nameRu", "year", "ratingKinopoiskVoteCount", "ratingKinopoisk"],
+        defaultSortValue: "year"
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ inlineSize: "350px", position: "relative" }}>
+                <Story />
+            </div>
+        ),
+    ]
 };
 
 export default meta;
 type Story = StoryObj<typeof SortField>;
 
-const sortHandler = () => console.log("click");
-export const Primary: Story = {
-  render: () => (
-    <Provider store={store}>
-      <WrapperIntl>
-        <div style={{ inlineSize: "250px" }}>
-          <SortField
-            setFilterParams={sortHandler}
-            filterKey="orderBy"
-            currentSortVariant="nameRu"
-          />
-        </div>
-      </WrapperIntl>
-    </Provider>
-  ),
-};
+export const Primary: Story = {};

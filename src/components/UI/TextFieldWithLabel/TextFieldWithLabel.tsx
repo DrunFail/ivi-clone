@@ -4,7 +4,7 @@ import TextField, { TextFieldProps } from "../TextField/TextField";
 interface TextFieldWithLabelProps extends TextFieldProps {
     labelText?:React.ReactNode
 }
-export default function TextFieldWithLabel({...props }:TextFieldWithLabelProps) {
+export default function TextFieldWithLabel({labelText,...props }:TextFieldWithLabelProps) {
     return (
         <div className={styles.container}>
             <TextField
@@ -16,7 +16,7 @@ export default function TextFieldWithLabel({...props }:TextFieldWithLabelProps) 
                 htmlFor={props.id}
                 className={styles.placeholder}
             >
-                {props.labelText}
+                {labelText}
             </label>
         </div>
     );

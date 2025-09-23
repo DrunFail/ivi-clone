@@ -5,7 +5,6 @@
     line-height: 20px;
     font-weight: var(--fw-medium);
     cursor: pointer;
-    inline-size: 100px;
     text-align: center;
     display: flex;
     column-gap: 3px;
@@ -20,15 +19,4 @@
         line-height: 13px;
        color: #a5a1b2;
     }
-}
-.container[data-status="true"]:before {
-    bottom: 0;
-    content: "";
-    height: 4px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transition: background-color .4s;
-    background-color: #f30745;
-    transition-duration: 80ms;
 }

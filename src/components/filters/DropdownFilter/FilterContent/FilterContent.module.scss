@@ -1,0 +1,14 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.variants > div{
+    display: block;
+
+    input:checked + label{
+        display: block;
+    }
+}

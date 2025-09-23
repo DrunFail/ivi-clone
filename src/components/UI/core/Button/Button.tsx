@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "../../../../navigation";
 import styles from "./Button.module.scss";
 
 type BaseProps = {
@@ -11,7 +11,8 @@ type BaseProps = {
 
 type ButtonProps = BaseProps & Omit<React.HTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
     as?: "button",
-    type?: "button" | "submit"
+    type?: "button" | "submit" | "reset",
+    disabled?:boolean
 }
 
 type LinkProps = BaseProps & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps> & {

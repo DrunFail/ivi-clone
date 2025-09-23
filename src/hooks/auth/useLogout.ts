@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
 import useAuth from "./useAuth";
 import { AuthAPI } from "../../api/AuthAPI";
 import { DEFAULT_AUTH_CONTEXT_VALUE } from "../../components/auth/context/AuthProvider";
+import { useRouter } from "../../navigation";
 
-export default function useLogout() {
+export  default function useLogout() {
     const router = useRouter();
     const setAuth = useAuth()?.setAuth;
 

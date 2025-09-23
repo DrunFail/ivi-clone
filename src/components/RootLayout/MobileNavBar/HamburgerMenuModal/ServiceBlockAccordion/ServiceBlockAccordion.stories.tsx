@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import ServiceBlockAccordion from "./ServiceBlockAccordion";
+
+const meta: Meta<typeof ServiceBlockAccordion> = {
+  title: "mobileNavBar/ServiceBlockAccordion",
+  component: ServiceBlockAccordion,
+};
+
+export default meta;
+type Story = StoryObj<typeof ServiceBlockAccordion>;
+
+export const Primary: Story = {};

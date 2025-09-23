@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import SocialButton from "./SocialButton";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-import WrapperIntl from "../../WrapperIntl/WrapperIntl";
 
 const meta: Meta<typeof SocialButton> = {
   title: "UI/SocialButton",
@@ -10,9 +9,7 @@ const meta: Meta<typeof SocialButton> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],

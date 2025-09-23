@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 import { Provider } from "react-redux";
-import WrapperIntl from "../../../WrapperIntl/WrapperIntl";
 import store from "../../../../store/store";
 import {
   Title,
@@ -12,7 +11,6 @@ import {
   Canvas,
 } from "@storybook/blocks";
 import FontIcon from "../../FontIcon/FontIcon";
-import { FormattedMessage } from "react-intl";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button",
@@ -20,9 +18,7 @@ const meta: Meta<typeof Button> = {
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <WrapperIntl>
           <Story />
-        </WrapperIntl>
       </Provider>
     ),
   ],
@@ -40,11 +36,9 @@ const meta: Meta<typeof Button> = {
           <Title>ButtonMail</Title>
           <Canvas of={ButtonMail} />
 
-          <Title>ButtonWriteChat</Title>
-          <Canvas of={ButtonWriteChat} />
+          
 
-          <Title>LoginButton</Title>
-          <Canvas of={LoginButton} />
+          
 
           <Title>LogoutButton</Title>
           <Canvas of={LogoutButton} />
@@ -52,11 +46,9 @@ const meta: Meta<typeof Button> = {
           <Title>ShareButton</Title>
           <Canvas of={ShareButton} />
 
-          <Title>ButtonDetails</Title>
-          <Canvas of={ButtonDetails} />
+          
 
-          <Title>ButtonFreeMovies</Title>
-          <Canvas of={ButtonFreeMovies} />
+          
 
           <Title>WatchLaterButton</Title>
           <Canvas of={WatchLaterButton} />
@@ -64,14 +56,12 @@ const meta: Meta<typeof Button> = {
           <Title>ButtonClose</Title>
           <Canvas of={ButtonClose} />
 
-          <Title>ButtonTrailer</Title>
-          <Canvas of={ButtonTrailer} />
+         
 
           <Title>ButtonFormAuthSubmit</Title>
           <Canvas of={ButtonFormAuthSubmit} />
 
-          <Title>ButtonFormCancel</Title>
-          <Canvas of={ButtonFormCancel} />
+          
         </>
       ),
     },
@@ -112,21 +102,8 @@ export const ButtonMail: Story = {
   },
 };
 
-export const ButtonWriteChat: Story = {
-  args: {
-    as: "button",
-    children: <FormattedMessage id="WriteInChat" />,
-  },
-};
 
-export const LoginButton: Story = {
-  args: {
-    as: "link",
-    href: "/auth/login",
-    color: "red",
-    children: <FormattedMessage id="EnterOrRegister" />,
-  },
-};
+
 
 export const LogoutButton: Story = {
   args: {
@@ -143,24 +120,8 @@ export const ShareButton: Story = {
     children: <FontIcon variant="arrow" />,
   },
 };
-export const ButtonDetails: Story = {
-  args: {
-    as: "button",
-    children: <FormattedMessage id="Detail" />,
-  },
-};
 
-export const ButtonFreeMovies: Story = {
-  args: {
-    as: "button",
-    children: (
-      <>
-        <FontIcon variant="tv" />
-        <FormattedMessage id="freeFilm" defaultMessage={"Бесплатные фильмы"} />
-      </>
-    ),
-  },
-};
+;
 
 export const WatchLaterButton: Story = {
   args: {
@@ -177,12 +138,7 @@ export const ButtonClose: Story = {
     children: <FontIcon variant="close" size={20} />,
   },
 };
-export const ButtonTrailer: Story = {
-  args: {
-    as: "button",
-    children: <FormattedMessage id="trailer" />,
-  },
-};
+
 
 export const ButtonFormAuthSubmit: Story = {
   args: {
@@ -192,10 +148,4 @@ export const ButtonFormAuthSubmit: Story = {
     children: "Продолжить",
   },
 };
-export const ButtonFormCancel: Story = {
-  args: {
-    as: "button",
-    type: "button",
-    children: <FormattedMessage id="button.cancel" />,
-  },
-};
+

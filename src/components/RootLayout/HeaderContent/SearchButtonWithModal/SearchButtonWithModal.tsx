@@ -1,32 +1,36 @@
-import { useState } from "react";
-import styles from "./SearchButtonWithModal.module.scss";
-import dynamic from "next/dynamic";
+"use client";
 
-const SearchModal = dynamic(() => 
-    import("../../../SearchModal/SearchModal").then((mod) => mod.default)
-)
+import { useEffect, useState } from "react";
+import styles from "./SearchButtonWithModal.module.scss";
+import Modal from "../../../UI/Modal/Modal";
+import { usePathname } from "next/navigation";
 
 interface SearchButtonWithModalProps {
-    children: React.ReactNode
+    button: React.ReactNode,
+    modal:React.ReactNode
 }
-
-export default function SearchButtonWithModal({ children }: SearchButtonWithModalProps) {
+export default function SearchButtonWithModal({ button,modal }: SearchButtonWithModalProps) {
     const [visible, setVisible] = useState(false);
+    const pathname = usePathname();
 
     const handleVisible = () => {
         setVisible(visible => !visible)
     }
 
+    useEffect(() => {
+        setVisible(false)
+    }, [pathname])
+
     return (
         <>
-            <div className={styles.button}  onClick={handleVisible} data-testid='btn-search'>
-                {children }
-            </div> 
-                
-            
-            <SearchModal
-                visible={visible}
-                handleVisible={handleVisible} />
+            <div className={styles.button} onClick={handleVisible} data-testid='btn-search'>
+                {button}
+            </div>
+
+            <Modal callback={handleVisible} visible={visible} >
+                {modal }
+            </Modal>
+
         </>
     );
 };

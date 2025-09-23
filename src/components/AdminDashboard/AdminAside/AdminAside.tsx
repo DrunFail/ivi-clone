@@ -1,21 +1,24 @@
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname} from "next/navigation";
 import { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
 import styles from "./AdminAside.module.scss";
+import { useTranslations } from "next-intl";
 
 
 export default function AdminAside({ menu }: { menu: { id: number, name: string, link: string }[] }) {
     const [currentLink, setCurrentLink] = useState("");
-
-    const { asPath }  = useRouter();
+    const pathname = usePathname();
+    const t = useTranslations();
+    
     useEffect(() => {
-        const currentPage = menu.find(elem => asPath.includes(elem.name));
+        const currentPage = menu.find(elem => pathname.includes(elem.name));
         if (currentPage) {
             setCurrentLink(currentPage.name)
         }
 
-    },[asPath])
+    },[pathname])
     
     const activeLinkClass = (nameLink: string) => {
         if (currentLink === nameLink) {
@@ -29,7 +32,9 @@ export default function AdminAside({ menu }: { menu: { id: number, name: string,
                     <li key={menu.id}
                         className={styles[`li_${activeLinkClass(menu.name)}`]}>
                         
-                        <Link href={menu.link}><FormattedMessage id={`${menu.name}`} /></Link>
+                        <Link href={menu.link}>
+                            {t(`${menu.name}`) }
+                        </Link>
                         
                     </li>)}
                 

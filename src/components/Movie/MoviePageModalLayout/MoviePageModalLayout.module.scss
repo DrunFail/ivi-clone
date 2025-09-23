@@ -1,0 +1,18 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 152px;
+    margin-inline: auto;
+    max-inline-size: 880px;
+    column-gap: 200px;
+
+    .header{
+        display: grid;
+        row-gap: 20px;
+    }
+}
+@media only screen and (max-width: 850px){
+    .main {
+        grid-template-columns: 1fr;
+        padding-inline: 32px;
+    }
+}
