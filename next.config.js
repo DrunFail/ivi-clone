@@ -33,6 +33,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "thumbs.dfs.ivi.ru"
             },
+            {
+                protocol: "https",
+                hostname: "image.openmoviedb.com"
+            }
 
         ]
     },
