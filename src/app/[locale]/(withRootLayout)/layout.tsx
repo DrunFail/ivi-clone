@@ -48,11 +48,6 @@ export default async function MovieLayout({ children, params: { locale } }: { ch
         }
         
     }
-    
-    
-   console.log(userProfileData)
-    
-    
 
     function translateCountryNavBlock(navBlock: NavbarLink) {
         return navBlock.data!.country.map(country => {
