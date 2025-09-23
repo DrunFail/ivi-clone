@@ -48,11 +48,6 @@ export default async function MovieLayout({ children, params: { locale } }: { ch
         }
         
     }
-    
-    
-   console.log(userProfileData)
-    
-    
 
     function translateCountryNavBlock(navBlock: NavbarLink) {
         return navBlock.data!.country.map(country => {
@@ -102,7 +97,10 @@ export default async function MovieLayout({ children, params: { locale } }: { ch
 
     const transformGenresForMovie = genreListFromDB.map(genre => {
         const name = calculateGenreName(genre, locale);
-        const linke = getKeyByValue(CLIENT_GENRE_LIST, genre.id)
+        const linke = getKeyByValue(CLIENT_GENRE_LIST, genre.id);
+        if (!linke) {
+            return { name, link: ""};
+        }
         const link = `/movies/${linke}`;
         return { name, link }
     })
