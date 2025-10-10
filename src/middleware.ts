@@ -17,11 +17,8 @@ export default async function middleware(request: NextRequest) {
     const newCookies = await authMiddleware(request);
     const response = handleIntlRouting(request);
     if (newCookies) {
-        for (const cookie of newCookies.cookies) {
-            response.headers.append('Set-Cookie', cookie);
-        }
+        response.headers.append('Set-Cookie', newCookies.cookies);
         response.headers.append('X-Access-Token', newCookies.newAccessToken)
-
     }
     return response
 }
