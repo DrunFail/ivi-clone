@@ -8,7 +8,8 @@ import CheckIsVisibleInterceptRoute from "../../components/auth/CheckIsVisibleIn
 import { authDecodeToken } from "@/utils/authDecodeToken";
 import { authAPI } from "@/lib/api/authAPI";
 import { getAccessToken } from "@/utils/getAccessToken";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const dynamic = 'force-dynamic';
 
@@ -70,6 +71,7 @@ export default async function RootLayout({ children, loginModal, params: { local
                                 {loginModal}
                             </CheckIsVisibleInterceptRoute>
                             <Analytics />
+                            <SpeedInsights />
                         </body>
                     </html>
                 </NextIntlClientProvider>
