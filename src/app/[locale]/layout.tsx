@@ -5,10 +5,10 @@ import "../../styles/index.scss";
 import localFont from 'next/font/local';
 import { getMessages } from "next-intl/server";
 import CheckIsVisibleInterceptRoute from "../../components/auth/CheckIsVisibleInterceptRoute";
-import { cookies, headers } from "next/headers";
 import { authDecodeToken } from "@/utils/authDecodeToken";
 import { authAPI } from "@/lib/api/authAPI";
 import { getAccessToken } from "@/utils/getAccessToken";
+import { Analytics } from "@vercel/analytics/next"
 
 export const dynamic = 'force-dynamic';
 
@@ -69,7 +69,7 @@ export default async function RootLayout({ children, loginModal, params: { local
                             <CheckIsVisibleInterceptRoute id="notLoginModal">
                                 {loginModal}
                             </CheckIsVisibleInterceptRoute>
-
+                            <Analytics />
                         </body>
                     </html>
                 </NextIntlClientProvider>
