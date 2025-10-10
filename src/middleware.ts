@@ -1,20 +1,24 @@
-import { authMiddleware } from "./middlewares/authMiddleware";
-import { stackMiddlewares } from "./middlewares/stackMiddlewares";
-
 import createMiddleware from 'next-intl/middleware';
 import { locales, localePrefix } from './navigation';
+import { NextRequest } from "next/server";
+import { authMiddleware } from '@/middlewares/authMiddleware';
 
-export default createMiddleware({
+const handleIntlRouting = createMiddleware({
     defaultLocale: 'ru',
     localePrefix,
     locales
 });
 
 export const config = {
-    // Match only internationalized pathnames
     matcher: ['/', '/(ru|en)/:path*']
 };
 
-
-
-stackMiddlewares([authMiddleware]);
+export default async function middleware(request: NextRequest) {
+    const newCookies = await authMiddleware(request);
+    const response = handleIntlRouting(request);
+    if (newCookies) {
+        response.headers.append('Set-Cookie', newCookies.cookies);
+        response.headers.append('X-Access-Token', newCookies.newAccessToken)
+    }
+    return response
+}

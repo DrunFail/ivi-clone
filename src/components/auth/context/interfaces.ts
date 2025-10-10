@@ -7,6 +7,6 @@ export interface AuthContextData {
     profile: any
 }
 export interface IAuthContext {
-     auth: AuthContextData;
-     setAuth: (auth: AuthContextData) => void;
+     auth: AuthContextData | null;
+     setAuth: (auth: AuthContextData | null) => void;
 }

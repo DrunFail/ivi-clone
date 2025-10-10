@@ -6,9 +6,9 @@ import EmptyCommentCard from "../EmptyCommentCard/EmptyCommentCard";
 import UnauthorizedAlert from "../UnauthorizedAlert/UnauthorizedAlert";
 import styles from "./CommentPageContent.module.scss";
 import { PickedReview } from "../interfaces/interfaces";
-import { isAuthClient } from "../../auth/isAuthClient";
 import useOptimisticAddCommentWithFormState from "../../../hooks/comment/useOptimisticAddCommentWithFormState";
 import CommentTreeCardContainer from "../cardContainers/CommentTreeCardContainer/CommentTreeCardContainer";
+import useAuth from "@/hooks/auth/useAuth";
 
 interface CommentTabContainerProps {
     movieKinopoiskId: number;
@@ -16,10 +16,10 @@ interface CommentTabContainerProps {
 }
 export default function CommentPageContent({ movieKinopoiskId, commentTree }: CommentTabContainerProps) {
     const { optimisticReviews, state, action } = useOptimisticAddCommentWithFormState(commentTree);
-
+    const { auth } = useAuth();
     return (
         <div className={styles.container}>
-            {isAuthClient ?
+            {auth ?
                 <CommentAddForm
                     error={state?.errors.commentText}
                     action={action}

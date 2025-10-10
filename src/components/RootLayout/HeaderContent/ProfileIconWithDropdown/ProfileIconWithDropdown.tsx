@@ -6,37 +6,25 @@ import useAuth from "../../../../hooks/auth/useAuth";
 import HeaderPortal from "../portal/HeaderPortal";
 import HeaderPortalWrapper from "../portal/HeaderPortalWrapper/HeaderPortalWrapper";
 import { useResize } from "../../../../hooks/useResize";
-import { usePathname } from "../../../../navigation";
-import { AuthContextData } from "../../../auth/context/interfaces";
+import Button from "@/components/UI/core/Button/Button";
+import SetCookierForRedirectAfterLogin from "@/components/RootLayout/SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin";
+import FontIcon from "@/components/UI/FontIcon/FontIcon";
 
 interface ProfileBlockIconWithDropdownProps {
     dropdownContent: React.ReactNode;
-    userProfileData: any;
     children: React.ReactNode
 }
 
 
-export default function ProfileBlockIconWithDropdown({ dropdownContent, userProfileData,children }: ProfileBlockIconWithDropdownProps) {
+export default function ProfileBlockIconWithDropdown({ dropdownContent }: ProfileBlockIconWithDropdownProps) {
     const [isVisiblePortal, setIsVisiblePortal] = useState(false);
-    const { setAuth, auth } = useAuth();
+    const { auth } = useAuth();
     const size = useResize();
     const isHiddenProfileDropdown = size && (size > 1050);
-    const path = usePathname();
 
     const handleVisibleProfileDropdown = (status: boolean) => {
         setIsVisiblePortal(status)
-
     }
-
-    if (userProfileData && !auth.profile) {
-        /* eslint-disable */
-        //@ts-ignore
-        setAuth((prevAuth: AuthContextData) => {
-            return { ...prevAuth, profile: userProfileData };
-        })
-    }
-
-    
     return (
         <div
             className={styles.container}
@@ -44,7 +32,24 @@ export default function ProfileBlockIconWithDropdown({ dropdownContent, userProf
             onMouseEnter={() => handleVisibleProfileDropdown(true)}
             data-testid="profile-dropdown"
         >
-            {children}
+            {auth
+                ? <Button className={styles.profile}>
+                    <div>U</div>
+                    <span>user</span>
+                </Button>
+                : <SetCookierForRedirectAfterLogin>
+                    <Button
+                        as="link"
+                        href="/auth/login"
+                        className={styles.profile}
+                    >
+                        <FontIcon variant="avatar" />
+                        <span>Войти</span>
+                    </Button>
+                </SetCookierForRedirectAfterLogin>
+                
+            }
+            
 
             {isVisiblePortal && isHiddenProfileDropdown &&
                 <HeaderPortal>

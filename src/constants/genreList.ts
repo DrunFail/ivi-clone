@@ -25,5 +25,6 @@ export const CLIENT_GENRE_LIST = {
     anime:  23, 
     documentary:  24, 
     filmnoir:  25, 
-    realtv:  26, 
+    realtv: 26, 
+    adult: 27,
 }

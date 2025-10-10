@@ -30,8 +30,8 @@ const AddCommentSchema = z.object({
 export default function useOptimisticAddCommentWithFormState<T extends PickedReview | PickedReview[]>(initState: T) {
     const path = usePathname();
     const { auth } = useAuth();
-    
-    
+
+
 
     const [optimisticReviews, addOptimisticReview] = useOptimistic<T, PickedReview>(initState, (state, newReview) => {
         if (Array.isArray(state)) {
@@ -47,6 +47,10 @@ export default function useOptimisticAddCommentWithFormState<T extends PickedRev
 
     });
     const commentAction = async (state: FormState, formData: FormData) => {
+        if (!auth) {
+            console.error('auth is null')
+            return;
+        }
         const validatedFields = AddCommentSchema.safeParse({
             commentText: formData.get("commentText"),
             filmId: Number(formData.get("filmId")),
@@ -88,7 +92,7 @@ export default function useOptimisticAddCommentWithFormState<T extends PickedRev
     const [state, action] = useFormState(commentAction, undefined);
 
 
-    return {optimisticReviews, state,action}
+    return { optimisticReviews, state, action }
 }
 
 

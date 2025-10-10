@@ -1,11 +1,11 @@
 "use server"
 
+import { getAccessToken } from "@/utils/getAccessToken";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 
 export async function createReview(newReview: any,revalidate?:string) {
     try {
-        const token = cookies().get('session')?.value;
+        const token = getAccessToken();
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews`, {
             method: "post",
             headers: {

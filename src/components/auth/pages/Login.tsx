@@ -8,18 +8,18 @@ import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 import SubmitButton from "../components/SubmitButton/SubmitButton";
 
 export default function Login() {
-    const [state, action] = useFormState(loginAction, undefined);
+    const [state, action] = useFormState(loginAction, null);
     const t = useTranslations();
 
     return (
         <form action={action} noValidate>
             <TextFieldErrorMessage
                 isHiddenInput
-                error={state?.errors.formError && t(`auth.error.${state?.errors.formError}`)}
+                error={state?.errors?.formError && t(`auth.error.${state?.errors.formError}`)}
             >
                 <input type="hidden" name="formError" />
             </TextFieldErrorMessage>
-            <TextFieldErrorMessage error={state?.errors.email && t(`auth.error.${state?.errors.email}`)}>
+            <TextFieldErrorMessage error={state?.errors?.email && t(`auth.error.${state?.errors.email}`)}>
                 <TextFieldWithLabel
                     id="email"
                     labelText={t("auth.label.email")}
@@ -27,7 +27,7 @@ export default function Login() {
                     type="email"
                 />
             </TextFieldErrorMessage>
-            <TextFieldErrorMessage error={state?.errors.password && t(`auth.error.${state?.errors.password}`)}>
+            <TextFieldErrorMessage error={state?.errors?.password && t(`auth.error.${state?.errors.password}`)}>
                 <TextFieldWithLabel
                     id="password"
                     labelText={t("auth.label.pwd")}

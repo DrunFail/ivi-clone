@@ -7,7 +7,7 @@ export default function useCommentListReview(commentTree:ReviewTree[]) {
     
 
     const auth = useAuth();
-    const isLoginUser = Boolean(auth.auth.token)
+    const isLoginUser = Boolean(auth)
 
     const isCommentData = Boolean(commentData.length)
 

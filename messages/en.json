@@ -42,7 +42,12 @@
   "breadcrumbs": {
     "FILM": "Movies",
     "TV_SERIES": "Serials",
-    "movies": "Movies"
+    "movies": "Movies",
+    "animated-series": "Cartoons",
+    "anime": "Cartoons",
+    "cartoon": "Cartoons",
+    "CARTOON": "Cartoons",
+    "TV_SHOW": "TV-show"
   },
   "country": {
     "all": "All countries"
@@ -328,7 +333,8 @@
     },
     "adult": {
       "title": "Adults",
-      "short": "Adults"
+      "short": "Adults",
+      "description": "Here are the pictures that are not afraid to look into the eyes of moral dilemmas, destructive passions and the dark side of the human psyche. Outspoken dramas about infidelity and personality crises, tense thrillers with a high degree of violence and deep psychological stories in which there are no unambiguously \"good\" and \"bad\" characters."
     },
     "american": {
       "title": "American",
@@ -460,7 +466,7 @@
       "title": "Romantic",
       "short": "Romantic"
     },
-    "real tv": {
+    "realtv": {
       "title": "The best movies and TV series",
       "short": "The best movies and TV series",
       "description": "This collection contains only the best movies and TV series that you should definitely watch."
