@@ -5,6 +5,12 @@ import "../../styles/index.scss";
 import localFont from 'next/font/local';
 import { getMessages } from "next-intl/server";
 import CheckIsVisibleInterceptRoute from "../../components/auth/CheckIsVisibleInterceptRoute";
+import { cookies, headers } from "next/headers";
+import { authDecodeToken } from "@/utils/authDecodeToken";
+import { authAPI } from "@/lib/api/authAPI";
+import { getAccessToken } from "@/utils/getAccessToken";
+
+export const dynamic = 'force-dynamic';
 
 const iviFont = localFont({
     src: [
@@ -37,10 +43,24 @@ interface RootLayoutProps {
 
 export default async function RootLayout({ children, loginModal, params: { locale } }: RootLayoutProps) {
     const messages = await getMessages();
+    const token = getAccessToken();
+    let userProfile = null;
 
+    if (token) {
+        try {
+            const profile = await authAPI.getUserProfile(token);
+            const decodeToken = authDecodeToken(token);
+            userProfile = {
+                ...decodeToken,
+                profile: profile
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <ReduxProvider>
-            <AuthProvider>
+            <AuthProvider profile={userProfile}>
                 <NextIntlClientProvider messages={messages}>
                     <html lang={locale} className={iviFont.className}>
                         <body>
