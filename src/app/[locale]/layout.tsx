@@ -36,6 +36,12 @@ const iviFont = localFont({
     ],
 })
 
+export const metadata = {
+    verification: {
+        google: "fgk8DZ7GZHVaYcqXYa33SWKaXM2QLyKScIKlzk2ZBEo"
+    }
+}
+
 interface RootLayoutProps {
     children: React.ReactNode,
     loginModal: React.ReactNode,
