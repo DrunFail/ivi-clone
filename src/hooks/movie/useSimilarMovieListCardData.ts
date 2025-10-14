@@ -7,7 +7,7 @@ interface UseSimilarItemDataProps {
 }
 
 export default function useSimilarItemData({ similarItem }: UseSimilarItemDataProps) {
-    const lang = useLocale();
+    const lang = useLocale() as "ru" | "en";
 
     
 

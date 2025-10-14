@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import GenreListItem from "./GenreListItem";
 import { Genre } from "../../../models/types";

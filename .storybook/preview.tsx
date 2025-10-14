@@ -1,5 +1,4 @@
-import { Preview } from "@storybook/react";
-import { initialize, mswDecorator, mswLoader } from 'msw-storybook-addon';
+import { Preview } from "@storybook/nextjs";
 import "../src/styles/index.scss";
 import { NextIntlClientProvider } from "next-intl";
 import React from 'react';

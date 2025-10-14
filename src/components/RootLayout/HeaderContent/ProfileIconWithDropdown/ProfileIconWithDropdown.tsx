@@ -12,7 +12,6 @@ import FontIcon from "@/components/UI/FontIcon/FontIcon";
 
 interface ProfileBlockIconWithDropdownProps {
     dropdownContent: React.ReactNode;
-    children: React.ReactNode
 }
 
 

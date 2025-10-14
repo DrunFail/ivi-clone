@@ -12,19 +12,15 @@ import { getKeyByValue } from "../../../utils/getKeyByValue";
 import SectionTitle from "../../../components/UI/SectionTitle/SectionTitle";
 
 const MovieSlider = dynamic(() =>
-    import("../../../components/Movie/MovieSlider/MovieSlider").then((mod) => mod.default))
+    import("../../../components/Movie/MovieSlider/MovieSlider"))
 
 
 import type { Metadata } from 'next'
 import { getTranslations } from "next-intl/server";
-import { Link } from "../../../navigation";
-
-type Props = {
-    params: { id: string, locale: "en" | "ru" }
-}
+import { Link } from "@/i18n/navigation";
 
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations();
     return {
         title: t("page.main.title"),
@@ -40,7 +36,7 @@ const getMovieSet = async (genreId: number) => {
 }
 
 
-export default async function Page({ params: { locale } }: { params: { locale: "en" | "ru" } }) {
+export default async function Page() {
     const t = await getTranslations();
     
     const firstSet = await getMovieSet(2);

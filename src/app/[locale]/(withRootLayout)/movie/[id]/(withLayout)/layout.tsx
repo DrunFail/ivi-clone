@@ -7,9 +7,10 @@ async function getMovieById(movieId: string) {
     return movie;
 }
 
-export default async function Layout({children, params: { id, locale } }: {children:React.ReactNode, params: { id: string, locale: "en" | "ru" } }) {
+export default async function Layout({ children, params }: { children: React.ReactNode, params: Promise<{ id: string, locale: string }> }) {
+    const { id, locale } = await params as {id: string,locale: "ru" | "en"};
     const movie = await getMovieById(id);
-    const dict = await getDictionary(locale)
+    const dict = await getDictionary(locale);
 
 
 

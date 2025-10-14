@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./CreatersPersonList.module.scss";
 import { Person } from "../../../models/types";
 import { calculatePersonName } from "../../../utils/calculatePersonName";
-import { Link } from "../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface CreatersPersonListProps {
     personList: Person[],

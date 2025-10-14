@@ -1,4 +1,4 @@
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 import styles from "./Button.module.scss";
 
 type BaseProps = {

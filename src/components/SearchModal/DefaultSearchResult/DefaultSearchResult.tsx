@@ -1,6 +1,6 @@
+import { Link } from "@/i18n/navigation";
 import { DEFAULT_SEARCH_LINK } from "./const";
 import styles from "./DefaultSearchResult.module.scss";
-import { Link } from "../../../navigation";
 import { useTranslations } from "next-intl";
 
 export default function DefaultSearchResult() {

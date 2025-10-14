@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import HamburgerMenuModal from "./HamburgerMenuModal";
 import { NAV_MENU } from "../../../../constants/headerConstants";

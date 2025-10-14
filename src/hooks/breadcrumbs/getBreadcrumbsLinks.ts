@@ -1,9 +1,10 @@
-import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { MovieById } from "../../models/types";
 import { calculateMovieName } from "../../utils/calculateMovieName";
 import { getKeyByValue } from "../../utils/getKeyByValue";
 import { CLIENT_GENRE_LIST } from "../../constants/genreList";
+import { getLocale } from 'next-intl/server';
+
 
 interface Props {
     movie: MovieById,
@@ -18,9 +19,9 @@ const TYPE_MOVIE_LINK = {
     "CARTOON":"https://www.ivi.ru/animation",
     "TV_SHOW":"https://www.ivi.ru/series"
 }
-export default async function useBreadcrumbsLinks({ movie }: Props) {
+export default async function getBreadcrumbsLinks({ movie }: Props) {
+    const locale = await getLocale() as "ru" | "en";
     const t = await getTranslations();
-    const locale = useLocale();
 
     const mainTitle = t("MyIvi");
 

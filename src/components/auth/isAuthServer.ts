@@ -1,3 +1,5 @@
 import { cookies } from "next/headers";
 
-const isAuthServer = Boolean(cookies().get("refreshToken"));
+export const isAuthServer = async () => {
+    return Boolean((await cookies()).get("refreshToken"));
+}

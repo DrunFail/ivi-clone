@@ -18,7 +18,7 @@ export default function AdminAside({ menu }: { menu: { id: number, name: string,
             setCurrentLink(currentPage.name)
         }
 
-    },[pathname])
+    },[pathname,menu])
     
     const activeLinkClass = (nameLink: string) => {
         if (currentLink === nameLink) {

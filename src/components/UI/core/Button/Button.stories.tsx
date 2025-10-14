@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import Button from "./Button";
 import { Provider } from "react-redux";
 import store from "../../../../store/store";
@@ -9,7 +9,7 @@ import {
   Story,
   Source,
   Canvas,
-} from "@storybook/blocks";
+} from "@storybook/addon-docs/blocks";
 import FontIcon from "../../FontIcon/FontIcon";
 
 const meta: Meta<typeof Button> = {

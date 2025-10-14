@@ -1,7 +1,6 @@
 import { usePathname } from "next/navigation";
-import { useOptimistic } from "react";
+import { useActionState, useOptimistic } from "react";
 import useAuth from "../../hooks/auth/useAuth";
-import { useFormState } from "react-dom";
 import { z } from "zod";
 import { PickedReview } from "../../components/comment/interfaces/interfaces";
 import { createReview } from "../../components/comment/addCommentAction";
@@ -89,7 +88,7 @@ export default function useOptimisticAddCommentWithFormState<T extends PickedRev
 
     }
 
-    const [state, action] = useFormState(commentAction, undefined);
+    const [state, action] = useActionState(commentAction, undefined);
 
 
     return { optimisticReviews, state, action }

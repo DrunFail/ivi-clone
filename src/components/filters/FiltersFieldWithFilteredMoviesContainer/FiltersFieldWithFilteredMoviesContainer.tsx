@@ -1,17 +1,17 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { ResponseWithCountAndRows } from "../../../models/response";
 import { Movie } from "../../../models/types";
 import MovieListCardWithOverlayContainer from "../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
 import MovieSliderSizeContainer from "../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer";
 import ButtonShowMore from "../../UI/Carousel/ButtonShowMore/ButtonShowMore";
-import { useFormState } from "react-dom";
 import { getKeyByValue } from "../../../utils/getKeyByValue";
 import { CLIENT_GENRE_LIST } from "../../../constants/genreList";
-import { useRouter } from "../../../navigation";
-import { debounce } from "../../../utils/debounce";
 import { formFieldAction } from "../../../hooks/filters/formFieldAction";
+import { useRouter } from "@/i18n/navigation";
+import { debounce } from "@/utils/debounce";
+import RangeFilter from "@/components/filters/RangeFilter/RangeFilter";
 
 interface Props {
     firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>,
@@ -19,10 +19,9 @@ interface Props {
 }
 
 export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMoviesByGenre, children }: Props) {
-    const [state, action] = useFormState(formFieldAction, { movie: firstLoadMoviesByGenre, isShowChangePageButton: true });
+    const [state, action] = useActionState(formFieldAction, { movie: firstLoadMoviesByGenre, isShowChangePageButton: true });
     const listRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
-
 
     useEffect(() => {
         //get "--amount" property from css and set value for input[name=size]
@@ -55,44 +54,45 @@ export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMovie
         }
     }, [])
 
-    const submitForm = useCallback(() => {
-        const button = document.querySelector('button[type=submit]') as HTMLFormElement;
-        button.click();
-        console.log("func")
-    }, [])
+    const debouncedSubmit = useRef(
+        debounce((form: HTMLFormElement) => {
+            form.requestSubmit()
+        },500)
+    )
 
-    const debouncedSubmit = debounce(() => submitForm());
+    const formChangeHandler = (e: any) => {
+            const form = document.getElementById("form") as HTMLFormElement;
 
-    const formChangeHandler = useCallback((e: any) => {
-        console.log(e)
-        //if set new genre => redirect to genre page
-        if (e.target.name === "genreId") {
-            const selectedGenreLink = getKeyByValue(CLIENT_GENRE_LIST, +e.target.value);
-            router.push(`/movies/${selectedGenreLink}`)
-        }
-        //if set new country => set current page value = 0
-        if (e.target.name === "countryId") {
-            const input = document.querySelector('input[name=page]') as HTMLInputElement;
-            input.value = "0";
-        }
-        if (e.target.type === "range") {
-            debouncedSubmit()
-        }
-        else {
-            submitForm();
-        }
-    }, [debouncedSubmit, router, submitForm])
+            //if set new genre => redirect to genre page
+            if (e.target.name === "genreId") {
+                const selectedGenreLink = getKeyByValue(CLIENT_GENRE_LIST, +e.target.value);
+                router.push(`/movies/${selectedGenreLink}`)
+            }
+            //if set new country => set current page value = 0
+            if (e.target.name === "countryId") {
+                const input = document.querySelector('input[name=page]') as HTMLInputElement;
+                input.value = "0";
+            }
+            if (e.target.type === "range" && form) {
+                debouncedSubmit.current(form);
+            }
+            else {
+                form.requestSubmit();
+            }
+        
+    }
+    
 
     return (
-        <>
+        <div onChange={(e) => formChangeHandler(e) }>
 
-            <form name="test" id="form" action={action} onChange={(e) => formChangeHandler(e)} noValidate>
-                {children}
+            <form name="test" id="form" action={action} noValidate>
+                {children }
                 <button type="submit" />
             </form>
 
 
-            {state?.movie.count
+            {state.movie.count
 
                 ? <>
                     <MovieSliderSizeContainer>
@@ -116,6 +116,6 @@ export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMovie
             }
 
 
-        </>
+        </div>
     );
 }

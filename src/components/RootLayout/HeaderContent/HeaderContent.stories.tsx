@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import HeaderContent from "./HeaderContent";
 import { NAV_MENU } from "../../../constants/headerConstants";
 

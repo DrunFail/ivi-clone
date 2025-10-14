@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { Fragment } from "react";
-import { Link } from "../../../navigation";
 import BackButtonFromModal from "../../BackButtonFromModal/BackButtonFromModal";
 import MoviePoster from "../../Movie/MoviePoster/MoviePoster";
 import PageWrapper from "../../PageContainers/PageWrapper/PageWrapper";
@@ -20,6 +19,7 @@ import styles from "./MoviePageModalLayout.module.scss";
 import { getInfoProduct } from "../../../utils/getInfoProduct";
 import { getLinksForPlayer } from "../../../utils/getLinksForPlayer";
 import { MovieById } from "../../../models/types";
+import { Link } from "@/i18n/navigation";
 
 const newTabs: { tabName: string, count: number | null, isShowCount: boolean }[] = [
     {

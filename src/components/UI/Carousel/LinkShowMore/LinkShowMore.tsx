@@ -1,4 +1,4 @@
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 import styles from "./LinkShowMore.module.scss";
 
 interface LinkShowMoreProps {

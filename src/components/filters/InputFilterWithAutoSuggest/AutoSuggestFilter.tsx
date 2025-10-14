@@ -1,3 +1,5 @@
+"use client"
+
 import FontIcon from "../../UI/FontIcon/FontIcon";
 import TextFieldWithLabel from "../../UI/TextFieldWithLabel/TextFieldWithLabel";
 import Button from "../../UI/core/Button/Button";
@@ -22,14 +24,15 @@ export default function AutoSuggestFilter({filterKey,filterName }:Props) {
                 labelText="Введите имя"
                 id={`${filterKey}-search`}
                 name={`${filterKey}-search`}
+                defaultValue={"" }
             />
 
             <div>
                 <SelectedFilterValue id={filterKey}>
+                    {""}
                 </SelectedFilterValue>
                 <Button
                     as="button"
-                    id="reset"
                     onlyImage
                 >
                     <FontIcon

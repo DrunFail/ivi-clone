@@ -10,8 +10,9 @@ export async function logoutAction() {
                 "Content-Type": "application/json"
             }
         });
-        cookies().delete("session");
-        cookies().delete("refreshToken");
+        const cookie = await cookies();
+        cookie.delete("session");
+        cookie.delete("refreshToken");
     }
     catch (error) {
         console.log(error);

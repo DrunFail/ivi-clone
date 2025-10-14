@@ -2,7 +2,7 @@ import Crumb from "./Crumb/Crumb";
 import styles from "./BreadCrumbs.module.scss";
 import DefaultSeparator from "./DefaultSeparator/DefaultSeparator";
 import { Fragment } from "react";
-import { Link } from "../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface BreadCrumbsProps {
     breadcrumbs: { children: React.ReactNode, href: string }[],

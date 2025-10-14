@@ -1,5 +1,5 @@
+import { Link } from "@/i18n/navigation";
 import { Person } from "../../../models/types";
-import { Link } from "../../../navigation";
 import RatingBlock from "../../Rating/RatingBlock/RatingBlock";
 import Avatar from "../../UI/Avatar/Avatar";
 import MedallionContent from "./MedallionContent/MedallionContent";

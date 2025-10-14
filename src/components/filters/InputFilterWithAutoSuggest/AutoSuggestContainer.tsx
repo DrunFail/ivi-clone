@@ -19,7 +19,7 @@ export default function AutoSuggestContainer({ filterKey,children }: InputFilter
 
     useEffect(() => {
         if (superRef.current) {
-            const resetButton = superRef.current.querySelector('button[id=reset]') as HTMLButtonElement;
+            const resetButton = superRef.current.querySelector('button') as HTMLButtonElement;
             const input = superRef.current?.querySelector('input[type=text]') as HTMLInputElement;
             const clear = () => {
                 setSuggestions([]);
@@ -30,7 +30,6 @@ export default function AutoSuggestContainer({ filterKey,children }: InputFilter
     },[filterKey])
 
     const setSort = async (e: any) => {
-        console.log(e)
         if (e.target.type === "text") {
             e.stopPropagation();
             try {
@@ -48,14 +47,14 @@ export default function AutoSuggestContainer({ filterKey,children }: InputFilter
     }
 
     return (
-        <div className={styles.wrapper} ref={superRef} onChange={(e) => setSort(e)}>
+        <div className={styles.wrapper} ref={superRef}  onChange={(e) => setSort(e)}>
             {children }
             <div className={styles.variants}>
                 {!!suggestions.length &&
                     <PositionContainer>
                         <FilterWrapperContainer>
                             <SuggestContent
-                                suggestList={suggestions}
+                                suggestList={[]}
                                 filterKey={filterKey }
                             />
                         </FilterWrapperContainer>

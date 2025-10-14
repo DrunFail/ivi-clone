@@ -7,7 +7,8 @@ async function getMovieById(movieId: string) {
     return movie;
 }
 
-export default async function TrailerPage({ params: { id } }:{ params: {id:string } }) {
+export default async function TrailerPage({ params }: { params: Promise<{ id: string }> }) {
+    const {id } = await params;
     const movie = await getMovieById(id);
     const trailerLinks = movie.film.trailers.map(trailer => getTrailerLink(trailer));
     return (

@@ -3,13 +3,13 @@ import { AuthProvider } from "../../components/auth/context/AuthProvider";
 import ReduxProvider from "../../store/ReduxProvider";
 import "../../styles/index.scss";
 import localFont from 'next/font/local';
-import { getMessages } from "next-intl/server";
 import CheckIsVisibleInterceptRoute from "../../components/auth/CheckIsVisibleInterceptRoute";
 import { authDecodeToken } from "@/utils/authDecodeToken";
 import { authAPI } from "@/lib/api/authAPI";
 import { getAccessToken } from "@/utils/getAccessToken";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
 
@@ -36,21 +36,22 @@ const iviFont = localFont({
     ],
 })
 
-export const metadata = {
+export const metadata:Metadata = {
     verification: {
-        google: "fgk8DZ7GZHVaYcqXYa33SWKaXM2QLyKScIKlzk2ZBEo"
+        google: "fgk8DZ7GZHVaYcqXYa33SWKaXM2QLyKScIKlzk2ZBEo",
+        yandex: "0fb3c6642e8668bc"
     }
 }
 
 interface RootLayoutProps {
     children: React.ReactNode,
     loginModal: React.ReactNode,
-    params: { locale: string }
+    params: Promise<{ locale: string}>
 }
 
-export default async function RootLayout({ children, loginModal, params: { locale } }: RootLayoutProps) {
-    const messages = await getMessages();
-    const token = getAccessToken();
+export default async function RootLayout({ children, loginModal, params}: RootLayoutProps) {
+    const { locale } = await params as {locale: "ru" | "en"};
+    const token = await getAccessToken();
     let userProfile = null;
 
     if (token) {
@@ -68,8 +69,8 @@ export default async function RootLayout({ children, loginModal, params: { local
     return (
         <ReduxProvider>
             <AuthProvider profile={userProfile}>
-                <NextIntlClientProvider messages={messages}>
-                    <html lang={locale} className={iviFont.className}>
+                <NextIntlClientProvider>
+                    <html lang={locale as string} className={iviFont.className}>
                         <body>
                             <div id="portal" />
                             {children}

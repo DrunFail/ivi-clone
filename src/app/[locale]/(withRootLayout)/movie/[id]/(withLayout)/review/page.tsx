@@ -7,13 +7,11 @@ import { getTranslations } from "next-intl/server";
 import CommentPageContent from "../../../../../../../components/comment/CommentPageContent/CommentPageContent";
 
 type Props = {
-    params: { id: string,locale:"ru" | "en" }
-    searchParams: { [key: string]: string | string[] | undefined }
+    params: Promise<{ id: string,locale:"ru" | "en" }>
 }
 
-export async function generateMetadata({ params}: Props): Promise<Metadata> {
-    const id = params.id;
-    const locale = params.locale;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const {id,locale } = await params;
     const t = await getTranslations();
     const movie = await MovieAPI.getMovieById(id);
     const movieName = calculateMovieName(movie.film, locale);
@@ -25,7 +23,8 @@ export async function generateMetadata({ params}: Props): Promise<Metadata> {
 
 
 
-export default async function ReviewPage({ params: { id, locale } }: { params: { id: string, locale: "ru" | "en" } }) {
+export default async function ReviewPage({ params }: { params: Promise<{ id: string, locale: "ru" | "en" }> }) {
+    const {id } = await params;
     const commentTree = await ReviewAPI.getReviewTreeByMovieId(+id);
 
     return (

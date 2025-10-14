@@ -1,7 +1,6 @@
 "use server"
 
 import { MovieAPI } from "../../api/MovieAPI"
-import { FilterParams } from "../../hooks/filters/useFiltersWatchPage";
 import { ResponseWithCountAndRows } from "../../models/response"
 import { Movie, MovieFilterParams, MovieSortBy } from "../../models/types"
 
@@ -17,7 +16,6 @@ type UnionMovieFilterParams = RequiredMovieFilterParams & UnrequiredMovieFilterP
 
 
 export async function formFieldAction(state: State, formData: FormData) {
-
     const filterParams: UnionMovieFilterParams = {
         size: Number(formData.get("size")),
         page: Number(formData.get("page")),
@@ -60,6 +58,6 @@ export async function formFieldAction(state: State, formData: FormData) {
         }
     }
     //if page was reload(first movie set load)
-    return { movie: newMovieSet, isShowChangePageButton };
+    return { movie: newMovieSet, isShowChangePageButton:isShowChangePageButton };
 
 }

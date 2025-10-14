@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Title, Canvas } from "@storybook/blocks";
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { Title, Canvas } from "@storybook/addon-docs/blocks";
 
 import EditCardContainer from "./EditCardContainer";
 import EditMovieCardContent from "../cards/EditMovieCardContent/EditMovieCardContent";

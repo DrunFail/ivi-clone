@@ -1,7 +1,7 @@
 import { Person } from "../../../../models/types";
 import StaffCard from "../StaffCard/StaffCard";
 import usePersonData from "../../../../hooks/person/usePersonData";
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface StaffCardContainerProps {
     elem: Person

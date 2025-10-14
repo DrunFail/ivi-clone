@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 type GenreKey = keyof typeof CLIENT_GENRE_LIST;
 
 export default function useTransformGenres(variant: "first" | "second", genreList:Genre[]) {
-    const lang = useLocale();
+    const lang = useLocale() as "ru" | "en";
     const t = useTranslations();
 
     if (variant === "first") {

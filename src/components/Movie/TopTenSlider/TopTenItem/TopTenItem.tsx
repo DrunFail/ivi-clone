@@ -3,7 +3,7 @@ import FadeBottomTop from "../FadeBottomTop/FadeBottomTop";
 import FilmTitleTop from "../FilmTitleTop/FilmTitleTop";
 import NumberRatingTop from "../NumberRatingTop/NumberRatingTop";
 import styles from "./TopTenItem.module.scss";
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface TopTenItemProps {
     elem: { id: number, href: string, name: string }

@@ -19,16 +19,16 @@ import GridAreaContainer from "../../../../../components/filters/GridAreaContain
 import SortField from "../../../../../components/filters/SortField/SortField";
 import ResetFilter from "../../../../../components/filters/ResetFilter/ResetFilter";
 import RangeFilter from "../../../../../components/filters/RangeFilter/RangeFilter";
-import { MovieFilterParams } from "../../../../../models/types";
+import { Country, Genre, MovieFilterParams } from "../../../../../models/types";
 import MovieFilterFormGridTemplate from "../../../../../components/filters/MovieFilterFormGridTemplate/MovieFilterFormGridTemplate";
 
 type Props = {
-    params: { genre: string }
+    params: Promise<{ genre: string }>
 }
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const genre = params.genre;
+    const {genre } = await params;
     const t = await getTranslations()
 
     return {
@@ -46,12 +46,13 @@ const DEFAULT_MOVIE_SEARCH_PARAMS: Pick<MovieFilterParams, "size" | "page" | "or
 }
 
 
-export default async function MoviesByGenre({ params: { genre, locale } }: { params: { genre: string, locale: "ru" | "en" } }) {
+export default async function MoviesByGenre({ params }: { params: Promise<{ genre: string, locale: "ru" | "en" }> }) {
+    const { genre,locale } = await params;
     const t = await getTranslations();
     const currentGenreId = CLIENT_GENRE_LIST[genre as keyof typeof CLIENT_GENRE_LIST];
     const firstLoadMoviesByGenre = await MovieAPI.getFilteredMovie({ ...DEFAULT_MOVIE_SEARCH_PARAMS, genreId: currentGenreId || undefined });
-    const genres = await MovieAPI.getGenreList();
-    const countries = await MovieAPI.getCountryList();
+    const genres:Genre[] = await MovieAPI.getGenreList();
+    const countries:Country[] = await MovieAPI.getCountryList();
 
     const transformData = genres.map(genre => {
         const name = calculateGenreName(genre, locale);

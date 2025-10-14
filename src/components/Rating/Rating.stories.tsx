@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import Rating from "./Rating";
 import RatingModalContent from "./RatingModal/RatingModalContent";
 import RatingLarge from "./RatingLarge/RatingLarge";

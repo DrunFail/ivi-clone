@@ -2,7 +2,7 @@ import { Movie } from "../../../models/types";
 import MovieListCardWithOverlay from "../MovieListCardWithOverlay/MovieListCardWithOverlay";
 import UserOverlayIcon from "../UserOverlayIcon/UserOverlayIcon";
 import useMovieListCardData from "../../../hooks/movie/useMovieListCardData";
-import { Link } from "../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface MovieListCardWithOverlayContainerProps {
     elem: Movie

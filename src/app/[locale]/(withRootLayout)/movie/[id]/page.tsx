@@ -28,19 +28,19 @@ import SizeConditionContainer from "../../../../../components/SizeConditionConta
 import type { Metadata } from "next";
 import CommentSlider from "../../../../../components/comment/CommentSlider/CommentSlider";
 import { getTranslations } from "next-intl/server";
-import useBreadcrumbsLinks from "../../../../../hooks/breadcrumbs/useBreadcrumbsLinks";
-import { Link } from "../../../../../navigation";
 import RatingModalContent from "../../../../../components/Rating/RatingModal/RatingModalContent";
 import RatingLarge from "../../../../../components/Rating/RatingLarge/RatingLarge";
 import RatingBlock from "../../../../../components/Rating/RatingBlock/RatingBlock";
 import { MovieById, Movie } from "../../../../../models/types";
+import { Link } from "@/i18n/navigation";
+import getBreadcrumbsLinks from "@/hooks/breadcrumbs/getBreadcrumbsLinks";
 
 type Props = {
-    params: { id: string, locale: "en" | "ru" }
+    params: Promise<{ id: string, locale: "en" | "ru" }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { id, locale } = params;
+    const { id, locale } = await params;
     const t = await getTranslations();
     const movie = await MovieAPI.getMovieById(id);
     const movieName = calculateMovieName(movie.film, locale);
@@ -50,7 +50,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: t("page.movie.description", {movieName})
     }
 }
-export default async function MoviePage({ params: { id, locale } }: { params: { id: string, locale: "ru" | "en" } }) {
+export default async function MoviePage({ params }: { params: Promise<{ id: string, locale: "ru" | "en" }> }) {
+    const { id, locale } = await params;
     const movie = await MovieAPI.getMovieById(id);
     const dict = await getDictionary(locale);
     const t = await getTranslations();
@@ -67,7 +68,7 @@ export default async function MoviePage({ params: { id, locale } }: { params: { 
     const {firstTrailerLink,trailerLinkList } = getLinksForPlayer(movie.film.trailers);
 
 
-    const breadCrumbsData = await useBreadcrumbsLinks({ movie });
+    const breadCrumbsData = await getBreadcrumbsLinks({ movie });
 
     async function getSimilarMovieList(movie: MovieById) {
         const hasSimilar = !!movie.film.similar.length;

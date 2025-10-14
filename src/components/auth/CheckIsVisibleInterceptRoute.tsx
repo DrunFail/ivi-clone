@@ -1,7 +1,7 @@
 "use client";
 
+import { usePathname } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
-import { usePathname } from "../../navigation";
 
 export default function CheckIsVisibleInterceptRoute({ children,id }: {children:React.ReactNode,id:string}) {
     const [isVisibleModal, setIsVisibleModal] = useState(false);
@@ -20,7 +20,7 @@ export default function CheckIsVisibleInterceptRoute({ children,id }: {children:
 
     useEffect(() => {
         if (!isVisibleModal && path !== currentPath) location.reload();
-    }, [currentPath, path, isVisibleModal])
+    }, [currentPath, path, isVisibleModal,id])
 
 
     return (

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { TOP_10_DATA } from "./data";
 
 import TopTenSlider from "./TopTenSlider";
