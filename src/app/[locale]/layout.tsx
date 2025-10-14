@@ -9,6 +9,7 @@ import { authAPI } from "@/lib/api/authAPI";
 import { getAccessToken } from "@/utils/getAccessToken";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
 
@@ -35,9 +36,10 @@ const iviFont = localFont({
     ],
 })
 
-export const metadata = {
+export const metadata:Metadata = {
     verification: {
-        google: "fgk8DZ7GZHVaYcqXYa33SWKaXM2QLyKScIKlzk2ZBEo"
+        google: "fgk8DZ7GZHVaYcqXYa33SWKaXM2QLyKScIKlzk2ZBEo",
+        yandex: "0fb3c6642e8668bc"
     }
 }
 
