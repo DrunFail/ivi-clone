@@ -4,7 +4,7 @@ import "swiper/css/autoplay";
 import Image from "next/image";
 import Button from "../../UI/core/Button/Button";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface SlideProps {
     styles: { [key: string]: string };

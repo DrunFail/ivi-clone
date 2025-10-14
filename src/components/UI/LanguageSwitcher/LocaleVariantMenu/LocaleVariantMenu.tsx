@@ -1,4 +1,4 @@
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 import styles from "./LocaleVariantMenu.module.scss";
 
 export default function LocaleVariantMenu({ pathWithoutLocale }: {pathWithoutLocale:string}) {

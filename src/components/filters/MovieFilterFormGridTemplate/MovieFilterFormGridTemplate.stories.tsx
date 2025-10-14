@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import MovieFilterFormGridTemplate from "./MovieFilterFormGridTemplate";
 import FilterWrapperContainer from "../../UI/filter/FilterWrapperContainer/FilterWrapperContainer";

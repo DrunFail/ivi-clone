@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import ButtonWithHint from "./ButtonWithHint";
 import store from "../../../store/store";
 import { Provider } from "react-redux";

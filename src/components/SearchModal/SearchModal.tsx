@@ -9,7 +9,7 @@ import { MovieSuggest } from "../../models/types";
 import { MovieAPI } from "../../api/MovieAPI";
 import { useTranslations } from "next-intl";
 import SearchResultCard from "./SearchResultCard/SearchResultCard";
-import { Link } from "../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface SearchModalProps {
 

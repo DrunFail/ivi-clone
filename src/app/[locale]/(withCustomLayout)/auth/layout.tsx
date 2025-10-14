@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
 import LoginLayout from "../../../../components/auth/LoginLayout/LoginLayout";
-import { useRouter } from "../../../../navigation";
 import BackButtonFromModal from "../../../../components/BackButtonFromModal/BackButtonFromModal";
+import { useRouter } from "@/i18n/navigation";
 
 export default function LoginLayoutPage({ children }: { children: React.ReactNode }) {
     const router = useRouter();

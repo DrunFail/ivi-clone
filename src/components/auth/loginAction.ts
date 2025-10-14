@@ -48,15 +48,16 @@ export async function loginAction(state: FormState, formData: FormData) {
     try {
         const response = await authAPI.login({ email, password });
         const { refresh, token } = response;
+        const cookie = await cookies();
 
-        cookies().set('refreshToken', refresh, {
+        cookie.set('refreshToken', refresh, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 30 * 24 * 60 * 60,
             sameSite: 'lax',
             path: '/',
         })
-        cookies().set('session', token, {
+        cookie.set('session', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 15 * 60,
@@ -78,8 +79,8 @@ export async function loginAction(state: FormState, formData: FormData) {
             errors: { formError: ["noResponse"] },
         }
     }
-    const backUrl = cookies().get("backLoginUrl")?.value;
-    cookies().delete("backLoginUrl");
+    const backUrl = (await cookies()).get("backLoginUrl")?.value;
+    (await cookies()).delete("backLoginUrl");
     redirect(backUrl || "/");
 
 }

@@ -19,7 +19,7 @@ export default function useMovieSlider(genreId:number) {
 
         }
         fetchMovie()
-    }, []);
+    }, [genreId]);
 
     return data
 }

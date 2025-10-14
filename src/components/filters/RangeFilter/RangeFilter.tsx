@@ -33,7 +33,7 @@ export default function RangeFilter({ min, max, step, filterKey,defaultValue,fil
             </FilterName>
             <RangeInput
                 inputId={filterKey}
-                defaultValue={defaultValue}
+                defaultValue={defaultValue }
                 min={min}
                 max={max}
                 step={step}

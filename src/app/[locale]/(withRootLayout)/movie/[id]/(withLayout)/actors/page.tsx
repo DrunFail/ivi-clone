@@ -7,13 +7,11 @@ import CreatersPersonList from "../../../../../../../components/person/CreatersP
 
 
 type Props = {
-    params: { id: string, locale: "ru" | "en" }
-    searchParams: { [key: string]: string | string[] | undefined }
+    params: Promise<{ id: string, locale: "ru" | "en" }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const id = params.id;
-    const locale = params.locale;
+    const {id, locale } = await params;
     const t = await getTranslations();
     const movie = await MovieAPI.getMovieById(id);
     const movieName = calculateMovieName(movie.film, locale);
@@ -25,7 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 
-export default async function ActorsPage({ params: { id, locale } }: { params: { id: string, locale: "en" | "ru" } }) {
+export default async function ActorsPage({ params }: { params: Promise<{ id: string, locale: "en" | "ru" }> }) {
+    const {id,locale } = await params;
     const movie = await MovieAPI.getMovieById(id);
     const t = await getTranslations();
 

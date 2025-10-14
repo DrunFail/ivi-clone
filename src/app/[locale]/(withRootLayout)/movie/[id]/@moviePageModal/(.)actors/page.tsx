@@ -10,7 +10,8 @@ async function getMovieById(movieId: string) {
     return movie;
 }
 
-export default async function ActorsPageModal({ params: { id, locale } }: { params: { id: string, locale: "en" | "ru" } }) {
+export default async function ActorsPageModal({ params }: { params: Promise<{ id: string, locale: "en" | "ru" }> }) {
+    const {id,locale } = await params;
     const movie = await getMovieById(id);
     const dict = await getDictionary(locale);
 

@@ -14,7 +14,7 @@ const TYPE_MOVIE_LINK = {
 
 export default function useBreadCrumbsMoviePage({ movie }: UseBreadCrumbsMoviePageProps) {
     const t = useTranslations();
-    const lang = useLocale();
+    const lang = useLocale() as "ru" | "en";
     if (!movie) return null;
     const typeMovie = movie.film.type;
     const typeMovieHref = TYPE_MOVIE_LINK[typeMovie]

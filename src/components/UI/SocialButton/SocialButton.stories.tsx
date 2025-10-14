@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import SocialButton from "./SocialButton";
 import { Provider } from "react-redux";
 import store from "../../../store/store";

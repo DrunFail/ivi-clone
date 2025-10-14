@@ -12,7 +12,7 @@ interface UseMoviePageDataProps {
 }
 
 export default function useMoviePageData({ movieData }: UseMoviePageDataProps) {
-    const lang = useLocale();
+    const lang = useLocale() as "ru" | "en";
 
     if (!movieData) return null;
     const movieName = calculateMovieName(movieData.film, lang);

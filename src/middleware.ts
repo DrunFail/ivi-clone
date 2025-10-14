@@ -1,16 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, localePrefix } from './navigation';
 import { NextRequest } from "next/server";
 import { authMiddleware } from '@/middlewares/authMiddleware';
+import { routing } from '@/i18n/routing';
 
-const handleIntlRouting = createMiddleware({
-    defaultLocale: 'ru',
-    localePrefix,
-    locales
-});
+const handleIntlRouting = createMiddleware(routing);
 
 export const config = {
-    matcher: ['/', '/(ru|en)/:path*']
+    matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };
 
 export default async function middleware(request: NextRequest) {

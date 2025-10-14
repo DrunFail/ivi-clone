@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./FilmographyItemCard.module.scss";
 import { MovieWithPerson } from "../../../../models/types";
 import Button from "../../../UI/core/Button/Button";
-import { Link } from "../../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface FilmographyItemCardProps {
     filmographyItem: MovieWithPerson;

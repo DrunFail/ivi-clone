@@ -11,7 +11,7 @@ interface UseMovieListCardDataProps<T extends Movie> {
 
 
 export default function useMovieListCardData<T extends Movie>({ movieData }: UseMovieListCardDataProps<T>) {
-    const lang = useLocale();
+    const lang = useLocale() as "ru" | "en";
 
 
     const movieName = calculateMovieName(movieData, lang);

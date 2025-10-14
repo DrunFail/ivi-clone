@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 
 export async function createReview(newReview: any,revalidate?:string) {
     try {
-        const token = getAccessToken();
+        const token = await getAccessToken();
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews`, {
             method: "post",
             headers: {

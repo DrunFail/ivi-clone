@@ -2,8 +2,9 @@
 
 import { z } from "zod";
 import { AuthAPI } from "../../api/AuthAPI";
-import { redirect } from "../../navigation";
 import { isAxiosError } from "axios";
+import { redirect } from "@/i18n/navigation";
+import { getLocale } from "next-intl/server";
 
 type RegistrationFormState =
     | {
@@ -89,6 +90,7 @@ export async function registrationAction(state: RegistrationFormState, formData:
         console.log(error)
     }
     if (isSuccessRegistration) {
-        redirect("/auth/login");
+        const locale = await getLocale();
+        redirect({href: "/auth/login",locale })
     }
 }

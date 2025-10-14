@@ -17,7 +17,8 @@ async function getMovieById(movieId: string) {
 }
 
 
-export default async function ReviewPageModal({ params: { id,locale } }: { params: { id: string,locale:"ru" | "en" } }) {
+export default async function ReviewPageModal({ params }: { params: Promise<{ id: string, locale: "ru" | "en" }> }) {
+    const {id,locale } = await params;
     const commentTree = await getCommentTree(+id);
     const movie = await getMovieById(id);
     const dict = await getDictionary(locale);

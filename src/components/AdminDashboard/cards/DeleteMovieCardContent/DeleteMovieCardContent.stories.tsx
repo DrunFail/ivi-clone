@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import DeleteMovieCardContent from "./DeleteMovieCardContent";
 import movieSliderMock from "../../../../mockData/movieSliderMock.json";

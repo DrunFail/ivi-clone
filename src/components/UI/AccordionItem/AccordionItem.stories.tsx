@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import AccordionItem from "./AccordionItem";
 
 const meta: Meta<typeof AccordionItem> = {

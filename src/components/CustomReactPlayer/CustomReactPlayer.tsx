@@ -1,7 +1,6 @@
 "use client";
 
-import ReactPlayer from "react-player/lazy";
-
+import ReactPlayer from 'react-player'
 interface CustomReactPlayerProps {
     videoUrl: string
 }
@@ -13,7 +12,7 @@ export default function CustomReactPlayer({ videoUrl }: CustomReactPlayerProps) 
             width="auto"
             height="auto"
             style={{ aspectRatio: "16/9" }}
-            url={videoUrl}
+            src={videoUrl}
         />
     );
 }

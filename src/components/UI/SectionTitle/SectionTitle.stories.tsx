@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Provider } from "react-redux";
 import SectionTitle from "./SectionTitle";
 import store from "../../../store/store";

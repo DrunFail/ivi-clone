@@ -12,7 +12,8 @@ async function getGenreListFromDB() {
     return genreListFromDB;
 }
 
-export default async function MovieLayout({ children, params: { locale } }: { children: React.ReactNode, params: { locale: "ru" | "en" } }) {
+export default async function MovieLayout({ children, params }: { children: React.ReactNode, params: Promise<{ locale: string}> }) {
+    const { locale } = await params as {locale: "ru" | "en"};
     const genreListFromDB = await getGenreListFromDB();
     const t = await getTranslations();
 

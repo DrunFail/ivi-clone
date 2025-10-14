@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import ProfileDropdownCard from "./ProfileDropdownCard";
 import { PROFILE_IMG_LINK_DATA } from "../imgLinkData";

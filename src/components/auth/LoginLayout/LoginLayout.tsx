@@ -7,9 +7,9 @@ import FormAuthPageHeader from "../components/FormAuthPageHeader/FormAuthPageHea
 import FormContentContainer from "../components/FormContentContainer/FormContentContainer";
 import ConfirmConfidential from "../components/ConfirmConfidential/ConfirmConfidential";
 import RedirectLinkContainer from "../components/RedirectLinkContainer/RedirectLinkContainer";
-import { Link } from "../../../navigation";
 import OAuthButton from "../components/OAuthButton/OAuthButton";
 import useVKAuth from "../../../hooks/auth/useVKAuth";
+import { Link } from "@/i18n/navigation";
 
 const AUTH = {
     login: "/auth/login",

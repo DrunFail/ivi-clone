@@ -1,7 +1,7 @@
 import styles from "./DropdownList.module.scss";
 import { LinkData } from "../../../models/global";
 import { useTranslations } from "next-intl";
-import { Link } from "../../../navigation";
+import { Link } from "@/i18n/navigation";
 
 interface DropdownListProps {
     linkDataList: LinkData[],

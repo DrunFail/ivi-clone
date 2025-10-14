@@ -15,11 +15,11 @@ import FilmographyItemCard from "../../../../../components/person/Filmography/Fi
 import { getTranslations } from "next-intl/server";
 
 type Props = {
-    params: { id: string, locale: "en" | "ru" }
+    params: Promise<{ id: string, locale: "en" | "ru" }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { id, locale } = params;
+    const { id, locale } = await params;
     const t = await getTranslations();
     const person = await NewPersonAPI.getPersonById(+id);
     const personName = calculatePersonName(person, locale);
@@ -36,7 +36,8 @@ const calculatePersonName = (person:DetailedPerson,lang:string) => {
 }
 
 
-export default async function PersonPage({ params: { id,locale } }: { params: { id: string,locale:"en" | "ru" } }) {
+export default async function PersonPage({ params }: { params: Promise<{ id: string, locale: "en" | "ru" }> }) {
+    const { id, locale } = await params;
     const person = await NewPersonAPI.getPersonById(+id);
     const personName = calculatePersonName(person, locale);
     const dict = await getDictionary(locale);

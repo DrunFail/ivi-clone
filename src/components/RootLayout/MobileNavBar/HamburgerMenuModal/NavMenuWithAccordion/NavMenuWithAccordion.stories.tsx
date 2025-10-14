@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import NavMenuWithAccordion from "./NavMenuWithAccordion";
 import { NAV_MENU } from "../../../../../constants/headerConstants";

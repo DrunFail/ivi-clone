@@ -4,14 +4,14 @@ type Handler = (e: MouseEvent) => void
 
 
 
-export default function useOutsideClick<T extends HTMLElement = HTMLElement>(
-    ref: RefObject<T>,
+export default function useOutsideClick<T extends HTMLElement | null>(
+    ref: RefObject<T> | null,
     handler: Handler,
 
 ): void {
     useEffect(() => {
         const listener = (e: MouseEvent) => {
-            if (!ref.current || ref.current.contains(e.target as HTMLElement)) {
+            if (!ref?.current || ref.current.contains(e.target as HTMLElement)) {
                 return;
             }
             handler(e);

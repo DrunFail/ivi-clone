@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import NumberRatingTop from "./NumberRatingTop";
-import { Story } from "@storybook/blocks";
+import { Story } from "@storybook/addon-docs/blocks";
 
 const meta: Meta<typeof NumberRatingTop> = {
   title: "movie/TopTenSlider/NumberRatingTop",
