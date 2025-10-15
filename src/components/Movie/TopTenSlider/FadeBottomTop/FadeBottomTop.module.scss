@@ -9,14 +9,14 @@
     justify-items: center;
     bottom: 0;
     padding-inline-end: var(--fs-500);
-    background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
+    background-image: linear-gradient(0deg, #100e19, rgba(16, 14, 25, 0));
 
     @media (max-width: 730px) {
         bottom: 0;
     }
 
     &::before {
-        content: "";
+        content: '';
         display: block;
         height: 0;
         padding-bottom: 120.90163934%;

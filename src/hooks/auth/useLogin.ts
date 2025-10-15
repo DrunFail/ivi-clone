@@ -41,13 +41,12 @@ export default function useLogin() {
             /* eslint-disable */
             //@ts-ignore
             setAuth((prevAuth: AuthContextData) => {
-                return { ...prevAuth, token, userEmail, userRoles }
-            }
-            );
-            
-            setEmail("");
-            setPassword("");
-            const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, "/");
+                return { ...prevAuth, token, userEmail, userRoles };
+            });
+
+            setEmail('');
+            setPassword('');
+            const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, '/');
             router.push(callbackUrl ?? '/');
         } catch (error) {
             if (isAxiosError(error)) {
@@ -61,13 +60,11 @@ export default function useLogin() {
                 if (error.response?.status === 404) {
                     setError('Пользователь не существует');
                 }
-            }
-            else {
+            } else {
                 setError('Ошибка авторизации');
             }
         }
-
     };
 
-    return {email,password, error, handleSignInCredentials, setInputEmail, setInputPassword}
+    return { email, password, error, handleSignInCredentials, setInputEmail, setInputPassword };
 }

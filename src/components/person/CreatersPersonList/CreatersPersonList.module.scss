@@ -18,8 +18,6 @@
             display: grid;
         }
 
-
-
         .image {
             aspect-ratio: 1;
             position: relative;
@@ -32,8 +30,6 @@
             }
         }
 
-
-
         .personName {
             font-size: 15px;
             font-weight: var(--fw-medium);
@@ -44,7 +40,7 @@
     }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 500px) {
     .container .list {
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     }

@@ -6,7 +6,7 @@
 
         li {
             padding: 16px 16px;
-            a{
+            a {
                 text-transform: capitalize;
             }
         }
@@ -15,15 +15,11 @@
             background-color: var(--clr-dark-700);
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
-
-
-            
         }
     }
 }
-@media (max-width: 600px){
-
-   .nav ul{
+@media (max-width: 600px) {
+    .nav ul {
         font-size: 16px;
     }
 }

@@ -1,15 +1,14 @@
 .active {
     position: relative;
-    
 
     &:before {
         bottom: -3px;
-        content: "";
+        content: '';
         height: 4px;
         left: 0;
         position: absolute;
         right: 0;
-        transition: background-color .4s;
+        transition: background-color 0.4s;
         background-color: #f30745;
         transition-duration: 80ms;
     }

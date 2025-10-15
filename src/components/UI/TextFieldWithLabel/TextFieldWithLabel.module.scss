@@ -12,17 +12,20 @@
         line-height: 20px;
     }
 
-
-    input:focus + .placeholder, input:valid + .placeholder,input[value=" "] + .placeholder {
+    input:focus + .placeholder,
+    input:valid + .placeholder,
+    input[value=' '] + .placeholder {
         inset-block-start: 2px;
         font-size: var(--fs-300);
     }
 
-    input:focus, input:focus + .placeholder {
+    input:focus,
+    input:focus + .placeholder {
         cursor: text;
     }
 
-    input, .placeholder {
+    input,
+    .placeholder {
         cursor: pointer;
     }
 }

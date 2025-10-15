@@ -7,8 +7,6 @@
         inline-size: 100%;
         block-size: 100%;
     }
-
-    
 }
 .desktop {
     grid-template-columns: 40px 40px 1fr;
@@ -19,8 +17,7 @@
     }
 }
 
-
 .tablet {
     grid-template-columns: 1fr 40px 40px;
-    max-inline-size:800px;
+    max-inline-size: 800px;
 }

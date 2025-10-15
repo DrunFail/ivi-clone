@@ -15,21 +15,19 @@ export default function useMoviePersonData({ personData }: { personData: Detaile
         if (prop in personData.person) {
             /* eslint-disable */
             //@ts-ignore
-            return `${personData.person[prop] ??  personInfo.nameRu}`
+            return `${personData.person[prop] ?? personInfo.nameRu}`;
         } else {
-            return `${personInfo.nameRu}`
+            return `${personInfo.nameRu}`;
         }
-    }
+    };
 
     const personName = calculatePersonName();
-
-
 
     return {
         personName,
         personProfession: personData.person.profession,
         personPosterUrl: personData.person.posterUrl,
         personMovieAmount: personData.films.length,
-        personMovieList: personData.films
-    }
+        personMovieList: personData.films,
+    };
 }

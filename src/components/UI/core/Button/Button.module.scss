@@ -22,7 +22,6 @@
     }
 }
 
-
 .red {
     background-color: #ea003d;
 
@@ -31,17 +30,17 @@
     }
 }
 
-.mini{
+.mini {
     --btn-size: 40px;
     inline-size: var(--btn-size);
     block-size: var(--btn-size);
 }
 
-.noStyle{
+.noStyle {
     background-color: transparent;
     outline: none;
 
-    &:hover{
+    &:hover {
         background-color: transparent;
     }
 }

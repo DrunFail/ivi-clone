@@ -13,11 +13,13 @@ export default function useRefreshToken() {
         //@ts-ignore
         setAuth((prev: AuthContextData) => {
             return {
-                ...prev, token,userEmail,userRoles };
+                ...prev,
+                token,
+                userEmail,
+                userRoles,
+            };
         });
         return response.data.token;
     };
     return refresh;
-};
-
-
+}

@@ -8,13 +8,14 @@
         grid-template-rows: repeat(2, 100px);
         gap: 20px;
         padding-inline-end: 20px;
-        border-right: 1px solid rgba(255,255,255, 0.5);
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .authButton {
         padding: 10px;
 
-        button, a{
+        button,
+        a {
             text-align: center;
         }
     }

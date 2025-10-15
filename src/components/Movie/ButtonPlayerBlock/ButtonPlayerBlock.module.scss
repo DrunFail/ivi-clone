@@ -8,9 +8,8 @@
     }
 }
 .desktop {
-     grid-template-columns: 160px 40px 40px;
+    grid-template-columns: 160px 40px 40px;
     column-gap: 10px;
-   
 }
 .tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -29,7 +28,7 @@
     border-radius: 0 0 12px 12px;
     align-items: center;
     margin-inline: auto;
-    background: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.16));
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.16));
 
     button {
         background-color: transparent;

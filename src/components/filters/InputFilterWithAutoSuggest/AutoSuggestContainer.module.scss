@@ -13,27 +13,26 @@
     & button {
         color: inherit;
     }
-    
+
     //блок с выбранным вариантом, по умолчанию
-    div:has(button){
+    div:has(button) {
         display: none;
     }
 
     //если есть выбранная персона
     &:has(input:checked) {
-        
         //блок с выбранным вариантом
-        div:has(button){
+        div:has(button) {
             display: flex;
         }
 
-        //варианты 
+        //варианты
         .variants {
             display: none;
         }
 
         //блок с инпутом для ввода
-        div:has(input[type=text]){
+        div:has(input[type='text']) {
             display: none;
         }
     }

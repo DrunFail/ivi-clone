@@ -1,224 +1,221 @@
 {
-  "count": 15,
-  "rows": [
-    {
-      "countries": [
+    "count": 15,
+    "rows": [
         {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 1,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 1,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 2,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 2,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 1,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 3,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 1,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 4,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 5,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 3,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 6,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 7,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
+        },
         {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
+            "countries": [
+                {
+                    "id": 1,
+                    "countryNameRu": "Россия",
+                    "countryNameEng": "Russia"
+                }
+            ],
+            "id": 8,
+            "posterUrlPreview": "/film.jpg",
+            "ratingKinopoisk": "6.5",
+            "year": 2022,
+            "genres": [
+                {
+                    "id": 1,
+                    "genreNameRu": "Комедия",
+                    "genreNameEng": "Comedy"
+                }
+            ],
+            "filmLength": "180",
+            "nameRu": "Фильм1",
+            "nameOriginal": "Film1",
+            "kinopoiskId": 1
         }
-      ],
-      "id": 4,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
-        {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
-        {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 5,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
-        {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
-        {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 6,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
-        {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
-        {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 7,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
-        {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    },
-    {
-      "countries": [
-        {
-          "id": 1,
-          "countryNameRu": "Россия",
-          "countryNameEng": "Russia"
-        }
-      ],
-      "id": 8,
-      "posterUrlPreview": "/film.jpg",
-      "ratingKinopoisk": "6.5",
-      "year": 2022,
-      "genres": [
-        {
-          "id": 1,
-          "genreNameRu": "Комедия",
-          "genreNameEng": "Comedy"
-        }
-      ],
-      "filmLength": "180",
-      "nameRu": "Фильм1",
-      "nameOriginal": "Film1",
-      "kinopoiskId": 1
-    }
-
-  ]
-
-
+    ]
 }

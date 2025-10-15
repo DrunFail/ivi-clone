@@ -20,15 +20,14 @@ export default function useVKAuth() {
                     /* eslint-disable */
                     //@ts-ignore
                     setAuth((prevAuth: AuthContextData) => {
-                        return { ...prevAuth, token, userEmail, userRoles }
+                        return { ...prevAuth, token, userEmail, userRoles };
                     });
                     push('/');
-                }
-                catch (error) {
+                } catch (error) {
                     console.log(error);
                 }
-            }
+            };
             loginVk(code);
         }
-    }, [code])
+    }, [code]);
 }

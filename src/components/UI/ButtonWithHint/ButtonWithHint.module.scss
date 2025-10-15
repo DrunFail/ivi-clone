@@ -1,9 +1,8 @@
 .button {
     position: relative;
     background-color: transparent;
-    border:none;
-    color:inherit;
-    
+    border: none;
+    color: inherit;
 
     span {
         display: grid;
@@ -12,11 +11,11 @@
         top: -25px;
         padding: 4px;
         border-radius: 8px;
-        right:0;
+        right: 0;
         color: white;
         background-color: var(--clr-dark-700);
-       font-size: 12px;
-       max-inline-size: 200px;
-       z-index: 100;
+        font-size: 12px;
+        max-inline-size: 200px;
+        z-index: 100;
     }
 }

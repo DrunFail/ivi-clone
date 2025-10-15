@@ -2,11 +2,11 @@
     /*    display: grid;
     grid-template-areas: "text button" "slider slider";
 */
-    
+
     .header {
         display: flex;
         justify-content: space-between;
-        
+
         .text {
             display: grid;
             /*grid-area: text;*/
@@ -46,14 +46,13 @@
         }
     }
 }
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) {
     .container {
-        grid-template-areas: "text" "slider" "button";
+        grid-template-areas: 'text' 'slider' 'button';
         row-gap: 20px;
-        
+
         button {
             inline-size: 100%;
         }
     }
-    
 }
