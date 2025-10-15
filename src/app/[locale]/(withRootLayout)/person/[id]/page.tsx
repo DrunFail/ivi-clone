@@ -14,6 +14,8 @@ import type { Metadata } from 'next';
 import FilmographyItemCard from '../../../../../components/person/Filmography/FilmographyItemCard/FilmographyItemCard';
 import { getTranslations } from 'next-intl/server';
 
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
 type Props = {
     params: Promise<{ id: string; locale: 'en' | 'ru' }>;
 };
@@ -27,6 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: t('page.person.title', { personName, personProfession }),
         description: t('page.person.description', { personName }),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/person/${person.person.personId}`,
+                en: `${BASE_URL}/en/person/${person.person.personId}`,
+                'x-default': `${BASE_URL}/person/${person.person.personId}`,
+            },
+        },
     };
 }
 

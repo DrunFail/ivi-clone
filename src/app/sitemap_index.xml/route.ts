@@ -10,7 +10,10 @@ function getFileName(id: string | number) {
 }
 
 const getSitemapsForMultiply = (ids: { id: number | string }[], path: string) => {
-    return ids.map(({ id }) => `<sitemap><loc>${BASE_URL}/ru/${path}/${getFileName(id)}</loc></sitemap>`);
+    return ids.flatMap(({ id }) => [
+        `<sitemap><loc>${BASE_URL}/ru/${path}/${getFileName(id)}</loc></sitemap>`,
+        `<sitemap><loc>${BASE_URL}/en/${path}/${getFileName(id)}</loc></sitemap>`,
+    ]);
 };
 
 export async function GET() {
@@ -18,6 +21,7 @@ export async function GET() {
     <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${generateSitemapLink(BASE_URL + '/sitemap.xml')}
         ${generateSitemapLink(BASE_URL + '/ru/movies/sitemap.xml')}
+        ${generateSitemapLink(BASE_URL + '/en/movies/sitemap.xml')}
         ${getSitemapsForMultiply(await personSitemaps(), 'person')}
         ${getSitemapsForMultiply(await movieSitemaps(), 'movie')}
     </sitemapindex>`;

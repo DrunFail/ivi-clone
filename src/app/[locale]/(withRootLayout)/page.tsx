@@ -10,18 +10,26 @@ import { MovieAPI } from '../../../api/MovieAPI';
 import { CLIENT_GENRE_LIST } from '../../../constants/genreList';
 import { getKeyByValue } from '../../../utils/getKeyByValue';
 import SectionTitle from '../../../components/UI/SectionTitle/SectionTitle';
-
-const MovieSlider = dynamic(() => import('../../../components/Movie/MovieSlider/MovieSlider'));
-
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+
+const MovieSlider = dynamic(() => import('../../../components/Movie/MovieSlider/MovieSlider'));
+
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations();
     return {
         title: t('page.main.title'),
         description: t('page.main.description'),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru`,
+                en: `${BASE_URL}/en`,
+                'x-default': `${BASE_URL}`,
+            },
+        },
     };
 }
 

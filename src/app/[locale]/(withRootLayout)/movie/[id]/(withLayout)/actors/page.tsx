@@ -5,6 +5,8 @@ import { calculateMovieName } from '../../../../../../../utils/calculateMovieNam
 import CreatersTab from '../../../../../../../components/person/CreatersTab/CreatersTab';
 import CreatersPersonList from '../../../../../../../components/person/CreatersPersonList/CreatersPersonList';
 
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
 type Props = {
     params: Promise<{ id: string; locale: 'ru' | 'en' }>;
 };
@@ -17,6 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: t('page.actors.title', { movieName: movieName }),
         description: t('page.actors.description', { movieName }),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/movie/${movie.film.kinopoiskId}/actors`,
+                en: `${BASE_URL}/en/movie/${movie.film.kinopoiskId}/actors`,
+                'x-default': `${BASE_URL}/movie/${movie.film.kinopoiskId}/actors`,
+            },
+        },
     };
 }
 

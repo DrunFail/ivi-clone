@@ -6,6 +6,8 @@ import { calculateMovieName } from '../../../../../../../utils/calculateMovieNam
 import { getTranslations } from 'next-intl/server';
 import CommentPageContent from '../../../../../../../components/comment/CommentPageContent/CommentPageContent';
 
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
 type Props = {
     params: Promise<{ id: string; locale: 'ru' | 'en' }>;
 };
@@ -18,6 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: t('page.comment.title', { movieName: movieName }),
         description: t('page.comment.description', { movieName }),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/movie/${movie.film.kinopoiskId}/review`,
+                en: `${BASE_URL}/en/movie/${movie.film.kinopoiskId}/review`,
+                'x-default': `${BASE_URL}/movie/${movie.film.kinopoiskId}/review`,
+            },
+        },
     };
 }
 

@@ -22,6 +22,8 @@ import RangeFilter from '../../../../../components/filters/RangeFilter/RangeFilt
 import { Country, Genre, MovieFilterParams } from '../../../../../models/types';
 import MovieFilterFormGridTemplate from '../../../../../components/filters/MovieFilterFormGridTemplate/MovieFilterFormGridTemplate';
 
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
 type Props = {
     params: Promise<{ genre: string }>;
 };
@@ -33,6 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: t('page.genre.title', { genre: t(`genre.${genre}.title`) }),
         description: t(`genre.${genre}.description`),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/movies/${genre}`,
+                en: `${BASE_URL}/en/movies/${genre}`,
+                'x-default': `${BASE_URL}/movies/${genre}`,
+            },
+        },
     };
 }
 

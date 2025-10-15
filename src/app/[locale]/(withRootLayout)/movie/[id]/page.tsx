@@ -31,12 +31,15 @@ import { getTranslations } from 'next-intl/server';
 import RatingModalContent from '../../../../../components/Rating/RatingModal/RatingModalContent';
 import RatingLarge from '../../../../../components/Rating/RatingLarge/RatingLarge';
 import RatingBlock from '../../../../../components/Rating/RatingBlock/RatingBlock';
-import { MovieById, Movie } from '../../../../../models/types';
+import { MovieById } from '../../../../../models/types';
 import { Link } from '@/i18n/navigation';
 import getBreadcrumbsLinks from '@/hooks/breadcrumbs/getBreadcrumbsLinks';
+import { Locale } from '@/i18n/type';
+
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
 type Props = {
-    params: Promise<{ id: string; locale: 'en' | 'ru' }>;
+    params: Promise<{ id: string; locale: Locale }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -48,9 +51,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: t('page.movie.title', { movieName }),
         description: t('page.movie.description', { movieName }),
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/movie/${movie.film.kinopoiskId}`,
+                en: `${BASE_URL}/en/movie/${movie.film.kinopoiskId}`,
+                'x-default': `${BASE_URL}/movie/${movie.film.kinopoiskId}`,
+            },
+        },
     };
 }
-export default async function MoviePage({ params }: { params: Promise<{ id: string; locale: 'ru' | 'en' }> }) {
+export default async function MoviePage({ params }: { params: Promise<{ id: string; locale: Locale }> }) {
     const { id, locale } = await params;
     const movie = await MovieAPI.getMovieById(id);
     const dict = await getDictionary(locale);

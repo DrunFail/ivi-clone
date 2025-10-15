@@ -55,12 +55,12 @@
 
   "page": {
     "main": {
-      "title": "Ivi - online movies and TV series",
-      "description": "",
+      "title": "Watch Movies and TV Series Online for Free - New Movies in HD on IVI",
+      "description": "IVI is your online movie theater! More than 100,000 movies, TV series, and cartoons in excellent HD quality. Watch online and without registration. New releases and classic movies are available right now!",
       "keywords": ""
     },
     "genre": {
-      "title": "{genre} - watch online, for free, in excellent quality",
+      "title": "{genre} - watch online, for free, in excellent quality on IVI",
       "description": "",
       "keywords": ""
     },
@@ -70,7 +70,7 @@
       "keywords": ""
     },
     "movie": {
-      "title": "{movieName} watch in excellent quality",
+      "title": "{movieName} Watch Online in HD Quality on IVI",
       "description": "Here you can watch {movieName} in excellent quality, read reviews from other people and see who took part in the creation of the film",
       "keywords": ""
     },
