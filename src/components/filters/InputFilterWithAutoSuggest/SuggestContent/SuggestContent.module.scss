@@ -1,19 +1,18 @@
-.container{
+.container {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 16px;
     row-gap: 8px;
     inline-size: 100%;
     padding: 10px 20px;
 
-    .item{
+    .item {
         display: flex;
         align-items: center;
         column-gap: 8px;
     }
 
-
-    input{
-        display:none;
+    input {
+        display: none;
     }
 }

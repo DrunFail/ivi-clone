@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "./LanguageSwitcher.module.scss";
-import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
+import { useState } from 'react';
+import styles from './LanguageSwitcher.module.scss';
+import { usePathname } from 'next/navigation';
+import dynamic from 'next/dynamic';
 
-const LocaleVariantMenu = dynamic(() => import("./LocaleVariantMenu/LocaleVariantMenu"));
+const LocaleVariantMenu = dynamic(() => import('./LocaleVariantMenu/LocaleVariantMenu'));
 
 interface LanguageSwitcherProps {
-    button: React.ReactNode
+    button: React.ReactNode;
 }
 
 export default function LanguageSwitcher({ button }: LanguageSwitcherProps) {
@@ -29,11 +29,7 @@ export default function LanguageSwitcher({ button }: LanguageSwitcherProps) {
             data-testid="lng-switcher"
         >
             {button}
-            {visible &&
-                <LocaleVariantMenu
-                    pathWithoutLocale={pathWithoutLocale}
-                />
-            }
+            {visible && <LocaleVariantMenu pathWithoutLocale={pathWithoutLocale} />}
         </div>
     );
-};
+}

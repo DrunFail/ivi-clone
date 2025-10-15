@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import AboutBlockAccordion from "./AboutBlockAccordion";
+import AboutBlockAccordion from './AboutBlockAccordion';
 
 const meta: Meta<typeof AboutBlockAccordion> = {
-    title: "mobileNavBar/AboutBlockAccordion",
+    title: 'mobileNavBar/AboutBlockAccordion',
     component: AboutBlockAccordion,
 };
 

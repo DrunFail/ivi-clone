@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import Crumb from "./Crumb";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import Crumb from './Crumb';
 
 const meta: Meta<typeof Crumb> = {
-  title: "ui/BreadCrumbs/Crumb",
-  component: Crumb,
-  args: {
-    children: "title",
-  },
+    title: 'ui/BreadCrumbs/Crumb',
+    component: Crumb,
+    args: {
+        children: 'title',
+    },
 };
 
 export default meta;

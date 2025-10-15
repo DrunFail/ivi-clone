@@ -1,74 +1,85 @@
-import PageWrapper from "../../../../../components/PageContainers/PageWrapper/PageWrapper";
-import PageSection from "../../../../../components/PageContainers/PageSection/PageSection";
-import PageWrapperInner from "../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner";
-import WatchPageHeader from "../../../../../components/UI/movie/WatchPageHeader/WatchPageHeader";
-import WatchPageHeaderContainer from "../../../../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer";
-import WatchPageGenreDescription from "../../../../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription";
-import FiltersFieldWithFilteredMoviesContainer from "../../../../../components/filters/FiltersFieldWithFilteredMoviesContainer/FiltersFieldWithFilteredMoviesContainer";
-import BreadcrumbsGenrePage from "../../../../../components/BreadcrumbsGenrePage/BreadcrumbsGenrePage";
-import type { Metadata } from 'next'
-import { getTranslations } from "next-intl/server";
-import { MovieAPI } from "../../../../../api/MovieAPI";
-import { CLIENT_GENRE_LIST } from "../../../../../constants/genreList";
-import { calculateGenreName } from "../../../../../utils/calculateGenreName";
-import { calculateCountryName } from "../../../../../utils/calculateCountryName";
-import FilterWrapperContainer from "../../../../../components/UI/filter/FilterWrapperContainer/FilterWrapperContainer";
-import DropdownFilter from "../../../../../components/filters/DropdownFilter/DropdownFilter";
-import AutoSuggestFilter from "../../../../../components/filters/InputFilterWithAutoSuggest/AutoSuggestFilter";
-import GridAreaContainer from "../../../../../components/filters/GridAreaContainer/GridAreaContainer";
-import SortField from "../../../../../components/filters/SortField/SortField";
-import ResetFilter from "../../../../../components/filters/ResetFilter/ResetFilter";
-import RangeFilter from "../../../../../components/filters/RangeFilter/RangeFilter";
-import { Country, Genre, MovieFilterParams } from "../../../../../models/types";
-import MovieFilterFormGridTemplate from "../../../../../components/filters/MovieFilterFormGridTemplate/MovieFilterFormGridTemplate";
+import PageWrapper from '../../../../../components/PageContainers/PageWrapper/PageWrapper';
+import PageSection from '../../../../../components/PageContainers/PageSection/PageSection';
+import PageWrapperInner from '../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner';
+import WatchPageHeader from '../../../../../components/UI/movie/WatchPageHeader/WatchPageHeader';
+import WatchPageHeaderContainer from '../../../../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer';
+import WatchPageGenreDescription from '../../../../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription';
+import FiltersFieldWithFilteredMoviesContainer from '../../../../../components/filters/FiltersFieldWithFilteredMoviesContainer/FiltersFieldWithFilteredMoviesContainer';
+import BreadcrumbsGenrePage from '../../../../../components/BreadcrumbsGenrePage/BreadcrumbsGenrePage';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { MovieAPI } from '../../../../../api/MovieAPI';
+import { CLIENT_GENRE_LIST } from '../../../../../constants/genreList';
+import { calculateGenreName } from '../../../../../utils/calculateGenreName';
+import { calculateCountryName } from '../../../../../utils/calculateCountryName';
+import FilterWrapperContainer from '../../../../../components/UI/filter/FilterWrapperContainer/FilterWrapperContainer';
+import DropdownFilter from '../../../../../components/filters/DropdownFilter/DropdownFilter';
+import AutoSuggestFilter from '../../../../../components/filters/InputFilterWithAutoSuggest/AutoSuggestFilter';
+import GridAreaContainer from '../../../../../components/filters/GridAreaContainer/GridAreaContainer';
+import SortField from '../../../../../components/filters/SortField/SortField';
+import ResetFilter from '../../../../../components/filters/ResetFilter/ResetFilter';
+import RangeFilter from '../../../../../components/filters/RangeFilter/RangeFilter';
+import { Country, Genre, MovieFilterParams } from '../../../../../models/types';
+import MovieFilterFormGridTemplate from '../../../../../components/filters/MovieFilterFormGridTemplate/MovieFilterFormGridTemplate';
+
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
 type Props = {
-    params: Promise<{ genre: string }>
-}
-
+    params: Promise<{ genre: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const {genre } = await params;
-    const t = await getTranslations()
+    const { genre } = await params;
+    const t = await getTranslations();
 
     return {
-        title: t("page.genre.title", { genre: t(`genre.${genre}.title`) }),
+        title: t('page.genre.title', { genre: t(`genre.${genre}.title`) }),
         description: t(`genre.${genre}.description`),
-    }
+        alternates: {
+            languages: {
+                ru: `${BASE_URL}/ru/movies/${genre}`,
+                en: `${BASE_URL}/en/movies/${genre}`,
+                'x-default': `${BASE_URL}/movies/${genre}`,
+            },
+        },
+    };
 }
 
-const DEFAULT_MOVIE_SEARCH_PARAMS: Pick<MovieFilterParams, "size" | "page" | "orderBy" | "ratingKinopoisk" | "ratingKinopoiskVoteCount"> = {
+const DEFAULT_MOVIE_SEARCH_PARAMS: Pick<
+    MovieFilterParams,
+    'size' | 'page' | 'orderBy' | 'ratingKinopoisk' | 'ratingKinopoiskVoteCount'
+> = {
     size: 21,
     page: 0,
-    orderBy: "nameRu",
+    orderBy: 'nameRu',
     ratingKinopoisk: 0,
-    ratingKinopoiskVoteCount: 0
-}
+    ratingKinopoiskVoteCount: 0,
+};
 
-
-export default async function MoviesByGenre({ params }: { params: Promise<{ genre: string, locale: "ru" | "en" }> }) {
-    const { genre,locale } = await params;
+export default async function MoviesByGenre({ params }: { params: Promise<{ genre: string; locale: 'ru' | 'en' }> }) {
+    const { genre, locale } = await params;
     const t = await getTranslations();
     const currentGenreId = CLIENT_GENRE_LIST[genre as keyof typeof CLIENT_GENRE_LIST];
-    const firstLoadMoviesByGenre = await MovieAPI.getFilteredMovie({ ...DEFAULT_MOVIE_SEARCH_PARAMS, genreId: currentGenreId || undefined });
-    const genres:Genre[] = await MovieAPI.getGenreList();
-    const countries:Country[] = await MovieAPI.getCountryList();
+    const firstLoadMoviesByGenre = await MovieAPI.getFilteredMovie({
+        ...DEFAULT_MOVIE_SEARCH_PARAMS,
+        genreId: currentGenreId || undefined,
+    });
+    const genres: Genre[] = await MovieAPI.getGenreList();
+    const countries: Country[] = await MovieAPI.getCountryList();
 
-    const transformData = genres.map(genre => {
+    const transformData = genres.map((genre) => {
         const name = calculateGenreName(genre, locale);
-        return { name, id: genre.id }
-    })
+        return { name, id: genre.id };
+    });
 
-    const transformCounties = countries.map(country => {
+    const transformCounties = countries.map((country) => {
         const name = calculateCountryName(country, locale);
-        return { name, id: country.id }
-    })
-
+        return { name, id: country.id };
+    });
 
     const sortedGenres = transformData.sort((a, b) => a.name.localeCompare(b.name));
     const sortedCountries = transformCounties.sort((a, b) => a.name.localeCompare(b.name));
-    const sortedCountriesWithAll = [{ name: "all", id: 0 }, ...sortedCountries];
-
+    const sortedCountriesWithAll = [{ name: 'all', id: 0 }, ...sortedCountries];
 
     return (
         <>
@@ -78,40 +89,30 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
             <PageSection>
                 <PageWrapper>
                     <PageWrapperInner>
-                        <WatchPageHeader>
-                            {t(`genre.${genre}.title`)}
-                        </WatchPageHeader>
+                        <WatchPageHeader>{t(`genre.${genre}.title`)}</WatchPageHeader>
                         <WatchPageHeaderContainer>
-                            <WatchPageGenreDescription>
-                                {t(`genre.${genre}.description`)}
-                            </WatchPageGenreDescription>
+                            <WatchPageGenreDescription>{t(`genre.${genre}.description`)}</WatchPageGenreDescription>
                         </WatchPageHeaderContainer>
                     </PageWrapperInner>
                 </PageWrapper>
             </PageSection>
             <PageSection>
                 <PageWrapper>
-                    <FiltersFieldWithFilteredMoviesContainer
-                        firstLoadMoviesByGenre={firstLoadMoviesByGenre}
-                    >
+                    <FiltersFieldWithFilteredMoviesContainer firstLoadMoviesByGenre={firstLoadMoviesByGenre}>
                         <MovieFilterFormGridTemplate>
                             <input
                                 type="number"
                                 name="page"
                                 defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.page}
                                 step={1}
-                                style={{ display: "none" }}
+                                style={{ display: 'none' }}
                             />
-                            <input
-                                type="hidden"
-                                name="size"
-                                value={DEFAULT_MOVIE_SEARCH_PARAMS.size}
-                            />
+                            <input type="hidden" name="size" value={DEFAULT_MOVIE_SEARCH_PARAMS.size} />
 
                             <FilterWrapperContainer>
                                 <DropdownFilter
                                     filterName={t(`label.genreId`)}
-                                    filterKey={"genreId"}
+                                    filterKey={'genreId'}
                                     variants={sortedGenres}
                                     defaultValue={currentGenreId}
                                     selectedValue={t(`genre.${genre}.title`)}
@@ -119,11 +120,11 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
                             </FilterWrapperContainer>
                             <FilterWrapperContainer>
                                 <DropdownFilter
-                                    filterKey={"countryId"}
+                                    filterKey={'countryId'}
                                     filterName={t('label.countryId')}
                                     variants={sortedCountriesWithAll}
                                     defaultValue={0}
-                                    selectedValue={"all countries"}
+                                    selectedValue={'all countries'}
                                     isSetCurrentValue
                                 />
                             </FilterWrapperContainer>
@@ -135,7 +136,7 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
                                     max={10}
                                     step={0.1}
                                     defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoisk}
-                                    filterName={t(`label.ratingKinopoisk`, { value: "" }) }
+                                    filterName={t(`label.ratingKinopoisk`, { value: '' })}
                                 />
                             </FilterWrapperContainer>
                             <FilterWrapperContainer>
@@ -145,33 +146,25 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
                                     max={10 * 1000 * 1000}
                                     step={100 * 1000}
                                     defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoiskVoteCount}
-                                    filterName={t(`label.ratingKinopoiskVoteCount`, { value: "" }) }
-
+                                    filterName={t(`label.ratingKinopoiskVoteCount`, { value: '' })}
                                 />
                             </FilterWrapperContainer>
 
-
                             <GridAreaContainer area="E">
                                 <FilterWrapperContainer>
-                                    <AutoSuggestFilter
-                                        filterKey={"DIRECTOR"}
-                                        filterName={t(`label.DIRECTOR`)}
-                                    />
+                                    <AutoSuggestFilter filterKey={'DIRECTOR'} filterName={t(`label.DIRECTOR`)} />
                                 </FilterWrapperContainer>
                             </GridAreaContainer>
                             <GridAreaContainer area="F">
                                 <FilterWrapperContainer>
-                                    <AutoSuggestFilter
-                                        filterKey={"ACTOR"}
-                                        filterName={t(`label.ACTOR`)}
-                                    />
+                                    <AutoSuggestFilter filterKey={'ACTOR'} filterName={t(`label.ACTOR`)} />
                                 </FilterWrapperContainer>
                             </GridAreaContainer>
 
                             <SortField
                                 defaultSortValue={DEFAULT_MOVIE_SEARCH_PARAMS.orderBy as string}
-                                filterKey={"orderBy"}
-                                variants={["nameRu", "year", "ratingKinopoiskVoteCount", "ratingKinopoisk"]}
+                                filterKey={'orderBy'}
+                                variants={['nameRu', 'year', 'ratingKinopoiskVoteCount', 'ratingKinopoisk']}
                             />
 
                             <ResetFilter />
@@ -179,7 +172,6 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
                     </FiltersFieldWithFilteredMoviesContainer>
                 </PageWrapper>
             </PageSection>
-
         </>
     );
-};
+}

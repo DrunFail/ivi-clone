@@ -1,5 +1,5 @@
-import SocialButton from "../SocialButton/SocialButton";
-import styles from "./ButtonSocialBlock.module.scss";
+import SocialButton from '../SocialButton/SocialButton';
+import styles from './ButtonSocialBlock.module.scss';
 
 export default function ButtonSocialBlock() {
     return (

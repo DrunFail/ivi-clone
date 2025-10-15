@@ -1,41 +1,42 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import useOutsideClick from "../../../hooks/useOutsideClick";
-import AccordionContent from "./AccordionContent/AccordionContent";
-import AccordionHeading from "./AccordionHeading/AccordionHeading";
+import { useRef, useState } from 'react';
+import useOutsideClick from '../../../hooks/useOutsideClick';
+import AccordionContent from './AccordionContent/AccordionContent';
+import AccordionHeading from './AccordionHeading/AccordionHeading';
 
 interface AccordionItemProps {
     heading: React.ReactNode;
     content: React.ReactNode;
-    headingVariant?: "content" | "spaceBetween";
+    headingVariant?: 'content' | 'spaceBetween';
     outClick?: boolean;
-    testId?: string
+    testId?: string;
 }
-export default function AccordionItem({heading,content, headingVariant, outClick=false,testId }:AccordionItemProps) {
+export default function AccordionItem({
+    heading,
+    content,
+    headingVariant,
+    outClick = false,
+    testId,
+}: AccordionItemProps) {
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => {
-        setIsOpen(isOpen => !isOpen)
-    }
+        setIsOpen((isOpen) => !isOpen);
+    };
     const closeDropdown = () => {
         if (outClick) {
-            setIsOpen(false)
+            setIsOpen(false);
         }
-        
-    }
-    const ref = useRef(null)
-    useOutsideClick(ref, closeDropdown)
+    };
+    const ref = useRef(null);
+    useOutsideClick(ref, closeDropdown);
 
     return (
-        <div ref={ref} data-testId={testId ?? "" }>
-            <AccordionHeading toggleVisible={toggleOpen} isOpen={isOpen} variant={headingVariant }>
-                {heading }
+        <div ref={ref} data-testId={testId ?? ''}>
+            <AccordionHeading toggleVisible={toggleOpen} isOpen={isOpen} variant={headingVariant}>
+                {heading}
             </AccordionHeading>
-            {isOpen &&
-                <AccordionContent>
-                    {content}
-                </AccordionContent>
-            }
+            {isOpen && <AccordionContent>{content}</AccordionContent>}
         </div>
     );
 }

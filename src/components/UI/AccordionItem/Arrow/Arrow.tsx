@@ -1,9 +1,9 @@
-import FontIcon from "../../FontIcon/FontIcon";
+import FontIcon from '../../FontIcon/FontIcon';
 
-export default function Arrow({ visible }: {visible:boolean}) {
+export default function Arrow({ visible }: { visible: boolean }) {
     return (
         <>
-            <FontIcon variant={visible ? "arrowUp" : "arrowDown"} size={6} />
+            <FontIcon variant={visible ? 'arrowUp' : 'arrowDown'} size={6} />
         </>
     );
 }

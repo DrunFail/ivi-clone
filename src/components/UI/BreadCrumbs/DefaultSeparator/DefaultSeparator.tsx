@@ -1,7 +1,5 @@
-import styles from "./DefaultSeparator.module.scss";
+import styles from './DefaultSeparator.module.scss';
 
 export default function DefaultSeparator() {
-    return (
-        <span className={styles.separator }></span>
-    );
+    return <span className={styles.separator}></span>;
 }

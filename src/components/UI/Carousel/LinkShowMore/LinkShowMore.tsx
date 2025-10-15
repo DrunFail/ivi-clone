@@ -1,15 +1,17 @@
-import { Link } from "@/i18n/navigation";
-import styles from "./LinkShowMore.module.scss";
+import { Link } from '@/i18n/navigation';
+import styles from './LinkShowMore.module.scss';
 
 interface LinkShowMoreProps {
-    valueDirection: number,
-   href?: string
+    valueDirection: number;
+    href?: string;
 }
 
-export default function LinkShowMore({ valueDirection, href }:LinkShowMoreProps) {
+export default function LinkShowMore({ valueDirection, href }: LinkShowMoreProps) {
     return (
         <div className={styles.container} style={{ transform: `translate(${valueDirection}%, 0)` }}>
-            <Link className={styles.link} href={href || ""}>Посмотреть все</Link>
+            <Link className={styles.link} href={href || ''}>
+                Посмотреть все
+            </Link>
         </div>
     );
 }

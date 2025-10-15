@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
@@ -34,5 +34,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 },
             },
         },
-    ]
+    ];
 }

@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react';
 
 interface IClickCatcherContextProps {
     elemInFocus: Element | null;
 }
 
 const defaultSort = {
-    elemInFocus: null
+    elemInFocus: null,
 };
 
-const ClickCatcherContext =
-    React.createContext<IClickCatcherContextProps>(defaultSort);
+const ClickCatcherContext = React.createContext<IClickCatcherContextProps>(defaultSort);
 
 /** Кастомный хук, отслеживающий на уровне всего приложения, был ли сделан клик по заданному классу. */
 export const useClickCatcher = () => {
@@ -17,11 +16,7 @@ export const useClickCatcher = () => {
 };
 
 /** Higher-Order Component, предназначенный для отлавливания кликов на уровне всего приложения. */
-const ClickCatcherProvider = ({
-    children
-}: {
-    children: React.ReactElement;
-}) => {
+const ClickCatcherProvider = ({ children }: { children: React.ReactElement }) => {
     const [elemInFocus, setElemInFocus] = useState<Element | null>(null);
 
     /** Функция отслеживает клик на всей площади экрана и меняет заранее заготовленный переключатель, по факту клика на заданный HTML-элемент. */
@@ -34,12 +29,10 @@ const ClickCatcherProvider = ({
     return (
         <ClickCatcherContext.Provider
             value={{
-                elemInFocus
+                elemInFocus,
             }}
         >
-            <div onClick={clickCatcher}>
-                {children}
-            </div>
+            <div onClick={clickCatcher}>{children}</div>
         </ClickCatcherContext.Provider>
     );
 };

@@ -1,26 +1,22 @@
-import { StorybookConfig } from "@storybook/nextjs";
+import { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
-  addons: [
-    "@storybook/addon-links",
-    "@chromatic-com/storybook",
-    "@storybook/addon-docs"
-  ],
+    addons: ['@storybook/addon-links', '@chromatic-com/storybook', '@storybook/addon-docs'],
 
-  framework: "@storybook/nextjs",
+    framework: '@storybook/nextjs',
 
-  features: {
-      experimentalRSC: true,
-  },
+    features: {
+        experimentalRSC: true,
+    },
 
-  docs: {},
+    docs: {},
 
-    staticDirs: ["../public", {from: "../public/fonts", to: "/fonts"}],
+    staticDirs: ['../public', { from: '../public/fonts', to: '/fonts' }],
 
-  typescript: {
-    reactDocgen: "react-docgen-typescript"
-  }
+    typescript: {
+        reactDocgen: 'react-docgen-typescript',
+    },
 };
 export default config;

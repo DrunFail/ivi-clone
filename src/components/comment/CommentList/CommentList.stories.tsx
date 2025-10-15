@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import CommentList from "./CommentList";
+import CommentList from './CommentList';
 
 const meta: Meta<typeof CommentList> = {
-    title: "comment/CommentList",
+    title: 'comment/CommentList',
     component: CommentList,
 };
 
 export default meta;
 type Story = StoryObj<typeof CommentList>;
 
-
-const commentItem = <div style={{ blockSize: "100px", backgroundColor: "blue" }} />
+const commentItem = <div style={{ blockSize: '100px', backgroundColor: 'blue' }} />;
 
 export const Primary: Story = {
     args: {
-        children:
+        children: (
             <>
                 {commentItem}
                 {commentItem}
-            </>,
-        variant: "parent"
-    }
+            </>
+        ),
+        variant: 'parent',
+    },
 };

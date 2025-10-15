@@ -6,16 +6,17 @@
     width: 200px;
     background-color: #312b45;
     display: none;
-    
 
-    input{
-        display:none;
+    input {
+        display: none;
     }
 
     label {
         display: block;
         color: #878787;
-        transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+        transition:
+            background-color 0.3s ease 0s,
+            color 0.3s ease 0s;
         padding: 15px;
         font-weight: bold;
 

@@ -1,4 +1,4 @@
-import styles from "./FilmographyHeader.module.scss";
+import styles from './FilmographyHeader.module.scss';
 
 interface FilmographyHeaderProps {
     personMovieAmount: number;
@@ -6,19 +6,13 @@ interface FilmographyHeaderProps {
     amountTitle: string;
 }
 
-export default function FilmographyHeader({ personMovieAmount,headerTitle,amountTitle }:FilmographyHeaderProps){
-
+export default function FilmographyHeader({ personMovieAmount, headerTitle, amountTitle }: FilmographyHeaderProps) {
     return (
-        <h3 className={styles.text }>
-            {headerTitle}
-            {" "}
+        <h3 className={styles.text}>
+            {headerTitle}{' '}
             <sup>
-                {personMovieAmount}
-                {" "}
-                {amountTitle}
+                {personMovieAmount} {amountTitle}
             </sup>
         </h3>
     );
-};
-
-
+}

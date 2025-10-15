@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import AskIvi from "./AskIvi";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import AskIvi from './AskIvi';
 
 const meta: Meta<typeof AskIvi> = {
-  title: "footer/components/AskIvi",
-  component: AskIvi,
+    title: 'footer/components/AskIvi',
+    component: AskIvi,
 };
 
 export default meta;

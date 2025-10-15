@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import SearchResultCard from "./SearchResultCard";
+import SearchResultCard from './SearchResultCard';
 
 const meta: Meta<typeof SearchResultCard> = {
-    title: "search/SearchResultCard",
+    title: 'search/SearchResultCard',
     component: SearchResultCard,
 };
 
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof SearchResultCard>;
 
 export const Primary: Story = {
     args: {
-        name: "name",
-        year: 2022
-    }
+        name: 'name',
+        year: 2022,
+    },
 };

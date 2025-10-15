@@ -1,4 +1,4 @@
-import styles from "./SearchResultCard.module.scss";
+import styles from './SearchResultCard.module.scss';
 
 interface SearchResultCardProps {
     name: string;
@@ -13,4 +13,4 @@ export default function SearchResultCard({ name, year }: SearchResultCardProps) 
             <div>{year}</div>
         </div>
     );
-};
+}

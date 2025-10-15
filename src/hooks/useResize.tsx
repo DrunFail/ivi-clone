@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
-
 
 export const useResize = () => {
     const [size, setSize] = useState<null | number>(null);
@@ -12,17 +11,15 @@ export const useResize = () => {
     };
     useEffect(() => {
         handleResize();
-    },[])
+    }, []);
 
     useEffect(() => {
-            window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
 
-
     return size;
-
 };

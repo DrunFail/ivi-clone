@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import LanguageSwitcher from "./LanguageSwitcher";
-import store from "../../../store/store";
-import { Provider } from "react-redux";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import LanguageSwitcher from './LanguageSwitcher';
+import store from '../../../store/store';
+import { Provider } from 'react-redux';
 
 const meta: Meta<typeof LanguageSwitcher> = {
-  title: "ui/LanguageSwitcher",
-  component: LanguageSwitcher,
-  decorators: [
-    (Story) => (
-      <Provider store={store}>
-          <Story />
-      </Provider>
-    ),
-  ],
+    title: 'ui/LanguageSwitcher',
+    component: LanguageSwitcher,
+    decorators: [
+        (Story) => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
 };
 
 export default meta;

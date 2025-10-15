@@ -1,5 +1,5 @@
-import ProgressBar from "../../ProgressBar/ProgressBar";
-import styles from "./RatingProgressBarBlock.module.scss";
+import ProgressBar from '../../ProgressBar/ProgressBar';
+import styles from './RatingProgressBarBlock.module.scss';
 
 export default function RatingProgressBarBlock() {
     return (

@@ -1,15 +1,9 @@
-import styles from "./RedirectLinkContainer.module.scss";
+import styles from './RedirectLinkContainer.module.scss';
 
 interface RedirectLinkContainerProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
-export default function RedirectLinkContainer({children }:RedirectLinkContainerProps) {
-    return (
-
-        <div className={styles.container }>
-            {children }
-        </div>
-
-    );
+export default function RedirectLinkContainer({ children }: RedirectLinkContainerProps) {
+    return <div className={styles.container}>{children}</div>;
 }

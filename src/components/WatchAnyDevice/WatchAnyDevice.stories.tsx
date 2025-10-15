@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import WatchAnyDevice from "./WatchAnyDevice";
+import WatchAnyDevice from './WatchAnyDevice';
 
 const meta: Meta<typeof WatchAnyDevice> = {
-    title: "movie/WatchAnyDevice/WatchAnyDevice",
+    title: 'movie/WatchAnyDevice/WatchAnyDevice',
     component: WatchAnyDevice,
 };
 
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof WatchAnyDevice>;
 
 export const Primary: Story = {
     args: {
-        movieName: "movieName",
-        moviePosterUrl: "./film.jpg"
-    }
+        movieName: 'movieName',
+        moviePosterUrl: './film.jpg',
+    },
 };

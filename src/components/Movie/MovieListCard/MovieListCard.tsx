@@ -1,25 +1,24 @@
-import { defaultBlur } from "../../../utils/blurDataUrl";
-import AgeRestriction from "../../UI/movie/AgeRestriction/AgeRestriction";
-import MovieListCardMovieName from "../../UI/movie/MovieListCardMovieName/MovieListCardMovieName";
-import styles from "./MovieListCard.module.scss";
-import Image from "next/image";
+import { defaultBlur } from '../../../utils/blurDataUrl';
+import AgeRestriction from '../../UI/movie/AgeRestriction/AgeRestriction';
+import MovieListCardMovieName from '../../UI/movie/MovieListCardMovieName/MovieListCardMovieName';
+import styles from './MovieListCard.module.scss';
+import Image from 'next/image';
 
 interface MovieListCardProps {
     modifiedMovieData: {
-        movieName: string,
-        moviePoster: string,
-    },
-    children?: React.ReactNode
+        movieName: string;
+        moviePoster: string;
+    };
+    children?: React.ReactNode;
 }
 
-export default function MovieListCard({modifiedMovieData, children}:MovieListCardProps) {
-
+export default function MovieListCard({ modifiedMovieData, children }: MovieListCardProps) {
     return (
         <div className={styles.item}>
             <div className={styles.image_container}>
                 <Image
                     src={modifiedMovieData.moviePoster}
-                    alt=''
+                    alt=""
                     fill
                     sizes="(max-width: 768px) 100vw"
                     placeholder="blur"
@@ -30,9 +29,7 @@ export default function MovieListCard({modifiedMovieData, children}:MovieListCar
                 </div>
                 {children}
             </div>
-            <MovieListCardMovieName
-                movieName={modifiedMovieData.movieName}
-            />
+            <MovieListCardMovieName movieName={modifiedMovieData.movieName} />
         </div>
     );
 }

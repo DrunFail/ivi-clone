@@ -1,13 +1,12 @@
-import { Preview } from "@storybook/nextjs";
-import "../src/styles/index.scss";
-import { NextIntlClientProvider } from "next-intl";
+import { Preview } from '@storybook/nextjs';
+import '../src/styles/index.scss';
+import { NextIntlClientProvider } from 'next-intl';
 import React from 'react';
-import ru from "../messages/ru.json";
-import en from "../messages/en.json";
+import ru from '../messages/ru.json';
+import en from '../messages/en.json';
 import localFont from 'next/font/local';
 
-
-const dict = { ru, en }
+const dict = { ru, en };
 
 const withIntl = (Story, context) => {
     const locale = context.globals.locale;
@@ -16,48 +15,46 @@ const withIntl = (Story, context) => {
             <Story />
         </NextIntlClientProvider>
     );
-}
+};
 
 export const globalTypes = {
     locale: {
-        name: "Locale",
-        description: "Internationalization locale",
-        defaultValue: "ru",
+        name: 'Locale',
+        description: 'Internationalization locale',
+        defaultValue: 'ru',
         toolbar: {
-            icon: "globe",
+            icon: 'globe',
             items: [
-                { value: "ru", title: "russian" },
-                { value: "en", title: "english" }
+                { value: 'ru', title: 'russian' },
+                { value: 'en', title: 'english' },
             ],
-            showName: true
-        }
-    }
-}
-
+            showName: true,
+        },
+    },
+};
 
 const iviFont = localFont({
     src: [
         {
-            path: "../fonts/iviSans-Regular.woff2",
-            weight: "400",
-            style: "normal"
+            path: '../fonts/iviSans-Regular.woff2',
+            weight: '400',
+            style: 'normal',
         },
         {
-            path: "../fonts/iviSans-Bold.woff2",
-            weight: "700",
-            style: "normal"
+            path: '../fonts/iviSans-Bold.woff2',
+            weight: '700',
+            style: 'normal',
         },
         {
-            path: "../fonts/iviSans-Medium.woff2",
-            weight: "500",
-            style: "normal"
+            path: '../fonts/iviSans-Medium.woff2',
+            weight: '500',
+            style: 'normal',
         },
         {
-            path: "../fonts/iconfont.woff2",
+            path: '../fonts/iconfont.woff2',
         },
     ],
-})
-
+});
 
 const withLocalFont = (Story) => {
     return (
@@ -65,11 +62,11 @@ const withLocalFont = (Story) => {
             <Story />
         </div>
     );
-}
+};
 
 const preview: Preview = {
     parameters: {
-        actions: { argTypesRegex: "^on[A-Z].*" },
+        actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
             matchers: {
                 color: /(background|color)$/i,
@@ -81,18 +78,11 @@ const preview: Preview = {
         },
         options: {
             storySort: {
-                method: "alphabetical"
-            }
-        }
+                method: 'alphabetical',
+            },
+        },
     },
-    decorators: [withIntl,withLocalFont],
-
+    decorators: [withIntl, withLocalFont],
 };
-
-
-
-
-
-
 
 export default preview;

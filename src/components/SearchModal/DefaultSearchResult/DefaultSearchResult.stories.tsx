@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import DefaultSearchResult from "./DefaultSearchResult";
+import DefaultSearchResult from './DefaultSearchResult';
 
 const meta: Meta<typeof DefaultSearchResult> = {
-  title: "search/DefaultSearchResult",
-  component: DefaultSearchResult,
+    title: 'search/DefaultSearchResult',
+    component: DefaultSearchResult,
 };
 
 export default meta;

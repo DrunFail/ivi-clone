@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import ServiceBlockAccordion from "./ServiceBlockAccordion";
+import ServiceBlockAccordion from './ServiceBlockAccordion';
 
 const meta: Meta<typeof ServiceBlockAccordion> = {
-  title: "mobileNavBar/ServiceBlockAccordion",
-  component: ServiceBlockAccordion,
+    title: 'mobileNavBar/ServiceBlockAccordion',
+    component: ServiceBlockAccordion,
 };
 
 export default meta;

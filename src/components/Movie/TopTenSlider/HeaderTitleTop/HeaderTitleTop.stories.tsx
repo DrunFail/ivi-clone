@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import HeaderTitleTop from "./HeaderTitleTop";
+import HeaderTitleTop from './HeaderTitleTop';
 
 const meta: Meta<typeof HeaderTitleTop> = {
-  title: "movie/TopTenSlider/HeaderTitleTop",
-  component: HeaderTitleTop,
+    title: 'movie/TopTenSlider/HeaderTitleTop',
+    component: HeaderTitleTop,
 };
 
 export default meta;

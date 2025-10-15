@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import PromoSection from "./PromoSection";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import PromoSection from './PromoSection';
 
 const meta: Meta<typeof PromoSection> = {
-  title: "PromoSection",
-  component: PromoSection,
+    title: 'PromoSection',
+    component: PromoSection,
 };
 
 export default meta;

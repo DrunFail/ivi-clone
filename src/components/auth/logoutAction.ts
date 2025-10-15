@@ -1,20 +1,19 @@
-"use server";
+'use server';
 
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
 export async function logoutAction() {
     try {
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/logout`, {
-            method: "post",
+            method: 'post',
             headers: {
-                "Content-Type": "application/json"
-            }
+                'Content-Type': 'application/json',
+            },
         });
         const cookie = await cookies();
-        cookie.delete("session");
-        cookie.delete("refreshToken");
-    }
-    catch (error) {
+        cookie.delete('session');
+        cookie.delete('refreshToken');
+    } catch (error) {
         console.log(error);
     }
 }

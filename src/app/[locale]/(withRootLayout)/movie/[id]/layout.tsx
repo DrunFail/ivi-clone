@@ -1,33 +1,34 @@
-"use client";
+'use client';
 
-import {  usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-
-
-export default function Layout({ children, moviePageModal }: { children: React.ReactNode, moviePageModal: React.ReactNode }) {
+export default function Layout({
+    children,
+    moviePageModal,
+}: {
+    children: React.ReactNode;
+    moviePageModal: React.ReactNode;
+}) {
     const [isVisibleModal, setIsVisibleModal] = useState(false);
-
 
     const path = usePathname();
 
     const [currentPath, setCurrentPath] = useState(path);
     useEffect(() => {
-        const id = document.getElementById("not-inter");
+        const id = document.getElementById('not-inter');
         if (!id) {
             setIsVisibleModal(true);
         }
-        
-    },[path])
-    
+    }, [path]);
+
     useEffect(() => {
         if (!isVisibleModal && path !== currentPath) location.reload();
-    },[currentPath,path,isVisibleModal])
-
+    }, [currentPath, path, isVisibleModal]);
 
     return (
         <>
-            {children }
+            {children}
             {isVisibleModal && moviePageModal}
         </>
     );

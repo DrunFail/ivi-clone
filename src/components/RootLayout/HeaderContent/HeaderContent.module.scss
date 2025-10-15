@@ -9,7 +9,7 @@
         position: relative;
         inline-size: 100%;
         align-items: center;
-        color: hsla(0,0%,100%,.48);
+        color: hsla(0, 0%, 100%, 0.48);
 
         .navbar {
             display: flex;
@@ -19,15 +19,15 @@
     }
 }
 
-.container:has(div[id="header-portal"]:not(:empty) ) {
+.container:has(div[id='header-portal']:not(:empty)) {
     background-color: rgb(31, 27, 46);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 
     &:after {
-        background-color: hsla(0,0%,100%,.16);
+        background-color: hsla(0, 0%, 100%, 0.16);
         bottom: 0;
-        content: "";
+        content: '';
         height: 1px;
         left: 0;
         pointer-events: none;
@@ -36,18 +36,21 @@
     }
 }
 
-    .hover {
-        @extend .container;
-        background-color: rgb(31, 27, 46);
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
+.hover {
+    @extend .container;
+    background-color: rgb(31, 27, 46);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
 
-@media  (max-width: 1160px){
+@media (max-width: 1160px) {
     .container {
         .content {
             grid-template-columns: 1fr max-content;
-            .navbar, .subscription, .locale, .search {
+            .navbar,
+            .subscription,
+            .locale,
+            .search {
                 display: none;
             }
         }

@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import SearchModal from "./SearchModal";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import SearchModal from './SearchModal';
 
 const meta: Meta<typeof SearchModal> = {
-  title: "search/SearchModal",
-  component: SearchModal,
+    title: 'search/SearchModal',
+    component: SearchModal,
 };
 
 export default meta;

@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import MainAdvantage from "./MainAdvantage";
+import MainAdvantage from './MainAdvantage';
 
 const meta: Meta<typeof MainAdvantage> = {
-  title: "ui/movie/MainAdvantage",
-  component: MainAdvantage,
+    title: 'ui/movie/MainAdvantage',
+    component: MainAdvantage,
 };
 
 export default meta;
 type Story = StoryObj<typeof MainAdvantage>;
 
 export const Primary: Story = {
-  render: () => (
-    <div style={{ inlineSize: "100px" }}>
-      <MainAdvantage nameAdvantage="характеристика" fillPercentage={50} />
-    </div>
-  ),
+    render: () => (
+        <div style={{ inlineSize: '100px' }}>
+            <MainAdvantage nameAdvantage="характеристика" fillPercentage={50} />
+        </div>
+    ),
 };

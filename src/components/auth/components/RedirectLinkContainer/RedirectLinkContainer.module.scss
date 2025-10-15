@@ -1,9 +1,9 @@
-.container{
-    display:flex;
+.container {
+    display: flex;
     column-gap: 10px;
     margin-block-start: 16px;
 
-    & a{
-        text-decoration:underline;
+    & a {
+        text-decoration: underline;
     }
 }

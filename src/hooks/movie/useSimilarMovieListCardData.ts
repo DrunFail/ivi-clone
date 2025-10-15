@@ -1,20 +1,20 @@
-import { SimilarMovie } from "../../models/types";
-import { calculateMovieName } from "../../utils/calculateMovieName";
-import { useLocale } from "next-intl";
+import { SimilarMovie } from '../../models/types';
+import { calculateMovieName } from '../../utils/calculateMovieName';
+import { useLocale } from 'next-intl';
 
 interface UseSimilarItemDataProps {
-    similarItem: SimilarMovie
+    similarItem: SimilarMovie;
 }
 
 export default function useSimilarItemData({ similarItem }: UseSimilarItemDataProps) {
-    const lang = useLocale() as "ru" | "en";
+    const lang = useLocale() as 'ru' | 'en';
 
-    
-
-    const movieName = calculateMovieName(similarItem, lang)
+    const movieName = calculateMovieName(similarItem, lang);
     const moviePoster = similarItem.posterUrl;
     const movieLink = `/movie/${similarItem.filmId}`;
 
     return {
-        modifiedMovieData: { movieName, moviePoster }, movieLink }
+        modifiedMovieData: { movieName, moviePoster },
+        movieLink,
+    };
 }

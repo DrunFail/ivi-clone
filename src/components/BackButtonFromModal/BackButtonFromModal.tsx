@@ -1,16 +1,16 @@
-import FontIcon from "../UI/FontIcon/FontIcon";
-import styles from "./BackButtonFromModal.module.scss";
+import FontIcon from '../UI/FontIcon/FontIcon';
+import styles from './BackButtonFromModal.module.scss';
 
 interface BackButtonFromModalProps {
-    textLink: string,
-    returnHandler?: () => void
+    textLink: string;
+    returnHandler?: () => void;
 }
 
-export default function BackButtonFromModal({textLink,returnHandler }:BackButtonFromModalProps) {
+export default function BackButtonFromModal({ textLink, returnHandler }: BackButtonFromModalProps) {
     return (
-            <div className={styles.link} onClick={returnHandler}>
-                <FontIcon variant="arrowLeft" size={20} />
-                <span>{textLink}</span>
-            </div>
+        <div className={styles.link} onClick={returnHandler}>
+            <FontIcon variant="arrowLeft" size={20} />
+            <span>{textLink}</span>
+        </div>
     );
 }

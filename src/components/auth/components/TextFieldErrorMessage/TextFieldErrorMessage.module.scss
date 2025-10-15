@@ -1,6 +1,5 @@
-.error{
+.error {
     display: grid;
-    
 }
 .active {
     @extend .error;
@@ -16,7 +15,7 @@
     }
 }
 
-.hidden{
+.hidden {
     block-size: 20px;
 }
 .visible {

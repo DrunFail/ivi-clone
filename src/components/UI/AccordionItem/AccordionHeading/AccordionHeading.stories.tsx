@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import AccordionHeading from "./AccordionHeading";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import AccordionHeading from './AccordionHeading';
 
 const meta: Meta<typeof AccordionHeading> = {
-  title: "ui/AccordionItem/AccordionHeading",
-  component: AccordionHeading,
-  args: {
-    children: "accordionHeading",
-    isOpen: false,
-  },
+    title: 'ui/AccordionItem/AccordionHeading',
+    component: AccordionHeading,
+    args: {
+        children: 'accordionHeading',
+        isOpen: false,
+    },
 };
 
 export default meta;

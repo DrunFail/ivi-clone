@@ -6,7 +6,7 @@
     font-size: 15px;
     font-weight: var(--fw-regular);
     line-height: 15px;
-    color: hsla(0,0%,100%,.72);
+    color: hsla(0, 0%, 100%, 0.72);
     text-align: center;
 
     .info_container {
@@ -14,7 +14,8 @@
         row-gap: 6px;
         justify-items: center;
 
-        .top, .bottom {
+        .top,
+        .bottom {
             display: flex;
         }
 
@@ -23,10 +24,10 @@
         }
 
         .bottom > span:not(:first-child)::before {
-            content: "";
+            content: '';
             inline-size: 2px;
             block-size: 2px;
-            background-color: hsla(0,0%,100%,.72);
+            background-color: hsla(0, 0%, 100%, 0.72);
             text-align: center;
             margin-block-end: 3px;
             display: inline-block;

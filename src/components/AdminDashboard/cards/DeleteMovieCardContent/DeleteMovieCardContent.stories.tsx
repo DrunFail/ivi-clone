@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import DeleteMovieCardContent from "./DeleteMovieCardContent";
-import movieSliderMock from "../../../../mockData/movieSliderMock.json";
+import DeleteMovieCardContent from './DeleteMovieCardContent';
+import movieSliderMock from '../../../../mockData/movieSliderMock.json';
 
 const meta: Meta<typeof DeleteMovieCardContent> = {
-  title: "admin/card/DeleteMovieCardContent",
-  component: DeleteMovieCardContent,
+    title: 'admin/card/DeleteMovieCardContent',
+    component: DeleteMovieCardContent,
 };
 
 export default meta;
@@ -16,6 +16,6 @@ const elem = movieSliderMock.rows[0];
 export const Primary: Story = {
     args: {
         nameRu: elem.nameRu,
-        posterUrlPreview: elem.posterUrlPreview
-    }
+        posterUrlPreview: elem.posterUrlPreview,
+    },
 };

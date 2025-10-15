@@ -1,22 +1,23 @@
 .container {
     display: grid;
 
-    &:before, &:after {
-        background-color: hsla(0,0%,100%,.16);
-        content: "";
+    &:before,
+    &:after {
+        background-color: hsla(0, 0%, 100%, 0.16);
+        content: '';
         height: 1px;
     }
 
-    .content{
+    .content {
         display: grid;
         row-gap: 16px;
         padding-block: 16px 32px;
     }
 }
-.tablet{
+.tablet {
     border: none;
     padding-block: 16px;
 }
 .desktop {
-      margin-block: 32px 16px;
+    margin-block: 32px 16px;
 }

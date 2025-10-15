@@ -1,5 +1,5 @@
 .progressbar {
-    background-color: rgba(126,121,143,.32);
+    background-color: rgba(126, 121, 143, 0.32);
     border-radius: 2px;
     display: flex;
     justify-content: flex-start;
@@ -16,7 +16,7 @@
     block-size: 4px;
 }
 
-.progressbar2{
+.progressbar2 {
     @extend .progressbar;
     block-size: 2px;
 }

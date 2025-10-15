@@ -5,8 +5,7 @@
     overflow: hidden;
     margin: auto;
     display: flex;
-    
-    
+
     @media screen and (max-width: 1000px) {
         width: 100%;
     }
@@ -16,7 +15,7 @@
     padding-right: 2px;
     overflow-x: visible;
     justify-content: space-between;
-    &__text{
+    &__text {
         height: 60px;
         border-radius: 10px;
         overflow: hidden;
@@ -45,30 +44,28 @@
             cursor: pointer;
             background-color: #ea003d;
         }
-       
     }
     &__veryBad {
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
         opacity: 0.5;
-        p{
+        p {
             font-size: 12px;
         }
     }
-    &__window{
+    &__window {
         display: flex;
         height: 200px;
         background-color: pink;
     }
-    &__large{
-
-        p{
+    &__large {
+        p {
             font-size: 20px;
             font-weight: var(--fw-bold);
             opacity: 1;
         }
-        div{
+        div {
             height: 70px;
             border-radius: inherit;
             display: flex;
@@ -76,7 +73,7 @@
             align-items: center;
             width: 70px;
         }
-        button{
+        button {
             display: flex;
             gap: 10px;
             justify-content: flex-start;
@@ -85,13 +82,13 @@
             height: 80px;
         }
     }
-    &__review{
+    &__review {
         margin-left: auto;
         margin-right: 20px;
 
         width: 70px;
         font-weight: 100;
-        p{
+        p {
             padding: 8px;
             max-height: 25px;
             display: flex;
@@ -100,15 +97,15 @@
             font-size: 12px;
             border-radius: 5px;
             border: 1px solid white;
-            background-color: rgba(255,255,255,.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
     }
-    &__mark{
+    &__mark {
         font-size: 20px;
     }
 }
 
-.Slider{
+.Slider {
     margin: auto;
     display: flex;
     transition: 0.3s;
@@ -136,7 +133,7 @@
     }
 }
 
-.Unit{
+.Unit {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -145,20 +142,18 @@
     overflow-x: visible;
     width: 100%;
 }
-.container{
+.container {
     inline-size: 100%;
     block-size: 84px;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 6px;
-    button{
+    button {
         inline-size: 100%;
         block-size: 100%;
-        
-        
     }
-    p{
-      text-align: center;
+    p {
+        text-align: center;
     }
 }

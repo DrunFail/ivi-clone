@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import SupportBlockButton from "./SupportBlockButton";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import SupportBlockButton from './SupportBlockButton';
 
 const meta: Meta<typeof SupportBlockButton> = {
-  title: "footer/components/SupportBlockButton",
-  component: SupportBlockButton,
-  args: {
-    variant: "desktop",
-  },
+    title: 'footer/components/SupportBlockButton',
+    component: SupportBlockButton,
+    args: {
+        variant: 'desktop',
+    },
 };
 
 export default meta;

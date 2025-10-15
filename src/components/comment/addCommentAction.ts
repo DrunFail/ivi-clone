@@ -1,27 +1,24 @@
-"use server"
+'use server';
 
-import { getAccessToken } from "@/utils/getAccessToken";
-import { revalidatePath } from "next/cache";
+import { getAccessToken } from '@/utils/getAccessToken';
+import { revalidatePath } from 'next/cache';
 
-export async function createReview(newReview: any,revalidate?:string) {
+export async function createReview(newReview: any, revalidate?: string) {
     try {
         const token = await getAccessToken();
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews`, {
-            method: "post",
+            method: 'post',
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify(newReview)
+            body: JSON.stringify(newReview),
         });
         const out = await res.json();
-        console.log(out)
-    }
-    catch (error) {
+        console.log(out);
+    } catch (error) {
         console.log(error);
+    } finally {
+        if (revalidate) revalidatePath(revalidate);
     }
-    finally {
-        if(revalidate) revalidatePath(revalidate)
-    }
-    
 }

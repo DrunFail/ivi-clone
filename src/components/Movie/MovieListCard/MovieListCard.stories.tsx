@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import MovieListCard from "./MovieListCard";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import MovieListCard from './MovieListCard';
 
 const meta: Meta<typeof MovieListCard> = {
-  title: "movie/MovieListCard",
-  component: MovieListCard,
-  decorators: [
-    (Story) => (
-          <div style={{ inlineSize: "350px" }}>
-            <Story />
-          </div>
-    ),
-  ],
-  args: {
-    modifiedMovieData: {
-      movieName: "Название",
-      moviePoster: "/film.jpg",
+    title: 'movie/MovieListCard',
+    component: MovieListCard,
+    decorators: [
+        (Story) => (
+            <div style={{ inlineSize: '350px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+    args: {
+        modifiedMovieData: {
+            movieName: 'Название',
+            moviePoster: '/film.jpg',
+        },
     },
-  },
 };
 
 export default meta;

@@ -1,4 +1,4 @@
-.default{
+.default {
     block-size: 100%;
     border-radius: inherit;
     font-size: 15px;
@@ -9,7 +9,9 @@
     align-items: center;
     border-radius: inherit;
 }
-.green, .orange, .red{
+.green,
+.orange,
+.red {
     @extend .default;
 }
 .green {

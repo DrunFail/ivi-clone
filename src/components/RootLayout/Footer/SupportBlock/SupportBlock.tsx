@@ -1,25 +1,24 @@
-import AskIvi from "../AskIvi/AskIvi";
-import SupportBlockButton from "../SupportBlockButton/SupportBlockButton";
-import styles from "./SupportBlock.module.scss";
-import { useTranslations } from "next-intl";
+import AskIvi from '../AskIvi/AskIvi';
+import SupportBlockButton from '../SupportBlockButton/SupportBlockButton';
+import styles from './SupportBlock.module.scss';
+import { useTranslations } from 'next-intl';
 
 interface SupportBlockProps {
-    children?: React.ReactNode
+    children?: React.ReactNode;
 }
 
-export default function SupportBlock({children }: SupportBlockProps) {
+export default function SupportBlock({ children }: SupportBlockProps) {
     const t = useTranslations();
     return (
         <div className={styles.container} data-testid="support-block">
             {children}
             <p>
-                {t("WeAreAlwaysReadyToHelpYou")}
+                {t('WeAreAlwaysReadyToHelpYou')}
 
                 <br />
-                {t("OurOperatorsAreOnline")}
-
+                {t('OurOperatorsAreOnline')}
             </p>
-            <SupportBlockButton variant={"desktop"} />
+            <SupportBlockButton variant={'desktop'} />
             <AskIvi />
         </div>
     );

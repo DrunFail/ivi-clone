@@ -1,38 +1,35 @@
-"use client";
+'use client';
 
-import Modal from "../../../../components/UI/Modal/Modal";
-import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
-import LoginLayout from "../../../../components/auth/LoginLayout/LoginLayout";
-import { useTranslations } from "next-intl";
-import { useEffect } from "react";
-import BackButtonFromModal from "../../../../components/BackButtonFromModal/BackButtonFromModal";
-import { useRouter } from "@/i18n/navigation";
+import Modal from '../../../../components/UI/Modal/Modal';
+import PageWrapper from '../../../../components/PageContainers/PageWrapper/PageWrapper';
+import LoginLayout from '../../../../components/auth/LoginLayout/LoginLayout';
+import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
+import BackButtonFromModal from '../../../../components/BackButtonFromModal/BackButtonFromModal';
+import { useRouter } from '@/i18n/navigation';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const t = useTranslations();
 
     const toggleBodyOverflow = () => {
-        document.body.style.overflow = "auto";
-    }
+        document.body.style.overflow = 'auto';
+    };
     useEffect(() => {
         return toggleBodyOverflow();
-    },[])
+    }, []);
 
     return (
-        <Modal visible isShowCloseBtn={false} >
+        <Modal visible isShowCloseBtn={false}>
             <PageWrapper>
                 <BackButtonFromModal
                     returnHandler={() => {
-                    router.back();
-                }}
-                    textLink={t("auth.backButtonModal")} />
-                
+                        router.back();
+                    }}
+                    textLink={t('auth.backButtonModal')}
+                />
             </PageWrapper>
-            <LoginLayout>
-                {children}
-            </LoginLayout>
+            <LoginLayout>{children}</LoginLayout>
         </Modal>
-
     );
 }

@@ -2,13 +2,11 @@
     display: flex;
     column-gap: 16px;
 
-
     li {
         font-size: 15px;
         font-weight: var(--fw-medium);
         line-height: 20px;
-        color: hsla(0,0%,100%,.48);
-
+        color: hsla(0, 0%, 100%, 0.48);
 
         &:hover {
             color: #fff;

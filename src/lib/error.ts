@@ -53,13 +53,12 @@ export declare enum HttpStatus {
     GATEWAY_TIMEOUT = 504,
     HTTP_VERSION_NOT_SUPPORTED = 505,
     INSUFFICIENT_STORAGE = 507,
-    LOOP_DETECTED = 508
+    LOOP_DETECTED = 508,
 }
 
-
-export  class HttpError extends Error {
+export class HttpError extends Error {
     public statusCode: number;
-    constructor(statusCode:number, message?: string, name?: string) {
+    constructor(statusCode: number, message?: string, name?: string) {
         super(message);
         this.statusCode = statusCode;
         this.name = name || this.constructor.name;

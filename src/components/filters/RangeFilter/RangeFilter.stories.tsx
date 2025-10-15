@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import RangeFilter from "./RangeFilter";
+import RangeFilter from './RangeFilter';
 
 const meta: Meta<typeof RangeFilter> = {
-    title: "filters/RangeFilter",
+    title: 'filters/RangeFilter',
     component: RangeFilter,
     args: {
-        filterKey: "DIRECTOR",
+        filterKey: 'DIRECTOR',
         defaultValue: 5,
         min: 0,
         max: 10,
         step: 1,
-        filterName: "FilterName"
+        filterName: 'FilterName',
     },
     decorators: [
         (Story) => (
-            <div style={{ inlineSize: "350px", position: "relative" }}>
+            <div style={{ inlineSize: '350px', position: 'relative' }}>
                 <Story />
             </div>
         ),
-    ]
+    ],
 };
 
 export default meta;

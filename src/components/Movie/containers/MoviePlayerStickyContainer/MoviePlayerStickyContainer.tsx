@@ -1,11 +1,9 @@
-import styles from "./MoviePlayerStickyContainer.module.scss";
+import styles from './MoviePlayerStickyContainer.module.scss';
 
 interface MoviePlayerStickyContainerProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
 export default function MoviePlayerStickyContainer({ children }: MoviePlayerStickyContainerProps) {
-    return (
-        <div className={styles.container}>{children}</div>
-    );
+    return <div className={styles.container}>{children}</div>;
 }

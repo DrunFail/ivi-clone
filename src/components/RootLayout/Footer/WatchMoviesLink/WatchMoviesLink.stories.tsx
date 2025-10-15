@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import WatchMoviesLink from "./WatchMoviesLink";
+import WatchMoviesLink from './WatchMoviesLink';
 
 const meta: Meta<typeof WatchMoviesLink> = {
-    title: "footer/components/WatchMoviesLink",
+    title: 'footer/components/WatchMoviesLink',
     component: WatchMoviesLink,
 };
 

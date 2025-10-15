@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import useFilterWatchPage from "../../../../../hooks/filters/useFiltersWatchPage";
-import PageSection from "../../../../../components/PageContainers/PageSection/PageSection";
-import SortField from "../../../../../components/filters/SortField/SortField";
-import Carousel from "../../../../../components/UI/Carousel/Carousel";
-import { MOVIE_LIST_SIZES } from "../../../../../constants/sliderItemSize";
-import MovieListItemAdmin from "../../../../../components/AdminDashboard/MovieListItemAdmin/MovieListItemAdmin";
-import EmptyMovieList from "../../../../../components/Movie/EmptyMovieList/EmptyMovieList";
-
+import useFilterWatchPage from '../../../../../hooks/filters/useFiltersWatchPage';
+import PageSection from '../../../../../components/PageContainers/PageSection/PageSection';
+import SortField from '../../../../../components/filters/SortField/SortField';
+import Carousel from '../../../../../components/UI/Carousel/Carousel';
+import { MOVIE_LIST_SIZES } from '../../../../../constants/sliderItemSize';
+import MovieListItemAdmin from '../../../../../components/AdminDashboard/MovieListItemAdmin/MovieListItemAdmin';
+import EmptyMovieList from '../../../../../components/Movie/EmptyMovieList/EmptyMovieList';
 
 export default function AdminMovies() {
     //const {
@@ -21,8 +20,6 @@ export default function AdminMovies() {
     //    filterParams,
     //    translatedCurrentCountry
     //} = useFilterWatchPage({ variant: "admin" });
-
-
 
     return (
         <div>
@@ -47,7 +44,6 @@ export default function AdminMovies() {
 
             {/*        />}*/}
 
-
             {/*</PageSection>*/}
 
             {/*{filteredMovie.rows*/}
@@ -60,12 +56,6 @@ export default function AdminMovies() {
             {/*    />*/}
             {/*    : <EmptyMovieList />*/}
             {/*}*/}
-
-
-
-            
-
         </div>
     );
 }
-

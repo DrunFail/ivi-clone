@@ -4,15 +4,13 @@
     align-items: center;
     color: inherit;
 
+    .content {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: var(--fw-medium);
+    }
 
-        .content {
-            font-size: 15px;
-            line-height: 20px;
-            font-weight: var(--fw-medium);
-        }
-
-        &:hover {
-            color: #fff;
-        }
-    
+    &:hover {
+        color: #fff;
+    }
 }

@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import Navbar from "./Navbar";
-import { NAV_MENU } from "../../../../../constants/headerConstants";
+import Navbar from './Navbar';
+import { NAV_MENU } from '../../../../../constants/headerConstants';
 
 const meta: Meta<typeof Navbar> = {
-  title: "header/components/Navbar",
-  component: Navbar,
-  args: {
-    navLinkData: NAV_MENU,
-  },
+    title: 'header/components/Navbar',
+    component: Navbar,
+    args: {
+        navLinkData: NAV_MENU,
+    },
 };
 
 export default meta;

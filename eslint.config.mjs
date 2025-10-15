@@ -1,0 +1,16 @@
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({
+    baseDirectory: import.meta.dirname,
+});
+
+const eslintConfig = [
+    ...compat.config({
+        extends: ['next', 'next/core-web-vitals', 'plugin:storybook/recommended', 'plugin:prettier/recommended'],
+        rules: {
+            'prettier/prettier': 'error',
+        },
+    }),
+];
+
+export default eslintConfig;

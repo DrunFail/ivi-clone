@@ -1,19 +1,18 @@
 export const DEFAULT_SEARCH_LINK = [
     {
-        name: "PremierFilm",
-        link: ""
+        name: 'PremierFilm',
+        link: '',
     },
     {
-        name: "NewSubscriptions",
-        link: ""
+        name: 'NewSubscriptions',
+        link: '',
     },
     {
-        name: "SerialsAmediateka",
-        link: ""
+        name: 'SerialsAmediateka',
+        link: '',
     },
     {
-        name: "HighRating",
-        link: ""
-    }
-
-]
+        name: 'HighRating',
+        link: '',
+    },
+];

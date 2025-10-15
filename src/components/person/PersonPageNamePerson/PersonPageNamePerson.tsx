@@ -1,13 +1,9 @@
-import styles from "./PersonPageNamePerson.module.scss";
+import styles from './PersonPageNamePerson.module.scss';
 
 interface PersonPageNamePersonProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
-export default function PersonPageNamePerson({ children }:PersonPageNamePersonProps) {
-    return (
-        <h1 className={styles.name}>
-            {children}
-        </h1>
-    );
+export default function PersonPageNamePerson({ children }: PersonPageNamePersonProps) {
+    return <h1 className={styles.name}>{children}</h1>;
 }

@@ -1,13 +1,8 @@
-import styles from "./SearchResult.module.scss";
-
+import styles from './SearchResult.module.scss';
 
 interface SearchResultProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
-export default function SearchResult({children}: SearchResultProps) {
-    return (
-        <div className={styles.container}>
-            {children}
-        </div>
-    );
+export default function SearchResult({ children }: SearchResultProps) {
+    return <div className={styles.container}>{children}</div>;
 }

@@ -2,11 +2,10 @@
     overflow: hidden;
     display: grid;
     padding-block-start: var(--fs-500);
-    padding-inline: 12px ;
-    --item-amount:var(--amount);
+    padding-inline: 12px;
+    --item-amount: var(--amount);
     margin-inline: -12px -36px;
-    
-    }
+}
 
 .carousel_slider {
     @extend .carousel;
@@ -25,4 +24,3 @@
     grid-auto-flow: column;
     grid-auto-columns: calc((100% - 1px + 1px) / var(--item-amount));
 }
-

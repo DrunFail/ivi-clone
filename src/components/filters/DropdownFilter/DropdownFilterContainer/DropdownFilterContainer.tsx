@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import useOutsideClick from "../../../../hooks/useOutsideClick";
+import { useEffect, useRef, useState } from 'react';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
 
 interface Props {
-    children: React.ReactNode,
-    isSetCurrentValue?: boolean,
-    filterKey: string
+    children: React.ReactNode;
+    isSetCurrentValue?: boolean;
+    filterKey: string;
 }
 
 export default function DropdownFilterContainer({ children, isSetCurrentValue = false, filterKey }: Props) {
@@ -14,26 +14,23 @@ export default function DropdownFilterContainer({ children, isSetCurrentValue = 
     const dropdownRef = useRef<HTMLDivElement>(null);
     useOutsideClick(dropdownRef, () => setIsVisibleDropdown(false));
 
-
     useEffect(() => {
         const variants = document.getElementById(`variants-${filterKey}`) as HTMLDivElement;
         if (!variants) {
             console.log(`dont find variants ${filterKey}`);
             return;
         }
-        variants.style.display = isVisibleDropdown ? "block" : "none";
-        
-    }, [isVisibleDropdown, filterKey])
-
+        variants.style.display = isVisibleDropdown ? 'block' : 'none';
+    }, [isVisibleDropdown, filterKey]);
 
     const setSort = (e: any) => {
-        if (e.target.type === "radio" && isSetCurrentValue) {
+        if (e.target.type === 'radio' && isSetCurrentValue) {
             const select = document.getElementById(`selected-${filterKey}`);
             if (!select) {
                 console.log(`dont find elem for paste ${filterKey}`);
                 return;
             }
-            select.innerHTML = e.target.labels[0].innerText
+            select.innerHTML = e.target.labels[0].innerText;
         }
         setIsVisibleDropdown(false);
     };
@@ -42,9 +39,9 @@ export default function DropdownFilterContainer({ children, isSetCurrentValue = 
         <div
             ref={dropdownRef}
             onChange={(e) => setSort(e)}
-            onClick={() => setIsVisibleDropdown(isVisibleDropdown => !isVisibleDropdown)}
+            onClick={() => setIsVisibleDropdown((isVisibleDropdown) => !isVisibleDropdown)}
         >
             {children}
         </div>
     );
-};
+}

@@ -1,12 +1,12 @@
-import { useTranslations } from "next-intl";
-import SelectedSort from "./SelectedSort/SelectedSort";
-import SortFieldContainer from "./SortFieldContainer/SortFieldContainer";
-import SortFieldVariants from "./SortFieldVariants/SortFieldVariants";
+import { useTranslations } from 'next-intl';
+import SelectedSort from './SelectedSort/SelectedSort';
+import SortFieldContainer from './SortFieldContainer/SortFieldContainer';
+import SortFieldVariants from './SortFieldVariants/SortFieldVariants';
 
 interface Props {
-    defaultSortValue: string,
-    variants: string[],
-    filterKey: string
+    defaultSortValue: string;
+    variants: string[];
+    filterKey: string;
 }
 
 export default function SortField({ defaultSortValue, variants, filterKey }: Props) {
@@ -24,9 +24,7 @@ export default function SortField({ defaultSortValue, variants, filterKey }: Pro
                             defaultChecked={item === defaultSortValue}
                             value={item}
                         />
-                        <label htmlFor={`sortBy-${item}`}>
-                            {t(`sort.variant.${item}`)}
-                        </label>
+                        <label htmlFor={`sortBy-${item}`}>{t(`sort.variant.${item}`)}</label>
                     </div>
                 ))}
             </SortFieldVariants>

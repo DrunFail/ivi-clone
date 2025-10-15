@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import UnauthorizedAlert from "./UnauthorizedAlert";
+import UnauthorizedAlert from './UnauthorizedAlert';
 
 const meta: Meta<typeof UnauthorizedAlert> = {
-    title: "comment/UnauthorizedAlert",
+    title: 'comment/UnauthorizedAlert',
     component: UnauthorizedAlert,
 };
 

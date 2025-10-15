@@ -1,14 +1,14 @@
-import Image from "next/image";
-import styles from "./FilmTitleTop.module.scss";
+import Image from 'next/image';
+import styles from './FilmTitleTop.module.scss';
 
 interface FilmTitleTopProps {
-    rating: number
+    rating: number;
 }
 
-export default function FilmTitleTop({ rating }:FilmTitleTopProps) {
+export default function FilmTitleTop({ rating }: FilmTitleTopProps) {
     return (
         <div className={styles.title}>
-            <Image src={`/top10/${rating}.png`} alt='' fill />
+            <Image src={`/top10/${rating}.png`} alt="" fill />
         </div>
     );
 }

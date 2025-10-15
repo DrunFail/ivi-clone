@@ -1,55 +1,52 @@
-"use client";
+'use client';
 
-import { isAxiosError } from "axios";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import useAuth from "./useAuth";
-import { AuthAPI } from "../../api/AuthAPI";
-import { authDecodeToken } from "../../utils/authDecodeToken";
-import { cookieParser } from "../../utils/cookieParser";
+import { isAxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import useAuth from './useAuth';
+import { AuthAPI } from '../../api/AuthAPI';
+import { authDecodeToken } from '../../utils/authDecodeToken';
+import { cookieParser } from '../../utils/cookieParser';
 
 export default function useLogin() {
     const { setAuth } = useAuth();
     const router = useRouter();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
         setError('');
-    }, [email, password])
+    }, [email, password]);
 
     const setInputEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value)
-    }
+        setEmail(e.target.value);
+    };
     const setInputPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value)
-    }
-
+        setPassword(e.target.value);
+    };
 
     const handleSignInCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!email || !password) {
-            setError('Не указан логин или пароль')
-            return
+            setError('Не указан логин или пароль');
+            return;
         }
         try {
-            const response = await AuthAPI.login({ email, password })
-            const { userEmail, userRoles, token } = authDecodeToken(response.data.token)
+            const response = await AuthAPI.login({ email, password });
+            const { userEmail, userRoles, token } = authDecodeToken(response.data.token);
 
-            
             /* eslint-disable */
             //@ts-ignore
             setAuth((prevAuth: AuthContextData) => {
-                return { ...prevAuth, token, userEmail, userRoles }
-            }
-            );
-            
-            setEmail("");
-            setPassword("");
-            const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, "/");
+                return { ...prevAuth, token, userEmail, userRoles };
+            });
+
+            setEmail('');
+            setPassword('');
+            const callbackUrl = cookieParser('callbackUrl')?.replace(/%2F/g, '/');
             router.push(callbackUrl ?? '/');
         } catch (error) {
             if (isAxiosError(error)) {
@@ -63,13 +60,11 @@ export default function useLogin() {
                 if (error.response?.status === 404) {
                     setError('Пользователь не существует');
                 }
-            }
-            else {
+            } else {
                 setError('Ошибка авторизации');
             }
         }
-
     };
 
-    return {email,password, error, handleSignInCredentials, setInputEmail, setInputPassword}
+    return { email, password, error, handleSignInCredentials, setInputEmail, setInputPassword };
 }
