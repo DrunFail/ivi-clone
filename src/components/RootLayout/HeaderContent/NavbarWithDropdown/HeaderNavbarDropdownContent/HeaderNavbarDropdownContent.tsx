@@ -1,13 +1,13 @@
-import { useTranslations } from "next-intl";
-import { NavbarLink } from "../../../../../models/global";
-import DropdownList from "../../../../UI/DropdownList/DropdownList";
-import NavigationBlockTitle from "../../../Footer/NavigationBlockTitle/NavigationBlockTitle";
-import DropdownListWithLine from "../DropdownListWithLine/DropdownListWithLine";
-import styles from "./HeaderNavbarDropdownContent.module.scss";
+import { useTranslations } from 'next-intl';
+import { NavbarLink } from '../../../../../models/global';
+import DropdownList from '../../../../UI/DropdownList/DropdownList';
+import NavigationBlockTitle from '../../../Footer/NavigationBlockTitle/NavigationBlockTitle';
+import DropdownListWithLine from '../DropdownListWithLine/DropdownListWithLine';
+import styles from './HeaderNavbarDropdownContent.module.scss';
 
 interface HeaderNavbarDropdownContentProps {
-    currentLink: NavbarLink,
-    closeDropdown?: () => void
+    currentLink: NavbarLink;
+    closeDropdown?: () => void;
 }
 
 export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown }: HeaderNavbarDropdownContentProps) {
@@ -16,39 +16,25 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
         <div className={styles.container} data-testid="nav-dropdown">
             <div className={styles.left}>
                 <div>
-                    <NavigationBlockTitle>
-                        {t("header.genres")}
-                    </NavigationBlockTitle>
-                    <DropdownList
-                        linkDataList={currentLink.data!.genres}
-                        onClick={closeDropdown}
-                        testId="genres"
-
-
-                    />
+                    <NavigationBlockTitle>{t('header.genres')}</NavigationBlockTitle>
+                    <DropdownList linkDataList={currentLink.data!.genres} onClick={closeDropdown} testId="genres" />
                 </div>
                 <div>
-                    <NavigationBlockTitle>
-                        {t("header.countries")}
-                    </NavigationBlockTitle>
+                    <NavigationBlockTitle>{t('header.countries')}</NavigationBlockTitle>
                     <DropdownList
                         linkDataList={currentLink.data!.country}
                         oneColumn
                         onClick={closeDropdown}
                         testId="countries"
-
                     />
                 </div>
                 <div>
-                    <NavigationBlockTitle>
-                        {t("header.year")}
-                    </NavigationBlockTitle>
+                    <NavigationBlockTitle>{t('header.year')}</NavigationBlockTitle>
                     <DropdownList
                         linkDataList={currentLink.data!.years}
                         oneColumn
                         onClick={closeDropdown}
                         testId="year"
-
                     />
                 </div>
             </div>
@@ -64,9 +50,6 @@ export default function HeaderNavbarDropdownContent({ currentLink, closeDropdown
                     />
                 </DropdownListWithLine>
             </div>
-
         </div>
-
-
     );
 }

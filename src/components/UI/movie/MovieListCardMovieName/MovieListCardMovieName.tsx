@@ -1,11 +1,8 @@
-import styles from "./MovieListCardMovieName.module.scss";
-
+import styles from './MovieListCardMovieName.module.scss';
 
 interface MovieListCardMovieNameProps {
-    movieName:string
+    movieName: string;
 }
 export default function MovieListCardMovieName({ movieName }: MovieListCardMovieNameProps) {
-    return (
-        <span className={styles.text}>{movieName}</span>
-    );
+    return <span className={styles.text}>{movieName}</span>;
 }

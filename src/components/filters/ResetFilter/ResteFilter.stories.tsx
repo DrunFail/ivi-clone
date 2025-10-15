@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import ResetFilter from "./ResetFilter";
+import ResetFilter from './ResetFilter';
 
 const meta: Meta<typeof ResetFilter> = {
-    title: "filters/ResetFilter",
+    title: 'filters/ResetFilter',
     component: ResetFilter,
 };
 

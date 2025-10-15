@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "./Rating.module.scss";
-import { useTranslations } from "next-intl";
-import Modal from "../UI/Modal/Modal";
+import { useState } from 'react';
+import styles from './Rating.module.scss';
+import { useTranslations } from 'next-intl';
+import Modal from '../UI/Modal/Modal';
 interface RatingProps {
-    ratingModalContent: React.ReactNode,
-    ratingButton:React.ReactNode
+    ratingModalContent: React.ReactNode;
+    ratingButton: React.ReactNode;
 }
 
-export default function Rating({ratingModalContent,ratingButton }: RatingProps) {
+export default function Rating({ ratingModalContent, ratingButton }: RatingProps) {
     const [visible, setVisible] = useState<boolean>(false);
     const t = useTranslations();
 
     const toggleVisibleModal = () => {
-        setVisible(visible => !visible);
+        setVisible((visible) => !visible);
     };
 
     return (
@@ -23,9 +23,8 @@ export default function Rating({ratingModalContent,ratingButton }: RatingProps) 
                 {ratingButton}
             </div>
             <Modal callback={toggleVisibleModal} visible={visible}>
-                {ratingModalContent }
+                {ratingModalContent}
             </Modal>
         </>
     );
-};
-
+}

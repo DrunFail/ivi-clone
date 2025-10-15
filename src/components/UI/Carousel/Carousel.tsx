@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import useCarousel from "./hooks/useCarousel";
-import styles from "./Carousel.module.scss";
-import CarouselGallery from "./CarouselGallery/CarouselGallery";
-import CarouselItem from "./CarouselItem/CarouselItem";
-import ShowMoreItem from "./ShowMoreItem/ShowMoreItem";
-import PageSectionContainerInner from "../../PageContainers/PageSectionContainerInner/PageSectionContainerInner";
-import NewButtonControl from "./NewButtonControl/NewButtonControl";
-import FontIcon from "../FontIcon/FontIcon";
+import useCarousel from './hooks/useCarousel';
+import styles from './Carousel.module.scss';
+import CarouselGallery from './CarouselGallery/CarouselGallery';
+import CarouselItem from './CarouselItem/CarouselItem';
+import ShowMoreItem from './ShowMoreItem/ShowMoreItem';
+import PageSectionContainerInner from '../../PageContainers/PageSectionContainerInner/PageSectionContainerInner';
+import NewButtonControl from './NewButtonControl/NewButtonControl';
+import FontIcon from '../FontIcon/FontIcon';
 
 interface CarouselProps<T extends { id: number }> {
-    mode: "list" | "slider" | "collection";
+    mode: 'list' | 'slider' | 'collection';
     data: T[];
     count: number;
     sizes: { resol: number; items: number }[];
     href?: string;
-    component: React.ComponentType<{ elem: T}>;
+    component: React.ComponentType<{ elem: T }>;
     callback?: () => void;
-    showMoreHandler?: () => void
+    showMoreHandler?: () => void;
 }
 
-export default function Carousel<T extends {id:number}>({
+export default function Carousel<T extends { id: number }>({
     callback,
     data,
     count,
@@ -28,7 +28,7 @@ export default function Carousel<T extends {id:number}>({
     sizes,
     href,
     component: Component,
-    showMoreHandler
+    showMoreHandler,
 }: CarouselProps<T>) {
     const {
         checkNext,
@@ -37,22 +37,21 @@ export default function Carousel<T extends {id:number}>({
         handleClickPrevSlide,
         valueDirection,
         itemAmountOnPage,
-        sliderId
+        sliderId,
     } = useCarousel({
         dataLength: data.length,
         sizes,
-        count
+        count,
     });
     return (
         <PageSectionContainerInner>
             <div className={styles.container}>
-
                 <div className={styles.test}>
-                    {mode === "slider" && (
+                    {mode === 'slider' && (
                         <>
                             {checkPrev && (
                                 <NewButtonControl onClick={handleClickPrevSlide} direction="left">
-                                    <FontIcon variant="arrowLeft" size={32 } />
+                                    <FontIcon variant="arrowLeft" size={32} />
                                 </NewButtonControl>
                             )}
                             {checkNext && (
@@ -62,20 +61,20 @@ export default function Carousel<T extends {id:number}>({
                             )}
                         </>
                     )}
-                    <div style={{ overflow: "hidden", paddingInline: "12px" }}>
+                    <div style={{ overflow: 'hidden', paddingInline: '12px' }}>
                         <CarouselGallery carouselId={sliderId} mode={mode}>
                             {data.map((elem) => (
                                 <CarouselItem
                                     callback={callback}
                                     key={elem.id}
                                     style={{
-                                        transform: `translate(${valueDirection}%, 0)`
+                                        transform: `translate(${valueDirection}%, 0)`,
                                     }}
                                 >
                                     <Component elem={elem} />
                                 </CarouselItem>
                             ))}
-                            {count > data.length && mode === "slider" && (
+                            {count > data.length && mode === 'slider' && (
                                 <ShowMoreItem
                                     href={href}
                                     valueDirection={valueDirection}
@@ -83,9 +82,8 @@ export default function Carousel<T extends {id:number}>({
                                     showMoreHandler={showMoreHandler}
                                 />
                             )}
-                           
                         </CarouselGallery>
-                        {count > data.length && mode === "list" && (
+                        {count > data.length && mode === 'list' && (
                             <ShowMoreItem
                                 href={href}
                                 valueDirection={valueDirection}
@@ -95,7 +93,6 @@ export default function Carousel<T extends {id:number}>({
                         )}
                     </div>
                 </div>
-                
             </div>
         </PageSectionContainerInner>
     );

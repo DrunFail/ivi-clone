@@ -1,38 +1,39 @@
-import Crumb from "./Crumb/Crumb";
-import styles from "./BreadCrumbs.module.scss";
-import DefaultSeparator from "./DefaultSeparator/DefaultSeparator";
-import { Fragment } from "react";
-import { Link } from "@/i18n/navigation";
+import Crumb from './Crumb/Crumb';
+import styles from './BreadCrumbs.module.scss';
+import DefaultSeparator from './DefaultSeparator/DefaultSeparator';
+import { Fragment } from 'react';
+import { Link } from '@/i18n/navigation';
 
 interface BreadCrumbsProps {
-    breadcrumbs: { children: React.ReactNode, href: string }[],
-    isLastCrumbActive?: boolean,
-    separator?: React.ReactNode
+    breadcrumbs: { children: React.ReactNode; href: string }[];
+    isLastCrumbActive?: boolean;
+    separator?: React.ReactNode;
 }
 
-export default function BreadCrumbs({ breadcrumbs, isLastCrumbActive = true, separator = <DefaultSeparator /> }: BreadCrumbsProps) {
+export default function BreadCrumbs({
+    breadcrumbs,
+    isLastCrumbActive = true,
+    separator = <DefaultSeparator />,
+}: BreadCrumbsProps) {
     return (
         <div className={styles.container}>
             {breadcrumbs.map((crumb, index) => {
-                const isLastCrumb = (index + 1) === breadcrumbs.length;
+                const isLastCrumb = index + 1 === breadcrumbs.length;
                 const isActiveCrumb = isLastCrumb ? isLastCrumbActive : true;
-                const renderedCrumb = <Crumb active={isActiveCrumb}>{crumb.children}</Crumb>
-
+                const renderedCrumb = <Crumb active={isActiveCrumb}>{crumb.children}</Crumb>;
 
                 return (
                     <Fragment key={index}>
-                        {isLastCrumb && !isLastCrumbActive
-                            ? <div >{renderedCrumb}</div>
-                            : <Link href={crumb.href}>
-                                {renderedCrumb}
-                            </Link>
-                        }
+                        {isLastCrumb && !isLastCrumbActive ? (
+                            <div>{renderedCrumb}</div>
+                        ) : (
+                            <Link href={crumb.href}>{renderedCrumb}</Link>
+                        )}
 
                         {!isLastCrumb && separator}
-                    </Fragment>)
-            }
-            )}
+                    </Fragment>
+                );
+            })}
         </div>
-
     );
 }

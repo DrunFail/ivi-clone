@@ -1,12 +1,12 @@
-import Modal from "./Modal";
+import Modal from './Modal';
 
 export default {
-  title: "ui/Modal",
-  component: Modal,
+    title: 'ui/Modal',
+    component: Modal,
 };
 
 export const Default = () => (
-  <Modal callback={() => {}} visible={true}>
-    sda
-  </Modal>
+    <Modal callback={() => {}} visible={true}>
+        sda
+    </Modal>
 );

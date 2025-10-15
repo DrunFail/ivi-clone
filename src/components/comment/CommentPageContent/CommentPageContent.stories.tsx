@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import CommentPageContent from "./CommentPageContent";
+import CommentPageContent from './CommentPageContent';
 
 const meta: Meta<typeof CommentPageContent> = {
-    title: "comment/CommentPageContent",
+    title: 'comment/CommentPageContent',
     component: CommentPageContent,
 };
 
@@ -19,71 +19,70 @@ export const Primary: Story = {
                 filmId: 3,
                 profile: {
                     id: 4,
-                    username: "author",
-                    name: "",
-                    lastName: "",
+                    username: 'author',
+                    name: '',
+                    lastName: '',
                     avatarId: 4,
-                    favMovie: ""
+                    favMovie: '',
                 },
-                text: "comment 1",
-                createdAt: "2024-05-29T10:17:14.996Z",
+                text: 'comment 1',
+                createdAt: '2024-05-29T10:17:14.996Z',
                 childs: [],
-                title: "",
-                parentId: null
-                
+                title: '',
+                parentId: null,
             },
             {
                 id: 1,
                 filmId: 3,
                 profile: {
                     id: 4,
-                    username: "author",
-                    name: "",
-                    lastName: "",
+                    username: 'author',
+                    name: '',
+                    lastName: '',
                     avatarId: 4,
-                    favMovie: ""
+                    favMovie: '',
                 },
-                text: "comment 2",
-                createdAt: "2024-05-29T10:17:14.996Z",
+                text: 'comment 2',
+                createdAt: '2024-05-29T10:17:14.996Z',
                 childs: [
                     {
                         id: 1,
                         filmId: 3,
                         profile: {
                             id: 4,
-                            username: "author",
-                            name: "",
-                            lastName: "",
+                            username: 'author',
+                            name: '',
+                            lastName: '',
                             avatarId: 4,
-                            favMovie: ""
+                            favMovie: '',
                         },
-                        text: "comment 1",
-                        createdAt: "2024-05-29T10:17:14.996Z",
+                        text: 'comment 1',
+                        createdAt: '2024-05-29T10:17:14.996Z',
                         childs: [],
-                        title: "",
-                        parentId: null
+                        title: '',
+                        parentId: null,
                     },
                     {
                         id: 1,
                         filmId: 3,
                         profile: {
                             id: 4,
-                            username: "author",
-                            name: "",
-                            lastName: "",
+                            username: 'author',
+                            name: '',
+                            lastName: '',
                             avatarId: 4,
-                            favMovie: ""
+                            favMovie: '',
                         },
-                        text: "comment 2",
-                        createdAt: "2024-05-29T10:17:14.996Z",
+                        text: 'comment 2',
+                        createdAt: '2024-05-29T10:17:14.996Z',
                         childs: [],
-                        title: "",
-                        parentId: null
+                        title: '',
+                        parentId: null,
                     },
                 ],
-                title: "",
-                parentId: null
+                title: '',
+                parentId: null,
             },
-        ]
-    }
+        ],
+    },
 };

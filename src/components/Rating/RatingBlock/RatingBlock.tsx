@@ -1,24 +1,19 @@
-import styles from "./RatingBlock.module.scss";
-
+import styles from './RatingBlock.module.scss';
 
 const calculateRatingBackground = (ratingValue: number): string => {
     if (ratingValue > 7) {
-        return "green"
+        return 'green';
     } else if (ratingValue > 4) {
-        return "orange"
+        return 'orange';
     } else {
-        return "red"
+        return 'red';
     }
-}
+};
 interface RatingBlockProps {
-    ratingValue: number
+    ratingValue: number;
 }
-export default function RatingBlock({ratingValue }: RatingBlockProps) {
-    const activeRatingBackground = calculateRatingBackground(ratingValue)
+export default function RatingBlock({ ratingValue }: RatingBlockProps) {
+    const activeRatingBackground = calculateRatingBackground(ratingValue);
 
-    return (
-        <div className={styles[`${activeRatingBackground}`] }>
-            {ratingValue }
-        </div>
-    );
+    return <div className={styles[`${activeRatingBackground}`]}>{ratingValue}</div>;
 }

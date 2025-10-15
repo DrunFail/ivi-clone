@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import { TOP_10_DATA } from "./data";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { TOP_10_DATA } from './data';
 
-import TopTenSlider from "./TopTenSlider";
+import TopTenSlider from './TopTenSlider';
 
 const meta: Meta<typeof TopTenSlider> = {
-    title: "movie/TopTenSlider/TopTenSlider",
+    title: 'movie/TopTenSlider/TopTenSlider',
     component: TopTenSlider,
     args: {
         count: 10,
-        data: TOP_10_DATA
-    }
+        data: TOP_10_DATA,
+    },
 };
 
 export default meta;

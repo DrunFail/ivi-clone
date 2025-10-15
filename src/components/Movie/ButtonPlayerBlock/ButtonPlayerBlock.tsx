@@ -1,39 +1,28 @@
-import ShareButtonWithModal from "../../Share/ShareButtonWithModal";
-import FontIcon from "../../UI/FontIcon/FontIcon";
-import Button from "../../UI/core/Button/Button";
-import styles from "./ButtonPlayerBlock.module.scss";
-import { useTranslations } from "next-intl";
+import ShareButtonWithModal from '../../Share/ShareButtonWithModal';
+import FontIcon from '../../UI/FontIcon/FontIcon';
+import Button from '../../UI/core/Button/Button';
+import styles from './ButtonPlayerBlock.module.scss';
+import { useTranslations } from 'next-intl';
 
 interface ButtonPlayerBlockProps {
     moviePosterUrl: string;
     movieName: string;
     movieYear: number;
-    variant: "desktop" | "tablet" | "mobile"
+    variant: 'desktop' | 'tablet' | 'mobile';
 }
 export default function ButtonPlayerBlock({ moviePosterUrl, movieName, movieYear, variant }: ButtonPlayerBlockProps) {
     const defaultClasses = `
     ${styles.container}
     ${styles[variant]}
-    `
+    `;
     const t = useTranslations();
     return (
         <div className={defaultClasses}>
-            <Button as="button">
-                {t("trailer") }
-            </Button>
-            <Button
-                as="button"
-                size="mini"
-                aria-label="добавить в список смотреть позже"
-            >
+            <Button as="button">{t('trailer')}</Button>
+            <Button as="button" size="mini" aria-label="добавить в список смотреть позже">
                 <FontIcon variant="bookmark2" />
             </Button>
-            <ShareButtonWithModal
-                posterUrl={moviePosterUrl}
-                nameRu={movieName}
-                year={movieYear} />
+            <ShareButtonWithModal posterUrl={moviePosterUrl} nameRu={movieName} year={movieYear} />
         </div>
-    
     );
-
 }

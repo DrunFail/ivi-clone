@@ -1,13 +1,9 @@
-import styles from "./InfoProductOverlay.module.scss";
+import styles from './InfoProductOverlay.module.scss';
 
 interface InfoProductOverlayProps {
-    string: string
+    string: string;
 }
 
 export default function InfoProductOverlay({ string }: InfoProductOverlayProps) {
-    return (
-        <div className={styles.info }>
-           {string }
-        </div>
-    );
+    return <div className={styles.info}>{string}</div>;
 }

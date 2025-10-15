@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
 export const isAuthServer = async () => {
-    return Boolean((await cookies()).get("refreshToken"));
-}
+    return Boolean((await cookies()).get('refreshToken'));
+};

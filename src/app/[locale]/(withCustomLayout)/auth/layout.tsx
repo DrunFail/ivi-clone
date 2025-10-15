@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useTranslations } from "next-intl";
-import PageWrapper from "../../../../components/PageContainers/PageWrapper/PageWrapper";
-import LoginLayout from "../../../../components/auth/LoginLayout/LoginLayout";
-import BackButtonFromModal from "../../../../components/BackButtonFromModal/BackButtonFromModal";
-import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from 'next-intl';
+import PageWrapper from '../../../../components/PageContainers/PageWrapper/PageWrapper';
+import LoginLayout from '../../../../components/auth/LoginLayout/LoginLayout';
+import BackButtonFromModal from '../../../../components/BackButtonFromModal/BackButtonFromModal';
+import { useRouter } from '@/i18n/navigation';
 
 export default function LoginLayoutPage({ children }: { children: React.ReactNode }) {
     const router = useRouter();
@@ -15,17 +15,13 @@ export default function LoginLayoutPage({ children }: { children: React.ReactNod
             <PageWrapper>
                 <BackButtonFromModal
                     returnHandler={() => {
-                        router.push("/");
-
+                        router.push('/');
                     }}
-                    textLink={t("auth.backButton")}
+                    textLink={t('auth.backButton')}
                 />
-                
             </PageWrapper>
 
-            <LoginLayout>
-                {children}
-            </LoginLayout>
+            <LoginLayout>{children}</LoginLayout>
         </>
     );
 }

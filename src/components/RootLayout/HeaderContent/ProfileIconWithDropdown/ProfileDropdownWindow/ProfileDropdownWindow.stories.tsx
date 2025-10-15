@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import ProfileDropdownWindow from "./ProfileDropdownWindow";
+import ProfileDropdownWindow from './ProfileDropdownWindow';
 
 const meta: Meta<typeof ProfileDropdownWindow> = {
-  title: "header/components/ProfileDropdownWindow",
-  component: ProfileDropdownWindow,
+    title: 'header/components/ProfileDropdownWindow',
+    component: ProfileDropdownWindow,
 };
 
 export default meta;

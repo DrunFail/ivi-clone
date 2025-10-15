@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import MobileNavBar from "./MobileNavBar";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import MobileNavBar from './MobileNavBar';
 
 const meta: Meta<typeof MobileNavBar> = {
-  title: "mobileNavBar/MobileNavBar",
-  component: MobileNavBar,
+    title: 'mobileNavBar/MobileNavBar',
+    component: MobileNavBar,
 };
 
 export default meta;

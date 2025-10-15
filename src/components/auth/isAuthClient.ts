@@ -1,3 +1,3 @@
-import { cookieParser } from "../../utils/cookieParser";
+import { cookieParser } from '../../utils/cookieParser';
 
-export const isAuthClient = Boolean(cookieParser("refreshToken"));
+export const isAuthClient = Boolean(cookieParser('refreshToken'));

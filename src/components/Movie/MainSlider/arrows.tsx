@@ -1,5 +1,5 @@
-import { useSwiper } from "swiper/react";
-import FontIcon from "../../UI/FontIcon/FontIcon";
+import { useSwiper } from 'swiper/react';
+import FontIcon from '../../UI/FontIcon/FontIcon';
 
 interface ArrowsProps {
     styles: { [key: string]: string };
@@ -25,7 +25,7 @@ export default function Arrows({ styles }: ArrowsProps) {
                 >
                     <FontIcon variant="arrowRight" size={32} />
                 </button>
-            </div >
+            </div>
         </div>
     );
-};
+}

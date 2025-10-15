@@ -1,16 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 
 interface IWindowDimensionsProps {
     windowWidth: number;
 }
 
 const windowDimensionsContext = React.createContext<IWindowDimensionsProps>(
-    typeof window !== "undefined"
+    typeof window !== 'undefined'
         ? {
-            windowWidth: window.innerWidth
-        } : {
-            windowWidth: 0
-        }
+              windowWidth: window.innerWidth,
+          }
+        : {
+              windowWidth: 0,
+          },
 );
 
 /** Кастомный хук, предоставляющий текущую ширину экрана пользователя. Необходим для оперативного изменения вёрстки сразу по факту изменения пользователем ширины окна браузера, без необходимости перезагрузки страницы. */
@@ -19,24 +20,14 @@ export const useWindowDimensions = () => {
 };
 
 /** Higher-Order Component, предназначенный для обертывания приложения в кастомный хук. */
-const WindowDimensionsProvider = ({
-    children
-}: {
-    children: React.ReactElement;
-}): React.ReactElement => {
+const WindowDimensionsProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
     const [windowWidth, setwindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        window.addEventListener("resize", () =>
-            setwindowWidth(window.innerWidth)
-        );
+        window.addEventListener('resize', () => setwindowWidth(window.innerWidth));
     }, []);
 
-    return (
-        <windowDimensionsContext.Provider value={{ windowWidth }}>
-            {children}
-        </windowDimensionsContext.Provider>
-    );
+    return <windowDimensionsContext.Provider value={{ windowWidth }}>{children}</windowDimensionsContext.Provider>;
 };
 
 export default WindowDimensionsProvider;

@@ -1,15 +1,13 @@
-import styles from "./FormContentContainer.module.scss";
+import styles from './FormContentContainer.module.scss';
 
 interface FormContentContainerProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
-export default function FormContentContainer({ children }:FormContentContainerProps) {
+export default function FormContentContainer({ children }: FormContentContainerProps) {
     return (
-        <div className={styles.wrapper }>
-            <div className={styles.container}>
-                {children}
-            </div>
+        <div className={styles.wrapper}>
+            <div className={styles.container}>{children}</div>
         </div>
     );
 }

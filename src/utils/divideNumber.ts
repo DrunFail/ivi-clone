@@ -4,7 +4,7 @@ const divideNumber = (number: number): string => {
     const afterFirstNumber = number % 1000000;
     const middleNumbers = Math.floor(afterFirstNumber / 1000);
     const lastNumbers = number % 1000;
-    let string = "";
+    let string = '';
 
     if (firstNumbers) {
         string = `${firstNumbers} `;
@@ -13,9 +13,9 @@ const divideNumber = (number: number): string => {
     if (firstNumbers || middleNumbers) {
         if (firstNumbers) {
             if (middleNumbers < 100) {
-                string += "0";
+                string += '0';
                 if (middleNumbers < 10) {
-                    string += "0";
+                    string += '0';
                 }
             }
             string += `${middleNumbers} `;
@@ -24,9 +24,9 @@ const divideNumber = (number: number): string => {
         }
 
         if (lastNumbers < 100) {
-            string += "0";
+            string += '0';
             if (lastNumbers < 10) {
-                string += "0";
+                string += '0';
             }
         }
         string += `${lastNumbers}`;

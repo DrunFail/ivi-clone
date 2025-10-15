@@ -5,6 +5,6 @@ export function debounce<T extends (...args: Parameters<T>) => ReturnType<T>>(
     let timer: ReturnType<typeof setTimeout>;
     return (...args: Parameters<T>) => {
         clearTimeout(timer);
-        timer = setTimeout(() =>  func(...args), timeout)
-    }
+        timer = setTimeout(() => func(...args), timeout);
+    };
 }

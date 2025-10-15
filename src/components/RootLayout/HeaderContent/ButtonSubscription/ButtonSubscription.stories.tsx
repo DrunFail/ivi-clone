@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import ButtonSubscription from "./ButtonSubscription";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import ButtonSubscription from './ButtonSubscription';
 
 const meta: Meta<typeof ButtonSubscription> = {
-  title: "header/components/ButtonSubscription",
-  component: ButtonSubscription,
+    title: 'header/components/ButtonSubscription',
+    component: ButtonSubscription,
 };
 
 export default meta;

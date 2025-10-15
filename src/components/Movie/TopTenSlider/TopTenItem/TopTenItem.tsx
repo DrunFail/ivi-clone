@@ -1,26 +1,23 @@
-import Image from "next/image";
-import FadeBottomTop from "../FadeBottomTop/FadeBottomTop";
-import FilmTitleTop from "../FilmTitleTop/FilmTitleTop";
-import NumberRatingTop from "../NumberRatingTop/NumberRatingTop";
-import styles from "./TopTenItem.module.scss";
-import { Link } from "@/i18n/navigation";
+import Image from 'next/image';
+import FadeBottomTop from '../FadeBottomTop/FadeBottomTop';
+import FilmTitleTop from '../FilmTitleTop/FilmTitleTop';
+import NumberRatingTop from '../NumberRatingTop/NumberRatingTop';
+import styles from './TopTenItem.module.scss';
+import { Link } from '@/i18n/navigation';
 
 interface TopTenItemProps {
-    elem: { id: number, href: string, name: string }
+    elem: { id: number; href: string; name: string };
 }
 
 export default function TopTenItem({ elem }: TopTenItemProps) {
     return (
-        <Link
-            href={elem.href}
-            aria-label={`перейти на страницу фильма ${elem.name}`}
-        >
+        <Link href={elem.href} aria-label={`перейти на страницу фильма ${elem.name}`}>
             <div className={styles.item}>
                 <div className={styles.container}>
                     <Image
                         src={`/top10/${elem.id}.jpg`}
                         fill
-                        alt=''
+                        alt=""
                         sizes="
 (max-width: 599px) 50vw,
 (max-width: 880px) 33vw,
@@ -28,7 +25,6 @@ export default function TopTenItem({ elem }: TopTenItemProps) {
 20vw
 "
                     />
-
                 </div>
                 <FadeBottomTop>
                     <FilmTitleTop rating={elem.id} />
@@ -36,6 +32,5 @@ export default function TopTenItem({ elem }: TopTenItemProps) {
                 </FadeBottomTop>
             </div>
         </Link>
-
     );
 }

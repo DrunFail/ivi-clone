@@ -1,4 +1,4 @@
-import styles from "./AdminMainPageMessage.module.scss";
+import styles from './AdminMainPageMessage.module.scss';
 export default function AdminMainPageMessage() {
     return (
         <div className={styles.container}>

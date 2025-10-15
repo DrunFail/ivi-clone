@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import ConfirmConfidential from "./ConfirmConfidential";
+import ConfirmConfidential from './ConfirmConfidential';
 
 const meta: Meta<typeof ConfirmConfidential> = {
-  title: "auth/ConfirmConfidential",
-  component: ConfirmConfidential,
+    title: 'auth/ConfirmConfidential',
+    component: ConfirmConfidential,
 };
 
 export default meta;

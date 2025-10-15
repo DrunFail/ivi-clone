@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import RootLayout from "./RootLayout";
+import RootLayout from './RootLayout';
 
 const meta: Meta<typeof RootLayout> = {
-  title: "layouts/RootLayout",
-  component: RootLayout,
+    title: 'layouts/RootLayout',
+    component: RootLayout,
 };
 
 export default meta;
@@ -12,7 +12,6 @@ type Story = StoryObj<typeof RootLayout>;
 
 export const Primary: Story = {
     args: {
-        children: 
-            <div style={{blockSize: "300px", backgroundColor: "blue"} }>content</div>
-    }
+        children: <div style={{ blockSize: '300px', backgroundColor: 'blue' }}>content</div>,
+    },
 };

@@ -1,5 +1,5 @@
-import styles from "./WatchMoviesLink.module.scss";
-import MegaphoneImage from "../../../UI/MegaphoneImage/MegaphoneImage";
+import styles from './WatchMoviesLink.module.scss';
+import MegaphoneImage from '../../../UI/MegaphoneImage/MegaphoneImage';
 import { useTranslations } from 'next-intl';
 
 export default function WatchMoviesLink() {
@@ -7,7 +7,7 @@ export default function WatchMoviesLink() {
     return (
         <div className={styles.container} data-testid="watch-movies-link">
             <MegaphoneImage />
-            <p>{t("WatchMovies")}</p>
+            <p>{t('WatchMovies')}</p>
         </div>
     );
 }

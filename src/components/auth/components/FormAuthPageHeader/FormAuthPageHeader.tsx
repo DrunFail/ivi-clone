@@ -1,7 +1,7 @@
-import styles from "./FormAuthPageHeader.module.scss";
+import styles from './FormAuthPageHeader.module.scss';
 
 interface FormAuthPageHeaderProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
 export default function FormAuthPageHeader({ children }: FormAuthPageHeaderProps) {

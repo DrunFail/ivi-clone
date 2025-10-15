@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import AdminMainPageMessage from "./AdminMainPageMessage";
+import AdminMainPageMessage from './AdminMainPageMessage';
 
 const meta: Meta<typeof AdminMainPageMessage> = {
-  title: "admin/AdminMainPageMessage",
-  component: AdminMainPageMessage,
+    title: 'admin/AdminMainPageMessage',
+    component: AdminMainPageMessage,
 };
 
 export default meta;

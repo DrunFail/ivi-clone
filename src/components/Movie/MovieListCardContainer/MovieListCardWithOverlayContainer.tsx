@@ -1,11 +1,11 @@
-import { Movie } from "../../../models/types";
-import MovieListCardWithOverlay from "../MovieListCardWithOverlay/MovieListCardWithOverlay";
-import UserOverlayIcon from "../UserOverlayIcon/UserOverlayIcon";
-import useMovieListCardData from "../../../hooks/movie/useMovieListCardData";
-import { Link } from "@/i18n/navigation";
+import { Movie } from '../../../models/types';
+import MovieListCardWithOverlay from '../MovieListCardWithOverlay/MovieListCardWithOverlay';
+import UserOverlayIcon from '../UserOverlayIcon/UserOverlayIcon';
+import useMovieListCardData from '../../../hooks/movie/useMovieListCardData';
+import { Link } from '@/i18n/navigation';
 
 interface MovieListCardWithOverlayContainerProps {
-    elem: Movie
+    elem: Movie;
 }
 
 export default function MovieListCardWithOverlayContainer({ elem }: MovieListCardWithOverlayContainerProps) {
@@ -13,12 +13,13 @@ export default function MovieListCardWithOverlayContainer({ elem }: MovieListCar
     return (
         <Link
             href={movieData.movieLink}
-            aria-label={`перейти на страницу фильма ${movieData.modifiedMovieData.movieName}` }
+            aria-label={`перейти на страницу фильма ${movieData.modifiedMovieData.movieName}`}
         >
             <MovieListCardWithOverlay
                 icons={<UserOverlayIcon />}
                 modifiedMovieData={movieData.modifiedMovieData}
-                overlayMovieData={movieData.overlayMovieData} />
+                overlayMovieData={movieData.overlayMovieData}
+            />
         </Link>
     );
 }

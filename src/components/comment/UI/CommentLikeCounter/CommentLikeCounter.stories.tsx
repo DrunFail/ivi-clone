@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import CommentLikeCounter from "./CommentLikeCounter";
+import CommentLikeCounter from './CommentLikeCounter';
 
 const meta: Meta<typeof CommentLikeCounter> = {
-  title: "comment/ui/CommentLikeCounter",
-  component: CommentLikeCounter,
+    title: 'comment/ui/CommentLikeCounter',
+    component: CommentLikeCounter,
 };
 
 export default meta;

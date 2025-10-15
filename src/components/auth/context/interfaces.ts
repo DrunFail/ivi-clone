@@ -1,12 +1,10 @@
-import { ReviewAuthor } from "../../../models/types";
-
 export interface AuthContextData {
-    token: string | null,
-    userEmail: string | null,
-    userRoles: string[] | null,
-    profile: any
+    token: string | null;
+    userEmail: string | null;
+    userRoles: string[] | null;
+    profile: any;
 }
 export interface IAuthContext {
-     auth: AuthContextData | null;
-     setAuth: (auth: AuthContextData | null) => void;
+    auth: AuthContextData | null;
+    setAuth: (auth: AuthContextData | null) => void;
 }

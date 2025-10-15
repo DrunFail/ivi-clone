@@ -1,14 +1,10 @@
-"use client";
+'use client';
 
-import styles from "./PageWrapper.module.scss";
+import styles from './PageWrapper.module.scss';
 
 interface PageWrapperProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
-export default function PageWrapper({ children }:PageWrapperProps) {
-    return (
-        <div className={styles.wrapper}>
-            {children}
-        </div>
-    );
+export default function PageWrapper({ children }: PageWrapperProps) {
+    return <div className={styles.wrapper}>{children}</div>;
 }

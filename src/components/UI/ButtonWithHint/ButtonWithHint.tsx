@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { HTMLAttributes, useState } from "react";
-import styles from "./ButtonWithHint.module.scss";
-import { useTranslations } from "next-intl";
+import { HTMLAttributes, useState } from 'react';
+import styles from './ButtonWithHint.module.scss';
+import { useTranslations } from 'next-intl';
 
 interface ButtonWithHintProps extends HTMLAttributes<HTMLButtonElement> {
-    children: React.ReactNode,
-    description: string,
-    actionHandler?: () => void
+    children: React.ReactNode;
+    description: string;
+    actionHandler?: () => void;
 }
 
-export default function ButtonWithHint({children,actionHandler, description, ...props }:ButtonWithHintProps) {
+export default function ButtonWithHint({ children, actionHandler, description, ...props }: ButtonWithHintProps) {
     const [visible, setVisible] = useState(false);
     const t = useTranslations();
 
@@ -20,11 +20,10 @@ export default function ButtonWithHint({children,actionHandler, description, ...
             onClick={actionHandler}
             onMouseEnter={() => setVisible(true)}
             onMouseLeave={() => setVisible(false)}
-            {...props }
+            {...props}
         >
-            {children }
-            {visible && <span>{t(description)}</span> }
+            {children}
+            {visible && <span>{t(description)}</span>}
         </button>
-
     );
 }

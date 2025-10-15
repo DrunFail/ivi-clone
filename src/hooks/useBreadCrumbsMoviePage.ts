@@ -1,64 +1,61 @@
-import { MovieById } from "../models/types";
-import { calculateMovieName } from "../utils/calculateMovieName";
-import { getKeyByValue } from "../utils/getKeyByValue";
-import { CLIENT_GENRE_LIST } from "../constants/genreList";
-import { useLocale, useTranslations } from "next-intl";
+import { MovieById } from '../models/types';
+import { calculateMovieName } from '../utils/calculateMovieName';
+import { getKeyByValue } from '../utils/getKeyByValue';
+import { CLIENT_GENRE_LIST } from '../constants/genreList';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface UseBreadCrumbsMoviePageProps {
-    movie: MovieById | undefined
+    movie: MovieById | undefined;
 }
 const TYPE_MOVIE_LINK = {
-    "FILM": "/movies/all",
-    "TV_SERIES": "https://www.ivi.ru/series"
-}
+    FILM: '/movies/all',
+    TV_SERIES: 'https://www.ivi.ru/series',
+};
 
 export default function useBreadCrumbsMoviePage({ movie }: UseBreadCrumbsMoviePageProps) {
     const t = useTranslations();
-    const lang = useLocale() as "ru" | "en";
+    const lang = useLocale() as 'ru' | 'en';
     if (!movie) return null;
     const typeMovie = movie.film.type;
-    const typeMovieHref = TYPE_MOVIE_LINK[typeMovie]
+    const typeMovieHref = TYPE_MOVIE_LINK[typeMovie];
     const movieGenre = movie.film.genres[0].id;
     const movieName = calculateMovieName(movie.film, lang);
-    const mainTitle = t("MyIvi");
-    const typeMovieTitle = t(`breadcrumbs.${typeMovie}`)
+    const mainTitle = t('MyIvi');
+    const typeMovieTitle = t(`breadcrumbs.${typeMovie}`);
 
-    const genreTitleKey = getKeyByValue(CLIENT_GENRE_LIST,movieGenre)
-    const genreTitle = t(`genre.${genreTitleKey}`)
+    const genreTitleKey = getKeyByValue(CLIENT_GENRE_LIST, movieGenre);
+    const genreTitle = t(`genre.${genreTitleKey}`);
 
     const returned = {
         fullList: [
             {
                 children: mainTitle,
-                href: "/"
+                href: '/',
             },
             {
                 children: typeMovieTitle,
-                href: typeMovieHref
+                href: typeMovieHref,
             },
             {
                 children: genreTitle,
-                href: ""
+                href: '',
             },
             {
                 children: movieName,
-                href: ""
-            }
+                href: '',
+            },
         ],
         shortList: [
             {
                 children: typeMovieTitle,
-                href: typeMovieHref
+                href: typeMovieHref,
             },
             {
                 children: genreTitle,
-                href: ""
-            }
-        ]
-    }
-        
+                href: '',
+            },
+        ],
+    };
 
-    
-
-return returned;
+    return returned;
 }

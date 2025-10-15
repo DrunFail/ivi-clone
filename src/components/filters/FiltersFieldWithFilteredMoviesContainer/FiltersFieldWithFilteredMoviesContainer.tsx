@@ -1,44 +1,46 @@
-"use client"
+'use client';
 
-import { useActionState, useEffect, useRef } from "react";
-import { ResponseWithCountAndRows } from "../../../models/response";
-import { Movie } from "../../../models/types";
-import MovieListCardWithOverlayContainer from "../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer";
-import MovieSliderSizeContainer from "../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer";
-import ButtonShowMore from "../../UI/Carousel/ButtonShowMore/ButtonShowMore";
-import { getKeyByValue } from "../../../utils/getKeyByValue";
-import { CLIENT_GENRE_LIST } from "../../../constants/genreList";
-import { formFieldAction } from "../../../hooks/filters/formFieldAction";
-import { useRouter } from "@/i18n/navigation";
-import { debounce } from "@/utils/debounce";
-import RangeFilter from "@/components/filters/RangeFilter/RangeFilter";
+import { useActionState, useEffect, useRef } from 'react';
+import { ResponseWithCountAndRows } from '../../../models/response';
+import { Movie } from '../../../models/types';
+import MovieListCardWithOverlayContainer from '../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer';
+import MovieSliderSizeContainer from '../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer';
+import ButtonShowMore from '../../UI/Carousel/ButtonShowMore/ButtonShowMore';
+import { getKeyByValue } from '../../../utils/getKeyByValue';
+import { CLIENT_GENRE_LIST } from '../../../constants/genreList';
+import { formFieldAction } from '../../../hooks/filters/formFieldAction';
+import { useRouter } from '@/i18n/navigation';
+import { debounce } from '@/utils/debounce';
 
 interface Props {
-    firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>,
-    children: React.ReactNode
+    firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>;
+    children: React.ReactNode;
 }
 
 export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMoviesByGenre, children }: Props) {
-    const [state, action] = useActionState(formFieldAction, { movie: firstLoadMoviesByGenre, isShowChangePageButton: true });
+    const [state, action] = useActionState(formFieldAction, {
+        movie: firstLoadMoviesByGenre,
+        isShowChangePageButton: true,
+    });
     const listRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
     useEffect(() => {
         //get "--amount" property from css and set value for input[name=size]
         if (listRef.current) {
-            const amount = getComputedStyle(listRef.current).getPropertyValue('--amount')
+            const amount = getComputedStyle(listRef.current).getPropertyValue('--amount');
             const inputSize = document.querySelector('input[name=size]') as HTMLInputElement;
-            const currentSize = +amount * 3
+            const currentSize = +amount * 3;
             inputSize.value = currentSize.toString();
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         const resetButton = document.querySelector('button[type=reset]') as HTMLButtonElement;
         const redirect = () => router.push('/movies/all');
         resetButton.addEventListener('click', redirect);
         return () => resetButton.removeEventListener('click', redirect);
-    }, [router])
+    }, [router]);
 
     useEffect(() => {
         const button = document.getElementById('load-more');
@@ -49,73 +51,69 @@ export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMovie
             button.addEventListener('click', () => {
                 input.stepUp(1);
                 input.dispatchEvent(new Event('change', { bubbles: true }));
-                amountContainer.style.gridAutoRows = "auto";
-            })
+                amountContainer.style.gridAutoRows = 'auto';
+            });
         }
-    }, [])
+    }, []);
 
     const debouncedSubmit = useRef(
         debounce((form: HTMLFormElement) => {
-            form.requestSubmit()
-        },500)
-    )
+            form.requestSubmit();
+        }, 500),
+    );
 
     const formChangeHandler = (e: any) => {
-            const form = document.getElementById("form") as HTMLFormElement;
+        const form = document.getElementById('form') as HTMLFormElement;
 
-            //if set new genre => redirect to genre page
-            if (e.target.name === "genreId") {
-                const selectedGenreLink = getKeyByValue(CLIENT_GENRE_LIST, +e.target.value);
-                router.push(`/movies/${selectedGenreLink}`)
-            }
-            //if set new country => set current page value = 0
-            if (e.target.name === "countryId") {
-                const input = document.querySelector('input[name=page]') as HTMLInputElement;
-                input.value = "0";
-            }
-            if (e.target.type === "range" && form) {
-                debouncedSubmit.current(form);
-            }
-            else {
-                form.requestSubmit();
-            }
-        
-    }
-    
+        //if set new genre => redirect to genre page
+        if (e.target.name === 'genreId') {
+            const selectedGenreLink = getKeyByValue(CLIENT_GENRE_LIST, +e.target.value);
+            router.push(`/movies/${selectedGenreLink}`);
+        }
+        //if set new country => set current page value = 0
+        if (e.target.name === 'countryId') {
+            const input = document.querySelector('input[name=page]') as HTMLInputElement;
+            input.value = '0';
+        }
+        if (e.target.type === 'range' && form) {
+            debouncedSubmit.current(form);
+        } else {
+            form.requestSubmit();
+        }
+    };
 
     return (
-        <div onChange={(e) => formChangeHandler(e) }>
-
+        <div onChange={(e) => formChangeHandler(e)}>
             <form name="test" id="form" action={action} noValidate>
-                {children }
+                {children}
                 <button type="submit" />
             </form>
 
-
-            {state.movie.count
-
-                ? <>
+            {state.movie.count ? (
+                <>
                     <MovieSliderSizeContainer>
                         <div
                             ref={listRef}
-                            id={"get-amount"}
-                            style={{ display: "grid", gridTemplateColumns: "repeat(var(--amount), 1fr)", gridTemplateRows: "repeat(3, 1fr)", gridAutoRows: "0", overflowY: "hidden" }}
+                            id={'get-amount'}
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(var(--amount), 1fr)',
+                                gridTemplateRows: 'repeat(3, 1fr)',
+                                gridAutoRows: '0',
+                                overflowY: 'hidden',
+                            }}
                         >
-                            {state.movie.rows.map(movie =>
-                                <MovieListCardWithOverlayContainer
-                                    key={movie.id}
-                                    elem={movie}
-                                />
-                            )}
+                            {state.movie.rows.map((movie) => (
+                                <MovieListCardWithOverlayContainer key={movie.id} elem={movie} />
+                            ))}
                         </div>
                     </MovieSliderSizeContainer>
 
                     {state.isShowChangePageButton && <ButtonShowMore id="load-more" />}
                 </>
-                : <p>no movie</p>
-            }
-
-
+            ) : (
+                <p>no movie</p>
+            )}
         </div>
     );
 }

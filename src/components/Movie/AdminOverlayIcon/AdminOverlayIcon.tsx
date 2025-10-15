@@ -1,11 +1,11 @@
-import ButtonWithHint from "../../UI/ButtonWithHint/ButtonWithHint";
-import FontIcon from "../../UI/FontIcon/FontIcon";
+import ButtonWithHint from '../../UI/ButtonWithHint/ButtonWithHint';
+import FontIcon from '../../UI/FontIcon/FontIcon';
 
 interface AdminOverlayIconProps {
-    editHandler: () => void,
-    deleteHandler: () => void
+    editHandler: () => void;
+    deleteHandler: () => void;
 }
-export default function AdminOverlayIcon({editHandler, deleteHandler }:AdminOverlayIconProps) {
+export default function AdminOverlayIcon({ editHandler, deleteHandler }: AdminOverlayIconProps) {
     return (
         <>
             <ButtonWithHint description="button.hint.edit" actionHandler={editHandler}>

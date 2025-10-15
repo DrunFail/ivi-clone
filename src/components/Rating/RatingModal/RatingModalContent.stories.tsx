@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import RatingModalContent from "./RatingModalContent";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import RatingModalContent from './RatingModalContent';
 
 const meta: Meta<typeof RatingModalContent> = {
-    title: "ui/rating/RatingModalContent",
+    title: 'ui/rating/RatingModalContent',
     component: RatingModalContent,
 };
 

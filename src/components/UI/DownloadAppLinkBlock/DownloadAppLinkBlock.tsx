@@ -1,10 +1,9 @@
-import styles from "./DownloadAppLinkBlock.module.scss";
-import DownloadAppLink from "../DownloadAppLink/DownloadAppLink";
+import styles from './DownloadAppLinkBlock.module.scss';
 
-export default function DownloadAppLinkBlock({ children }: {children:React.ReactNode}) {
+export default function DownloadAppLinkBlock({ children }: { children: React.ReactNode }) {
     return (
         <div className={styles.container} data-testid="dwnld-app-links">
-            {children }
+            {children}
         </div>
     );
 }

@@ -1,8 +1,8 @@
-import { useTranslations } from "next-intl";
-import styles from "./NavMenuList.module.scss";
-import { LinkData } from "../../../../../models/global";
-import NavigationBlockTitle from "../../../Footer/NavigationBlockTitle/NavigationBlockTitle";
-import DropdownList from "../../../../UI/DropdownList/DropdownList";
+import { useTranslations } from 'next-intl';
+import styles from './NavMenuList.module.scss';
+import { LinkData } from '../../../../../models/global';
+import NavigationBlockTitle from '../../../Footer/NavigationBlockTitle/NavigationBlockTitle';
+import DropdownList from '../../../../UI/DropdownList/DropdownList';
 
 interface NavMenuListProps {
     genres: LinkData[];
@@ -12,55 +12,28 @@ interface NavMenuListProps {
     typeContent: string;
 }
 
-export default function NavMenuList({ genres, country, years, aside,typeContent }: NavMenuListProps) {
+export default function NavMenuList({ genres, country, years, aside, typeContent }: NavMenuListProps) {
     const t = useTranslations();
     return (
-
         <div className={styles.container}>
             <div>
-                <NavigationBlockTitle>
-                    {t("header.genres")}
-                </NavigationBlockTitle>
-                <DropdownList
-                    oneColumn
-                    linkDataList={genres}
-                    
-
-                />
+                <NavigationBlockTitle>{t('header.genres')}</NavigationBlockTitle>
+                <DropdownList oneColumn linkDataList={genres} />
             </div>
             <div className={styles.group}>
                 <div>
-                    <NavigationBlockTitle>
-                        {t("header.countries")}
-                    </NavigationBlockTitle>
+                    <NavigationBlockTitle>{t('header.countries')}</NavigationBlockTitle>
 
-                    <DropdownList
-                        oneColumn
-                        linkDataList={country}
-                        
-                    />
+                    <DropdownList oneColumn linkDataList={country} />
                 </div>
                 <div>
-                    <NavigationBlockTitle>
-                        {t("header.year")}
-                    </NavigationBlockTitle>
+                    <NavigationBlockTitle>{t('header.year')}</NavigationBlockTitle>
 
-                    <DropdownList
-                        oneColumn
-                        linkDataList={years}
-                        
-                    />
+                    <DropdownList oneColumn linkDataList={years} />
                 </div>
-               
-
             </div>
 
-            <DropdownList
-                oneColumn
-                linkDataList={aside}
-                intlPrefix="aside"
-            />
+            <DropdownList oneColumn linkDataList={aside} intlPrefix="aside" />
         </div>
-
     );
 }

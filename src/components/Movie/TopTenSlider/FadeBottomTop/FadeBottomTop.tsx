@@ -1,11 +1,9 @@
-import styles from "./FadeBottomTop.module.scss";
+import styles from './FadeBottomTop.module.scss';
 
 interface FadeBottomTopProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
-export default function FadeBottomTop({ children }:FadeBottomTopProps) {
-    return (
-        <div className={styles.background}>{children}</div>
-    );
+export default function FadeBottomTop({ children }: FadeBottomTopProps) {
+    return <div className={styles.background}>{children}</div>;
 }

@@ -1,4 +1,4 @@
-import styles from "./EmptyMovieList.module.scss";
+import styles from './EmptyMovieList.module.scss';
 
 export default function EmptyMovieList() {
     return (

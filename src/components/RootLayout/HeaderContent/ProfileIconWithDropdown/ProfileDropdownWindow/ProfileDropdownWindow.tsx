@@ -1,48 +1,36 @@
-import ProfileDropdownCard from "../ProfileDropdownCard/ProfileDropdownCard";
-import styles from "./ProfileDropdownWindow.module.scss";
-import { PROFILE_IMG_LINK_DATA } from "../imgLinkData";
-import Button from "../../../../UI/core/Button/Button";
-import { useTranslations } from "next-intl";
-import CheckIsAuthUser from "../../../CheckIsAuthUser/CheckIsAuthUser";
-import ClickLogoutHandler from "../../../ClickLogoutHandler/ClickLogoutHandler";
-import SetCookierForRedirectAfterLogin from "../../../SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin";
+import ProfileDropdownCard from '../ProfileDropdownCard/ProfileDropdownCard';
+import styles from './ProfileDropdownWindow.module.scss';
+import { PROFILE_IMG_LINK_DATA } from '../imgLinkData';
+import Button from '../../../../UI/core/Button/Button';
+import { useTranslations } from 'next-intl';
+import CheckIsAuthUser from '../../../CheckIsAuthUser/CheckIsAuthUser';
+import ClickLogoutHandler from '../../../ClickLogoutHandler/ClickLogoutHandler';
+import SetCookierForRedirectAfterLogin from '../../../SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin';
 
 export default function ProfileDropdownWindow() {
     const t = useTranslations();
     return (
         <div className={styles.container}>
             <div className={styles.cardBlock}>
-                {PROFILE_IMG_LINK_DATA.map(card =>
-                    <ProfileDropdownCard
-                        key={card.id}
-                        variant={card.imgLink}
-                    >
+                {PROFILE_IMG_LINK_DATA.map((card) => (
+                    <ProfileDropdownCard key={card.id} variant={card.imgLink}>
                         {t(card.idTranslate)}
                     </ProfileDropdownCard>
-                )}
-
+                ))}
             </div>
             <div className={styles.authButton}>
                 <CheckIsAuthUser
                     isTrue={
                         <ClickLogoutHandler>
-                            <Button
-                                as="button"
-                                color="red"
-                            >
+                            <Button as="button" color="red">
                                 Выйти
-                                </Button>
+                            </Button>
                         </ClickLogoutHandler>
                     }
                     isFalse={
                         <SetCookierForRedirectAfterLogin>
-                            <Button
-                                as="link"
-                                color="red"
-                                href="/auth/login"
-                                data-testId="btn-login"
-                            >
-                                {t("EnterOrRegister")}
+                            <Button as="link" color="red" href="/auth/login" data-testId="btn-login">
+                                {t('EnterOrRegister')}
                             </Button>
                         </SetCookierForRedirectAfterLogin>
                     }
@@ -50,4 +38,4 @@ export default function ProfileDropdownWindow() {
             </div>
         </div>
     );
-};
+}

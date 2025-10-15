@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import AutoSuggestFilter from "./AutoSuggestFilter";
+import AutoSuggestFilter from './AutoSuggestFilter';
 
 const meta: Meta<typeof AutoSuggestFilter> = {
-    title: "filters/AutoSuggestFilter",
+    title: 'filters/AutoSuggestFilter',
     component: AutoSuggestFilter,
     args: {
-        filterKey: "FilterName",
-        filterName: "FilterName"
-    }
+        filterKey: 'FilterName',
+        filterName: 'FilterName',
+    },
 };
 
 export default meta;

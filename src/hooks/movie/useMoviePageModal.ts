@@ -1,14 +1,12 @@
-import { useSearchParams,useRouter,useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams, useRouter, useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function useMoviePageModal() {
     const [visible, setVisible] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams()!;
     const id = useParams<{ id: string }>()!.id;
-    const type = searchParams.get("type")!;
-    
-    
+    const type = searchParams.get('type')!;
 
     const pushQuery = async (type: string) => {
         await router.push(`/movie/${id}?type=${type}`);
@@ -26,6 +24,5 @@ export default function useMoviePageModal() {
         await router.push(`/movie/${id}`);
     };
 
-
-    return {visible,  pushQuery,removeQueryParam, type}
+    return { visible, pushQuery, removeQueryParam, type };
 }

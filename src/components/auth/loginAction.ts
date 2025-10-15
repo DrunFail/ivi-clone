@@ -1,48 +1,37 @@
-"use server"
+'use server';
 
-import { z } from "zod";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { authAPI } from "@/lib/api/authAPI";
-import { HttpError } from "@/lib/error";
-import { revalidatePath } from "next/cache";
+import { z } from 'zod';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { authAPI } from '@/lib/api/authAPI';
+import { HttpError } from '@/lib/error';
+import { revalidatePath } from 'next/cache';
 
-type FormState =
-    | {
-        errors?: {
-            email?: string[]
-            password?: string[]
-            formError?: string[]
-        }
-        message?: string
-    }
-    | null
-
+type FormState = {
+    errors?: {
+        email?: string[];
+        password?: string[];
+        formError?: string[];
+    };
+    message?: string;
+} | null;
 
 const LoginSchema = z.object({
-    email: z
-        .string()
-        .email("invalidEmail")
-        .trim(),
-    password: z
-        .string()
-        .min(8, "minPwd")
-        .max(20, "maxPwd")
-        .trim(),
-    formError: z.string()
-})
-
+    email: z.string().email('invalidEmail').trim(),
+    password: z.string().min(8, 'minPwd').max(20, 'maxPwd').trim(),
+    formError: z.string(),
+});
 
 export async function loginAction(state: FormState, formData: FormData) {
     const validatedFields = LoginSchema.safeParse({
-        email: formData.get("email"),
-        password: formData.get("password"),
-        formError: formData.get("formError")
-    })
+        email: formData.get('email'),
+        password: formData.get('password'),
+        formError: formData.get('formError'),
+    });
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-        }
+        };
     }
     const { email, password } = validatedFields.data;
     try {
@@ -52,36 +41,33 @@ export async function loginAction(state: FormState, formData: FormData) {
 
         cookie.set('refreshToken', refresh, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 30 * 24 * 60 * 60,
             sameSite: 'lax',
             path: '/',
-        })
+        });
         cookie.set('session', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 15 * 60,
             sameSite: 'lax',
             path: '/',
-        })
+        });
 
-        revalidatePath('/[locale]', 'layout')
-    }
-    catch (error) {
+        revalidatePath('/[locale]', 'layout');
+    } catch (error) {
         if (error instanceof HttpError) {
             if (error.statusCode === 404 || error.statusCode === 401) {
                 return {
-                    errors: { formError: ["invalidLoginData"] },
-                }
+                    errors: { formError: ['invalidLoginData'] },
+                };
             }
         }
         return {
-            errors: { formError: ["noResponse"] },
-        }
+            errors: { formError: ['noResponse'] },
+        };
     }
-    const backUrl = (await cookies()).get("backLoginUrl")?.value;
-    (await cookies()).delete("backLoginUrl");
-    redirect(backUrl || "/");
-
+    const backUrl = (await cookies()).get('backLoginUrl')?.value;
+    (await cookies()).delete('backLoginUrl');
+    redirect(backUrl || '/');
 }
-
