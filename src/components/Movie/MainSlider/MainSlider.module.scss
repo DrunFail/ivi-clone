@@ -1,12 +1,4 @@
 .slider {
-    &__sliderCont {
-        @media (max-width: 1280px) {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-    }
-
     &__arrowsCont {
         position: absolute;
         z-index: 2;

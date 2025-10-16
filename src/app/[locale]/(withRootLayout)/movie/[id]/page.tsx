@@ -94,132 +94,114 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
     const movieStaffSliced = movie.staff.length > personAmount ? movie.staff.slice(0, personAmount) : movie.staff;
 
     return (
-        <>
+        <PageWrapper>
             <PageSection>
-                <PageWrapper>
-                    <BreadCrumbs breadcrumbs={breadCrumbsData.shortList} />
-                </PageWrapper>
+                <BreadCrumbs breadcrumbs={breadCrumbsData.shortList} />
             </PageSection>
 
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <MoviePageGridTemplate>
-                            <MoviePageGridArea area="player">
-                                <MoviePlayerStickyContainer>
-                                    <CustomReactPlayer videoUrl={firstTrailerLink} />
-                                </MoviePlayerStickyContainer>
-                            </MoviePageGridArea>
-
-                            <MoviePageGridArea area="info">
-                                <Info
-                                    movieTitle={movieName}
-                                    movieYear={movie.film.year}
-                                    movieDuration={movieDuration}
-                                    ageLimit={ageLimit}
-                                    movieCountry={movieCountry}
-                                    movieGenre={movieGenre}
-                                />
-                            </MoviePageGridArea>
-
-                            <MoviePageGridArea area="person">
-                                <PersonListWithRating
-                                    movieRating={movie.film.ratingKinopoisk ?? 5}
-                                    persons={movieStaffSliced}
-                                />
-                            </MoviePageGridArea>
-
-                            <MoviePageGridArea area="buttons">
-                                <ButtonPlayerBlock
-                                    variant={'tablet'}
-                                    movieName={movieName}
-                                    moviePosterUrl={movie.film.posterUrl}
-                                    movieYear={movie.film.year}
-                                />
-                            </MoviePageGridArea>
-
-                            <MoviePageGridArea area="description">
-                                <MovieHideInfoContainer
-                                    movieDescription={movie.film.description}
-                                    isHideText="Детали о фильме"
-                                    notIsHideText="Свернуть детали"
-                                >
-                                    <MovieExtraInfoBlock variant={'desktop'} />
-                                </MovieHideInfoContainer>
-                            </MoviePageGridArea>
-
-                            <SizeConditionContainer more={1160}>
-                                <MoviePageGridArea area="rating">
-                                    <Rating
-                                        ratingButton={
-                                            <RatingLarge>
-                                                <RatingBlock ratingValue={+(movie.film.ratingKinopoisk ?? 5)} />
-                                                <p>{t('RatingIvi')}</p>
-                                                <div>
-                                                    <p>{t('Estimate')}</p>
-                                                </div>
-                                            </RatingLarge>
-                                        }
-                                        ratingModalContent={<RatingModalContent />}
-                                    />
-                                </MoviePageGridArea>
-                            </SizeConditionContainer>
-                        </MoviePageGridTemplate>
-                    </PageWrapperInner>
-                </PageWrapper>
-            </PageSection>
-
-            <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <SectionTitle withArrow={false}>{t('WithFilm', { name: movieName })}</SectionTitle>
-                        <SimilarSlider
-                            similarData={similar}
-                            similarGenreId={movie.film.genres[0].id}
-                            similarMovieList={movie.film.similar}
-                            movieName={movieName}
-                        />
-                    </PageWrapperInner>
-                </PageWrapper>
-            </PageSection>
-
-            <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <Link href={`/movie/${id}/actors`} prefetch>
-                            <SectionTitle withArrow={false}>{dict.CreatersAndActors}</SectionTitle>
-                        </Link>
-                        <StaffSlider data={movie.staff} />
-                    </PageWrapperInner>
-                </PageWrapper>
-            </PageSection>
-
-            <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <Link href={`/movie/${id}/review`}>
-                            <SectionTitle withArrow={false}>{dict.review}</SectionTitle>
-                        </Link>
-                        <CommentSlider
-                            commentData={movie.reviews}
-                            movieName={movieName}
-                            movieId={movie.film.kinopoiskId}
-                        />
-                    </PageWrapperInner>
-                </PageWrapper>
-            </PageSection>
-            <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <WatchAnyDevice movieName={movieName} moviePosterUrl={movie.film.posterUrl} />
-                    </PageWrapperInner>
-                </PageWrapper>
-            </PageSection>
-            <PageWrapper>
                 <PageWrapperInner>
-                    <BreadCrumbs breadcrumbs={breadCrumbsData.fullList} isLastCrumbActive={false} />
+                    <MoviePageGridTemplate>
+                        <MoviePageGridArea area="player">
+                            <MoviePlayerStickyContainer>
+                                <CustomReactPlayer videoUrl={firstTrailerLink} />
+                            </MoviePlayerStickyContainer>
+                        </MoviePageGridArea>
+
+                        <MoviePageGridArea area="info">
+                            <Info
+                                movieTitle={movieName}
+                                movieYear={movie.film.year}
+                                movieDuration={movieDuration}
+                                ageLimit={ageLimit}
+                                movieCountry={movieCountry}
+                                movieGenre={movieGenre}
+                            />
+                        </MoviePageGridArea>
+
+                        <MoviePageGridArea area="person">
+                            <PersonListWithRating
+                                movieRating={movie.film.ratingKinopoisk ?? 5}
+                                persons={movieStaffSliced}
+                            />
+                        </MoviePageGridArea>
+
+                        <MoviePageGridArea area="buttons">
+                            <ButtonPlayerBlock
+                                variant={'tablet'}
+                                movieName={movieName}
+                                moviePosterUrl={movie.film.posterUrl}
+                                movieYear={movie.film.year}
+                            />
+                        </MoviePageGridArea>
+
+                        <MoviePageGridArea area="description">
+                            <MovieHideInfoContainer
+                                movieDescription={movie.film.description}
+                                isHideText="Детали о фильме"
+                                notIsHideText="Свернуть детали"
+                            >
+                                <MovieExtraInfoBlock variant={'desktop'} />
+                            </MovieHideInfoContainer>
+                        </MoviePageGridArea>
+
+                        <SizeConditionContainer more={1160}>
+                            <MoviePageGridArea area="rating">
+                                <Rating
+                                    ratingButton={
+                                        <RatingLarge>
+                                            <RatingBlock ratingValue={+(movie.film.ratingKinopoisk ?? 5)} />
+                                            <p>{t('RatingIvi')}</p>
+                                            <div>
+                                                <p>{t('Estimate')}</p>
+                                            </div>
+                                        </RatingLarge>
+                                    }
+                                    ratingModalContent={<RatingModalContent />}
+                                />
+                            </MoviePageGridArea>
+                        </SizeConditionContainer>
+                    </MoviePageGridTemplate>
                 </PageWrapperInner>
-            </PageWrapper>
-        </>
+            </PageSection>
+
+            <PageSection>
+                <PageWrapperInner>
+                    <SectionTitle withArrow={false}>{t('WithFilm', { name: movieName })}</SectionTitle>
+                    <SimilarSlider
+                        similarData={similar}
+                        similarGenreId={movie.film.genres[0].id}
+                        similarMovieList={movie.film.similar}
+                        movieName={movieName}
+                    />
+                </PageWrapperInner>
+            </PageSection>
+
+            <PageSection>
+                <PageWrapperInner>
+                    <Link href={`/movie/${id}/actors`} prefetch>
+                        <SectionTitle withArrow={false}>{dict.CreatersAndActors}</SectionTitle>
+                    </Link>
+                    <StaffSlider data={movie.staff} />
+                </PageWrapperInner>
+            </PageSection>
+
+            <PageSection>
+                <PageWrapperInner>
+                    <Link href={`/movie/${id}/review`}>
+                        <SectionTitle withArrow={false}>{dict.review}</SectionTitle>
+                    </Link>
+                    <CommentSlider commentData={movie.reviews} movieName={movieName} movieId={movie.film.kinopoiskId} />
+                </PageWrapperInner>
+            </PageSection>
+            <PageSection>
+                <PageWrapperInner>
+                    <WatchAnyDevice movieName={movieName} moviePosterUrl={movie.film.posterUrl} />
+                </PageWrapperInner>
+            </PageSection>
+            <PageWrapperInner>
+                <BreadCrumbs breadcrumbs={breadCrumbsData.fullList} isLastCrumbActive={false} />
+            </PageWrapperInner>
+        </PageWrapper>
     );
 }

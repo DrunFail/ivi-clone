@@ -82,96 +82,90 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
     const sortedCountriesWithAll = [{ name: 'all', id: 0 }, ...sortedCountries];
 
     return (
-        <>
-            <PageWrapper>
-                <BreadcrumbsGenrePage />
-            </PageWrapper>
+        <PageWrapper>
+            <BreadcrumbsGenrePage />
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <WatchPageHeader>{t(`genre.${genre}.title`)}</WatchPageHeader>
-                        <WatchPageHeaderContainer>
-                            <WatchPageGenreDescription>{t(`genre.${genre}.description`)}</WatchPageGenreDescription>
-                        </WatchPageHeaderContainer>
-                    </PageWrapperInner>
-                </PageWrapper>
+                <PageWrapperInner>
+                    <WatchPageHeader>{t(`genre.${genre}.title`)}</WatchPageHeader>
+                    <WatchPageHeaderContainer>
+                        <WatchPageGenreDescription>{t(`genre.${genre}.description`)}</WatchPageGenreDescription>
+                    </WatchPageHeaderContainer>
+                </PageWrapperInner>
             </PageSection>
             <PageSection>
-                <PageWrapper>
-                    <FiltersFieldWithFilteredMoviesContainer firstLoadMoviesByGenre={firstLoadMoviesByGenre}>
-                        <MovieFilterFormGridTemplate>
-                            <input
-                                type="number"
-                                name="page"
-                                defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.page}
-                                step={1}
-                                style={{ display: 'none' }}
+                <FiltersFieldWithFilteredMoviesContainer firstLoadMoviesByGenre={firstLoadMoviesByGenre}>
+                    <MovieFilterFormGridTemplate>
+                        <input
+                            type="number"
+                            name="page"
+                            defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.page}
+                            step={1}
+                            style={{ display: 'none' }}
+                        />
+                        <input type="hidden" name="size" value={DEFAULT_MOVIE_SEARCH_PARAMS.size} />
+
+                        <FilterWrapperContainer>
+                            <DropdownFilter
+                                filterName={t(`label.genreId`)}
+                                filterKey={'genreId'}
+                                variants={sortedGenres}
+                                defaultValue={currentGenreId}
+                                selectedValue={t(`genre.${genre}.title`)}
                             />
-                            <input type="hidden" name="size" value={DEFAULT_MOVIE_SEARCH_PARAMS.size} />
-
-                            <FilterWrapperContainer>
-                                <DropdownFilter
-                                    filterName={t(`label.genreId`)}
-                                    filterKey={'genreId'}
-                                    variants={sortedGenres}
-                                    defaultValue={currentGenreId}
-                                    selectedValue={t(`genre.${genre}.title`)}
-                                />
-                            </FilterWrapperContainer>
-                            <FilterWrapperContainer>
-                                <DropdownFilter
-                                    filterKey={'countryId'}
-                                    filterName={t('label.countryId')}
-                                    variants={sortedCountriesWithAll}
-                                    defaultValue={0}
-                                    selectedValue={'all countries'}
-                                    isSetCurrentValue
-                                />
-                            </FilterWrapperContainer>
-
-                            <FilterWrapperContainer>
-                                <RangeFilter
-                                    filterKey="ratingKinopoisk"
-                                    min={0}
-                                    max={10}
-                                    step={0.1}
-                                    defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoisk}
-                                    filterName={t(`label.ratingKinopoisk`, { value: '' })}
-                                />
-                            </FilterWrapperContainer>
-                            <FilterWrapperContainer>
-                                <RangeFilter
-                                    filterKey="ratingKinopoiskVoteCount"
-                                    min={0}
-                                    max={10 * 1000 * 1000}
-                                    step={100 * 1000}
-                                    defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoiskVoteCount}
-                                    filterName={t(`label.ratingKinopoiskVoteCount`, { value: '' })}
-                                />
-                            </FilterWrapperContainer>
-
-                            <GridAreaContainer area="E">
-                                <FilterWrapperContainer>
-                                    <AutoSuggestFilter filterKey={'DIRECTOR'} filterName={t(`label.DIRECTOR`)} />
-                                </FilterWrapperContainer>
-                            </GridAreaContainer>
-                            <GridAreaContainer area="F">
-                                <FilterWrapperContainer>
-                                    <AutoSuggestFilter filterKey={'ACTOR'} filterName={t(`label.ACTOR`)} />
-                                </FilterWrapperContainer>
-                            </GridAreaContainer>
-
-                            <SortField
-                                defaultSortValue={DEFAULT_MOVIE_SEARCH_PARAMS.orderBy as string}
-                                filterKey={'orderBy'}
-                                variants={['nameRu', 'year', 'ratingKinopoiskVoteCount', 'ratingKinopoisk']}
+                        </FilterWrapperContainer>
+                        <FilterWrapperContainer>
+                            <DropdownFilter
+                                filterKey={'countryId'}
+                                filterName={t('label.countryId')}
+                                variants={sortedCountriesWithAll}
+                                defaultValue={0}
+                                selectedValue={'all countries'}
+                                isSetCurrentValue
                             />
+                        </FilterWrapperContainer>
 
-                            <ResetFilter />
-                        </MovieFilterFormGridTemplate>
-                    </FiltersFieldWithFilteredMoviesContainer>
-                </PageWrapper>
+                        <FilterWrapperContainer>
+                            <RangeFilter
+                                filterKey="ratingKinopoisk"
+                                min={0}
+                                max={10}
+                                step={0.1}
+                                defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoisk}
+                                filterName={t(`label.ratingKinopoisk`, { value: '' })}
+                            />
+                        </FilterWrapperContainer>
+                        <FilterWrapperContainer>
+                            <RangeFilter
+                                filterKey="ratingKinopoiskVoteCount"
+                                min={0}
+                                max={10 * 1000 * 1000}
+                                step={100 * 1000}
+                                defaultValue={DEFAULT_MOVIE_SEARCH_PARAMS.ratingKinopoiskVoteCount}
+                                filterName={t(`label.ratingKinopoiskVoteCount`, { value: '' })}
+                            />
+                        </FilterWrapperContainer>
+
+                        <GridAreaContainer area="E">
+                            <FilterWrapperContainer>
+                                <AutoSuggestFilter filterKey={'DIRECTOR'} filterName={t(`label.DIRECTOR`)} />
+                            </FilterWrapperContainer>
+                        </GridAreaContainer>
+                        <GridAreaContainer area="F">
+                            <FilterWrapperContainer>
+                                <AutoSuggestFilter filterKey={'ACTOR'} filterName={t(`label.ACTOR`)} />
+                            </FilterWrapperContainer>
+                        </GridAreaContainer>
+
+                        <SortField
+                            defaultSortValue={DEFAULT_MOVIE_SEARCH_PARAMS.orderBy as string}
+                            filterKey={'orderBy'}
+                            variants={['nameRu', 'year', 'ratingKinopoiskVoteCount', 'ratingKinopoisk']}
+                        />
+
+                        <ResetFilter />
+                    </MovieFilterFormGridTemplate>
+                </FiltersFieldWithFilteredMoviesContainer>
             </PageSection>
-        </>
+        </PageWrapper>
     );
 }

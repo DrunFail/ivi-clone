@@ -51,16 +51,14 @@ export default async function PersonPage({ params }: { params: Promise<{ id: str
     const dict = await getDictionary(locale);
 
     return (
-        <>
+        <PageWrapper>
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <PersonPageContainer>
-                            <Avatar urlAvatar={person.person.posterUrl} variant="profile" />
-                            <PersonPageNamePerson>{personName}</PersonPageNamePerson>
-                        </PersonPageContainer>
-                    </PageWrapperInner>
-                </PageWrapper>
+                <PageWrapperInner>
+                    <PersonPageContainer>
+                        <Avatar urlAvatar={person.person.posterUrl} variant="profile" />
+                        <PersonPageNamePerson>{personName}</PersonPageNamePerson>
+                    </PersonPageContainer>
+                </PageWrapperInner>
             </PageSection>
             <PageSection>
                 <PageWrapperInner>
@@ -86,6 +84,6 @@ export default async function PersonPage({ params }: { params: Promise<{ id: str
                     </PersonPageContainer>
                 </PageWrapperInner>
             </PageSection>
-        </>
+        </PageWrapper>
     );
 }
