@@ -1,17 +1,16 @@
-import { DetailedPerson } from '../../../../../models/types';
-import { NewPersonAPI } from '../../../../../api/newPersonAPI';
-import PageSection from '../../../../../components/PageContainers/PageSection/PageSection';
-import PageWrapper from '../../../../../components/PageContainers/PageWrapper/PageWrapper';
-import PageWrapperInner from '../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner';
-import PersonPageContainer from '../../../../../components/person/PersonPageContainers/PersonPageContainer';
-import Avatar from '../../../../../components/UI/Avatar/Avatar';
-import PersonPageNamePerson from '../../../../../components/person/PersonPageNamePerson/PersonPageNamePerson';
-import FilmographyContainer from '../../../../../components/person/Filmography/FilmographyContainer/FilmographyContainer';
-import FilmographyHeader from '../../../../../components/person/Filmography/FilmographyHeader/FilmographyHeader';
-import FilmographyList from '../../../../../components/person/Filmography/FilmographyList/FilmographyList';
-import { getDictionary } from '../../../dictionaries';
+import { NewPersonAPI } from '@/api/newPersonAPI';
+import PageSection from '@/components/PageContainers/PageSection/PageSection';
+import PageWrapper from '@/components/PageContainers/PageWrapper/PageWrapper';
+import PageWrapperInner from '@/components/PageContainers/PageWrapperInner/PageWrapperInner';
+import Avatar from '@/components/UI/Avatar/Avatar';
+import FilmographyContainer from '@/components/person/Filmography/FilmographyContainer/FilmographyContainer';
+import FilmographyHeader from '@/components/person/Filmography/FilmographyHeader/FilmographyHeader';
+import FilmographyItemCard from '@/components/person/Filmography/FilmographyItemCard/FilmographyItemCard';
+import FilmographyList from '@/components/person/Filmography/FilmographyList/FilmographyList';
+import PersonPageContainer from '@/components/person/PersonPageContainers/PersonPageContainer';
+import PersonPageNamePerson from '@/components/person/PersonPageNamePerson/PersonPageNamePerson';
+import { DetailedPerson } from '@/models/types';
 import type { Metadata } from 'next';
-import FilmographyItemCard from '../../../../../components/person/Filmography/FilmographyItemCard/FilmographyItemCard';
 import { getTranslations } from 'next-intl/server';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
@@ -48,14 +47,18 @@ export default async function PersonPage({ params }: { params: Promise<{ id: str
     const { id, locale } = await params;
     const person = await NewPersonAPI.getPersonById(+id);
     const personName = calculatePersonName(person, locale);
-    const dict = await getDictionary(locale);
+    const t = await getTranslations();
 
     return (
         <PageWrapper>
             <PageSection>
                 <PageWrapperInner>
                     <PersonPageContainer>
-                        <Avatar urlAvatar={person.person.posterUrl} variant="profile" />
+                        <Avatar
+                            urlAvatar={person.person.posterUrl}
+                            variant="profile"
+                            alt={t('image.person', { person: personName })}
+                        />
                         <PersonPageNamePerson>{personName}</PersonPageNamePerson>
                     </PersonPageContainer>
                 </PageWrapperInner>
@@ -66,8 +69,8 @@ export default async function PersonPage({ params }: { params: Promise<{ id: str
                         <FilmographyContainer>
                             <FilmographyHeader
                                 personMovieAmount={person.films.length}
-                                headerTitle={dict.FullFilmography}
-                                amountTitle={dict.Films}
+                                headerTitle={t('FullFilmography')}
+                                amountTitle={t('Films')}
                             />
                             <FilmographyList>
                                 {person.films.map((movie) => (
@@ -75,8 +78,8 @@ export default async function PersonPage({ params }: { params: Promise<{ id: str
                                         key={movie.kinopoiskId}
                                         filmographyItem={movie}
                                         lang={locale}
-                                        dictBtnDetails={dict.Detail}
-                                        dictRatingIvi={dict.RatingIvi}
+                                        dictBtnDetails={t('Detail')}
+                                        dictRatingIvi={t('RatingIvi')}
                                     />
                                 ))}
                             </FilmographyList>

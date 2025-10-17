@@ -5,7 +5,6 @@ import WatchPageHeader from '../../../../../components/UI/movie/WatchPageHeader/
 import WatchPageHeaderContainer from '../../../../../components/UI/movie/WatchPageHeaderContainer/WatchPageHeaderContainer';
 import WatchPageGenreDescription from '../../../../../components/UI/movie/WatchPageGenreDescription/WatchPageGenreDescription';
 import FiltersFieldWithFilteredMoviesContainer from '../../../../../components/filters/FiltersFieldWithFilteredMoviesContainer/FiltersFieldWithFilteredMoviesContainer';
-import BreadcrumbsGenrePage from '../../../../../components/BreadcrumbsGenrePage/BreadcrumbsGenrePage';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { MovieAPI } from '../../../../../api/MovieAPI';
@@ -21,6 +20,8 @@ import ResetFilter from '../../../../../components/filters/ResetFilter/ResetFilt
 import RangeFilter from '../../../../../components/filters/RangeFilter/RangeFilter';
 import { Country, Genre, MovieFilterParams } from '../../../../../models/types';
 import MovieFilterFormGridTemplate from '../../../../../components/filters/MovieFilterFormGridTemplate/MovieFilterFormGridTemplate';
+import { getCrumbListForGenrePage } from '@/hooks/breadcrumbs/getCrumbListForGenrePage';
+import BreadCrumbs from '@/components/UI/BreadCrumbs/BreadCrumbs';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
@@ -59,6 +60,7 @@ const DEFAULT_MOVIE_SEARCH_PARAMS: Pick<
 export default async function MoviesByGenre({ params }: { params: Promise<{ genre: string; locale: 'ru' | 'en' }> }) {
     const { genre, locale } = await params;
     const t = await getTranslations();
+    const crumbLinks = await getCrumbListForGenrePage({ genre, typeMovie: 'movies' });
     const currentGenreId = CLIENT_GENRE_LIST[genre as keyof typeof CLIENT_GENRE_LIST];
     const firstLoadMoviesByGenre = await MovieAPI.getFilteredMovie({
         ...DEFAULT_MOVIE_SEARCH_PARAMS,
@@ -83,7 +85,7 @@ export default async function MoviesByGenre({ params }: { params: Promise<{ genr
 
     return (
         <PageWrapper>
-            <BreadcrumbsGenrePage />
+            <BreadCrumbs breadcrumbs={crumbLinks} isLastCrumbActive={false} />
             <PageSection>
                 <PageWrapperInner>
                     <WatchPageHeader>{t(`genre.${genre}.title`)}</WatchPageHeader>

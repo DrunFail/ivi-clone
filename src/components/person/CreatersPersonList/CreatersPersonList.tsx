@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import styles from './CreatersPersonList.module.scss';
-import { Person } from '../../../models/types';
-import { calculatePersonName } from '../../../utils/calculatePersonName';
 import { Link } from '@/i18n/navigation';
+import { Person } from '@/models/types';
+import { calculatePersonName } from '@/utils/calculatePersonName';
 
 interface CreatersPersonListProps {
     personList: Person[];
@@ -17,16 +17,18 @@ export default function CreatersPersonList({ personList, listTitle }: CreatersPe
                     const splittedName = calculatePersonName(person);
                     return (
                         <Link key={person.id} href={`/person/${person.id}`}>
-                            <div className={styles.image}>
-                                <Image src={person.posterUrl || ''} alt="" fill />
-                            </div>
-                            <div>
-                                {splittedName.map((name, index) => (
-                                    <span key={index} className={styles.personName}>
-                                        {name}
-                                    </span>
-                                ))}
-                            </div>
+                            <figure>
+                                <div className={styles.image}>
+                                    <Image src={person.posterUrl || ''} alt="" fill />
+                                </div>
+                                <figcaption>
+                                    {splittedName.map((name, index) => (
+                                        <span key={index} className={styles.personName}>
+                                            {name}
+                                        </span>
+                                    ))}
+                                </figcaption>
+                            </figure>
                         </Link>
                     );
                 })}

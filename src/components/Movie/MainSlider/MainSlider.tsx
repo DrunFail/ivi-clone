@@ -22,7 +22,7 @@ export default function MainSlider() {
                 loop={true}
                 navigation={false}
                 autoplay={{
-                    delay: 7000,
+                    delay: 30000,
                     disableOnInteraction: true,
                 }}
             >

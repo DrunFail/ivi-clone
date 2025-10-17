@@ -13,15 +13,15 @@ interface StaffCardProps {
 }
 export default function StaffCard({ modifiedPersonData }: StaffCardProps) {
     return (
-        <div className={styles.container}>
+        <figure className={styles.container}>
             <Avatar variant={88} urlAvatar={modifiedPersonData.posterUrl} />
-            <div>
+            <figcaption>
                 {modifiedPersonData.splittedName.map((name, index) => (
                     <PersonName key={index} name={name} />
                 ))}
 
                 <PersonProfession profession={modifiedPersonData.profession} />
-            </div>
-        </div>
+            </figcaption>
+        </figure>
     );
 }

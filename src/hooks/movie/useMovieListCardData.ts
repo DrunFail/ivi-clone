@@ -13,7 +13,7 @@ export default function useMovieListCardData<T extends Movie>({ movieData }: Use
     const lang = useLocale() as 'ru' | 'en';
 
     const movieName = calculateMovieName(movieData, lang);
-    const moviePoster = movieData.posterUrl;
+    const moviePoster = movieData.posterUrlPreview || movieData.posterUrl;
 
     const mainRatingPercentage = movieData.ratingKinopoisk ? +movieData.ratingKinopoisk * 10 : 0;
 

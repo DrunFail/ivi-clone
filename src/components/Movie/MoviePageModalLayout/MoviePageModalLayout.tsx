@@ -42,11 +42,9 @@ const newTabs: { tabName: string; count: number | null; isShowCount: boolean }[]
 export default function MoviePageModalLayout({
     movie,
     lang,
-    dict,
     children,
 }: {
     movie: MovieById;
-    dict: any;
     lang: 'ru' | 'en';
     children: React.ReactNode;
 }) {
@@ -92,7 +90,7 @@ export default function MoviePageModalLayout({
                                         <Link href={`/movie/${movie.film.kinopoiskId}/${tab.tabName}`}>
                                             <ActiveTab partPathname={tab.tabName}>
                                                 <TabTitle
-                                                    tabTitle={dict[tab.tabName as keyof typeof dict]}
+                                                    tabTitle={t(`${tab.tabName}`)}
                                                     showCount={tab.isShowCount}
                                                     count={tab.count}
                                                 />
@@ -108,7 +106,7 @@ export default function MoviePageModalLayout({
                 </div>
                 <SizeConditionContainer more={850}>
                     <div className={styles.poster}>
-                        <MoviePoster posterUrl={movie.film.posterUrl} />
+                        <MoviePoster posterUrl={movie.film.posterUrl} alt={t('image.movie', { movieName })} />
                         <div>
                             <RatingOverlayContainer>
                                 <RatingFromNumbers rating={['5', '5']} />

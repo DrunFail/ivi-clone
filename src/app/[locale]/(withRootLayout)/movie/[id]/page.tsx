@@ -1,4 +1,3 @@
-import { MovieAPI } from '../../../../../api/MovieAPI';
 import PageWrapper from '../../../../../components/PageContainers/PageWrapper/PageWrapper';
 import PageSection from '../../../../../components/PageContainers/PageSection/PageSection';
 import PageWrapperInner from '../../../../../components/PageContainers/PageWrapperInner/PageWrapperInner';
@@ -35,6 +34,7 @@ import { MovieById } from '../../../../../models/types';
 import { Link } from '@/i18n/navigation';
 import getBreadcrumbsLinks from '@/hooks/breadcrumbs/getBreadcrumbsLinks';
 import { Locale } from '@/i18n/type';
+import { movieAPI } from '@/lib/api/movieAPI';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
@@ -45,7 +45,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id, locale } = await params;
     const t = await getTranslations();
-    const movie = await MovieAPI.getMovieById(id);
+    const movie = await movieAPI.getMovieById(id);
     const movieName = calculateMovieName(movie.film, locale);
 
     return {
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 export default async function MoviePage({ params }: { params: Promise<{ id: string; locale: Locale }> }) {
     const { id, locale } = await params;
-    const movie = await MovieAPI.getMovieById(id);
+    const movie = await movieAPI.getMovieById(id);
     const dict = await getDictionary(locale);
     const t = await getTranslations();
 
@@ -84,8 +84,8 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
         if (hasSimilar)
             return { rows: movie.film.similar, count: movie.film.similar.length, isSimilarList: hasSimilar };
         const currentMovieFirstGenre = movie.film.genres[0].id;
-        const similarMovieList = await MovieAPI.getFilteredMovie({ genreId: currentMovieFirstGenre });
-        return { rows: similarMovieList.rows, count: similarMovieList.count, isSimilarList: hasSimilar };
+        const similarMovieList = await movieAPI.getFilteredMovie({ genreId: currentMovieFirstGenre });
+        return { rows: similarMovieList?.rows, count: similarMovieList?.count, isSimilarList: hasSimilar };
     }
 
     const similar = await getSimilarMovieList(movie);

@@ -4,9 +4,10 @@
     block-size: 100%;
 
     .profile {
-        column-gap: 5px;
-        padding-inline: 4px 12px;
-        padding-block: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 8px;
+        padding-inline: 8px;
         color: inherit;
         inline-size: 100px;
 
