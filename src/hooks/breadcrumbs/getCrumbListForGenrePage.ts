@@ -14,5 +14,5 @@ export async function getCrumbListForGenrePage({ genre, typeMovie }: { genre: st
         children: t(`genre.${genre}.short`),
         href: `/movies/${genre}`,
     };
-    return genre === 'all' ? [homeLink, typeMovie] : [homeLink, typeMovieLink, genreLink];
+    return genre === 'all' ? [homeLink, typeMovieLink] : [homeLink, typeMovieLink, genreLink];
 }

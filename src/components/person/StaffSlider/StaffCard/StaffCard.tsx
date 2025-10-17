@@ -14,7 +14,7 @@ interface StaffCardProps {
 export default function StaffCard({ modifiedPersonData }: StaffCardProps) {
     return (
         <figure className={styles.container}>
-            <Avatar variant={88} urlAvatar={modifiedPersonData.posterUrl} />
+            <Avatar variant={88} urlAvatar={modifiedPersonData.posterUrl} alt="" />
             <figcaption>
                 {modifiedPersonData.splittedName.map((name, index) => (
                     <PersonName key={index} name={name} />

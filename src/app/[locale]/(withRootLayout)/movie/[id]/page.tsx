@@ -35,6 +35,7 @@ import { Link } from '@/i18n/navigation';
 import getBreadcrumbsLinks from '@/hooks/breadcrumbs/getBreadcrumbsLinks';
 import { Locale } from '@/i18n/type';
 import { movieAPI } from '@/lib/api/movieAPI';
+import { notFound } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
@@ -46,6 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id, locale } = await params;
     const t = await getTranslations();
     const movie = await movieAPI.getMovieById(id);
+    if (!movie) {
+        notFound();
+    }
     const movieName = calculateMovieName(movie.film, locale);
 
     return {
@@ -65,7 +69,9 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
     const movie = await movieAPI.getMovieById(id);
     const dict = await getDictionary(locale);
     const t = await getTranslations();
-
+    if (!movie) {
+        notFound();
+    }
     const movieName = calculateMovieName(movie.film, locale);
     const movieDuration = minHours(Number(movie.film.filmLength));
     const ageLimit = movie.film.ratingAgeLimits?.replace('age', '') || '18';
@@ -81,11 +87,16 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
     async function getSimilarMovieList(movie: MovieById) {
         const hasSimilar = !!movie.film.similar.length;
-        if (hasSimilar)
+        if (hasSimilar) {
             return { rows: movie.film.similar, count: movie.film.similar.length, isSimilarList: hasSimilar };
+        }
         const currentMovieFirstGenre = movie.film.genres[0].id;
+
         const similarMovieList = await movieAPI.getFilteredMovie({ genreId: currentMovieFirstGenre });
-        return { rows: similarMovieList?.rows, count: similarMovieList?.count, isSimilarList: hasSimilar };
+        if (!similarMovieList) {
+            return { rows: [], count: 0, isSimilarList: false };
+        }
+        return { rows: similarMovieList.rows, count: similarMovieList?.count, isSimilarList: hasSimilar };
     }
 
     const similar = await getSimilarMovieList(movie);

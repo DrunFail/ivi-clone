@@ -3,7 +3,6 @@ import { ReviewAPI } from '../../../../../../../api/ReviewAPI';
 import MoviePageModal from '../../../../../../../components/Movie/MoviePageModal/MoviePageModal';
 import MoviePageModalLayout from '../../../../../../../components/Movie/MoviePageModalLayout/MoviePageModalLayout';
 import CommentPageContent from '../../../../../../../components/comment/CommentPageContent/CommentPageContent';
-import { getDictionary } from '../../../../../dictionaries';
 
 async function getCommentTree(id: number) {
     const commentTree = await ReviewAPI.getReviewTreeByMovieId(id);
@@ -20,10 +19,9 @@ export default async function ReviewPageModal({ params }: { params: Promise<{ id
     const { id, locale } = await params;
     const commentTree = await getCommentTree(+id);
     const movie = await getMovieById(id);
-    const dict = await getDictionary(locale);
     return (
         <MoviePageModal>
-            <MoviePageModalLayout movie={movie} dict={dict} lang={locale}>
+            <MoviePageModalLayout movie={movie} lang={locale}>
                 <CommentPageContent movieKinopoiskId={+id} commentTree={commentTree} />
             </MoviePageModalLayout>
         </MoviePageModal>
