@@ -84,6 +84,12 @@
             "keywords": ""
         }
     },
+    "image": {
+        "person": "Photo {person}",
+        "movie": "Poster {movieName}",
+        "logo": "Logo of Ivi - Online Cinema",
+        "logoTitle": "Go to the main page"
+    },
     "rating": {
         "bad": "bad",
         "good": "good"
@@ -174,6 +180,8 @@
     "Creaters": "Creators",
     "review": "Review",
     "actors": "Actors",
+    "directors": "Directors",
+    "writers": "Writers",
     "CreatersAndActors": "Actors and creators",
     "TrailerAndMaterial": "Trailer and material",
     "WithFilm": "With film «{name}» watch",
@@ -237,7 +245,6 @@
     "Expand": "Expand",
     "FullFilmography": "Full filmography",
     "Detail": "Detail",
-    "director": "Director",
     "Slogan": "Slogan",
     "WatchInTheGalery": "Watch in the galery",
     "MainPage": "Main page",

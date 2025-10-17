@@ -7,10 +7,12 @@
     .item {
         inline-size: 56px;
 
-        &:hover span {
+        &:hover span,
+        &:hover figcaption {
             color: #fff;
         }
 
+        figcaption,
         span {
             font-size: 13px;
             line-height: 16px;

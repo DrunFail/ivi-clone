@@ -21,12 +21,12 @@ export default function PersonListWithRating({ persons, movieRating }: PersonLis
             </div>
             {persons.map((person) => (
                 <Link href={`/person/${person.personId}`} key={person.id}>
-                    <div className={styles.item}>
+                    <figure className={styles.item}>
                         <MedallionContent>
-                            <Avatar variant="medallion" urlAvatar={person.posterUrl} />
+                            <Avatar variant="medallion" urlAvatar={person.posterUrl} alt="" />
                         </MedallionContent>
-                        <span>{person.nameRu}</span>
-                    </div>
+                        <figcaption>{person.nameRu}</figcaption>
+                    </figure>
                 </Link>
             ))}
         </div>

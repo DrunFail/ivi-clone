@@ -93,6 +93,13 @@
             "keywords": ""
         }
     },
+    "image": {
+        "person": "Фото {person}",
+        "movie": "Постер {movieName}",
+        "logo": "Логотип Иви - онлайн-кинотеатр",
+        "logoTitle": "Перейти на главную страницу"
+    },
+
     "rating": {
         "bad": "Плохо",
         "good": "Отлично"
@@ -173,6 +180,8 @@
     "Creaters": "Создатели",
     "review": "Отзывы",
     "actors": "Актёры",
+    "directors": "Режиссеры",
+    "writers": "Сценаристы",
     "CreatersAndActors": "Актёры и создатели",
     "TrailerAndMaterial": "Трейлер и доп. материалы",
     "WithFilm": "С фильмом «{name}» смотрят",
@@ -236,7 +245,6 @@
     "Expand": "Развернуть",
     "FullFilmography": "Полная фильмография",
     "Detail": "Подробнее",
-    "director": "Режиссер",
     "Slogan": "Слоган",
     "WatchInTheGalery": "Смотреть в подборке",
     "MainPage": "Главная",

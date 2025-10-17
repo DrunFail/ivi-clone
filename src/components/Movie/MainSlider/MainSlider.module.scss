@@ -1,12 +1,4 @@
 .slider {
-    &__sliderCont {
-        @media (max-width: 1280px) {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-    }
-
     &__arrowsCont {
         position: absolute;
         z-index: 2;
@@ -17,7 +9,7 @@
 
     &__arrowsRow {
         margin: 0px auto;
-        width: 1216px;
+        width: 1080px;
         display: flex;
         align-items: center;
         justify-content: space-between;

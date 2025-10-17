@@ -4,6 +4,7 @@ import styles from './Avatar.module.scss';
 interface AvatarProps {
     urlAvatar: string;
     variant: 'medallion' | 'profile' | 88;
+    alt: string;
 }
 
 const PERSON_PHOTO_SIZES = {
@@ -20,14 +21,14 @@ const PERSON_PHOTO_SIZES = {
         width: 88,
     },
 };
-export default function Avatar({ urlAvatar, variant }: AvatarProps) {
+export default function Avatar({ urlAvatar, variant, alt }: AvatarProps) {
     return (
         <div className={styles.container}>
             <Image
                 src={urlAvatar}
                 height={PERSON_PHOTO_SIZES[variant].height}
                 width={PERSON_PHOTO_SIZES[variant].width}
-                alt=""
+                alt={alt}
             />
         </div>
     );

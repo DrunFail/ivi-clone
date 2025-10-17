@@ -47,42 +47,34 @@ export default async function Page() {
     const secondSet = await getMovieSet(1);
 
     return (
-        <>
+        <PageWrapper>
             <PageSection>
                 <MainSlider />
             </PageSection>
             <PageSection>
-                <PageWrapper>
-                    <PromoSection />
-                </PageWrapper>
+                <PromoSection />
             </PageSection>
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <TopTenSlider data={TOP_10_DATA} count={10} />
-                    </PageWrapperInner>
-                </PageWrapper>
+                <PageWrapperInner>
+                    <TopTenSlider data={TOP_10_DATA} count={10} />
+                </PageWrapperInner>
             </PageSection>
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <Link href={firstSet.movieListLink}>
-                            <SectionTitle withArrow>{t(`genre.${firstSet.movieListGenreName}.short`)}</SectionTitle>
-                        </Link>
-                        <MovieSlider data={firstSet.movieList} href={firstSet.movieListLink} />
-                    </PageWrapperInner>
-                </PageWrapper>
+                <PageWrapperInner>
+                    <Link href={firstSet.movieListLink}>
+                        <SectionTitle withArrow>{t(`genre.${firstSet.movieListGenreName}.short`)}</SectionTitle>
+                    </Link>
+                    <MovieSlider data={firstSet.movieList} href={firstSet.movieListLink} />
+                </PageWrapperInner>
             </PageSection>
             <PageSection>
-                <PageWrapper>
-                    <PageWrapperInner>
-                        <Link href={secondSet.movieListLink}>
-                            <SectionTitle withArrow>{t(`genre.${secondSet.movieListGenreName}.short`)}</SectionTitle>
-                        </Link>
-                        <MovieSlider data={secondSet.movieList} href={secondSet.movieListLink} />
-                    </PageWrapperInner>
-                </PageWrapper>
+                <PageWrapperInner>
+                    <Link href={secondSet.movieListLink}>
+                        <SectionTitle withArrow>{t(`genre.${secondSet.movieListGenreName}.short`)}</SectionTitle>
+                    </Link>
+                    <MovieSlider data={secondSet.movieList} href={secondSet.movieListLink} />
+                </PageWrapperInner>
             </PageSection>
-        </>
+        </PageWrapper>
     );
 }

@@ -13,6 +13,12 @@
     background-color: inherit;
     grid-template-rows: var(--grid-row-slider-item);
 
+    figcaption {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     .image_container {
         position: relative;
         height: 100%;

@@ -14,22 +14,24 @@ interface MovieListCardProps {
 
 export default function MovieListCard({ modifiedMovieData, children }: MovieListCardProps) {
     return (
-        <div className={styles.item}>
+        <figure className={styles.item}>
             <div className={styles.image_container}>
                 <Image
                     src={modifiedMovieData.moviePoster}
                     alt=""
                     fill
-                    sizes="(max-width: 768px) 100vw"
                     placeholder="blur"
                     blurDataURL={defaultBlur}
+                    quality={75}
                 />
                 <div className={styles.restriction}>
                     <AgeRestriction />
                 </div>
                 {children}
             </div>
-            <MovieListCardMovieName movieName={modifiedMovieData.movieName} />
-        </div>
+            <figcaption>
+                <MovieListCardMovieName movieName={modifiedMovieData.movieName} />
+            </figcaption>
+        </figure>
     );
 }
