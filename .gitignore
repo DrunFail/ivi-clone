@@ -47,3 +47,6 @@ chromatic-diagnostics.json
 # analyze
 
 /analyze
+
+# Sentry Config File
+.env.sentry-build-plugin
