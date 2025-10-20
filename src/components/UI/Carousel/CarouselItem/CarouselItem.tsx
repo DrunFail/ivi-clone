@@ -1,16 +1,18 @@
-import React, { CSSProperties } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import styles from './CarouselItem.module.scss';
 
 interface CarouselItemProps {
     children: React.ReactNode;
-    style: CSSProperties;
     callback?: () => void;
 }
 
-export default function CarouselItem({ children, style, callback }: CarouselItemProps) {
+function Item({ children, callback }: CarouselItemProps, ref: ForwardedRef<HTMLElement>) {
     return (
-        <article onClick={callback} style={style} className={styles.carousel_item}>
+        <article onClick={callback} className={styles.carousel_item} ref={ref}>
             {children}
         </article>
     );
 }
+
+const CarouselItem = forwardRef<HTMLElement, CarouselItemProps>(Item);
+export default CarouselItem;

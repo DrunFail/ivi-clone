@@ -19,10 +19,11 @@ export default function TopTenItem({ elem }: TopTenItemProps) {
                         fill
                         alt=""
                         sizes="
-(max-width: 599px) 50vw,
-(max-width: 880px) 33vw,
-(max-width: 1254px) 25vw,
-20vw
+(max-width: 440px) calc((100vw - 12px) / 2),
+(max-width: 600px) calc((100vw - 24px) / 3),
+(max-width: 882px) calc((100vw - 36px) / 4),
+(max-width: 1215px) calc((100vw - 48px) / 5),
+(min-width: 1216px) calc((100vw - 48px) / 5)
 "
                     />
                 </div>

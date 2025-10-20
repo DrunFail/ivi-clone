@@ -1,26 +1,23 @@
-.carousel {
+.gallery {
     overflow: hidden;
     display: grid;
+    column-gap: 12px;
     padding-block-start: var(--fs-500);
-    padding-inline: 12px;
+    padding-block-end: 8px;
     --item-amount: var(--amount);
-    margin-inline: -12px -36px;
-}
-
-.carousel_slider {
-    @extend .carousel;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 1px + 1px) / var(--item-amount));
-}
+    grid-auto-columns: calc((100% - calc(12px * (var(--item-amount) - 1))) / var(--item-amount));
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
 
-.carousel_list {
-    @extend .carousel;
-    grid-template-columns: repeat(var(--item-amount), 1fr);
-    row-gap: var(--fs-500);
-}
+    &::-webkit-scrollbar {
+        background: transparent;
+        width: 5rem;
+        height: 4px;
+    }
 
-.carousel_collection {
-    @extend .carousel;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 1px + 1px) / var(--item-amount));
+    &::-webkit-scrollbar-thumb {
+        background: #2e2844;
+        border-radius: 2px;
+    }
 }

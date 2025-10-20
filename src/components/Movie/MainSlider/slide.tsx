@@ -24,7 +24,12 @@ export default function Slide({ styles, filmData }: SlideProps) {
                     alt={locale === 'ru' ? filmData.nameRu : filmData.nameEn}
                     fill
                     priority
-                    quality={70}
+                    fetchPriority="high"
+                    sizes={`
+                    (max-width: 1215px) calc(100vw - 40px),
+                    (min-width: 1216px) 1216px,
+                    `}
+                    quality={75}
                 />
             </div>
             <div className={styles.slide__textBlock}>

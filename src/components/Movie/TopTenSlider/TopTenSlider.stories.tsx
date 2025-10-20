@@ -7,7 +7,6 @@ const meta: Meta<typeof TopTenSlider> = {
     title: 'movie/TopTenSlider/TopTenSlider',
     component: TopTenSlider,
     args: {
-        count: 10,
         data: TOP_10_DATA,
     },
 };

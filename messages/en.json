@@ -86,7 +86,7 @@
     },
     "image": {
         "person": "Photo {person}",
-        "movie": "Poster {movieName}",
+        "movie": "Poster for the movie {movieName}",
         "logo": "Logo of Ivi - Online Cinema",
         "logoTitle": "Go to the main page"
     },
@@ -283,6 +283,9 @@
             "edit": "edit",
             "delete": "delete"
         }
+    },
+    "link": {
+        "watchMore": "Watch more"
     },
     "movies": "movies",
     "movie": {

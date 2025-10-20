@@ -4,7 +4,6 @@ import { Movie, SimilarMovie } from '../../../models/types';
 import Carousel from '../../UI/Carousel/Carousel';
 import MovieListCardWithOverlayContainer from '../MovieListCardContainer/MovieListCardWithOverlayContainer';
 import SimilarMovieListCardWithOverlayContainer from '../SimilarMovieListCardContainer/SimilarMovieListCardWithOverlayContainer';
-import { MOVIE_LIST_SIZES } from '../../../constants/sliderItemSize';
 import MovieSliderSizeContainer from '../MovieSliderSizeContainer/MovieSliderSizeContainer';
 
 interface SimilarSliderProps {
@@ -18,11 +17,8 @@ export default function SimilarSlider({ similarData }: SimilarSliderProps) {
     return (
         <MovieSliderSizeContainer>
             <Carousel
-                mode={'slider'}
                 //@ts-ignore
                 data={similarData.rows}
-                count={similarData.count}
-                sizes={MOVIE_LIST_SIZES}
                 //@ts-ignore
                 component={
                     similarData.isSimilarList

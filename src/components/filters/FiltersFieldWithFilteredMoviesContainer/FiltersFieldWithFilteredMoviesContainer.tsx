@@ -5,12 +5,12 @@ import { ResponseWithCountAndRows } from '../../../models/response';
 import { Movie } from '../../../models/types';
 import MovieListCardWithOverlayContainer from '../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer';
 import MovieSliderSizeContainer from '../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer';
-import ButtonShowMore from '../../UI/Carousel/ButtonShowMore/ButtonShowMore';
 import { getKeyByValue } from '../../../utils/getKeyByValue';
 import { CLIENT_GENRE_LIST } from '../../../constants/genreList';
 import { formFieldAction } from '../../../hooks/filters/formFieldAction';
 import { useRouter } from '@/i18n/navigation';
 import { debounce } from '@/utils/debounce';
+import ButtonShowMore from '@/components/filters/ButtonShowMore/ButtonShowMore';
 
 interface Props {
     firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>;
@@ -101,6 +101,8 @@ export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMovie
                                 gridTemplateRows: 'repeat(3, 1fr)',
                                 gridAutoRows: '0',
                                 overflowY: 'hidden',
+                                gap: '8px',
+                                paddingBlockStart: '12px',
                             }}
                         >
                             {state.movie.rows.map((movie) => (

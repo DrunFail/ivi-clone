@@ -2,10 +2,11 @@
 
 import Carousel from '../../UI/Carousel/Carousel';
 import MovieListCardWithOverlayContainer from '../MovieListCardContainer/MovieListCardWithOverlayContainer';
-import { MOVIE_LIST_SIZES } from '../../../constants/sliderItemSize';
 import { ResponseWithCountAndRows } from '../../../models/response';
 import { Movie } from '../../../models/types';
-import styles from './MovieSlider.module.scss';
+import MovieListCardWrapper from '@/components/Movie/MovieListCardWrapper/MovieListCardWrapper';
+import LinkShowMore from '@/components/Movie/LinkShowMore/LinkShowMore';
+import MovieSliderSizeContainer from '@/components/Movie/MovieSliderSizeContainer/MovieSliderSizeContainer';
 
 interface MovieSliderProps {
     href: string;
@@ -14,15 +15,16 @@ interface MovieSliderProps {
 
 export default function MovieSlider({ href, data }: MovieSliderProps) {
     return (
-        <div className={styles.container}>
+        <MovieSliderSizeContainer>
             <Carousel
-                mode={'slider'}
                 data={data.rows}
-                count={data.count}
-                sizes={MOVIE_LIST_SIZES}
-                href={href}
                 component={MovieListCardWithOverlayContainer}
+                lastElem={
+                    <MovieListCardWrapper>
+                        <LinkShowMore href={href} />
+                    </MovieListCardWrapper>
+                }
             />
-        </div>
+        </MovieSliderSizeContainer>
     );
 }

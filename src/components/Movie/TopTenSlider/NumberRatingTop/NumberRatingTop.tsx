@@ -12,7 +12,7 @@ export default function NumberRatingTop({ rating }: NumberRatingTopProps) {
         <div className={styles.container}>
             {splittedRating.map((number, index) => (
                 <div key={index} className={styles.item}>
-                    <Image src={`/top10/number${number}.svg`} fill alt="" priority={false} />
+                    <Image src={`/top10/number${number}.svg`} fill alt="" unoptimized />
                 </div>
             ))}
         </div>

@@ -16,14 +16,7 @@ export default function StaffSlider({ data }: StaffSliderProps) {
     const t = useTranslations();
     return (
         <div className={styles.content}>
-            <Carousel
-                mode={'collection'}
-                data={data}
-                count={data.length}
-                sizes={STAFF_CARD_SIZES}
-                component={StaffCardContainer}
-                href={''}
-            />
+            <Carousel data={data} component={StaffCardContainer} />
             <Button className={styles.button}>{t('More')}</Button>
         </div>
     );
