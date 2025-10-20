@@ -6,7 +6,6 @@ import styles from './CommentSlider.module.scss';
 import { Review } from '../../../models/types';
 import { ResponseWithCountAndRows } from '../../../models/response';
 import Button from '../../UI/core/Button/Button';
-import { REVIEWLIST_SIZE } from '../../../constants/sliderItemSize';
 import { useTranslations } from 'next-intl';
 import SliderCommentCardContainer from '../cardContainers/SliderCommentCardContainer/SliderCommentCardContainer';
 
@@ -27,14 +26,7 @@ export default function CommentSlider({ commentData, movieName, movieId }: Comme
             </div>
             <div className={styles.slider}>
                 {commentData && commentData.count ? (
-                    <Carousel
-                        href={`/movie/${String(movieId)}?type=review`}
-                        mode={'slider'}
-                        data={commentData.rows}
-                        count={commentData.rows.length}
-                        sizes={REVIEWLIST_SIZE}
-                        component={SliderCommentCardContainer}
-                    />
+                    <Carousel data={commentData.rows} component={SliderCommentCardContainer} />
                 ) : (
                     <EmptyCommentCard variant="slider" />
                 )}

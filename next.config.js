@@ -36,6 +36,8 @@ const nextConfig = {
                 hostname: 'image.openmoviedb.com',
             },
         ],
+        deviceSizes: [640, 750, 828, 1080, 1200],
+        imageSizes: [128, 135, 186, 200, 256, 384],
     },
 };
 

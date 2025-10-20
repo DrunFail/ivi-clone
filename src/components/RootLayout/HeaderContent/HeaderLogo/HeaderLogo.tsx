@@ -7,7 +7,7 @@ export default function HeaderLogo() {
     const t = useTranslations('image');
     return (
         <Link href="/" data-testid="header-home-link" title={t('logoTitle')}>
-            <Image src={logo} alt={t('logo')} height={48} width={66} />
+            <Image src={logo} alt={t('logo')} height={48} width={66} unoptimized priority />
         </Link>
     );
 }

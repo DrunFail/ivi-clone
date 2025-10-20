@@ -1,7 +1,9 @@
 .container {
-    --amount: 5;
+    @media only screen and (min-width: 1216px) {
+        --amount: 5;
+    }
 
-    @media only screen and (max-width: 1400px) {
+    @media only screen and (max-width: 1215px) {
         --amount: 5;
     }
 

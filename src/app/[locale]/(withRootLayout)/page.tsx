@@ -56,7 +56,7 @@ export default async function Page() {
             </PageSection>
             <PageSection>
                 <PageWrapperInner>
-                    <TopTenSlider data={TOP_10_DATA} count={10} />
+                    <TopTenSlider data={TOP_10_DATA} />
                 </PageWrapperInner>
             </PageSection>
             <PageSection>

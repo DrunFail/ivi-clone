@@ -27,7 +27,7 @@ export default function MovieListCardWithOverlay({
         setIsVisibleOverlay((isVisibleOverlay) => !isVisibleOverlay);
     };
     return (
-        <div style={{ paddingInlineEnd: '24px' }}>
+        <div>
             <div onMouseEnter={toggleOverlay} onMouseLeave={toggleOverlay}>
                 <MovieListCard modifiedMovieData={modifiedMovieData}>
                     {isVisibleOverlay && <OverlayMovieListCard icons={icons} overlayMovieData={overlayMovieData} />}

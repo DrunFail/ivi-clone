@@ -4,6 +4,7 @@ import RatingBlock from '../../Rating/RatingBlock/RatingBlock';
 import Avatar from '../../UI/Avatar/Avatar';
 import MedallionContent from './MedallionContent/MedallionContent';
 import styles from './PersonListWithRating.module.scss';
+import { useTranslations } from 'next-intl';
 
 interface PersonListWithRatingProps {
     persons: Person[];
@@ -11,6 +12,7 @@ interface PersonListWithRatingProps {
 }
 
 export default function PersonListWithRating({ persons, movieRating }: PersonListWithRatingProps) {
+    const t = useTranslations('image');
     return (
         <div className={styles.container}>
             <div className={styles.item}>
@@ -23,7 +25,11 @@ export default function PersonListWithRating({ persons, movieRating }: PersonLis
                 <Link href={`/person/${person.personId}`} key={person.id}>
                     <figure className={styles.item}>
                         <MedallionContent>
-                            <Avatar variant="medallion" urlAvatar={person.posterUrl} alt="" />
+                            <Avatar
+                                variant="medallion"
+                                urlAvatar={person.posterUrl}
+                                alt={t('person', { person: person.nameRu })}
+                            />
                         </MedallionContent>
                         <figcaption>{person.nameRu}</figcaption>
                     </figure>

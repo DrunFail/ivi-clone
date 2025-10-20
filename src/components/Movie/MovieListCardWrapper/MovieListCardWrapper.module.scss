@@ -1,0 +1,12 @@
+.wrapper {
+    display: grid;
+    row-gap: 8px;
+    grid-template-rows: 1fr 20px;
+    position: relative;
+    inline-size: 100%;
+    block-size: 100%;
+
+    & *:first-child {
+        border-radius: 8px;
+    }
+}
