@@ -13,7 +13,6 @@ export default function useMoviePersonData({ personData }: { personData: Detaile
         const prop = `name${lang}`;
 
         if (prop in personData.person) {
-            /* eslint-disable */
             //@ts-ignore
             return `${personData.person[prop] ?? personInfo.nameRu}`;
         } else {
