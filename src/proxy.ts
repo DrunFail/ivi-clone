@@ -9,7 +9,7 @@ export const config = {
     matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 };
 
-export default async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const newCookies = await authMiddleware(request);
     const response = handleIntlRouting(request);
     if (newCookies) {

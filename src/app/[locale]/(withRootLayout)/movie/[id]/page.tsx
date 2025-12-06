@@ -16,10 +16,6 @@ import StaffSlider from '../../../../../components/person/StaffSlider/StaffSlide
 import WatchAnyDevice from '../../../../../components/WatchAnyDevice/WatchAnyDevice';
 import { getLinksForPlayer } from '../../../../../utils/getLinksForPlayer';
 import { calculateMovieName } from '../../../../../utils/calculateMovieName';
-import { minHours } from '../../../../../utils/minHours';
-import { calculateGenreName } from '../../../../../utils/calculateGenreName';
-import { getInfoProduct } from '../../../../../utils/getInfoProduct';
-import { calculateCountryName } from '../../../../../utils/calculateCountryName';
 import SectionTitle from '../../../../../components/UI/SectionTitle/SectionTitle';
 import { getDictionary } from '../../../dictionaries';
 import BreadCrumbs from '../../../../../components/UI/BreadCrumbs/BreadCrumbs';
@@ -30,12 +26,14 @@ import { getTranslations } from 'next-intl/server';
 import RatingModalContent from '../../../../../components/Rating/RatingModal/RatingModalContent';
 import RatingLarge from '../../../../../components/Rating/RatingLarge/RatingLarge';
 import RatingBlock from '../../../../../components/Rating/RatingBlock/RatingBlock';
-import { MovieById } from '../../../../../models/types';
 import { Link } from '@/i18n/navigation';
 import getBreadcrumbsLinks from '@/hooks/breadcrumbs/getBreadcrumbsLinks';
 import { Locale } from '@/i18n/type';
 import { movieAPI } from '@/lib/api/movieAPI';
 import { notFound } from 'next/navigation';
+import { transformMovieData } from '@/utils/movie/transformMovieData';
+import { getSimilarMovieList } from '@/utils/movie/getSimilarMovieList';
+import MovieDescription from '@/components/Movie/moviePageComponents/MovieDescription/MovieDescription';
 
 const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
@@ -59,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             languages: {
                 ru: `${BASE_URL}/ru/movie/${movie.film.kinopoiskId}`,
                 en: `${BASE_URL}/en/movie/${movie.film.kinopoiskId}`,
-                'x-default': `${BASE_URL}/movie/${movie.film.kinopoiskId}`,
+                'x-default': `${BASE_URL}/en/movie/${movie.film.kinopoiskId}`,
             },
         },
     };
@@ -72,32 +70,11 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
     if (!movie) {
         notFound();
     }
-    const movieName = calculateMovieName(movie.film, locale);
-    const movieDuration = minHours(Number(movie.film.filmLength));
-    const ageLimit = movie.film.ratingAgeLimits?.replace('age', '') || '18';
-    const firstCounry = movie.film.countries[0];
-    const movieCountry = calculateCountryName(firstCounry, locale);
-    const firstGenre = movie.film.genres[0];
-    const movieGenre = calculateGenreName(firstGenre, locale);
-    const movieInfo = getInfoProduct(movie.film);
+    const { movieTitle, movieCountry, movieDuration, movieGenre, ageLimit } = transformMovieData({ movie, locale });
 
     const { firstTrailerLink, trailerLinkList } = getLinksForPlayer(movie.film.trailers);
 
     const breadCrumbsData = await getBreadcrumbsLinks({ movie });
-
-    async function getSimilarMovieList(movie: MovieById) {
-        const hasSimilar = !!movie.film.similar.length;
-        if (hasSimilar) {
-            return { rows: movie.film.similar, count: movie.film.similar.length, isSimilarList: hasSimilar };
-        }
-        const currentMovieFirstGenre = movie.film.genres[0].id;
-
-        const similarMovieList = await movieAPI.getFilteredMovie({ genreId: currentMovieFirstGenre });
-        if (!similarMovieList) {
-            return { rows: [], count: 0, isSimilarList: false };
-        }
-        return { rows: similarMovieList.rows, count: similarMovieList?.count, isSimilarList: hasSimilar };
-    }
 
     const similar = await getSimilarMovieList(movie);
 
@@ -121,7 +98,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
                         <MoviePageGridArea area="info">
                             <Info
-                                movieTitle={movieName}
+                                movieTitle={movieTitle}
                                 movieYear={movie.film.year}
                                 movieDuration={movieDuration}
                                 ageLimit={ageLimit}
@@ -140,18 +117,16 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
                         <MoviePageGridArea area="buttons">
                             <ButtonPlayerBlock
                                 variant={'tablet'}
-                                movieName={movieName}
+                                movieName={movieTitle}
                                 moviePosterUrl={movie.film.posterUrl}
                                 movieYear={movie.film.year}
                             />
                         </MoviePageGridArea>
 
                         <MoviePageGridArea area="description">
-                            <MovieHideInfoContainer
-                                movieDescription={movie.film.description}
-                                isHideText="Детали о фильме"
-                                notIsHideText="Свернуть детали"
-                            >
+                            <MovieHideInfoContainer isHideText="Детали о фильме" notIsHideText="Свернуть детали">
+                                <MovieDescription>{movie.film.description}</MovieDescription>
+
                                 <MovieExtraInfoBlock variant={'desktop'} />
                             </MovieHideInfoContainer>
                         </MoviePageGridArea>
@@ -178,13 +153,8 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
             <PageSection>
                 <PageWrapperInner>
-                    <SectionTitle withArrow={false}>{t('WithFilm', { name: movieName })}</SectionTitle>
-                    <SimilarSlider
-                        similarData={similar}
-                        similarGenreId={movie.film.genres[0].id}
-                        similarMovieList={movie.film.similar}
-                        movieName={movieName}
-                    />
+                    <SectionTitle withArrow={false}>{t('WithFilm', { name: movieTitle })}</SectionTitle>
+                    <SimilarSlider similarData={similar.rows} />
                 </PageWrapperInner>
             </PageSection>
 
@@ -202,12 +172,16 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
                     <Link href={`/movie/${id}/review`}>
                         <SectionTitle withArrow={false}>{dict.review}</SectionTitle>
                     </Link>
-                    <CommentSlider commentData={movie.reviews} movieName={movieName} movieId={movie.film.kinopoiskId} />
+                    <CommentSlider
+                        commentData={movie.reviews}
+                        movieName={movieTitle}
+                        movieId={movie.film.kinopoiskId}
+                    />
                 </PageWrapperInner>
             </PageSection>
             <PageSection>
                 <PageWrapperInner>
-                    <WatchAnyDevice movieName={movieName} moviePosterUrl={movie.film.posterUrl} />
+                    <WatchAnyDevice movieName={movieTitle} moviePosterUrl={movie.film.posterUrl} />
                 </PageWrapperInner>
             </PageSection>
             <PageWrapperInner>

@@ -4,9 +4,9 @@ import { Title, Canvas } from '@storybook/addon-docs/blocks';
 import Carousel from './Carousel';
 import { Provider } from 'react-redux';
 import store from '../../../store/store';
-import MovieListCardWithOverlayContainer from '../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer';
 import { MOVIE_SLIDER_LIST } from '../../../mockData/movieSliderList';
 import MovieListItemAdmin from '../../AdminDashboard/MovieListItemAdmin/MovieListItemAdmin';
+import MovieListCardWithOverlay from '@/components/Movie/MovieListCardWithOverlay/MovieListCardWithOverlay';
 
 const meta: Meta<typeof Carousel> = {
     title: 'ui/Carousel',
@@ -40,7 +40,7 @@ export default meta;
 type Story = StoryObj<typeof Carousel>;
 
 export const Primary: Story = {
-    render: () => <Carousel data={MOVIE_SLIDER_LIST.rows} component={MovieListCardWithOverlayContainer} />,
+    render: () => <Carousel data={MOVIE_SLIDER_LIST.rows} component={MovieListCardWithOverlay} />,
 };
 
 export const MovieListAdmin: Story = {
@@ -50,7 +50,7 @@ export const MovieListAdmin: Story = {
 export const MovieListUser: Story = {
     render: () => (
         <Carousel
-            component={MovieListCardWithOverlayContainer}
+            component={MovieListCardWithOverlay}
             data={MOVIE_SLIDER_LIST.rows}
             showMoreHandler={() => 'show more'}
         />

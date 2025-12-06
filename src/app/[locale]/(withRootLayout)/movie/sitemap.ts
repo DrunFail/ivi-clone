@@ -9,19 +9,20 @@ export async function generateSitemaps() {
     return [{ id: 'movie' }, { id: 'actors' }, { id: 'review' }];
 }
 
-export default async function sitemap({ id }: { id: string }): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap(props: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
+    const sitemapId = await props.id;
     const movie = await MovieAPI.getMovieAll({ size: MOVIE_AMOUNT });
 
     return movie.rows.flatMap((movie) => {
         return LOCALES.map((locale) => {
             return {
-                url: `${BASE_URL}/${locale}/movie/${movie.kinopoiskId}/${id === 'movie' ? '' : id}`,
+                url: `${BASE_URL}/${locale}/movie/${movie.kinopoiskId}/${sitemapId === 'movie' ? '' : sitemapId}`,
                 lastModified: new Date(),
                 alternates: {
                     languages: {
-                        ru: `${BASE_URL}/ru/movie/${movie.kinopoiskId}/${id === 'movie' ? '' : id}`,
-                        en: `${BASE_URL}/en/movie/${movie.kinopoiskId}/${id === 'movie' ? '' : id}`,
-                        'x-default': `${BASE_URL}/movie/${movie.kinopoiskId}/${id === 'movie' ? '' : id}`,
+                        ru: `${BASE_URL}/ru/movie/${movie.kinopoiskId}/${sitemapId === 'movie' ? '' : sitemapId}`,
+                        en: `${BASE_URL}/en/movie/${movie.kinopoiskId}/${sitemapId === 'movie' ? '' : sitemapId}`,
+                        'x-default': `${BASE_URL}/en/movie/${movie.kinopoiskId}/${sitemapId === 'movie' ? '' : sitemapId}`,
                     },
                 },
             };

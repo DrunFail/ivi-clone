@@ -18,6 +18,7 @@ export default function Layout({
     useEffect(() => {
         const id = document.getElementById('not-inter');
         if (!id) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsVisibleModal(true);
         }
     }, [path]);

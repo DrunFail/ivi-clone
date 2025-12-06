@@ -14,6 +14,7 @@ const Portal = (props: PortalProps) => {
         setMounted(true);
     }, []);
 
+    // eslint-disable-next-line react-hooks/refs
     return mounted && ref.current
         ? createPortal(<>{props.children}</>, document?.querySelector('#Header') || document?.body)
         : null;

@@ -18,7 +18,7 @@ export default function CreatersPersonList({ personList, listTitle }: CreatersPe
                 {personList.map((person) => {
                     const splittedName = calculatePersonName(person);
                     return (
-                        <Link key={person.id} href={`/person/${person.id}`}>
+                        <Link key={person.id} href={`/person/${person.personId}`}>
                             <figure>
                                 <div className={styles.image}>
                                     <Image

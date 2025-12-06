@@ -9,6 +9,7 @@ import { useResize } from '../../../../hooks/useResize';
 import Button from '@/components/UI/core/Button/Button';
 import SetCookierForRedirectAfterLogin from '@/components/RootLayout/SetCookierForRedirectAfterLogin/SetCookierForRedirectAfterLogin';
 import FontIcon from '@/components/UI/FontIcon/FontIcon';
+import { useTranslations } from 'next-intl';
 
 interface ProfileBlockIconWithDropdownProps {
     dropdownContent: React.ReactNode;
@@ -18,6 +19,7 @@ export default function ProfileBlockIconWithDropdown({ dropdownContent }: Profil
     const [isVisiblePortal, setIsVisiblePortal] = useState(false);
     const { auth } = useAuth();
     const size = useResize();
+    const t = useTranslations('auth');
     const isHiddenProfileDropdown = size && size > 1050;
 
     const handleVisibleProfileDropdown = (status: boolean) => {
@@ -39,7 +41,7 @@ export default function ProfileBlockIconWithDropdown({ dropdownContent }: Profil
                 <SetCookierForRedirectAfterLogin>
                     <Button as="link" href="/auth/login" className={styles.profile}>
                         <FontIcon variant="avatar" />
-                        <span>Войти</span>
+                        <span>{t('loginTitle')}</span>
                     </Button>
                 </SetCookierForRedirectAfterLogin>
             )}

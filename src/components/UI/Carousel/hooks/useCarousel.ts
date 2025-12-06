@@ -92,7 +92,9 @@ export default function useCarousel({ dataLength }: UseCarouselProps) {
         }
     };
 
+    // eslint-disable-next-line react-hooks/refs
     const checkPrev = isFirstRender.current ? false : activeIndex !== 0;
+    // eslint-disable-next-line react-hooks/refs
     const checkNext = !!itemRefs.current.length && activeIndex !== itemRefs.current.length - 1;
 
     return {

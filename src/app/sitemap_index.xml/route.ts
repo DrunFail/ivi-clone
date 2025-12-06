@@ -10,10 +10,12 @@ function getFileName(id: string | number) {
 }
 
 const getSitemapsForMultiply = (ids: { id: number | string }[], path: string) => {
-    return ids.flatMap(({ id }) => [
-        `<sitemap><loc>${BASE_URL}/ru/${path}/${getFileName(id)}</loc></sitemap>`,
-        `<sitemap><loc>${BASE_URL}/en/${path}/${getFileName(id)}</loc></sitemap>`,
-    ]);
+    return ids
+        .flatMap(({ id }) => [
+            `<sitemap><loc>${BASE_URL}/ru/${path}/${getFileName(id)}</loc></sitemap>`,
+            `<sitemap><loc>${BASE_URL}/en/${path}/${getFileName(id)}</loc></sitemap>`,
+        ])
+        .join('');
 };
 
 export async function GET() {

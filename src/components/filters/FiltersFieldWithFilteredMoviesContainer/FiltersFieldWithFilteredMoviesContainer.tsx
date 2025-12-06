@@ -3,7 +3,6 @@
 import { useActionState, useEffect, useRef } from 'react';
 import { ResponseWithCountAndRows } from '../../../models/response';
 import { Movie } from '../../../models/types';
-import MovieListCardWithOverlayContainer from '../../Movie/MovieListCardContainer/MovieListCardWithOverlayContainer';
 import MovieSliderSizeContainer from '../../Movie/MovieSliderSizeContainer/MovieSliderSizeContainer';
 import { getKeyByValue } from '../../../utils/getKeyByValue';
 import { CLIENT_GENRE_LIST } from '../../../constants/genreList';
@@ -11,6 +10,7 @@ import { formFieldAction } from '../../../hooks/filters/formFieldAction';
 import { useRouter } from '@/i18n/navigation';
 import { debounce } from '@/utils/debounce';
 import ButtonShowMore from '@/components/filters/ButtonShowMore/ButtonShowMore';
+import MovieListCardWithOverlay from '@/components/Movie/MovieListCardWithOverlay/MovieListCardWithOverlay';
 
 interface Props {
     firstLoadMoviesByGenre: ResponseWithCountAndRows<Movie>;
@@ -106,7 +106,7 @@ export default function FiltersFieldWithFilteredMoviesContainer({ firstLoadMovie
                             }}
                         >
                             {state.movie.rows.map((movie) => (
-                                <MovieListCardWithOverlayContainer key={movie.id} elem={movie} />
+                                <MovieListCardWithOverlay key={movie.id} elem={movie} />
                             ))}
                         </div>
                     </MovieSliderSizeContainer>

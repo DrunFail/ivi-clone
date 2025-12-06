@@ -12,6 +12,7 @@ export default function CheckIsVisibleInterceptRoute({ children, id }: { childre
     useEffect(() => {
         const isNotInterceptingRoute = document.getElementById(id);
         if (!isNotInterceptingRoute) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsVisibleModal(true);
         }
     }, [path, id]);
