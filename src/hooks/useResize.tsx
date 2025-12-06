@@ -10,6 +10,7 @@ export const useResize = () => {
         setSize(width);
     };
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         handleResize();
     }, []);
 

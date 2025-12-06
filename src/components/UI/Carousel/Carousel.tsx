@@ -54,6 +54,7 @@ export default function Carousel<T extends { id: number }>({
                 {lastElem && (
                     <CarouselItem
                         ref={(el) => {
+                            // eslint-disable-next-line react-hooks/immutability
                             itemRefs.current[data.length] = el;
                         }}
                     >

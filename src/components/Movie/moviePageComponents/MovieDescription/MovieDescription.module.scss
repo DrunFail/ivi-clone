@@ -6,11 +6,11 @@
 }
 .hide {
     @extend .show;
-    -webkit-line-clamp: 6;
+   /* -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     display: block;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-overflow: -o-ellipsis-lastline;
+    text-overflow: -o-ellipsis-lastline;*/
 }

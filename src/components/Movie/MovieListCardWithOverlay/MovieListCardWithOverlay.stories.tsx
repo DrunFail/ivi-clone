@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import MovieListCardWithOverlay from './MovieListCardWithOverlay';
+import { MOVIE_SINGLE } from '@/mockData/movieSingle';
 
 const meta: Meta<typeof MovieListCardWithOverlay> = {
     title: 'movie/MovieListCardWithOverlay',
@@ -12,16 +13,7 @@ const meta: Meta<typeof MovieListCardWithOverlay> = {
         ),
     ],
     args: {
-        overlayMovieData: {
-            rating: ['5', '4'],
-            duration: '120 минут',
-            infoProduct: 'info',
-            mainRatingPercentage: 58,
-        },
-        modifiedMovieData: {
-            movieName: 'movie',
-            moviePoster: './film.jpg',
-        },
+        elem: MOVIE_SINGLE,
     },
 };
 

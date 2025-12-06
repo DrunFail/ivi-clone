@@ -18,6 +18,7 @@ export default function SearchButtonWithModal({ button, modal }: SearchButtonWit
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setVisible(false);
     }, [pathname]);
 

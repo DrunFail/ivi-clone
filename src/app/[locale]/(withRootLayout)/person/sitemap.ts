@@ -14,12 +14,12 @@ export async function generateSitemaps() {
     });
 }
 
-export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-    const page = id;
+export default async function sitemap({ id }: { id: Promise<number> }): Promise<MetadataRoute.Sitemap> {
+    const page = await id;
     const personList = await NewPersonAPI.getAllPersonList({ size: PERSON_AMOUNT, page });
 
     return personList.rows.flatMap((person) => {
-        const defaultAlternate = { 'x-default': `${BASE_URL}/person/${person.personId}` };
+        const defaultAlternate = { 'x-default': `${BASE_URL}/en/person/${person.personId}` };
         const alternateList = {} as Record<Locale, string>;
         LOCALES.forEach((locale) => (alternateList[locale] = `${BASE_URL}/${locale}/person/${person.personId}`));
         const urlList = LOCALES.map((locale) => `${BASE_URL}/${locale}/person/${person.personId}`);

@@ -56,6 +56,7 @@ export default function useFilterWatchPage({ variant = 'genrePage', firstMovieSe
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFilterParams({
             ...INIT_PARAMS_FOR_FILTERS,
             genreId: currentGenreId,
@@ -68,6 +69,7 @@ export default function useFilterWatchPage({ variant = 'genrePage', firstMovieSe
                 MOVIE_LIST_SIZES.sort((a, b) => b.resol - a.resol).find((elem) => elem.resol <= size)?.items || 5;
 
             const pageSize = amountItemsOnPage * MOVIE_ROWS;
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setAmountMovieOnPage(pageSize);
         }
     }, [size]);

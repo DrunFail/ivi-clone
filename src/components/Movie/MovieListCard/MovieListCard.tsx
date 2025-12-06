@@ -1,4 +1,3 @@
-import MovieListCardWrapper from '@/components/Movie/MovieListCardWrapper/MovieListCardWrapper';
 import AgeRestriction from '../../UI/movie/AgeRestriction/AgeRestriction';
 import MovieListCardMovieName from '../../UI/movie/MovieListCardMovieName/MovieListCardMovieName';
 import styles from './MovieListCard.module.scss';
@@ -17,12 +16,11 @@ export default function MovieListCard({ modifiedMovieData, children }: MovieList
     const t = useTranslations('image');
     return (
         <figure className={styles.item}>
-            <MovieListCardWrapper>
-                <div className={styles.image_container}>
-                    <MoviePoster
-                        posterUrl={modifiedMovieData.moviePoster}
-                        alt={t('movie', { movieName: modifiedMovieData.movieName })}
-                        sizes={`
+            <div className={styles.image_container}>
+                <MoviePoster
+                    posterUrl={modifiedMovieData.moviePoster}
+                    alt={t('movie', { movieName: modifiedMovieData.movieName })}
+                    sizes={`
                     (max-width: 319px) calc((1000vw - 76px) / 2),
                     (min-width: 320px) calc((100vw - 76px) / 2),
                     (min-width: 400px) calc((100vw - 96px) / 3),
@@ -33,16 +31,15 @@ export default function MovieListCard({ modifiedMovieData, children }: MovieList
                     (min-width: 1100px) calc((100vw - 156px) / 6),
                         ( min-width: 1216px) 161px),
                         `}
-                    />
-                    <div className={styles.restriction}>
-                        <AgeRestriction />
-                    </div>
-                    {children}
+                />
+                <div className={styles.restriction}>
+                    <AgeRestriction />
                 </div>
-                <figcaption>
-                    <MovieListCardMovieName movieName={modifiedMovieData.movieName} />
-                </figcaption>
-            </MovieListCardWrapper>
+                {children}
+            </div>
+            <figcaption>
+                <MovieListCardMovieName movieName={modifiedMovieData.movieName} />
+            </figcaption>
         </figure>
     );
 }

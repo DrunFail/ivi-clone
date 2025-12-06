@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             languages: {
                 ru: `${BASE_URL}/ru/movies/${genre.genre}`,
                 en: `${BASE_URL}/en/movies/${genre.genre}`,
+                'x-default': `${BASE_URL}/en/movies/${genre.genre}`,
             },
         },
     }));

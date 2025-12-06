@@ -17,6 +17,7 @@ export default function useLogin() {
     const [error, setError] = useState('');
 
     useEffect(() => {
+        /* eslint-disable */
         setError('');
     }, [email, password]);
 

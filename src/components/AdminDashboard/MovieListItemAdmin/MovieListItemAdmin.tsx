@@ -7,7 +7,6 @@ import { Movie } from '../../../models/types';
 import useDeleteMovieCard from '../../../hooks/admin/useDeleteMovieCard';
 import useEditMovieCard from '../../../hooks/admin/useEditMovieCard';
 import MovieListCardWithOverlay from '../../Movie/MovieListCardWithOverlay/MovieListCardWithOverlay';
-import AdminOverlayIcon from '../../Movie/AdminOverlayIcon/AdminOverlayIcon';
 import Modal from '../../UI/Modal/Modal';
 import DeleteMovieCardContent from '../cards/DeleteMovieCardContent/DeleteMovieCardContent';
 import EditMovieCardContent from '../cards/EditMovieCardContent/EditMovieCardContent';
@@ -41,10 +40,7 @@ export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
     );
     return (
         <div>
-            <MovieListCardWithOverlay
-                icons={<AdminOverlayIcon deleteHandler={deleteMovieHandler} editHandler={editMovieHandler} />}
-                modifiedMovieData={movieData.modifiedMovieData}
-            />
+            <MovieListCardWithOverlay elem={elem} />
 
             <Modal visible={editVisible || deleteVisible} callback={closeModal}>
                 {deleteVisible && (
@@ -55,8 +51,8 @@ export default function MovieListItemAdmin({ elem }: MovieListItemAdminProps) {
                 {editVisible && (
                     <EditCardContainer handleCloseEdit={editMovieHandler} handleSubmit={handleSubmit}>
                         <EditMovieCardContent
-                            countries={countries}
-                            genres={genres}
+                            countries={countries || ''}
+                            genres={genres || ''}
                             elem={elem}
                             handleChangeNewMovieName={handleChangeNewMovieName}
                             newMovieName={newMovieName}

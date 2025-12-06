@@ -1,22 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import MovieDescription from '../moviePageComponents/MovieDescription/MovieDescription';
 import ButtonHide from './ButtonHide/ButtonHide';
 
 interface MovieHideInfoContainerProps {
-    movieDescription: string;
     isHideText: React.ReactNode;
     notIsHideText: React.ReactNode;
     children?: React.ReactNode;
 }
 
-export default function MovieHideInfoContainer({
-    movieDescription,
-    isHideText,
-    notIsHideText,
-    children,
-}: MovieHideInfoContainerProps) {
+export default function MovieHideInfoContainer({ isHideText, notIsHideText, children }: MovieHideInfoContainerProps) {
     const [isHide, setIsHide] = useState(true);
 
     const isHideToggle = () => {
@@ -24,9 +17,18 @@ export default function MovieHideInfoContainer({
     };
     return (
         <>
-            <MovieDescription isHide={isHide}>{movieDescription}</MovieDescription>
-
-            {!isHide && children}
+            <div
+                style={{
+                    WebkitLineClamp: '6',
+                    display: isHide ? '-webkit-box' : 'flex',
+                    overflow: 'hidden',
+                    flexDirection: 'column',
+                    WebkitBoxOrient: 'vertical',
+                    textOverflow: 'ellipsis',
+                }}
+            >
+                {children}
+            </div>
 
             <ButtonHide
                 isHide={isHide}

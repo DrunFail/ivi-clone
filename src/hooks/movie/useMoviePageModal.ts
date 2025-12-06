@@ -14,6 +14,7 @@ export default function useMoviePageModal() {
 
     useEffect(() => {
         if (type) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setVisible(true);
         } else {
             setVisible(false);

@@ -24,7 +24,6 @@ const meta: Meta<typeof OverlayMovieListCard> = {
             infoProduct: 'info',
             mainRatingPercentage: 58,
         },
-        icons: 'icons',
     },
 };
 

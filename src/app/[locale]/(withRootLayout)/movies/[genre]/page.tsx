@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             languages: {
                 ru: `${BASE_URL}/ru/movies/${genre}`,
                 en: `${BASE_URL}/en/movies/${genre}`,
-                'x-default': `${BASE_URL}/movies/${genre}`,
+                'x-default': `${BASE_URL}/en/movies/${genre}`,
             },
         },
     };

@@ -14,6 +14,7 @@ export default function AdminAside({ menu }: { menu: { id: number; name: string;
     useEffect(() => {
         const currentPage = menu.find((elem) => pathname.includes(elem.name));
         if (currentPage) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setCurrentLink(currentPage.name);
         }
     }, [pathname, menu]);

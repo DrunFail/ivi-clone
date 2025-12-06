@@ -1,12 +1,12 @@
 'use client';
 
 import Carousel from '../../UI/Carousel/Carousel';
-import MovieListCardWithOverlayContainer from '../MovieListCardContainer/MovieListCardWithOverlayContainer';
 import { ResponseWithCountAndRows } from '../../../models/response';
 import { Movie } from '../../../models/types';
-import MovieListCardWrapper from '@/components/Movie/MovieListCardWrapper/MovieListCardWrapper';
 import LinkShowMore from '@/components/Movie/LinkShowMore/LinkShowMore';
 import MovieSliderSizeContainer from '@/components/Movie/MovieSliderSizeContainer/MovieSliderSizeContainer';
+import MovieListCardWithOverlay from '@/components/Movie/MovieListCardWithOverlay/MovieListCardWithOverlay';
+import MovieListCardWrapper from '@/components/Movie/MovieListCardWrapper/MovieListCardWrapper';
 
 interface MovieSliderProps {
     href: string;
@@ -18,7 +18,7 @@ export default function MovieSlider({ href, data }: MovieSliderProps) {
         <MovieSliderSizeContainer>
             <Carousel
                 data={data.rows}
-                component={MovieListCardWithOverlayContainer}
+                component={MovieListCardWithOverlay}
                 lastElem={
                     <MovieListCardWrapper>
                         <LinkShowMore href={href} />
